@@ -34,11 +34,33 @@ Page({
     var i=0;
     var success = 0;
     var fail=0;
+    var commonParams = {
+      "openId": app.globalData.userid,
+      // "timestamp": getCurrentSecond(),
+      "timestamp": "2019-03-2",
+      "appid": app.globalData.appid,
+      "nonce": "123",
+      "algorithm": "1",
+      "token": "12313",
+      "version": "2.0"
+    };
+    var bizContent = {
+      'customerId': 1
+    }
+  
+    var bizContentName = { "bizContent": bizContent };
+    var body = util.mergeJson(commonParams, bizContentName);
+   
+     console.log("body----"+body);
     wx.uploadFile({
       url: api.GetFaceInfo,
-      filePath: photoPaths[i],
-      name: 'body',//这里根据自己的实际情况改
-      formData: null,//这里是上传图片时一起上传的数据
+      // filePath: photoPaths[i],
+      header: {
+        "Content-Type": "multipart/form-data"
+      },
+      filePath: that.data.headPhotoBgC,
+      name: 'faceImgFile',//这里根据自己的实际情况改
+      formData: { body: JSON.stringify(body) },//这里是上传图片时一起上传的数据
       success: (resp) => {
         success++;
         console.log(resp)
@@ -58,7 +80,7 @@ Page({
           console.log('成功：' + success + " 失败：" + fail);
         } else {
           console.log('进行几次' + i + "次");
-          that.formSubmit();
+          this.formSubmit();
         }
       }
     });

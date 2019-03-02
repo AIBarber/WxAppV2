@@ -3,13 +3,13 @@
     "pages/Customer/myCustomers/jumpToBarber",
     "pages/Customer/myCustomers/personal",
     "pages/Subcribe/Subscribe_action/ServerItem",
-    
-    
+    "pages/Customer/myCustomers/camaraIdentity",
+    "pages/Customer/myCustomers/showPhoto",
    
     "pages/Subcribe/Subscribe_action/FinishInfo",
     "pages/Subcribe/Subscribe_action/chooseShop",
-    "pages/camaraIdentity",
-    "pages/showPhoto",
+   
+   
     "pages/Shop/ShopList/List",
     "pages/PersonalHome/PersonalHome"
   ],
