@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/Shop/ShopList/List",
+    "pages/PersonalHome/PersonalHome"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "AIBarber",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#929292",
+    "selectedColor": "#FFA900",
+    "backgroundColor": "#FAFAFA",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/Shop/ShopList/List",
+        "text": "门店",
+        "iconPath": "icon/tab_icon_home_default.png",
+        "selectedIconPath": "icon/tab_icon_home_selected.png"
+      },
+      {
+        "pagePath": "pages/PersonalHome/PersonalHome",
+        "text": "个人",
+        "iconPath": "icon/tab_icon_my_default.png",
+        "selectedIconPath": "icon/tab_icon_my_selected.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000
+  },
+  "debug": false
+}

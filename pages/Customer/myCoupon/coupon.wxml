@@ -1,0 +1,12 @@
+<!--pages/myCoupon/coupon.wxml-->
+<import src='../template/coupon.wxml'/>
+
+<view class='text'>
+  <text>我的优惠券</text>
+</view>
+
+<view>
+   <view wx:for="{{discountList}}" wx:key='id'>
+      <template is="coupon" data="{{id:item.id,path:icon_path,money:item.value,time:item.price}}"/>
+   </view>
+</view>

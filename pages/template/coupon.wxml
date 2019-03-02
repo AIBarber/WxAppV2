@@ -1,0 +1,9 @@
+<template name='coupon'>
+  <view style='display:flex;flex-direction:row;margin-top:0px;margin-left:2%; width:94%;background:white;' data-id='{{id}}'>
+   <image style="width:80px;height:70px;margin-left:6px;margin-top:5px;margin-bottom:6px;" src='{{path}}' mode='scaletoFill' />
+      <view style="display:flex;flex-direction:column;margin-left:18px;font-size:15px" > 
+         <text decode='true' style='margin-top:18px'>抵扣金额：{{money}} </text>   
+         <text decode='true' style='margin-top:5px'>有效时间：{{time}}</text> 
+      </view>
+    </view>
+</template>
