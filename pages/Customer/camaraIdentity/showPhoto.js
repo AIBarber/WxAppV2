@@ -1,20 +1,35 @@
-// pages/PersonalHome/PersonalHome.js
+// pages/camaraIdentity/showPhoto.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    photoName:"",
+    photoSrc:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+     this.setData({
+       photoName:options.photoName,
+       photoSrc:options.photoSrc
+     })
+    console.log(this.data.photoName + "--" + this.data.photoSrc);
   },
-
+  yesToIndex: function () {
+    wx.setStorageSync(this.data.photoName, this.data.photoSrc);
+    wx.navigateBack({
+      delta: 2
+    })
+  },
+  returnPhoto: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -26,7 +41,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    that.setData({
+      myHairSrc: this.data.photoSrc
+    })     
   },
 
   /**

@@ -233,19 +233,36 @@ function mergeJson(j1, j2) {
 /**
  *  封装Server Request
  */
-function weshowRequest(url, data = {}, method = "GET") {
-  //wx.showLoading({
-  //  title: '正在加载',
-  //})
+function weshowRequest(url, bizContent = {}, method = "POST") {
+  wx.showLoading({
+   title: '正在加载',
+  })
+  console.log("进入weshow");
   var commonParams = {
+<<<<<<< HEAD
     //'appid': app.globalData.appid,
     //'openid': app.globalData.userid,
     'timestamp': getCurrentSecond(),
     'refresh': 0,
     'nonce': getNonce(),
     'signMethod': 'HmacSHA1'
+=======
+    "openId": app.globalData.userid,
+    // "timestamp": getCurrentSecond(),
+    "timestamp": "2019-03-2",
+    "appid": app.globalData.appid,
+    "nonce":"123",
+    "algorithm": "1", 
+    "token": "12313", 
+    "version": "2.0"
+>>>>>>> 4befed9003fdd01e42e27402ace0b8b9fa298496
   };
-  data = mergeJson(commonParams, data);
+  
+  var bizContentName = { "bizContent": bizContent};
+  var body = mergeJson(commonParams, bizContentName);
+  var body2={"body":body};
+  console.log("json串内容" + bizContentName);
+  console.log(body);
   if (api.NETWORK_DEBUG) {
     console.log(url);
   }
@@ -256,7 +273,8 @@ function weshowRequest(url, data = {}, method = "GET") {
   return new Promise(function (resolve, reject) {
     wx.request({
       url: url,
-      data: data,
+      // data:body2,
+      data:body,
       method: method,
       header: {
         'Content-Type': 'application/json',
@@ -311,7 +329,7 @@ function weshowRequest(url, data = {}, method = "GET") {
       },
       fail: function (err) {
         //wx.hideLoading();
-        console.log('failed for: ' + url);
+        console.log('--failed for: ' + url);
         reject(err);
       }
     })

@@ -1,4 +1,38 @@
 /* pages/myCoupon/coupon.wxss */
+.titleView{
+ display:flex;
+   position: fixed;
+  top:00rpx;
+  left:00rpx;
+  height: 110rpx;
+  width: 100%;
+  margin-top: 0rpx;
+ 
+
+}
+.return{
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  margin-top: 40rpx;
+  margin-left: 10rpx;
+  font-size: 20px;
+  color: black
+ 
+}
+.returnImg{
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+  width: 20rpx;
+  height: 40rpx;
+  color: black
+}
+.title{
+  font-size: 20px;
+  margin-top: 44rpx;
+  color:black;
+  margin-left: 220rpx;
+}
 .buttonLeft{
   margin-top: 0%;
   margin-left: 0%;
