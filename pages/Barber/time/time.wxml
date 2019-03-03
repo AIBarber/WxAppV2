@@ -1,0 +1,24 @@
+<!--pages/time/time.wxml-->
+<view class='aa'>
+<view class='at'><text>上午(12点之前）</text></view>
+<view class='at'><text>下午(12点至18点）</text></view>
+<view class='at'><text>晚上(18点之后）</text></view>
+</view>
+
+<view class='a'>
+<view class='btn'><button type="default" bindtap="changeBg2" style="background:{{viewBg2}};">今天上午</button></view>
+<view class='btn'><button type="default" bindtap="changeBg3" style="background:{{viewBg3}};">今天下午</button></view>
+<view class='btn'><button type="default" bindtap="changeBg5" style="background:{{viewBg5}};">今天晚上</button></view>
+</view>
+
+<view class='a'>
+<view class='btn'><button type="default" bindtap="changeBg" style="background:{{viewBg}};">明天上午</button></view>
+<view class='btn'><button type="default" bindtap="changeBg6" style="background:{{viewBg6}};">明天下午</button></view>
+<view class='btn'><button type="default" bindtap="changeBg7" style="background:{{viewBg7}};">明天晚上</button></view>
+</view>
+
+<view class='a'>
+<view class='btn'><button type="default" bindtap="changeBg8" style="background:{{viewBg8}};">后天上午</button></view>
+<view class='btn'><button type="default" bindtap="changeBg1" style="background:{{viewBg1}};">后天下午</button></view>
+<view class='btn'><button type="default" bindtap="changeBg9" style="background:{{viewBg9}};">后天晚上</button></view>
+</view>

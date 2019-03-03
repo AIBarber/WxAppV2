@@ -1,7 +1,11 @@
 {
   "pages": [
-    "pages/Shop/ShopList/List",
-    "pages/PersonalHome/PersonalHome"
+    "pages/Barber/BarberHome/personal",
+    "pages/Barber/new/new",
+    "pages/Shop/ShopList/new",
+    "pages/new/new",
+    "pages/Barber/detail/technicain_detail",
+    "pages/Shop/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -16,13 +20,19 @@
     "borderStyle": "white",
     "list": [
       {
-        "pagePath": "pages/Shop/ShopList/List",
-        "text": "门店",
+        "pagePath": "pages/Barber/new/new",
+        "text": "首页",
         "iconPath": "icon/tab_icon_home_default.png",
         "selectedIconPath": "icon/tab_icon_home_selected.png"
       },
       {
-        "pagePath": "pages/PersonalHome/PersonalHome",
+        "pagePath": "pages/Shop/ShopList/new",
+        "text": "店铺",
+        "iconPath": "icon/tab_icon_home_default.png",
+        "selectedIconPath": "icon/tab_icon_home_selected.png"
+      },
+      {
+        "pagePath": "pages/Barber/BarberHome/personal",
         "text": "个人",
         "iconPath": "icon/tab_icon_my_default.png",
         "selectedIconPath": "icon/tab_icon_my_selected.png"

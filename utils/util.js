@@ -3,6 +3,44 @@
 var app = getApp();
 var api = require('../config/api.js');
 
+function formatTime(date) {
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+
+  var hour = date.getHours()
+  var minute = date.getMinutes()
+  var second = date.getSeconds()
+
+
+  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+
+function formatNumber(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+/**
+ * 转换地址数据
+ * */
+function replacePhone(arr, isreplace) {
+  var newAddr = []
+  for (let i = 0; i < arr.length; i++) {
+    if (isreplace) {
+      let phone = arr[i].phone
+      arr[i].phone = phone.replace(phone.substring(3, 7), '****')
+    }
+    newAddr[i] = arr[i].name + ' ' + arr[i].phone + '\n' + arr[i].province + arr[i].city + arr[i].addr
+  }
+
+  return newAddr
+}
+module.exports = {
+  formatTime: formatTime,
+  replacePhone: replacePhone
+}
+
+
 function getCurrentTime() {
   return (new Date()).getTime();
 }
@@ -200,8 +238,8 @@ function weshowRequest(url, data = {}, method = "GET") {
   //  title: '正在加载',
   //})
   var commonParams = {
-    'appid': app.globalData.appid,
-    'openid': app.globalData.userid,
+    //'appid': app.globalData.appid,
+    //'openid': app.globalData.userid,
     'timestamp': getCurrentSecond(),
     'refresh': 0,
     'nonce': getNonce(),
@@ -224,8 +262,8 @@ function weshowRequest(url, data = {}, method = "GET") {
         'Content-Type': 'application/json',
         //'Content-Type': 'text/html; charset=UTF-8',
         //'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36 appservice webview/100000',
-        'X-WxApp-ID': app.globalData.appid,
-        'X-WxOpenid': app.globalData.userid,
+        //'X-WxApp-ID': app.globalData.appid,
+        //'X-WxOpenid': app.globalData.userid,
         //'X-Weshow-Token': wx.getStorageSync('token')
         //'X-Weshow-Token': app.globalData.accountInfo.wxtoken
       },
