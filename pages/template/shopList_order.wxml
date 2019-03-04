@@ -1,21 +1,22 @@
 <!-- 顾客进行店铺预约模板 -->
 <template name='shoplist_order'> 
- 
-<view class='shoplistMain' data-id='{{id}}'>
- <image class="shopImg" src='{{ImgSrc}}'></image>
+<view class='shoplistMain' data-id='{{storeId}}'>
+ <image class="shopImg" src='{{headImage}}'></image>
  <view class="shopInfo">
-  <view>{{name}}</view>
+  <view class='shopInfo_StoreName'>{{name}}</view>
+  <view>{{customerNum}}</view>
    <view>{{address}}</view>
  </view>
  <view class="shopDis">
-  <view>距离:</view>
-  <!-- {{distance}} -->
   <label >
   <radio-group bindchange="checkboxChange" class='shopListRadio'>
-     <radio value="{{distance}}"  checked="{{checked}}"></radio>
    </radio-group>
       </label>
   </view>
-</view>
 
+</view>
+  <view class='shareState'><text>状态:{{shareState}}</text>
+    <switch class="switchCla" checked bindchange="switch1Change" />
+  </view>
+  
 </template>

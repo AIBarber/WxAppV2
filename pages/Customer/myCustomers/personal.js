@@ -6,10 +6,12 @@ Page({
 
   /**
    * 页面的初始数据
-   */
+   */ 
   data: {
-    info: {image:"", username: "慵懒的猫", time: 30, credits:230},
-    headPhoto: {face: "70", age: 25, sex: '男', color: "yellow", type: "方形", glass: "have"},
+    // customerFaceInfo: {image:"", name: "慵懒的猫", frequency: 30, score:230},
+    customerFaceInfo:'',
+    // headPhoto: {face: "70", age: 25, sex: '男', color: "yellow", type: "方形", glass: "have"},
+    headPhoto:'',
       reservation: null,
       attribute: null,
       myHairSrc:null,
@@ -23,29 +25,30 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-
-  onLoad: function (options) {
-      this.getPersonalData();
-  },
-   getPersonalData:function(){
+  getPersonalData: function () {
+    var that = this;
     util.weshowRequest(
-      api.StoreList,
+      api.Getcustomerinfo,
       {
-        
+        customerId: 1
       },
       'POST').then(res => {
         //if (res.data) {}
-        console.log('getShopList ');
-        console.log(res);
+        console.log('customerFaceInfo:: ');
+
         // success
-        that.setData({ info: res.data.data.list });
+        that.setData({
+          customerFaceInfo: res.data.bizContent.customerinfo
+        });
+        console.log("this.data.customerFaceInfo:" + this.data.customerFaceInfo);
         // console.log(that.data);
-        that.stopRefreshing();
-        //that.waitUpdate();
+
+        util.stopRefreshing;
+        util.waitUpdate;
       }).catch((err) => {
-        console.log('getShopList err' + err);
+        console.log('customerFaceInfo err :' + err);
         // fail
-        that.stopRefreshing();
+        util.stopRefreshing;
         wx.showToast({
           title: '正在获取数据…',
           icon: 'loading',
@@ -53,124 +56,167 @@ Page({
           mask: true
         });
       });
-   },
-  onShow:function(){
-   
+  },
+  onLoad: function (options) {
+    this.getPersonalData();
+  },
+  changeHeadPhoto:function(){
+ 
+  },
+ onShow:function(){
+   this.getHeadPhoto();
+ },
+  getHeadPhoto:function(){
+    // console.log("进入onShow")
        var that=this;
-    // var photo = wx.getStorageInfoSync("personnal")
+    if (wx.getStorageSync("personnal")==null){
+    
+    }else{
        that.setData({
          myHairSrc: wx.getStorageSync("personnal")
-       })
+      })
+      var bizContent = {'customerId': 1}
+     var photoPaths='';
+      photoPaths= wx.getStorageSync("personnal");
+      util.wxUploadFile(photoPaths, bizContent).then(res => {
+        //if (res.data) {}
+     
+        console.log("biz:" + res.data.bizContent);
+        // that.setData({
+        //   headPhoto: headPhotoBiz
+        // });
+       
+
+        // util.stopRefreshing;
+        // util.waitUpdate;
+      }).catch((err) => {
+        console.log('HeadPhoto err :' + err);
+        // fail
+        util.stopRefreshing;
+        // wx.showToast({
+        //   title: '正在获取数据…',
+        //   icon: 'loading',
+        //   duration: 3000,
+        //   mask: true
+        // });
+      });
+   
+      
+    }
     wx.removeStorageSync("personnal");
   },
 
-  getInfo:function(){
-    console.log('getDataList ' + api.StoreCustomerDetail);
-    wx.showNavigationBarLoading();
-    var that = this;
+  // getInfo:function(){
+  //   console.log('getDataList ' + api.StoreCustomerDetail);
+  //   wx.showNavigationBarLoading();
+  //   var that = this;
 
-    util.weshowRequest(
-      api.StoreCustomerDetail,
-      {
-        'customerid': app.globalData.userid
-      },
-      'POST').then(res => {
-        //if (res.data) {}
-        console.log('getDataList 11111111111111111111');
-        console.log(res);
-        // success
-        that.setData({ info: res.data });
-        console.log(res.data.type)
-        app.globalData.userType=res.data.type
-        // console.log(that.data);
-        that.stopRefreshing();
-        //that.waitUpdate();
-      }).catch((err) => {
-        console.log('getDataList err22222222222222222222' + err);
-        // fail
-        that.stopRefreshing();
-        wx.showToast({
-          title: '正在获取数据…',
-          icon: 'loading',
-          duration: 3000,
-          mask: true
-        });
-        that.setData({ info: (wx.getStorageSync('info') || []) });
-      });
-  },
+  //   util.weshowRequest(
+  //     api.Getcustomerinfo,
+  //     {
+  //       'customerid': app.globalData.userid
+  //     },
+  //     'POST').then(res => {
+  //       //if (res.data) {}
+  //       console.log('getDataList 11111111111111111111');
+  //       console.log(res);
+  //       // success
+  //       that.setData({ info: res.data });
+  //       console.log(res.data.type)
+  //       app.globalData.userType=res.data.type
+  //       // console.log(that.data);
+  //       that.stopRefreshing();
+  //       //that.waitUpdate();
+  //     }).catch((err) => {
+  //       console.log('getDataList err22222222222222222222' + err);
+  //       // fail
+  //       that.stopRefreshing();
+  //       // wx.showToast({
+  //       //   title: '正在获取数据…',
+  //       //   icon: 'loading',
+  //       //   duration: 3000,
+  //       //   mask: true
+  //       // });
+  //       that.setData({ info: (wx.getStorageSync('info') || []) });
+  //     });
+  // },
 
-  getReservation:function(){
-    console.log('getDataList ' + api.BarberSubscribe);
-    wx.showNavigationBarLoading();
-    var that = this;
+  // getReservation:function(){
+  //   console.log('getDataList ' + api.BarberSubscribe);
+  //   wx.showNavigationBarLoading();
+  //   var that = this;
 
-    util.weshowRequest(
-      api.BarberSubscribe,
-      {
-        'barberid ': null,
-        'customerid': app.globalData.userid,
-      },
-      'POST').then(res => {
-        //if (res.data) {}
-        console.log('getDataList 33333333333333333333333333333333');
-        console.log(res);
-        // success
-        that.setData({ reservation: res.data });
-        // console.log(that.data);
-        //that.stopRefreshing();
-        //that.waitUpdate();
-      }).catch((err) => {
-        console.log('getDataList err 44444444444444444444444444444444' + err);
-        // fail
-        //that.stopRefreshing();
-        wx.showToast({
-          title: '正在获取数据…',
-          icon: 'loading',
-          duration: 3000,
-          mask: true
-        });
-        that.setData({ reservation: (wx.getStorageSync('reservation') || []) });
-      });
-  },
+  //   util.weshowRequest(
+  //     api.BarberSubscribe,
+  //     {
+  //       'barberid ': null,
+  //       'customerid': app.globalData.userid,
+  //     },
+  //     'POST').then(res => {
+  //       //if (res.data) {}
+  //       console.log('getDataList 33333333333333333333333333333333');
+  //       console.log(res);
+  //       // success
+  //       that.setData({ reservation: res.data });
+  //       // console.log(that.data);
+  //       //that.stopRefreshing();
+  //       //that.waitUpdate();
+  //     }).catch((err) => {
+  //       console.log('getDataList err 44444444444444444444444444444444' + err);
+  //       // fail
+  //       //that.stopRefreshing();
+  //       wx.showToast({
+  //         title: '正在获取数据…',
+  //         icon: 'loading',
+  //         duration: 3000,
+  //         mask: true
+  //       });
+  //       that.setData({ reservation: (wx.getStorageSync('reservation') || []) });
+  //     });
+  // },
 
-  getAttribute:function(){
-    console.log('getDataList ' + api.CustomerAttribute);
-    wx.showNavigationBarLoading();
-    var that = this;
+  // getAttribute:function(){
+  //   console.log('getDataList ' + api.CustomerAttribute);
+  //   wx.showNavigationBarLoading();
+  //   var that = this;
 
-    util.weshowRequest(
-      api.CustomerAttribute,
-      {
-        'customerid': app.globalData.userid
-      },
-      'POST').then(res => {
-        //if (res.data) {}
-        console.log('getDataList 555555555555555555555555555');
-        console.log(res);
-        // success
-        that.setData({ attribute: res.data });
-        // console.log(that.data);
-        //that.stopRefreshing();
-        //that.waitUpdate();
-      }).catch((err) => {
-        console.log('getDataList err' + err);
-        // fail
-        //that.stopRefreshing();
-        wx.showToast({
-          title: '正在获取数据…',
-          icon: 'loading',
-          duration: 3000,
-          mask: true
-        });
-        that.setData({ attribute: (wx.getStorageSync('attribute') || []) });
-      });
-  },
+  //   util.weshowRequest(
+  //     api.CustomerAttribute,
+  //     {
+  //       'customerid': app.globalData.userid
+  //     },
+  //     'POST').then(res => {
+  //       //if (res.data) {}
+  //       console.log('getDataList 555555555555555555555555555');
+  //       console.log(res);
+  //       // success
+  //       that.setData({ attribute: res.data });
+  //       // console.log(that.data);
+  //       //that.stopRefreshing();
+  //       //that.waitUpdate();
+  //     }).catch((err) => {
+  //       console.log('getDataList err' + err);
+  //       // fail
+  //       //that.stopRefreshing();
+  //       wx.showToast({
+  //         title: '正在获取数据…',
+  //         icon: 'loading',
+  //         duration: 3000,
+  //         mask: true
+  //       });
+  //       that.setData({ attribute: (wx.getStorageSync('attribute') || []) });
+  //     });
+  // },
 
   backToprevPage: function () {
     wx.navigateBack({
     })
   },
-
+  goToMyShareStore:function(){
+    wx.navigateTo({
+      url: '../../Shop/ShopList/List',
+    })
+  },
   goToMyBarber:function(){
     wx.navigateTo({
       url: 'jumpToBarber',

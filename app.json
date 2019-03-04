@@ -1,5 +1,6 @@
 {
   "pages": [
+<<<<<<< HEAD
 "pages/Barber/BarberHome/personal",
     "pages/Barber/new/new",
     "pages/Shop/ShopList/new",
@@ -46,15 +47,15 @@
 =======
     "pages/Customer/myCustomers/jumpToBarber",
     "pages/Customer/myCustomers/personal",
+=======
+>>>>>>> 7f9e1003e3937314ca0bb90e5f5c54964e655629
     "pages/Subcribe/Subscribe_action/ServerItem",
-    "pages/Customer/myCustomers/camaraIdentity",
-    "pages/Customer/myCustomers/showPhoto",
-   
+    "pages/Customer/myCustomers/personal",
+    "pages/Shop/ShopList/List",
+    "pages/Customer/myCustomers/jumpToBarber",
+    
     "pages/Subcribe/Subscribe_action/FinishInfo",
     "pages/Subcribe/Subscribe_action/chooseShop",
-   
-   
-    "pages/Shop/ShopList/List",
     "pages/PersonalHome/PersonalHome"
   ],
  "window": {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--pages/ShopList/List.wxml
 <import src='../../template/template.wxml'/><!--导入模板-->
 <!-- <template is="tabbar" data="{{tabbar}}"/> -->
@@ -9,6 +10,20 @@
 <view>
    <view wx:for="{{shop_arrays}}" wx:key="id">
       <template is="shoplist" data="{{id:item.id,name:item.name,address:item.address,time:item.opentime,path:item.cover_image}}"/>
+=======
+<!--pages/ShopList/List.wxml-->
+<import src='../../template/shopList_order.wxml'/><!--导入模板-->
+<view class="titleView">
+ <view class="return" bindtap='returnBtn'>
+  <image class="returnImg" src='../../../icon/arrow_xia.png' mode='scaleToFill'></image>
+  <text class="" style=' margin-left:10rpx;margin-top:30rpx;line-height:0rpx;'>返回</text>
+ </view>
+ <view class="title">我的共享店铺</view>
+ </view>
+<view class="shareShopView">
+   <view wx:for="{{shoplist}}" wx:key="id">
+      <template is="shoplist_order" data="{{id:item.storeId,name:item.name,customerNum:item.customerNum,address:item.address,headImage:item.headImage,distance:item.distance}}"/>
+>>>>>>> 7f9e1003e3937314ca0bb90e5f5c54964e655629
    </view>
 </view>-->
 
