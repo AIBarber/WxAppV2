@@ -1,11 +1,10 @@
 {
   "pages": [
-<<<<<<< HEAD
-    "pages/Barber/BarberHome/personal",
+"pages/Barber/BarberHome/personal",
     "pages/Barber/new/new",
     "pages/Shop/ShopList/new",
     "pages/new/new",
-    "pages/Barber/detail/technicain_detail",
+"pages/Barber/detail/technicain_detail",
     "pages/Shop/detail/detail"
   ],
   "window": {
