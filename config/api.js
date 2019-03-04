@@ -22,7 +22,7 @@ module.exports = {
   WxSendUserMsg: WxSendUserMsg,
   WsUrl: WsRootUrl,
   WsOpen: WsRootUrl + 'api/quizuser/open',
-
+  Getcustomerinfo: ApiRootUrl + 'customer/getcustomerinfo',
   DecryptShare: ApiRootUrl + 'auth/decryptshare',
   ArgsDigest: ApiRootUrl + 'auth/argsig',
   UploadSig: ApiRootUrl + 'auth/uploadsig',

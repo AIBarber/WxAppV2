@@ -1,16 +1,12 @@
 {
   "pages": [
-    "pages/Customer/myCustomers/jumpToBarber",
-    "pages/Customer/myCustomers/personal",
     "pages/Subcribe/Subscribe_action/ServerItem",
-    "pages/Customer/myCustomers/camaraIdentity",
-    "pages/Customer/myCustomers/showPhoto",
-   
+    "pages/Customer/myCustomers/personal",
+    "pages/Shop/ShopList/List",
+    "pages/Customer/myCustomers/jumpToBarber",
+    
     "pages/Subcribe/Subscribe_action/FinishInfo",
     "pages/Subcribe/Subscribe_action/chooseShop",
-   
-   
-    "pages/Shop/ShopList/List",
     "pages/PersonalHome/PersonalHome"
   ],
  "window": {

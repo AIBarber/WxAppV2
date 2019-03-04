@@ -58,7 +58,7 @@ Page({
       header: {
         "Content-Type": "multipart/form-data"
       },
-      filePath: that.data.headPhotoBgC,
+      filePath: photoPaths[i],
       name: 'faceImgFile',//这里根据自己的实际情况改
       formData: { body: JSON.stringify(body) },//这里是上传图片时一起上传的数据
       success: (resp) => {
@@ -89,6 +89,7 @@ Page({
 
   
   takeByPhoto: function () {
+    console.log("进入takeByPhoto")
     var that = this;
     wx.navigateTo({
       url: '../camaraIdentity/camaraIdentity?photoName=changeBarber',

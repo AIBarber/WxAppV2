@@ -1,23 +1,102 @@
-/* pages/ShopList/List.wxss */
-.buttonLeft{
-  margin-top: 0%;
-  margin-left: 0%;
-  width: 55px;
-  height: 40px;
-  border: none;
-  border-left-color: white;
-  border-top-color: white;
-  border-bottom-color: white;
-  border-right-color: white;
-  border-radius: 150px;
-  background: white;
-  margin-bottom: 10px;
+.titleView{
+ display:flex;
+   position: fixed;
+  top:0rpx;
+  left:00rpx;
+  height: 110rpx;
+  width: 100%;
+  margin-top: 0rpx;
+
 }
-.imageLeft{
-  width: 36px;
-  height: 30px;
-  margin-left: -20%; 
-  margin-top: 5%;
+.return{
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  margin-top: 50rpx;
+  margin-left: 10rpx;
+  font-size: 20px;
+  color: black
+ 
+}
+.returnImg{
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+  width: 20rpx;
+  height: 40rpx;
+  color: black
+}
+.title{
+  position: fixed;
+  left:140rpx;
+  top: 2rpx;
+  font-size: 20px;
+  margin-top: 54rpx;
+  color:black;
+  margin-left: 120rpx;
+}
+
+
+.shareShopView{
+  margin-top: 120rpx;
+  background-color: #999999;
+   border-top: 1px solid #999999;
+   border-bottom: 1px solid #999999;
+}
+.shoplistMain{
+  display: flex;
+  flex-direction: row;
+ width: 100%;
+ height: 170rpx;
+ margin-top: 20rpx;
+   border-bottom: 1px solid #0cc4b1;
+   background-color: white
+}
+.shopImg{
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  margin-right: 20rpx;
+  width: 120rpx;
+  height: 120rpx;
+  border: 1px solid gainsboro;
+}
+.shopInfo{
+  width: 200rpx;
+  margin-left: 20rpx;
+  text-align: left;
+  font-size: 26rpx;
+  color: #999999;
+  margin-top: 20rpx;
+}
+.shopInfo_StoreName{
+   font-size: 30rpx;
+   margin-bottom: 10rpx;
+   color: #333333;
+}
+.shopDis{
+    margin-left: 130rpx;
+    text-align: right
+}
+.shopListRadio{
+  margin-top: 50rpx;
+ 
+}
+
+.shareState{
+  height: 90rpx;
+  font-size: 28rpx;
+  color: #999999;
+
+  display: flex;
+  flex-direction: row;
   background: white;
+}
+.shareState text{
+   margin-left: 30rpx;
+   margin-top: 23rpx;
+    width: 400rpx;
+}
+.switchCla{
+    margin-top: 17rpx;
+  margin-left: 210rpx;
 
 }
