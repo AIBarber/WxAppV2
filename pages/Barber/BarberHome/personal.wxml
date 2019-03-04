@@ -29,7 +29,7 @@
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/address.png" />
-		<navigator class="bd" url="../time/time" open-type="navigate" hover-class="none">预约时段管理</navigator>
+		<navigator class="bd" url="../../pages/time/time" open-type="navigate" hover-class="none">预约时段管理</navigator>
 		<view class="ft"></view>
 	</view>
 </view>
@@ -45,7 +45,7 @@
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/address.png"/>
-		<navigator class="bd" url="../../new/new" open-type="navigate" hover-class="none">我的共享店铺</navigator>
+		<navigator class="bd" url="../../pages/gongxiang/gongxiang" open-type="navigate" hover-class="none">我的共享店铺</navigator>
 		<view class="ft"></view>
 	</view>
 </view>

@@ -1,4 +1,21 @@
-/* pages/myCoupon/coupon.wxss */
+/* pages/Subscribe_action/subscribe.wxss */
+.view{
+  border-width:5px;
+  border-color:black; 
+  border-right: 3rpx solid black;
+  border-top: 3rpx solid black;
+  border-left: 3rpx solid black;
+  border-bottom: 3rpx solid black;
+}
+.button{
+  color: white;
+  font-size: 17px;
+  background: rgb(56, 134, 158);
+  margin-top: -10%;
+  margin-bottom: 5%;
+  width: 50%;
+  left: 20%;
+}
 .buttonLeft{
   margin-top: 0%;
   margin-left: 0%;
@@ -19,10 +36,5 @@
   margin-left: -20%; 
   margin-top: 5%;
   background: white;
-}
-.text{
-  font-size: 17px;
-  font-weight: bold;
-  margin-left: 10px;
-  margin-bottom: 10px;
+
 }

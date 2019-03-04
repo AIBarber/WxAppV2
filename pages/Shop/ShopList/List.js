@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    
   data: {
-      shoplist:'',
+      shop_arrays:[],
   },
 
   /**
@@ -20,11 +20,7 @@ Page({
     this.getDataList();
     //getApp().editTabBar();
   },
-  returnBtn:function(){
-    wx.navigateBack({
-      delta: 1 
-    })
-  },
+
   onShareAppMessage: function (ops) {
     return model.getShareFunction();
   },
@@ -38,15 +34,14 @@ Page({
     util.weshowRequest(
       api.StoreList,
       {
-        'start': 2,
-        'limit':2
+        'size': 10
       },
       'POST').then(res => {
         //if (res.data) {}
-        console.log('getShopList ');
+        console.log('getDataList ');
         console.log(res);
         // success
-        that.setData({ shoplist: res.data.bizContent.list });
+        that.setData({ shop_arrays: res.data.data.list });
         console.log(that.data);
        that.stopRefreshing();
         //that.waitUpdate();

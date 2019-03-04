@@ -1,11 +1,7 @@
 //定义api接口地址
 //var ApiRootUrl = 'http://47.93.241.248/api/';
 //var ApiRootUrl = 'http://www.imcou.com/api/'
-<<<<<<< HEAD
 //var ApiRootUrl = 'https://www.imcou.com/api/'
-=======
-// var ApiRootUrl = 'https://www.imcou.com/api/'
->>>>>>> 4befed9003fdd01e42e27402ace0b8b9fa298496
 var ApiRootUrl = 'http://47.94.144.77:9090/weshow/'
 var WsRootUrl = 'wss://www.imcou.com/socket.io/?transport=websocket'
 //var WxLoginRoot = 'https://api.weixin.qq.com/sns/jscode2session';
@@ -26,13 +22,12 @@ module.exports = {
   WxSendUserMsg: WxSendUserMsg,
   WsUrl: WsRootUrl,
   WsOpen: WsRootUrl + 'api/quizuser/open',
-  Getcustomerinfo: ApiRootUrl + 'customer/getcustomerinfo',
+
   DecryptShare: ApiRootUrl + 'auth/decryptshare',
   ArgsDigest: ApiRootUrl + 'auth/argsig',
   UploadSig: ApiRootUrl + 'auth/uploadsig',
   GetWxSession: ApiRootUrl + 'auth/getwxsession',
   GetWxPayUnified: ApiRootUrl + 'auth/getwxpayunified',
-  GetFaceInfo: ApiRootUrl +'customer/getfaceinfo',
   UserList: ApiRootUrl + 'user/index',
   UserInfo: ApiRootUrl + 'user/info',
   UserAdd: ApiRootUrl + 'user/add',

@@ -1,8 +1,8 @@
 // pages/new/new.js
 
 var app = getApp()
-var fileData = require('../../../utils/data.js')
-var util = require('../../../utils/util')
+var fileData = require('../../utils/data.js')
+var util = require('../../utils/util')
 
 Page({
 
@@ -39,7 +39,7 @@ Page({
   onLoad: function () {
     var that = this
     that.setData({
-      list: that.data.navSectionItems
+      list: that.data.skillData
     })
   },
   // 跳转至详情页

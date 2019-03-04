@@ -1,12 +1,10 @@
 {
   "pages": [
-<<<<<<< HEAD
-"pages/Barber/BarberHome/personal",
+    "pages/Barber/BarberHome/personal",
+    "pages/Shop/ShopList/technician",
     "pages/Barber/new/new",
-    "pages/Shop/ShopList/new",
     "pages/new/new",
-"pages/Barber/detail/technicain_detail",
-    "pages/Shop/detail/detail"
+    "pages/list/technician"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,7 +25,7 @@
         "selectedIconPath": "icon/tab_icon_home_selected.png"
       },
       {
-        "pagePath": "pages/Shop/ShopList/new",
+        "pagePath": "pages/new/new",
         "text": "店铺",
         "iconPath": "icon/tab_icon_home_default.png",
         "selectedIconPath": "icon/tab_icon_home_selected.png"
@@ -44,62 +42,4 @@
     "request": 10000
   },
   "debug": false
-=======
-    "pages/Customer/myCustomers/jumpToBarber",
-    "pages/Customer/myCustomers/personal",
-=======
->>>>>>> 7f9e1003e3937314ca0bb90e5f5c54964e655629
-    "pages/Subcribe/Subscribe_action/ServerItem",
-    "pages/Customer/myCustomers/personal",
-    "pages/Shop/ShopList/List",
-    "pages/Customer/myCustomers/jumpToBarber",
-    
-    "pages/Subcribe/Subscribe_action/FinishInfo",
-    "pages/Subcribe/Subscribe_action/chooseShop",
-    "pages/PersonalHome/PersonalHome"
-  ],
- "window": {
-  "backgroundTextStyle": "light",
-  "navigationBarBackgroundColor": "#fff",
-  "navigationBarTitleText": "AIBarber",
-  "navigationBarTextStyle": "black",
-  "navigationStyle": "custom"
-},
-"tabBar": {
-  "color": "#929292",
-  "selectedColor": "#FFA900",
-  "backgroundColor": "#FAFAFA",
-  "borderStyle": "white",
-  "list": [
-    {
-      "pagePath": "pages/Customer/myCustomers/personal",
-      "text": "主页",
-      "iconPath": "icon/tab_icon_home_default.png",
-      "selectedIconPath": "icon/tab_icon_home_selected.png"
-    },
-    {
-      "pagePath": "pages/Customer/myCustomers/personal",
-      "text": "店铺",
-      "iconPath": "icon/tab_icon_my_default.png",
-      "selectedIconPath": "icon/tab_icon_my_selected.png"
-    },
-    {
-      "pagePath": "pages/Customer/myCustomers/personal",
-      "text": "发现",
-      "iconPath": "icon/tab_icon_my_default.png",
-      "selectedIconPath": "icon/tab_icon_my_selected.png"
-    },
-    {
-      "pagePath": "pages/Customer/myCustomers/personal",
-      "text": "个人",
-      "iconPath": "icon/tab_icon_my_default.png",
-      "selectedIconPath": "icon/tab_icon_my_selected.png"
-    }
-  ]
-},
-"networkTimeout": {
-  "request": 10000
-},
-"debug": false
->>>>>>> 4befed9003fdd01e42e27402ace0b8b9fa298496
 }

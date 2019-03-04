@@ -1,9 +1,6 @@
 /*technician.js*/
 
 //获取应用实例
-var app = getApp()
-var fileData = require('../../../utils/data.js')
-var util = require('../../../utils/util')
 
 Page({
   // 页面初始数据
@@ -14,12 +11,16 @@ Page({
     casArray1: ['智能排序', '离我最近','人气最高', '面积最大'],
       casIndex:0,
     casIndex1: 0,
-      // addr picker
-      addrArray: util.replacePhone(fileData.userData().addrs,false),
-      addrIndex:0,
       skillData: fileData.getSkilledData(),
       curNavId: 1,
 		  curIndex: 0
+  },
+
+  bindCasPickerChange: function (e) {
+    console.log('Category picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      casIndex: e.detail.value
+    })
   },
    
   onLoad:function(){
@@ -46,12 +47,7 @@ Page({
     }) 
   },
   // 类别选择
-  bindCasPickerChange:function(e){
-    console.log('Category picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      casIndex: e.detail.value
-    })
-  },
+  
   // 地址选择
   bindAddrPickerChange:function(e){
     console.log('Category picker发送选择改变，携带值为', e.detail.value)
