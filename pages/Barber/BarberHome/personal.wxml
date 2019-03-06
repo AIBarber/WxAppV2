@@ -1,49 +1,98 @@
-<!--pages/BarBer/personal.wxml-->
-<import src='../template/personal.wxml'/><!--导入模板-->
-<import src='../template/template.wxml'/><!--导入模板-->
-<!-- <template is="tabbar" data="{{tabbar}}"/> -->
-<template data="{{...myDialog}}" is="dialog" />
-
-<button class='buttonLeft' bindtap='backToprevPage'>
-       <image src='../../icon/back.png' mode='widthFix' class='imageLeft'></image>
- </button>
-
-<view>
-   <view wx:for="{{barberDetails}}">
-      <template is="barber_info" data="{{id:item.id,level:item.level,yearlimit:item.yearlimit,telephone:item.telephone,path:item.cover_image}}"/>
-      <button bindtap='changeToCustomer' class='button'>切换为顾客</button>
-   </view>
-</view>
-
-<view style='font-weight:bold'>
-  <text decode='true' >&nbsp;&nbsp;我的预约：</text>
-</view>
-
-<view>
-   <view style='display:flex;flex-direction:column;margin-top:5px;margin-left:2%;margin-right:2%;;border-width:5px;border-color:black; border-right: 1rpx solid black;border-top: 1rpx solid black;border-left: 1rpx solid black;border-bottom: 1rpx solid black;'>
-    <view style="display:flex;flex-direction:row;font-size:15px;background:	#F0F0F0" >
-         <text decode='true' style='margin-top:5px;width:23%;margin-left:30px'>时间 </text>
-         <text style='margin-top:5px;width:23%'>预约人</text> 
-        <text decode='true' style='margin-top:5px;width:23%'>店铺 </text> 
-         <text decode='true' style='margin-top:5px;width:23%'>预约码</text> 
-      </view>
+<!-- 个人信息 -->
+<view class="summary">
+	<!-- <view class="avatar-container"> -->
+		<image src="{{user.userInfo.avatar ? user.userInfo.avatar : '/icon/default-avatar.png'}}" class="avatar" />
+	<!-- </view> -->
+  <view class ="nick">
+		<view class="nickname">慵懒的猫	</view>
+    <view class="nickname1" >设计总监|<text class="nickname1">10年经验</text></view>
     </view>
-   <view wx:for="{{reservations}}">
-      <template is="barber_reservations" data="{{id:item.id,name:item.name,address:item.address,phone:item.telephone,time:item.opentime,path:item.cover_image}}"/>
-   </view>
 </view>
 
-<text>\n</text>
-<view style='font-weight:bold;margin-bottom:5px'>
-  <text decode='true' >&nbsp;&nbsp;我的订单：{{orders.length}}单</text>
+<!-- 账户 -->
+<view class="account">
+	<view class="item">
+		<view class="value balance">0.00</view>
+		<view class="caption">我的收入</view>
+	</view>
+	<view class="item">
+		<view class="value coupon">0</view>
+		<view class="caption">我的订单</view>
+	</view>
+	<view class="item">
+		<view class="value credit">0</view>
+		<view class="caption">我的顾客</view>
+	</view>
+</view>
+<!-- 列表 -->
+
+<view class="listview">
+	<view class="item">
+		<image class="hd" src="/icon/shijian.png" />
+		<navigator class="bd" url="../time/time" open-type="navigate" hover-class="none">预约时段管理</navigator>
+		<view class="ft"></view>
+	</view>
 </view>
 
-<view>
-   <view wx:for="{{orders}}">
-      <template is="barber_orders" data="{{id:item.id,name:item.name,address:item.address,phone:item.telephone,time:item.opentime,path:item.cover_image}}"/>
-   </view>
+<view class="listview">
+	<view class="item">
+		<image class="hd" src="/icon/zuopin.png" />
+		<navigator class="bd" url="../../pages/order/order" open-type="navigate" hover-class="none">我的作品</navigator>
+		<view class="ft"></view>
+	</view>
 </view>
-<text>\n</text>
-<view style='font-weight:bold'>
-  <text decode='true'>&nbsp;&nbsp;我的顾客 ：{{}}人</text>
+
+<view class="listview">
+	<view class="item">
+		<image class="hd" src="/icon/gongxiangdianpu.png"/>
+		<navigator class="bd" url="../../new/new" open-type="navigate" hover-class="none">我的共享店铺</navigator>
+		<view class="ft"></view>
+	</view>
 </view>
+
+<view class="listview">
+	<view class="item">
+		<image class="hd" src="/icon/fuwudianpu.png" />
+		<navigator class="bd" url="../address/list/list" open-type="navigate" hover-class="none">我的服务店铺</navigator>
+		<view class="ft"></view>
+	</view>
+</view>
+
+<view class="listview">
+	<view class="item">
+		<image class="hd" src="/icon/qiehuanguke.png"/>
+		<navigator class="bd" url="../../address/list/list" open-type="navigate" hover-class="none">切换用户</navigator>
+		<view class="ft"></view>
+	</view>
+</view>
+
+<view class="listview">
+	<view class="item">
+		<image class="hd" src="/icon/shezhi.png" />
+		<navigator class="bd" url="../../pages/new/new" open-type="navigate" hover-class="none">设置</navigator>
+		<view class="ft"></view>
+	</view>
+</view>
+
+<!-- 管理员 
+<view class="listview" wx:if="{{user.isAdmin}}">
+	<view class="item">
+		<image class="hd" src="/images/setting.png" />
+		<navigator class="bd" url="../../shop/setting/setting" open-type="navigate" hover-class="none">店铺设置</navigator>
+		<view class="ft"></view>
+	</view>
+	<view class="item">
+		<image class="hd" src="/images/category.png" />
+		<navigator class="bd" url="../../category/list/list" open-type="navigate" hover-class="none">分类管理</navigator>
+		<view class="ft"></view>
+	</view>
+	<view class="item">
+		<image class="hd" src="/images/food.png" />
+		<navigator class="bd" url="../../food/list/list" open-type="navigate" hover-class="none">菜品管理</navigator>
+		<view class="ft"></view>
+	</view>
+</view>
+<!-- 退出登录
+<view class="logout" bindtap="logout">
+	退出登录
+</view>-->
