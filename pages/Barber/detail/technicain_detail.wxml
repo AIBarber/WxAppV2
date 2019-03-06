@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+
+<view class="ar_coverpath">
+    <view class="summary">
+	<!-- <view class="avatar-container"> -->
+		<image src="{{user.userInfo.avatar ? user.userInfo.avatar : '/icon/default-avatar.png'}}" class="avatar" />
+	<!-- </view> -->
+  <view class ="nick">
+		<view class="nickname1">王可欣</view>
+    <view class="nickname1">设计总监|  <text class="nickname1">  11年</text></view>
+    <view class="nickname1">电话：  <text class="nickname1">152000200023   </text><text class="nickname1" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11</text></view>
+    </view>
+</view>
+</view>
+<view class="ar_cont">
+    <view>
+    <text>预约时间：周一至周五(10:00-22:00)</text>
+=======
 <view class="container">
 <view class="ar_coverpath">
     <image src="../../../icon/skilledt_banner.png" mode="aspectFill"></image>
@@ -11,6 +29,7 @@
     <view>
     <text>电话：1234567890   </text>
     <text>   预约时间：周一至周五</text>
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
     </view>
     <view class="ar_cont_h2">
     【他/她的服务项目】
@@ -29,6 +48,10 @@
         <text class="ar_cont_price">¥69</text>
         <view class="section_book" bindtap="bookTap" data-aid="{{item.id}}">
             <text>预约</text>
+<<<<<<< HEAD
+        
+=======
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
         </view>
     </view>
 
@@ -78,5 +101,11 @@
     <view class="nickname">评分：  <text class="nickname">  9分     </text></view>
     </view>
 </view>
+<<<<<<< HEAD
+
+<view><button class="btn">立即预约</button></view>
+</view>
+=======
 </view>
 </view>
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
