@@ -1,4 +1,5 @@
 <!--pages/new/new.wxml-->
+<<<<<<< HEAD
 <view class="swiper-tab">
     <view class="swiper-tab-list1 {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">我的订单</view>
     <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">理发师列表</view>
@@ -16,6 +17,8 @@
   
     
 </swiper>
+=======
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
 <view class="ar_picker" style="background:#fff">
   <view class="ar_picker_wrap">
     <!-- <picker bindchange="bindCasPickerChange" value="{{casIndex}}" range="{{casArray}}">-->

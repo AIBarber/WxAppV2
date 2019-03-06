@@ -4,8 +4,13 @@
 		<image src="{{user.userInfo.avatar ? user.userInfo.avatar : '/icon/default-avatar.png'}}" class="avatar" />
 	<!-- </view> -->
   <view class ="nick">
+<<<<<<< HEAD
 		<view class="nickname">慵懒的猫	</view>
     <view class="nickname1" >设计总监|<text class="nickname1">10年经验</text></view>
+=======
+		<view class="nickname">慵懒的猫  <text class="nickname1">  设计总监  </text>  <text class="nickname1">  10年经验   </text></view>
+    <view class="nickname1" >电话：15520888978</view>
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
     </view>
 </view>
 
@@ -28,15 +33,24 @@
 
 <view class="listview">
 	<view class="item">
+<<<<<<< HEAD
 		<image class="hd" src="/icon/shijian.png" />
 		<navigator class="bd" url="../time/time" open-type="navigate" hover-class="none">预约时段管理</navigator>
+=======
+		<image class="hd" src="/icon/address.png" />
+		<navigator class="bd" url="../../pages/time/time" open-type="navigate" hover-class="none">预约时段管理</navigator>
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
 		<view class="ft"></view>
 	</view>
 </view>
 
 <view class="listview">
 	<view class="item">
+<<<<<<< HEAD
 		<image class="hd" src="/icon/zuopin.png" />
+=======
+		<image class="hd" src="/icon/address.png" />
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
 		<navigator class="bd" url="../../pages/order/order" open-type="navigate" hover-class="none">我的作品</navigator>
 		<view class="ft"></view>
 	</view>
@@ -44,15 +58,24 @@
 
 <view class="listview">
 	<view class="item">
+<<<<<<< HEAD
 		<image class="hd" src="/icon/gongxiangdianpu.png"/>
 		<navigator class="bd" url="../../new/new" open-type="navigate" hover-class="none">我的共享店铺</navigator>
+=======
+		<image class="hd" src="/icon/address.png"/>
+		<navigator class="bd" url="../../pages/gongxiang/gongxiang" open-type="navigate" hover-class="none">我的共享店铺</navigator>
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
 		<view class="ft"></view>
 	</view>
 </view>
 
 <view class="listview">
 	<view class="item">
+<<<<<<< HEAD
 		<image class="hd" src="/icon/fuwudianpu.png" />
+=======
+		<image class="hd" src="/icon/address.png" />
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
 		<navigator class="bd" url="../address/list/list" open-type="navigate" hover-class="none">我的服务店铺</navigator>
 		<view class="ft"></view>
 	</view>
@@ -60,7 +83,11 @@
 
 <view class="listview">
 	<view class="item">
+<<<<<<< HEAD
 		<image class="hd" src="/icon/qiehuanguke.png"/>
+=======
+		<image class="hd" src="/icon/address.png"/>
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
 		<navigator class="bd" url="../../address/list/list" open-type="navigate" hover-class="none">切换用户</navigator>
 		<view class="ft"></view>
 	</view>
@@ -68,7 +95,11 @@
 
 <view class="listview">
 	<view class="item">
+<<<<<<< HEAD
 		<image class="hd" src="/icon/shezhi.png" />
+=======
+		<image class="hd" src="/icon/address.png" />
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
 		<navigator class="bd" url="../../pages/new/new" open-type="navigate" hover-class="none">设置</navigator>
 		<view class="ft"></view>
 	</view>

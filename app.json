@@ -1,11 +1,18 @@
 {
   "pages": [
     "pages/Barber/BarberHome/personal",
+<<<<<<< HEAD
     "pages/Barber/new/new",
     "pages/Shop/ShopList/new",
     "pages/new/new",
     "pages/Barber/detail/technicain_detail",
     "pages/Shop/detail/detail"
+=======
+    "pages/Shop/ShopList/technician",
+    "pages/Barber/new/new",
+    "pages/new/new",
+    "pages/list/technician"
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,7 +33,11 @@
         "selectedIconPath": "icon/tab_icon_home_selected.png"
       },
       {
+<<<<<<< HEAD
         "pagePath": "pages/Shop/ShopList/new",
+=======
+        "pagePath": "pages/new/new",
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
         "text": "店铺",
         "iconPath": "icon/tab_icon_home_default.png",
         "selectedIconPath": "icon/tab_icon_home_selected.png"

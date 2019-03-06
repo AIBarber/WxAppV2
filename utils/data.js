@@ -110,7 +110,11 @@ function getSkilledData() {
   var arr = [
     {
       company: "宜人造型",
+<<<<<<< HEAD
       avatar: "../../../icon/recommend_img_03.png",
+=======
+      avatar: "../../icon/recommend_img_03.png",
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
       nickname: '店铺人数: 12人',
       price: '起步价：¥50',
       message: '北京市朝阳区光华路10号院5门1008室',
@@ -118,7 +122,11 @@ function getSkilledData() {
     },
     {
       company: "圆月亮美甲沙龙",
+<<<<<<< HEAD
       avatar: "../../../icon/recommend_img_03.png",
+=======
+      avatar: "../../icon/recommend_img_03.png",
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
       nickname: '店铺人数: 12人',
       price: '起步价：¥50',
       message: '北京市朝阳区光华路10号院5门1008室',
@@ -126,7 +134,11 @@ function getSkilledData() {
     },
     {
       company: "璀璨美睫会所",
+<<<<<<< HEAD
       avatar: "../../../icon/recommend_img_03.png",
+=======
+      avatar: "../../icon/recommend_img_03.png",
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
       nickname: '店铺人数: 12人',
       price: '起步价：¥50',
       message: '北京市朝阳区光华路10号院5门1008室',
@@ -134,7 +146,11 @@ function getSkilledData() {
     },
     {
       company: "柔丝妮美容养生馆",
+<<<<<<< HEAD
       avatar: "../../../icon/recommend_img_03.png",
+=======
+      avatar: "../../icon/recommend_img_03.png",
+>>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
       nickname: '店铺人数: 12人',
       price: '起步价：¥50',
       message: '北京市朝阳区光华路10号院5门1008室',
