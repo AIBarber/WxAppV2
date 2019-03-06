@@ -1,54 +1,65 @@
-/* pages/FaceIdentity/Identity.wxss */
+
 .cameraArea{
-   margin-top: 5%;
-  width: 90%;
-  height: 380px;
-  margin-left: 5%;
+   /* margin-top: 5%; */
+  width: 100vw;
+  height:100vh;
+  /* margin-left: 5%; */
+  display: flex;
+  flex-direction:column-reverse;
 }
 .iconCircle{
-  margin-top: 10%;
-  border-radius: 25px;
-  background-color: rgb(188, 235, 236);
+ width: 90%;
+ height: 90%;
+ margin:0rpx;
+ margin-top: 0%;
+  /* border-radius: 25px; */
+  /* background-color: rgb(188, 235, 236); */
+}
+.takePhoto{
+  padding: 0rpx;
+  width: 160rpx;
+  height: 160rpx;
+   margin: 0rpx;
+   border-radius: 100rpx;
+   display: flex;
+   justify-content: center;
 }
 .button::after{
-  margin-top: 10%;
-  margin-left:40%;
+  /* margin-top: 10%;
+  margin-left:40%; */
   width: 25%;
-  border: none;-radius: 18px;
+  opacity: 0.6
+}
+.viewBorder{
+  width: 100%;
+  /* height: 300rpx; */
+  margin-top: 1100rpx;
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: row;
+
 }
 .buttonLeft{
-  margin-top: -23%;
-  margin-left: 10%;
-  width: 20%;
-  height: 80px;
-  border: none;
-  border-left-color: white;
-  border-top-color: white;
-  border-bottom-color: white;
-  border-right-color: white;
-  border-radius: 100px;
+  margin-bottom: 60rpx;
+  width:130rpx;
+  height: 130rpx;
+  /* border: none; */
+  border-radius: 100rpx;
+  margin-top: 1.8%;
 }
 .imageLeft{
-  width: 60px;
-  height: 50px;
-  margin-left: -20%; 
-  margin-top: 15%;
+  width:100%;
+  height: 100%;
+
 }
 .buttonRight{
-  margin-top: -23%;
-  margin-left: 70%;
-  width: 20%;
-  height: 80px;
-  border: none;
-  border-left-color: white;
-  border-top-color: white;
-  border-bottom-color: white;
-  border-right-color: white;
-  border-radius: 100px;
+ margin-top: 1.8%;
+  width: 130rpx;
+  height:130rpx;
+ border-radius: 100rpx;
 }
 .imageRight{
-  width: 60px;
-  height: 50px;
-  margin-left: -8%; 
-  margin-top: 10%;
+  width: 100%;
+  height: 100%;
+ 
 }
