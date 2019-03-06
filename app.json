@@ -1,5 +1,6 @@
 {
   "pages": [
+
     "pages/Customer/myCustomers/personal",
     "pages/Customer/camaraIdentity/camaraIdentity",
     "pages/Customer/camaraIdentity/showPhoto",
@@ -26,6 +27,7 @@
     
     "pages/PersonalHome/PersonalHome"
   ],
+
  "window": {
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#fff",
@@ -33,6 +35,7 @@
   "navigationBarTextStyle": "black",
   "navigationStyle": "custom"
 },
+
 "tabBar": {
   "color": "#929292",
   "selectedColor": "#FFA900",
@@ -64,9 +67,5 @@
       "selectedIconPath": "icon/tab_icon_my_selected.png"
     }
   ]
-},
-"networkTimeout": {
-  "request": 10000
-},
-"debug": false
-}
+  }}
+

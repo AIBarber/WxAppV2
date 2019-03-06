@@ -1,5 +1,6 @@
 <!-- 顾客进行店铺预约模板 -->
 <template name='shoplist_order'> 
+
 <view class='shoplistMain' data-id='{{storeId}}'>
  <image class="shopImg" src='{{headImage}}'></image>
  <view class="shopInfo">
@@ -16,8 +17,5 @@
       </label>
   </view>
 </view>
-  <!-- <view class='shareState'><text>状态:{{shareState}}</text>
-    <switch class="switchCla" checked bindchange="switch1Change" />
-  </view> -->
-  
+
 </template>

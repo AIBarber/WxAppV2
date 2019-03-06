@@ -3,6 +3,44 @@
 var app = getApp();
 var api = require('../config/api.js');
 
+function formatTime(date) {
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+
+  var hour = date.getHours()
+  var minute = date.getMinutes()
+  var second = date.getSeconds()
+
+
+  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+
+function formatNumber(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+/**
+ * 转换地址数据
+ * */
+function replacePhone(arr, isreplace) {
+  var newAddr = []
+  for (let i = 0; i < arr.length; i++) {
+    if (isreplace) {
+      let phone = arr[i].phone
+      arr[i].phone = phone.replace(phone.substring(3, 7), '****')
+    }
+    newAddr[i] = arr[i].name + ' ' + arr[i].phone + '\n' + arr[i].province + arr[i].city + arr[i].addr
+  }
+
+  return newAddr
+}
+module.exports = {
+  formatTime: formatTime,
+  replacePhone: replacePhone
+}
+
+
 function getCurrentTime() {
   return (new Date()).getTime();
 
@@ -196,27 +234,19 @@ function mergeJson(j1, j2) {
 /**
  *  封装Server Request
  */
-function weshowRequest(url, bizContent = {}, method = "POST") {
-  // wx.showLoading({
+function weshowRequest(url, data = {}, method = "GET") {
+  //wx.showLoading({
   //  title: '正在加载',
-  // })
-  console.log("进入weshow");
+  //})
   var commonParams = {
-    "openId": app.globalData.userid,
-    // "timestamp": getCurrentSecond(),
-    "timestamp": "2019-03-2",
-    "appid": app.globalData.appid,
-    "nonce":"123",
-    "algorithm": "1", 
-    "token": "12313", 
-    "version": "2.0"
+    //'appid': app.globalData.appid,
+    //'openid': app.globalData.userid,
+    'timestamp': getCurrentSecond(),
+    'refresh': 0,
+    'nonce': getNonce(),
+    'signMethod': 'HmacSHA1'
   };
-  
-  var bizContentName = { "bizContent": bizContent};
-  var body = mergeJson(commonParams, bizContentName);
-  var body2={"body":body};
-  // console.log("json串内容" + bizContentName);
-  console.log(body);
+  data = mergeJson(commonParams, data);
   if (api.NETWORK_DEBUG) {
     console.log(url);
   }
@@ -227,15 +257,14 @@ function weshowRequest(url, bizContent = {}, method = "POST") {
   return new Promise(function (resolve, reject) {
     wx.request({
       url: url,
-      // data:body2,
-      data:body,
+      data: data,
       method: method,
       header: {
         'Content-Type': 'application/json',
         //'Content-Type': 'text/html; charset=UTF-8',
         //'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36 appservice webview/100000',
-        'X-WxApp-ID': app.globalData.appid,
-        'X-WxOpenid': app.globalData.userid,
+        //'X-WxApp-ID': app.globalData.appid,
+        //'X-WxOpenid': app.globalData.userid,
         //'X-Weshow-Token': wx.getStorageSync('token')
         //'X-Weshow-Token': app.globalData.accountInfo.wxtoken
       },
@@ -283,7 +312,7 @@ function weshowRequest(url, bizContent = {}, method = "POST") {
       },
       fail: function (err) {
         //wx.hideLoading();
-        console.log('--failed for: ' + url);
+        console.log('failed for: ' + url);
         reject(err);
       }
     })
@@ -676,56 +705,6 @@ function showTitleDialog(title, msg) {
   });
 }
 
-function wxUploadFile(photoPaths,bizContent={}){
-  // var i = 0;
-  // var success = 0;
-  // var fail = 0;
-  var that = this;
- 
-  var commonParams = {
-    "openId": app.globalData.userid,
-    // "timestamp": getCurrentSecond(),
-    "timestamp": "2019-03-2",
-    "appid": app.globalData.appid,
-    "nonce": "123",
-    "algorithm": "1",
-    "token": "12313",
-    "version": "2.0"
-  };
-  // var bizContent = {
-  //   'customerId': 1
-  // }
-
-  var bizContentName = { "bizContent": bizContent };
-  var body = mergeJson(commonParams, bizContentName);
-  return new Promise(function(resolve, reject){
-    wx.uploadFile({
-      url: api.GetFaceInfo,
-      header: {
-        "Content-Type": "multipart/form-data"
-      },
-      filePath: photoPaths,
-      name: 'faceImgFile',
-      formData: { body: JSON.stringify(body) },//这里是上传图片时一起上传的数据
-      success: (res) => {
-        console.log("打印Resp：：" + res.data);
-        resolve(res);
-      },
-      
-      fail: (err) => {
-        // fail++;//图片上传失败，图片上传失败的变量+1
-        console.log("fail")
-        reject(err);
-      },
-      complete: () => {
-      }
-    });
-  });
-  }
- 
-
-  
-
 module.exports = {
   getCurrentTime,
   getCurrentSecond,
@@ -739,7 +718,6 @@ module.exports = {
   formatDateTime,
   mergeJson,
   weshowRequest,
-  wxUploadFile,
   redirect,
   showErrorToast,
   checkSession,

@@ -1,7 +1,7 @@
 //定义api接口地址
 //var ApiRootUrl = 'http://47.93.241.248/api/';
 //var ApiRootUrl = 'http://www.imcou.com/api/'
-// var ApiRootUrl = 'https://www.imcou.com/api/'
+//var ApiRootUrl = 'https://www.imcou.com/api/'
 var ApiRootUrl = 'http://47.94.144.77:9090/weshow/'
 var WsRootUrl = 'wss://www.imcou.com/socket.io/?transport=websocket'
 //var WxLoginRoot = 'https://api.weixin.qq.com/sns/jscode2session';
@@ -23,12 +23,12 @@ module.exports = {
   WsUrl: WsRootUrl,
   WsOpen: WsRootUrl + 'api/quizuser/open',
   Getcustomerinfo: ApiRootUrl + 'customer/getcustomerinfo',
+  GetFaceInfo: ApiRootUrl + 'customer/getfaceinfo',
   DecryptShare: ApiRootUrl + 'auth/decryptshare',
   ArgsDigest: ApiRootUrl + 'auth/argsig',
   UploadSig: ApiRootUrl + 'auth/uploadsig',
   GetWxSession: ApiRootUrl + 'auth/getwxsession',
   GetWxPayUnified: ApiRootUrl + 'auth/getwxpayunified',
-  GetFaceInfo: ApiRootUrl +'customer/getfaceinfo',
   UserList: ApiRootUrl + 'user/index',
   UserInfo: ApiRootUrl + 'user/info',
   UserAdd: ApiRootUrl + 'user/add',
@@ -40,7 +40,11 @@ module.exports = {
   StoreCustomerList: ApiRootUrl + 'store/customerlist',
   StoreCustomerDetail: ApiRootUrl + 'customer/detailbyid',
   StoreBarberDetail: ApiRootUrl + 'barber/detailbyid',
+// <<<<<<< HEAD
   GetBarberList: ApiRootUrl + 'barber/list',
+// =======
+  BarberList: ApiRootUrl + 'barber/list',
+// >>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
   BarberSubscribeList: ApiRootUrl + 'barber/subscribelist',
   BarberSubscribe: ApiRootUrl + 'barber/subscribe',
   BarberSubscribeTimes: ApiRootUrl + 'barber/subscribetimes',
