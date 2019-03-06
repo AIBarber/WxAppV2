@@ -1,12 +1,29 @@
 {
   "pages": [
-    "pages/Subcribe/Subscribe_action/ServerItem",
     "pages/Customer/myCustomers/personal",
-    "pages/Shop/ShopList/List",
+    "pages/Customer/camaraIdentity/camaraIdentity",
+    "pages/Customer/camaraIdentity/showPhoto",
+    "pages/Customer/myCustomers/toBarberSuccess",
     "pages/Customer/myCustomers/jumpToBarber",
+   
+  
+    "pages/Subcribe/Subscribe_action/barberList",
+    "pages/Subcribe/Subscribe_action/ServerItem",
+    "pages/Subcribe/Subscribe_action/chooseShop",
+   
+   
+   
+    
+    "pages/Subcribe/Subscribe_action/confirmPay",
+   
+    
+    
+   
+    "pages/Shop/ShopList/List",
+   
     
     "pages/Subcribe/Subscribe_action/FinishInfo",
-    "pages/Subcribe/Subscribe_action/chooseShop",
+    
     "pages/PersonalHome/PersonalHome"
   ],
  "window": {
@@ -23,7 +40,7 @@
   "borderStyle": "white",
   "list": [
     {
-      "pagePath": "pages/Customer/myCustomers/personal",
+      "pagePath": "pages/Subcribe/Subscribe_action/barberList",
       "text": "主页",
       "iconPath": "icon/tab_icon_home_default.png",
       "selectedIconPath": "icon/tab_icon_home_selected.png"

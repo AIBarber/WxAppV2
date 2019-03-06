@@ -7,13 +7,13 @@
   height: 110rpx;
   width: 100%;
   margin-top: 0rpx;
-
+ 
 }
 .return{
   display: flex;
   flex-direction: row;
   margin: 0px;
-  margin-top: 50rpx;
+  margin-top: 70rpx;
   margin-left: 10rpx;
   font-size: 20px;
   color: black
@@ -28,7 +28,7 @@
 }
 .title{
   font-size: 20px;
-  margin-top: 54rpx;
+  margin-top: 74rpx;
   color:black;
   margin-left: 220rpx;
 }
@@ -50,7 +50,7 @@
 .circle1{
   width: 40rpx;
   height: 40rpx;
-  background-color:#0cc4b1;
+  background-color:rgb(236, 236, 236);
   border-radius: 20rpx;
   margin-right: -20rpx;
 }
@@ -58,14 +58,14 @@
 
   width: 40rpx;
   height: 40rpx;
-  background-color:#0cc4b1;
+  background-color:rgb(236, 236, 236);
   border-radius: 20rpx;
  
 }
 .circle3{
   width: 40rpx;
   height: 40rpx;
-  background-color:#0cc4b1;
+  background-color:rgb(236, 236, 236);
   border-radius: 20rpx;
   margin-left:-20rpx;
 }
@@ -75,27 +75,28 @@
   margin-top:19rpx;
    width: 134rpx;
   height: 0px;
-  border:1px solid #0cc4b1;
+  border:1px solid rgb(236, 236, 236);
 }
 .line2{
   margin-right: -20rpx;
   margin-top:19rpx;
    width: 134rpx;
   height: 0px;
-  border:1px solid #0cc4b1;
+  border:1px solid rgb(236, 236, 236);
 }
 .line3{
   margin-left:-20rpx;
   margin-top:19rpx;
    width: 134rpx;
   height: 0px;
-  border:1px solid #0cc4b1;
+  border:1px solid rgb(236, 236, 236);
 }
 .line4{
   margin-top:19rpx;
    width: 134rpx;
   height: 0px;
-  border:1px solid #0cc4b1;
+  border:1px solid rgb(236, 236, 236);
+ 
 }
 .view1{
   margin-top: 60px;

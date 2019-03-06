@@ -3,6 +3,7 @@ var app = getApp();
 var util = require('../../../utils/util.js');
 var api = require('../../../config/api.js');
 var model = require('../../../utils/model.js');
+var wxpay = require('../../../utils/wxpay.js');
 
 Page({
 
@@ -12,8 +13,16 @@ Page({
   data: {
     flag:0,
     currentTab:0,
+    checked:false,
     postion:'',
     clickRadio:'',
+    noLimitTime:'',
+    adjustTime:0,
+    noLimitStore:'',
+    adjustStore:0,
+    storeId:'',
+    barberId:'',
+    clickserver:'',
     // shopList: [{ name: "店一", address: "北京", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.345, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }]
     shopList:""
   },
@@ -34,21 +43,81 @@ Page({
   },
   returnToServer:function(){
     wx.navigateTo({
-      url: 'myDateServer',
+      url: 'ServerItem',
     })
+  },
+  radioChange:function(e){
+    var that=this;
+    that.setData({
+      noLimitTime: e.detail.value
+    })
+    console.log("chooseShop:" + that.data.noLimitTime + ",t:" + that.data.checked);
+  },
+  radioChange2: function (e) {
+   var that=this;
+   if(that.data.checked==false){
+    that.setData({
+      adjustTime: e.detail.value,
+         checked:true
+      })
+    console.log("chooseShop:" + that.data.adjustTime+",t:"+that.data.checked);
+   }else{
+     that.setData({
+       checked: false,
+        adjustTime:0
+     })
+     console.log("chooseShop:" + that.data.adjustTime + ",f:" + that.data.checked);
+   }
+  },
+  radioChange3: function (e) {
+    var that = this;
+    that.setData({
+      noLimitStore: e.detail.value
+    })
+    console.log("chooseShop:" + that.data.noLimitStore);
+  },
+  radioChange4: function (e) {
+    var that = this;
+    if (that.data.checked == false) {
+      that.setData({
+        adjustStore: e.detail.value,
+        checked: true
+      })
+      console.log("chooseShop:" + that.data.adjustStore + ",t:" + that.data.checked);
+    } else {
+      that.setData({
+        checked: false,
+        adjustStore: 0
+      })
+      console.log("chooseShop:" + that.data.adjustStore + ",f:" + that.data.checked);
+    }
   },
 
   toServerInfo:function(){
+    // wxpay.startPay(80, "C380BEC2BFD727A4B6845133519F3AD6");
+  //   var jsonContent={};
+  //   jsonContent.barberId = this.data.barberId;
+  //   jsonContent.clickServer = this.data.clickServer;
+  //   jsonContent.noLimitTime = this.data.noLimitTime;
+  //   jsonContent.adjustTime=this.data.adjustTime;
+  //   jsonContent.noLimitStore = this.data.noLimitStore;
+  //   jsonContent.adjustStore=this.data.adjustStore;
+  //   jsonContent.postion=this.data.postion;
+  //   jsonContent.storeId=this.data.storeId;
+  // console.log(jsonContent);
     wx.navigateTo({
-      url: 'FinishInfo?time=' + this.data.postion + '&clickRadio=' +        this.data.clickRadio,
+      url: 'FinishInfo?barberId=' + this.data.barberId + "&clickServer=" + this.data.clickServer + "&noLimitTime=" + this.data.noLimitTime + "&adjustTime=" + this.data.adjustTime + "&noLimitStore=" + this.data.noLimitStore + "&adjustStore=" + this.data.adjustStore + "&postion=" + this.data.postion + "&storeId=" + this.data.storeId
     })
   },
-  checkboxChange:function(e){
-    console.log(e.detail.value);
-    var that=this;
-    that.setData({
-      clickRadio:e.detail.value
-    })
+  chooseStore:function(e){
+    var that = this;
+   
+      that.setData({
+        storeId: e.detail.value,
+        checked: true,
+      
+      })
+   console.log("chooseStore::"+that.data.chooseStore)
   },
   wxPay:function(){
     
@@ -57,43 +126,47 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      barberId: options.barberId,
+      clickServer:options.clickServer
+    })
     this.getStoreList();
+
   },
   getStoreList: function () {
     console.log('getStoreList ' + api.StoreList);
     //wx.showNavigationBarLoading();
     var that = this;
     var bizContent = {
-      'start': "5",
-      'limit': "5",
-      'category': "1",
-      'orderType': "1"
+      'start': "1",
+      'limit': "3",
+      // 'category': "1",
+      // 'orderType': "1"
     }
     // util.weshowRequest(api.StoreList, bizContent ,'POST');
     // console.log("调用weshow");
     util.weshowRequest(
       api.StoreList,
       bizContent,
-    
       'POST').then(res => {
         //if (res.data) {}
         console.log("shopList+res");
         console.log(res);
         // success
-        that.setData({shopList: res.data.data.list});
+        that.setData({shopList: res.data.bizContent.list});
         console.log(that.data);
-        that.stopRefreshing();
+        // that.stopRefreshing();
         //that.waitUpdate();
       }).catch((err) => {
         console.log('shopList  err' + err);
         // fail
         // that.stopRefreshing();
-        wx.showToast({
-          title: '正在获取数据…',
-          icon: 'loading',
-          duration: 3000,
-          mask: true
-        });
+        // wx.showToast({
+        //   title: '正在获取数据…',
+        //   icon: 'loading',
+        //   duration: 3000,
+        //   mask: true
+        // });
       });
   },
   /**

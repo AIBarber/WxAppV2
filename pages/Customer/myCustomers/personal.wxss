@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: row;
   margin: 0px;
-  margin-top: 50rpx;
+  margin-top: 70rpx;
   margin-left: 10rpx;
   font-size: 20px;
   color: white;
@@ -32,7 +32,7 @@
 .title{
   position: fixed;
   left:330rpx;
-  top:54rpx;
+  top:74rpx;
   font-size: 20px;
   /* margin-top: 54rpx;
   margin-left: 200rpx; */

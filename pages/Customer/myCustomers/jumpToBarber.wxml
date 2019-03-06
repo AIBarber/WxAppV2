@@ -10,13 +10,13 @@
  <view class="main">
  <form bindsubmit="formSubmit" bindreset="formReset">
     <view class="progressBar">
-     <view class="circle1"></view>
-       <view class="line1"></view>
-        <view class="line2"></view>
-       <view class="circle2"></view>
-        <view class="line3"></view>
-         <view class="line4"></view>
-         <view class="circle3"></view>
+     <view class="circle1" style='{{color}}'></view>
+       <view class="line1" style='{{color}}'></view>
+        <view class="line2" style='{{color2}}'></view>
+       <view class="circle2" style='{{color2}}'></view>
+        <view class="line3" style='{{color2}}'></view>
+         <view class="line4" style='{{color3}}'></view>
+         <view class="circle3" style='{{color3}}'></view>
     </view>
     <view class="view1" style='{{hidAndSho1}}' >
     <view>

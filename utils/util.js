@@ -5,6 +5,7 @@ var api = require('../config/api.js');
 
 function getCurrentTime() {
   return (new Date()).getTime();
+
 }
 
 function getCurrentSecond() {

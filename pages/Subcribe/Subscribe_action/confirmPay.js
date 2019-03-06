@@ -1,51 +1,33 @@
-// pages/myDateServer/DateServerInfo.js
+var app = getApp();
+var util = require('../../../utils/util.js');
+var api = require('../../../config/api.js');
+var model = require('../../../utils/model.js');
+var wxpay = require('../../../utils/wxpay.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    jsonContent:'',
-    time: '',
-    clickRadio: '',
-    noLimitTime: '',
-    adjustTime: '',
-    noLimitStore: '',
-    adjustStore: '',
-    storeId: '',
-    barberId: '',
-    clickServer: '',
-    address:'',
+
   },
-  returnToChooseShop:function(){
-       wx.navigateBack({
-         delta: 1
-       })
-  },
+   wxpay:function(){
+     wxpay.startPay(2,);
+   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this;
-      that.setData({
-        time:options.postion,
-        barberId: options.barberId,
-        address: options.storeId,  
-        noLimitTime:options.noLimitTime,
-        noLimitStore:options.noLimitStore,
-        adjustTime:options.adjustTime,
-        adjustStore:options.adjustStore,
-        clickServer:options.clickServer
-      })
-       console.log(options);
+
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    // console.log(this.data.time + "--" + this.data.address);
-       },
+
+  },
 
   /**
    * 生命周期函数--监听页面显示

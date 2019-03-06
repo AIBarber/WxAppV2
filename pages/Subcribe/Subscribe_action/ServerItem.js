@@ -10,26 +10,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    item: [{ name: "染发", value: "染发", money: "39", moneyYuan: "50" },
-      { name: "染发2", value: "染发2", money: "39", moneyYuan: "50" }, 
-      { name: "染发2", value: "染发2", money: "39", moneyYuan: "50" }],
-    item2: [{ name: "烫发1", value: "烫发1", money: "39", moneyYuan: "50" },
-      { name: "烫发2", value: "烫发2", money: "39", moneyYuan: "50"},
-      { name: "染发3", value: "染发3", money: "39", moneyYuan: "50" }],
-    explain:"七折",
+    itemOne:{id:1,name:"洗剪吹",value:"染发",money:"39",moneyYuan:"50"},
+    item: [{id:1, name: "染发", value: "染发", money:"39", moneyYuan: "50" },
+      {id:2, name: "染发2", value: "染发2", money: "39", moneyYuan: "50" }, 
+      {id:3, name: "染发2", value: "染发2", money: "39", moneyYuan: "50" }],
+    item2: [{id:1, name: "烫发1", value: "烫发1", money: "39", moneyYuan: "50" },
+      {id:2, name: "烫发2", value: "烫发2", money: "39", moneyYuan: "50"},
+      {id:3, name: "染发3", value: "染发3", money: "39", moneyYuan: "50" }],
+    // explain:"七折",
     serviceDisplay:"",
     otherDisplay:"",
     ranfa:"display:none",
     tangfa: "display:none",
-    clickServer:''
+    clickServer:'',
+    clickMoney:'',
+    barberId:'',
+    allMoney:'',
+    money:''
   },
+  
   getServiceList: function () {
     console.log('getServicetList ' + api.StoreList);
     //wx.showNavigationBarLoading();
     var that = this;
 
     util.weshowRequest(
-      api.StoreList,
+      api.GetOrderDetial,
       {
         // 'size': 10,
         // 'customerid': app.globalData.userid
@@ -55,10 +61,10 @@ Page({
         // that.stopRefreshing();
         
         wx.showToast({
-          title: '正在获取数据…',
-          icon: 'loading',
-          duration: 3000,
-          mask: true
+          // title: '正在获取数据…',
+          // icon: 'loading',
+          // duration: 3000,
+          // mask: true
         });
       });
   },
@@ -69,14 +75,19 @@ Page({
      var that=this;
      that.setData({
        serviceDisplay:"",
+       otherStyle: "color:black;background-color:white;",
+       serverStyle: "color:white;background-color:#0cc4b1;",
        otherDisplay:"display:none"
      })
   },
   otherList:function(){
     var that = this;
     that.setData({
-      serviceDisplay: "display:none",
-      otherDisplay: ""
+      serviceDisplay: "display:none;",
+      serverStyle:"color:black;background-color:white;",
+      otherStyle: "color:white;background-color:#0cc4b1;",
+      otherDisplay: "",
+    
     })
   },
   ranfa:function(){
@@ -109,24 +120,38 @@ Page({
      
     }
   },
+  // getMoney:function(e){
+  //  console.log("btn:"+e.target.value);
+  // },
   checkboxChange: function (e) {
-    console.log(e.detail.value);
     var that = this;
+  
     that.setData({
-      clickServer: e.detail.value
+      clickServer: e.detail.value,
+
     })
-    console.log("clickServer:"+this.data.clickServer);
+    console.log("clickServer:" + e.detail.value);
+  
+   
   },
+
   toChoShop:function(){
- 
+ var that=this;
+//    var str= that.data.clickServer[0];
+// console.log("str:"+str);
+
+// console.log("strSp:"+strOne);
     wx.navigateTo({
-      url: 'chooseShop',
+      url: 'chooseShop?clickServer=' + that.data.clickServer +"&barberId="+that.data.barberId,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      barberId: options.barberId
+    })
   //  this.getServiceList();
   },
 

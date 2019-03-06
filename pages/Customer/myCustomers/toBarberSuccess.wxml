@@ -1,0 +1,7 @@
+<!--pages/Customer/myCustomers/toBarberSuccess.wxml-->
+ <view class="progressBar" style='display:flex;  flex-direction: column;'>
+     <image src='../../../icon/over.png' style='width:300rpx;height:300rpx;margin-left:auto;margin-right:auto;margin-top:160rpx;margin-bottom:40rpx;'></image>
+     <text class="" style='font-size: 20px;font-weight: 400;margin-left:auto;margin-right:auto;margin-bottom:10rpx;'>信息提交成功</text>
+     <text class="" style='font-size: 16px; color:#0cc4b1;font-weight: 400;margin-left:auto;margin-right:auto'>您的信息提交成功请等待审核</text>
+     <button class="returnCusIndex" bindtap='returnCusIndex'>返回到顾客首页</button>
+    </view>

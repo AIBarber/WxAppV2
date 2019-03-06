@@ -1,5 +1,5 @@
 <!-- 顾客进行店铺预约模板 -->
-<template name='shoplist_order'> 
+<template name='barber_order'> 
 <view class='shoplistMain' data-id='{{storeId}}'>
  <image class="shopImg" src='{{headImage}}'></image>
  <view class="shopInfo">
@@ -10,8 +10,8 @@
  <view class="shopDis">
   <label >
   <view >距离:{{distance}}</view>
-  <checkbox-group bindchange="chooseStore" class='shopListRadio'>
-  <checkbox value="{{storeId}}"  id="{{storeId}}"></checkbox>
+  <checkbox-group bindchange="checkboxChange" class='shopListRadio'>
+  <checkbox value="{{storeId}}" checked='{{checked}}' id="{{storeId}}"></checkbox>
    </checkbox-group>
       </label>
   </view>

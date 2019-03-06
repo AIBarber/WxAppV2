@@ -1,6 +1,7 @@
 // pages/myReservation/personal.js
 var util = require('../../../utils/util.js');
 var api = require('../../../config/api.js');
+var wxpay = require('../../../utils/wxpay.js');
 var app = getApp();
 Page({
 
@@ -242,9 +243,7 @@ Page({
   },
 
   goToConsumption:function(){
-    wx.navigateTo({
-      url: '../myHistoryCost/cost',
-    })
+  
   },
   goToMyShareShop: function () {
     wx.navigateTo({

@@ -1,10 +1,24 @@
-
+<view class="titleView">
+ <view class="return" bindtap='returnBtn'>
+  <image class="returnImg" src='../../../icon/arrow_xia.png' mode='scaleToFill'></image>
+  <text class="" style=' margin-left:10rpx;margin-top:30rpx;line-height:0rpx;' bindtap='returnToChooseShop'>返回</text>
+ </view>
+ <view class="title">选择店铺</view>
+ </view>
 <view class='main'>
 <view class='mainImg'>
 <view class='element'><image src=''></image><text>时间{{time}}</text></view>
-<view class='element'><image src=''></image><text>理发师{{}}</text></view>
-<view class='element'><image src=''></image><text>店铺{{}}， 地址{{address}}</text></view>
+<view class='element'><image src=''></image><text>理发师{{barberId}}</text></view>
+<view class='element'><image src=''></image><text>店铺{{storeId}},地址{{address}}</text></view>
 </view>
-<view class='mainMoney'>已成功支付{{}}元</view>
-<button class='returnBtn'>返回首页</button>
-</view>
+  <view class='bottomPayInfo'>
+  <view class="payInfo">
+  <text class="textPay">需要支付</text>
+  <text class="textInfo">预计结果与系统实际调度有关</text>
+  </view>
+  <view class="payMoney">￥{{money}}</view>
+  </view>
+   <button form-type='submit' bindtap='toServerInfo' class="confirmPay" >确认支付</button>
+
+ </view>
+

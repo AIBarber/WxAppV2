@@ -1,4 +1,42 @@
 /* pages/myDateServer/DateServerInfo.wxss */
+.titleView{
+ display:flex;
+   position: fixed;
+  top:0rpx;
+  left:0rpx;
+  height: 120rpx;
+  width: 100%;
+  margin-top: 0rpx;
+  background-color: white;
+
+}
+.return{
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  margin-top: 50rpx;
+  margin-left: 10rpx;
+  font-size: 20px;
+  color: black
+ 
+}
+.returnImg{
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+  width: 20rpx;
+  height: 40rpx;
+  color: black
+}
+.title{
+ position: fixed;
+  left:175rpx;
+  top: 2rpx;
+  font-size: 20px;
+  margin-top: 54rpx;
+  color:black;
+  margin-left: 120rpx;
+}
+
 
 .main{
   display: flex;
@@ -39,3 +77,43 @@
     width: 200rpx;
     height: 80rpx;
 }
+.bottomPayInfo{
+  width: 100%;
+  height: 190rpx;
+  display: flex;
+}
+.payInfo{
+   display: flex;
+   flex-direction: column;
+}
+.payInfo text{
+
+  margin-left: 10rpx;
+  text-align: left;
+}
+.textPay{
+  margin-left:30rpx;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+font-size: 24px;
+font-weight: 600;
+}
+.textInfo{
+  font-size: 28rpx;
+  color: #0cc4b1;
+}
+.payMoney{
+  margin-left: 260rpx;
+  margin-top: 25rpx;
+  font-size: 24px;
+  font-weight: 600;
+  color: red;
+}
+.confirmPay{
+  width: 650rpx;
+  border-radius: 250rpx;
+  background-color: #0cc4b1;
+  color: white;
+
+}
+
