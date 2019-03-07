@@ -25,16 +25,12 @@ Page({
     navSectionItems: fileData.getIndexNavSectionData(),
     curNavId: 1,
     curIndex: 0,
-<<<<<<< HEAD
     skillData: fileData.getSkilledData(),
     winWidth: 0,
     winHeight: 0,
     // tab切换
     currentTab: 0
 
-=======
-    skillData: fileData.getSkilledData()
->>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
   },
   bindCasPickerChange: function (e) {
     console.log('Category picker发送选择改变，携带值为', e.detail.value)
@@ -49,7 +45,6 @@ Page({
     var that = this
     that.setData({
       list: that.data.navSectionItems
-<<<<<<< HEAD
     });
 
     wx.getSystemInfo({
@@ -63,18 +58,11 @@ Page({
 
     });
 
-=======
-    })
->>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
   },
   // 跳转至详情页
   navigateDetail: function (e) {
     wx.navigateTo({
-<<<<<<< HEAD
       url: '../detail/technicain_detail?artype=' + e.currentTarget.dataset.arid
-=======
-      url: '../detail/detail?artype=' + e.currentTarget.dataset.arid
->>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
     })
   },
   // 加载更多
@@ -88,7 +76,6 @@ Page({
       list: that.data.skillData,
     })
   },
-<<<<<<< HEAD
 
   bindChange: function (e) {
 
@@ -111,8 +98,6 @@ Page({
       })
     }
   },
-=======
->>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

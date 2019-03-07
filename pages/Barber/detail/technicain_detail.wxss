@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 
 .ar_coverpath{
@@ -6,16 +5,6 @@
     margin:0;
     background:#9b9797;
     box-sizing:border-box;
-=======
-.container{
-    background:#fff;
-}
-.ar_coverpath{
-    width:100%;
-    margin:0;
-    box-sizing:border-box;
-    padding:40rpx 20rpx;
->>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
 }
 .ar_coverpath image{
     width:100%;
@@ -42,11 +31,7 @@
     font-size: 30rpx;
     font-weight: 600;
     color:#000;
-<<<<<<< HEAD
     padding:10rpx 0rpx;
-=======
-    padding:60rpx 0rpx;
->>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
 }
 .ar_sevice_item{
     display: flex;
@@ -97,29 +82,19 @@
 /*昵称*/
 .summary .nickname {
 	color:gray;
-<<<<<<< HEAD
 	font-size: 12px;
 }
 .summary .nickname1 {
 	color:white;
-=======
-	font-size: 16px;
-}
-.summary .nickname1 {
-	color: rgb(7, 7, 7);
->>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
 	font-size: 10px;
 }
 .summary .nick {
 	display: flex;
 	flex-direction:column;
-<<<<<<< HEAD
 }
 .btn
 {
   background:rgb(22, 223, 189);
   color: white;
   border-radius: 20px;
-=======
->>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
 }
