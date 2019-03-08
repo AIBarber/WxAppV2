@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 .aa
 {
   background: #fff;
   margin-left: 10px;
   margin-bottom: 10px;
-=======
-.container{
-    background:#fff;
->>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
 }
 .ar_coverpath{
     width:100%;
@@ -72,11 +67,7 @@
 /*昵称*/
 .summary .nickname {
 	color:gray;
-<<<<<<< HEAD
 	font-size: 12px;
-=======
-	font-size: 16px;
->>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
 }
 .summary .nickname1 {
 	color: rgb(7, 7, 7);
