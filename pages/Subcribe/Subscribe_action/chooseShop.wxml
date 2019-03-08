@@ -10,7 +10,7 @@
  
  <form bindsubmit='formSubmit' bindreset='formReset'>
  <view class="container">
-
+ 
  <view class='radioView'>
  <radio-group class="radio-group"  bindchange="radioChange">
   <label class="radio">
@@ -64,22 +64,25 @@
   <scroll-view scroll-y="true"
     style="height: 100%;width:100%;"
   >
+    <radio-group class="checkboxGroup" bindchange="chooseStore">
   <block wx:for="{{shopList}}" wx:key="{{shopList}}" wx:for-item="shop">
+
+  <template is="shoplist" data="{{storeId:shop.storeId,headImage:shop.headImage,name:shop.name,address:shop.address,distance:shop.distance,checked:shop.checked}}"/>
+    <!-- <template is="shoplist_order" data="{{storeId:shop.storeId,headImage:shop.headImage,name:shop.name,address:shop.address,distance:shop.distance,checked:shop.checked}}"/> -->
  
-    <template is="shoplist_order" data="{{storeId:shop.storeId,headImage:shop.headImage,name:shop.name,address:shop.address,distance:shop.distance,checked:shop.checked}}"/>
-  
     </block>
+     </radio-group>
   </scroll-view>
   </view>
 
-    <!-- <view class='bottomPayInfo'>
+    <view class='bottomPayInfo'>
 <view class="payInfo">
-  <text class="textPay">需要支付</text>
+  <text class="textPay">预计支付</text>
   <text class="textInfo">预计结果与系统实际调度有关</text>
   </view>
-  <view class="payMoney">￥{{money}}</view>
-  </view> -->
-   <button form-type='submit' bindtap='toServerInfo' class="confirmPay" >确认下单</button>
+  <view class="payMoney">￥{{allMoney}}</view>
+  </view>
+   <button form-type='submit' bindtap='toServerInfo' class="confirmPay" >确定预约</button>
 
  </view>
  </form>

@@ -9,13 +9,27 @@
    <view>{{address}}</view>
  </view>
  <view class="shopDis">
-  <label >
-  <view >距离:{{distance}}</view>
-  <checkbox-group bindchange="chooseStore" class='shopListRadio'>
+  <label>
+  <view>距离:{{distance}}</view>
+    bindchange="chooseStore" class='shopListRadio'>
   <checkbox value="{{storeId}}"  id="{{storeId}}"></checkbox>
-   </checkbox-group>
+   <!-- </checkbox-group> -->
       </label>
   </view>
 </view>
 
+</template>
+
+<template name='shoplist'> 
+  <label class="shoplistMain">
+  <image class="shopImg" src='{{headImage}}'></image>
+ <view class="shopInfo">
+  <view class='shopInfo_StoreName'>{{name}}</view>
+  <view>{{customerNum}}</view>
+   <view>{{address}}</view>
+ </view>
+  <view class='shopDis'><text style='color:#0cc4b1;font-size:30rpx;'>距离:{{distance}}km</text>
+  <radio style='margin-top:30rpx;margin-left:109rpx;' value="{{storeId}}"  id="{{storeId}}"></radio>
+  </view>
+      </label>
 </template>

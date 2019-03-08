@@ -23,6 +23,8 @@ Page({
     storeId:'',
     barberId:'',
     clickserver:'',
+    allMoney:'',
+    chooseStore:'',
     // shopList: [{ name: "店一", address: "北京", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.345, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }]
     shopList:""
   },
@@ -94,30 +96,20 @@ Page({
   },
 
   toServerInfo:function(){
-    // wxpay.startPay(80, "C380BEC2BFD727A4B6845133519F3AD6");
-  //   var jsonContent={};
-  //   jsonContent.barberId = this.data.barberId;
-  //   jsonContent.clickServer = this.data.clickServer;
-  //   jsonContent.noLimitTime = this.data.noLimitTime;
-  //   jsonContent.adjustTime=this.data.adjustTime;
-  //   jsonContent.noLimitStore = this.data.noLimitStore;
-  //   jsonContent.adjustStore=this.data.adjustStore;
-  //   jsonContent.postion=this.data.postion;
-  //   jsonContent.storeId=this.data.storeId;
-  // console.log(jsonContent);
+  
     wx.navigateTo({
-      url: 'FinishInfo?barberId=' + this.data.barberId + "&clickServer=" + this.data.clickServer + "&noLimitTime=" + this.data.noLimitTime + "&adjustTime=" + this.data.adjustTime + "&noLimitStore=" + this.data.noLimitStore + "&adjustStore=" + this.data.adjustStore + "&postion=" + this.data.postion + "&storeId=" + this.data.storeId
+      url: 'FinishInfo?barberId=' + this.data.barberId + "&clickServer=" + this.data.clickServer + "&noLimitTime=" + this.data.noLimitTime + "&adjustTime=" + this.data.adjustTime + "&noLimitStore=" + this.data.noLimitStore + "&adjustStore=" + this.data.adjustStore + "&postion=" + this.data.postion + "&storeId=" + this.data.storeId+"&allMoney="+this.data.allMoney
     })
   },
+
   chooseStore:function(e){
     var that = this;
-   
       that.setData({
         storeId: e.detail.value,
         checked: true,
       
       })
-   console.log("chooseStore::"+that.data.chooseStore)
+   console.log("chooseStore:"+that.data.storeId)
   },
   wxPay:function(){
     
@@ -128,7 +120,8 @@ Page({
   onLoad: function (options) {
     this.setData({
       barberId: options.barberId,
-      clickServer:options.clickServer
+      clickServer:options.clickServer,
+      allMoney:options.allMoney
     })
     this.getStoreList();
 

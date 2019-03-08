@@ -34,6 +34,8 @@
   color:black;
   margin-left: 120rpx;
 }
+
+
 .ServerMain{
   margin-top: 70px;
   background-color: rgb(223, 213, 213);
@@ -130,14 +132,14 @@ height: 120rpx;
     margin-left: 0rpx;
 }
 .money{
-   margin-top: 20rpx;
+   margin-top: 35rpx;
   margin-left: 10rpx;
   font-size: 20px;
 
 }
 .moneyYuan{
     margin: 0rpx;
-       margin-top: 20rpx;
+       margin-top: 35rpx;
   margin-left: 220rpx;
   font-size: 20px;
   text-decoration:line-through;

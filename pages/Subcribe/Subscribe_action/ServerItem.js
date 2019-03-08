@@ -10,25 +10,55 @@ Page({
    * 页面的初始数据
    */
   data: {
-    itemOne:{id:1,name:"洗剪吹",value:"染发",money:"39",moneyYuan:"50"},
-    item: [{id:1, name: "染发", value: "染发", money:"39", moneyYuan: "50" },
-      {id:2, name: "染发2", value: "染发2", money: "39", moneyYuan: "50" }, 
-      {id:3, name: "染发2", value: "染发2", money: "39", moneyYuan: "50" }],
-    item2: [{id:1, name: "烫发1", value: "烫发1", money: "39", moneyYuan: "50" },
-      {id:2, name: "烫发2", value: "烫发2", money: "39", moneyYuan: "50"},
-      {id:3, name: "染发3", value: "染发3", money: "39", moneyYuan: "50" }],
+    itemOne:{id:1,name:"洗剪吹",value:"染发",money:19,moneyYuan:50},
+    item: [{id:2, name: "染发", value: "染发", money:39, moneyYuan:50},
+      {id:3, name: "染发2", value: "染发2", money:39, moneyYuan:50}, 
+      {id:4, name: "染发2", value: "染发2", money:39, moneyYuan:50}],
+    item2: [{id:5, name: "烫发1", value: "烫发1", money:29, moneyYuan: 50 },
+      {id:6, name: "烫发2", value: "烫发2", money: 29, moneyYuan: 50},
+      {id:7, name: "染发3", value: "染发3", money: 29, moneyYuan: 50 }],
     // explain:"七折",
     serviceDisplay:"",
     otherDisplay:"",
     ranfa:"display:none",
     tangfa: "display:none",
-    clickServer:'',
-    clickMoney:'',
+    clickServer:[],
+    clickMoney:null,
     barberId:'',
     allMoney:'',
     money:''
   },
+  returnBtn:function(){
+    wx.switchTab({
+      url: 'barberList',
+    })
+  },
+  returnTobarberList:function(){
+    wx.switchTab({
+      url: 'barberList',
+    })
+  },
+  calculate:function(){
+     var server=this.data.clickServer;
+     for(var i=0;i<server.length;i++){
+       
+       for(var j=0;j<this.data.item.length;j++){
+       if(this.data.item[j].id==server[i]){
+            this.data.clickMoney+=this.data.item[j].money;
+       }
+       }
+       for (var j = 0; j < this.data.item2.length; j++) {
+         if (this.data.item2[j].id == server[i]) {
+           this.data.clickMoney += this.data.item2[j].money;
+         }
+       }
+       if (this.data.itemOne.id == server[i]) {
+         this.data.clickMoney += this.data.itemOne.money;
+       }
+     }
   
+    console.log("计算:money:"+this.data.clickMoney);
+  },
   getServiceList: function () {
     console.log('getServicetList ' + api.StoreList);
     //wx.showNavigationBarLoading();
@@ -68,9 +98,7 @@ Page({
         });
       });
   },
-  return:function(){
-       
-  },
+  
   serviceList:function(){
      var that=this;
      that.setData({
@@ -136,13 +164,10 @@ Page({
   },
 
   toChoShop:function(){
+    this.calculate();
  var that=this;
-//    var str= that.data.clickServer[0];
-// console.log("str:"+str);
-
-// console.log("strSp:"+strOne);
     wx.navigateTo({
-      url: 'chooseShop?clickServer=' + that.data.clickServer +"&barberId="+that.data.barberId,
+      url: 'chooseShop?clickServer=' + that.data.clickServer +"&barberId="+that.data.barberId+"&allMoney="+that.data.clickMoney,
     })
   },
   /**

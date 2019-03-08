@@ -16,11 +16,12 @@ Page({
     barberId: '',
     clickServer: '',
     address:'',
+    allMoney:null
   },
   returnToChooseShop:function(){
-       wx.navigateBack({
-         delta: 1
-       })
+      wx.navigateBack({
+        
+      })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -35,7 +36,8 @@ Page({
         noLimitStore:options.noLimitStore,
         adjustTime:options.adjustTime,
         adjustStore:options.adjustStore,
-        clickServer:options.clickServer
+        clickServer:options.clickServer,
+        allMoney:options.allMoney
       })
        console.log(options);
   },

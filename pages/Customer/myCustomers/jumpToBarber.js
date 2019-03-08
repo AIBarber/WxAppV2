@@ -26,9 +26,11 @@ Page({
   },
   
   formSubmit:function(e){
-    console.log("切换e:"+e.detail.value.telNumber);
+    
     var that=this;
-   
+   wx.navigateTo({
+     url: 'toBarberSuccess',
+   })
     that.setData({
       telNumber: e.detail.value.telNumber,
       verificationCode:e.detail.value.verificationCode

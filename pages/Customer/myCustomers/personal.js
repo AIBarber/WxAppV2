@@ -50,12 +50,12 @@ Page({
         console.log('customerFaceInfo err :' + err);
         // fail
         util.stopRefreshing;
-        wx.showToast({
-          title: '正在获取数据…',
-          icon: 'loading',
-          duration: 3000,
-          mask: true
-        });
+        // wx.showToast({
+        //   title: '正在获取数据…',
+        //   icon: 'loading',
+        //   duration: 3000,
+        //   mask: true
+        // });
       });
   },
   onLoad: function (options) {
@@ -81,7 +81,7 @@ Page({
       photoPaths= wx.getStorageSync("personnal");
       util.wxUploadFile(photoPaths, bizContent).then(res => {
         //if (res.data) {}
-     
+    
         console.log("biz:" + res.data.bizContent);
         // that.setData({
         //   headPhoto: headPhotoBiz

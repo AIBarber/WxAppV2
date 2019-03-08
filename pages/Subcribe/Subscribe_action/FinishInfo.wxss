@@ -42,78 +42,73 @@
   display: flex;
   flex-direction: column;
 }
-.mainImg{
+.mainText{
+  margin-top: 180rpx;
   display: flex;
-  justify-content:center;
+ flex-direction: column;
+ /* border:1px solid black; */
+ border-bottom: 1px solid #99999930;
+ padding-bottom: 30rpx;
 }
-.element{
-  display: flex;
-  flex-direction: column;
-  margin: 30rpx;
-  margin-top: 200rpx;
-  text-align: center;
-
-   width: 200rpx;
-   height: 200rpx;
+.textOut{
+  font-size: 28rpx;
+ margin-bottom: 15rpx;
+ color: #999999;
+   margin-left: 30rpx;
 }
-.element image{
-  width: 100rpx;
-  height: 100rpx;
-  background-color: gainsboro;
+.textIn{
+  color:#333333;
+}
+.img{
+  margin-top: 120rpx;
   margin-left: auto;
   margin-right: auto;
+  height: 186rpx;
+  width: 186rpx;
+  margin-bottom: 40rpx;
 }
-.element text{
-  margin-top: 20rpx;
-   font-size: 30rpx;
+.text1{
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 30rpx;
+  color:#333333;
+   margin-bottom: 10rpx;
 }
-.mainMoney{
-   width: 100%;
-   text-align: center;
+.text2{
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 28rpx;
+  color:#999999;
+ margin-bottom: 100rpx;
 }
 
-.returnBtn{
-  margin-top: 90rpx;
-    width: 200rpx;
-    height: 80rpx;
-}
 .bottomPayInfo{
   width: 100%;
   height: 190rpx;
   display: flex;
+  flex-direction: column;
+  margin-top:100rpx;
 }
-.payInfo{
-   display: flex;
-   flex-direction: column;
-}
-.payInfo text{
 
-  margin-left: 10rpx;
-  text-align: left;
-}
-.textPay{
-  margin-left:30rpx;
-  margin-top: 20rpx;
-  margin-bottom: 10rpx;
-font-size: 24px;
-font-weight: 600;
-}
-.textInfo{
-  font-size: 28rpx;
-  color: #0cc4b1;
-}
-.payMoney{
-  margin-left: 260rpx;
-  margin-top: 25rpx;
-  font-size: 24px;
-  font-weight: 600;
-  color: red;
-}
+
 .confirmPay{
   width: 650rpx;
+  height: 88rpx;
   border-radius: 250rpx;
   background-color: #0cc4b1;
   color: white;
+  margin-bottom: 20rpx;
+  line-height: 70rpx;
+}
 
+.returnIndex{
+    width: 650rpx;
+  height: 88rpx;
+  border-radius: 250rpx;
+  background-color: white;
+  color: #0cc4b1;
+  margin-bottom: 20rpx;
+  line-height: 70rpx;
+  border:1px solid #0cc4b1;
 }
 
