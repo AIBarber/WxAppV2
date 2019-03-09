@@ -4,7 +4,6 @@ var util = require('../../../utils/util.js');
 var api = require('../../../config/api.js');
 var model = require('../../../utils/model.js');
 var wxpay = require('../../../utils/wxpay.js');
-
 Page({
 
   /**
@@ -12,9 +11,9 @@ Page({
    */
   data: {
     flag:0,
-    currentTab:0,
+    currentTab:'0',
     checked:false,
-    postion:'',
+    postion:[1,2,3,5,7],
     clickRadio:'',
     noLimitTime:'',
     adjustTime:0,
@@ -25,23 +24,97 @@ Page({
     clickserver:'',
     allMoney:'',
     chooseStore:'',
+    postion2:'',
+    re:false,
     // shopList: [{ name: "店一", address: "北京", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.345, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }]
     shopList:""
   },
   choiceTime:function(e){
     var page = this;
+    var pos = page.data.postion;
     var id = e.target.id;
-    if (this.data.currentTab == id) {
-      return false;
-    } else {
-      page.setData({
-        currentTab: id,
-        postion:id
-      })
-    
+    if (page.data.currentTab == id) {
+      for(var i=0;i<pos.length;i++){
+        if(id==pos[i]){
+     
+        }
+      }
+      console.log("重复");
+      // if (page.data.re == false) {
+      //   page.setData({
+      //     flag1: 11,
+      //     re: true
+      //   })
+      // } else {
+      //   page.setData({
+      //     flag1: 1,
+      //     re: false
+      //   })
+      // }
+      // return false;
+    } 
+    else {
+      for(var i=0;i<pos.length;i++){
+          if(parseInt(id)==pos[i]){
+            switch (id) {
+              case '1':
+                page.setData({
+                  flag1: 1,
+                });
+                break;
+              case '2':
+                page.setData({
+                  flag2: 2,
+                })
+                break;
+              case '3':
+                page.setData({
+                  flag3: 3,
+               
+                })
+                break;
+              case '4':
+                page.setData({
+                  flag4: 4,
+                })
+                break;
+              case '5':
+                page.setData({
+                  flag5: 5,
+                })
+                break;
+              case '6':
+                page.setData({
+                  flag6: 6,
+                })
+                break;
+              case '7':
+                page.setData({
+                  flag7: 7,
+                })
+                break;
+              case '8':
+                page.setData({
+                  flag8: 8,
+                })
+                break;
+              case '9':
+                page.setData({
+                  flag9: 9,
+                })
+                break;
+            }
+            page.setData({
+              currentTab: id,
+              postion2: id
+            })
+          }
+      }
+   
     }
-    console.log(this.data.postion);
-    page.setData({ flag: id });
+  
+    console.log("postion="+page.data.postion2);
+    // page.setData({ flag: id });
   },
   returnToServer:function(){
     wx.navigateTo({
@@ -111,9 +184,7 @@ Page({
       })
    console.log("chooseStore:"+that.data.storeId)
   },
-  wxPay:function(){
-    
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -123,7 +194,60 @@ Page({
       clickServer:options.clickServer,
       allMoney:options.allMoney
     })
+    // this.barberSubscribeManage();
     this.getStoreList();
+    var that=this;
+    var pos = that.data.postion;
+    for(var i=0;i<that.data.postion.length;i++){
+      console.log("加载位置："+pos[i]);
+      switch (pos[i]) {
+        case 1:
+        that.setData({
+          flag1 :11
+        })
+          break;
+        case 2:
+          that.setData({
+            flag2: 22
+          })
+          break;
+        case 3:
+          that.setData({
+            flag3:33
+          })
+          break;
+        case 4:
+          that.setData({
+            flag4:  44
+          })
+          break;
+        case 5:
+          that.setData({
+            flag5:  55
+          })
+          break;
+        case 6:
+          that.setData({
+            flag6:  66
+          })
+          break;
+        case 7:
+          that.setData({
+            flag7:  77
+          })
+          break;
+        case 8:
+          that.setData({
+            flag8:  88
+          })
+          break;
+        case 9:
+          that.setData({
+            flag9:  99
+          })
+          break;
+      }
+    }
 
   },
   getStoreList: function () {
@@ -162,6 +286,25 @@ Page({
         // });
       });
   },
+
+  barberSubscribeManage: function () {
+    var that = this;
+    var bizContent = {
+      "barberId": that.data.barberId
+    }
+    util.weshowRequest(
+      api.BarberSubscribeManage,
+      bizContent,
+      'POST').then(res => {
+        console.log("shopList+res");
+        console.log(res);
+        that.setData({ postion: res.data.bizContent.list });
+        console.log(that.data);
+      }).catch((err) => {
+        console.log('shopList  err' + err);
+      });
+  },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

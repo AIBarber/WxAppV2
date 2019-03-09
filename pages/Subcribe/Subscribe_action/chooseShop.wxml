@@ -7,7 +7,7 @@
  </view>
  <view class="title">选择店铺</view>
  </view>
- 
+  
  <form bindsubmit='formSubmit' bindreset='formReset'>
  <view class="container">
  
@@ -28,19 +28,33 @@
  </view>
 
  <view class="chooseTime">
-   <view class="{{(flag==1||flag==4||flag==7)?'timeTable':'normal'}}" style='height:30%;font-size:28rpx; line-height:93rpx; '>上午(12:00)之前</view>
-   <view class="{{(flag==2||flag==5||flag==8)?'timeTable':'normal'}}" style='height:30%;font-size:28rpx; line-height:70rpx;display:flex; flex-direction:column;'><text style='margin-top:-10rpx;'>下午</text><text style='margin-top:-25rpx;'>(12:00-18:00)</text></view>
-   <view class="{{(flag==3||flag==6||flag==9)?'timeTable':'normal'}}"style='height:30%;font-size:28rpx; line-height:93rpx;'>晚上(18:00)之后</view>
-   <view class="{{flag==1?'timeTable':'normal'}}" bindtap='choiceTime' id="1">今天上午</view>
-   <view class="{{flag==2?'timeTable':'normal'}}" bindtap='choiceTime' id="2">今天下午</view>
-   <view class="{{flag==3?'timeTable':'normal'}}" bindtap='choiceTime' id="3">今天晚上</view>
-   <view class="{{flag==4?'timeTable':'normal'}}" bindtap='choiceTime' id="4">明天上午</view>
-   <view class="{{flag==5?'timeTable':'normal'}}" bindtap='choiceTime' id="5">明天下午</view>
-   <view class="{{flag==6?'timeTable':'normal'}}" bindtap='choiceTime' id="6">明天晚上</view>
-   <view class="{{flag==7?'timeTable':'normal'}}" bindtap='choiceTime' id="7">后天上午</view>
-   <view class="{{flag==8?'timeTable':'normal'}}" bindtap='choiceTime' id="8">后天下午</view>
-   <view class="{{flag==9?'timeTable':'normal'}}" bindtap='choiceTime' id="9">后天晚上</view>
+   <view class="{{(flag1==1||flag4==4||flag7==7)?'timeTable':'normal'}}" style='height:30%;font-size:28rpx; line-height:93rpx; '>上午(12:00)之前</view>
+   <view class="{{(flag2==2||flag5==5||flag8==8)?'timeTable':'normal'}}" style='height:30%;font-size:28rpx; line-height:70rpx;display:flex; flex-direction:column;'><text style='margin-top:-10rpx;'>下午</text><text style='margin-top:-25rpx;'>(12:00-18:00)</text></view>
+   <view class="{{(flag3==3||flag6==6||flag9==9)?'timeTable':'normal'}}"style='height:30%;font-size:28rpx; line-height:93rpx;'>晚上(18:00)之后</view>
+   <view class="{{flag1==1?'timeTable':(flag1==11?'touch':'notouch')}}" bindtap='choiceTime' id="1">今天上午</view>
+   <view class="{{flag2==2?'timeTable':(flag2==22?'touch':'notouch')}}" bindtap='choiceTime' id="2">今天下午</view>
+   <view class="{{flag3==3?'timeTable':(flag3==33?'touch':'notouch')}}" bindtap='choiceTime' id="3">今天晚上</view>
+   <view class="{{flag4==4?'timeTable':(flag4==44?'touch':'notouch')}}" bindtap='choiceTime' id="4">明天上午</view>
+   <view class="{{flag5==5?'timeTable':(flag5==55?'touch':'notouch')}}" bindtap='choiceTime' id="5">明天下午</view>
+   <view class="{{flag6==6?'timeTable':(flag6==66?'touch':'notouch')}}" bindtap='choiceTime' id="6">明天晚上</view>
+   <view class="{{flag7==7?'timeTable':(flag7==77?'touch':'notouch')}}" bindtap='choiceTime' id="7">后天上午</view>
+   <view class="{{flag8==8?'timeTable':(flag8==88?'touch':'notouch')}}" bindtap='choiceTime' id="8">后天下午</view>
+   <view class="{{flag9==9?'timeTable':(flag9==99?'touch':'notouch')}}" bindtap='choiceTime' id="9">后天晚上</view>
  </view>
+<!-- <view class="chooseTime">
+   <view class="{{(flag1==1||flag4==4||flag7==7)?'timeTable':'normal'}}" style='height:30%;font-size:28rpx; line-height:93rpx; '>上午(12:00)之前</view>
+   <view class="{{(flag2==2||flag5==5||flag8==8)?'timeTable':'normal'}}" style='height:30%;font-size:28rpx; line-height:70rpx;display:flex; flex-direction:column;'><text style='margin-top:-10rpx;'>下午</text><text style='margin-top:-25rpx;'>(12:00-18:00)</text></view>
+   <view class="{{(flag3==3||flag6==6||flag9==9)?'timeTable':'normal'}}"style='height:30%;font-size:28rpx; line-height:93rpx;'>晚上(18:00)之后</view>
+   <!-- <button class="{{flag1==1?'timeTable':(flag1==11?'touch':'notouch')}}" hover-class='notouch'  ></button>
+   <button class="timeTable"></button>
+   <button class="timeTable"></button>
+   <button class="timeTable"></button>
+   <button class="timeTable"></button>
+   <button class="timeTable"></button>
+   <button class="timeTable"></button>
+   <button class="timeTable"></button>
+   <button class="timeTable"></button>
+</view>  -->
 
   <view class='radioView2'>
  <radio-group class='radio-group'  bindchange="radioChange3" data-id='noLimitTime'>
