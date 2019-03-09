@@ -81,8 +81,10 @@ Page({
       photoPaths= wx.getStorageSync("personnal");
       util.wxUploadFile(photoPaths, bizContent).then(res => {
         //if (res.data) {}
-    
-        console.log("biz:" + res.data.bizContent);
+        var test ='"faceinfo":{"id":2,"customerId":1, "url":"http://barbertest.oss-cn-beijing.aliyuncs.com/hair/1552114830851.jpg?Expires=1867474827&OSSAccessKeyId=LTAI49csnneu5RSn&Signature=rUibMiy5OECoGEVwey3yklR4YsA%3D", "age":30, "gender":"male", "beauty":42.22, "faceShape":"round", "race":"yellow", "glasses":"common", "createdTime":"2019-03-09 07:00:28", "updateTime":"2019-03-09 07:00:28"}'
+        var content = JSON.parse(test);
+        var jsonCon=content.faceinfo;
+        console.log("biz:faceinfo::" +test);
         // that.setData({
         //   headPhoto: headPhotoBiz
         // });
