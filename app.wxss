@@ -1,5 +1,4 @@
 /**app.wxss**/
-@import "./pages/template/dialog.wxss";
 
 .container {
   height: 100%;

@@ -1,28 +1,36 @@
 <!-- 个人信息 -->
+<view wx:if="{{person[curIndex]}}">
+        <block wx:for="{{person[curIndex]}}" wx:key="item.id">
 <view class="summary">
 	<!-- <view class="avatar-container"> -->
-		<image src="{{user.userInfo.avatar ? user.userInfo.avatar : '/icon/default-avatar.png'}}" class="avatar" />
+		<image src="{{item.cover}}" class="avatar" />
 	<!-- </view> -->
   <view class ="nick">
-		<view class="nickname">慵懒的猫	</view>
-    <view class="nickname1" >设计总监|<text class="nickname1">10年经验</text></view>
+		<view class="nickname">{{item.name}}</view>
+    <view class="nickname1" >{{item.level}}|<text class="nickname1">{{item.exp}}</text></view>
     </view>
+</view>
+</block>
 </view>
 
 <!-- 账户 -->
+<view wx:if="{{person[curIndex]}}">
+        <block wx:for="{{person[curIndex]}}" wx:key="item.id">
 <view class="account">
 	<view class="item">
-		<view class="value balance">0.00</view>
+		<view class="value balance">{{item.income}}</view>
 		<view class="caption">我的收入</view>
 	</view>
 	<view class="item">
-		<view class="value coupon">0</view>
+		<view class="value coupon">{{item.order}}</view>
 		<view class="caption">我的订单</view>
 	</view>
 	<view class="item">
-		<view class="value credit">0</view>
+		<view class="value credit">{{item.custumerNum}}</view>
 		<view class="caption">我的顾客</view>
 	</view>
+</view>
+</block>
 </view>
 <!-- 列表 -->
 
@@ -72,6 +80,13 @@
 		<navigator class="bd" url="../../pages/new/new" open-type="navigate" hover-class="none">设置</navigator>
 		<view class="ft"></view>
 	</view>
+ </view>
+  <view class="franchisee-title">
+      <view class="franchisee-location" data-compid="franchisee_list10" bindtap="tapFranchiseeLocation"><label class="ico-moon icon-location"></label> {{ data.location_address || '定位中...' }}</view>
+    </view>
+
+<view wx:for="{{barberDetails}}" wx:key="id">aaa
+<text>{{item.name}}</text>
 </view>
 
 <!-- 管理员 

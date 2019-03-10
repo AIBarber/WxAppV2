@@ -103,6 +103,168 @@ function getIndexNavSectionData() {
   ]
   return arr
 }
+
+
+function getorderData() {
+  var arr = [
+    [
+      {
+
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        price: '¥198',
+        address: '北京市朝阳区光华路10号',
+
+      },
+      {
+
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        price: '¥198',
+        address: '北京市朝阳区光华路10号',
+
+      },
+
+    ]
+  ]
+  return arr
+}
+
+function getbarberData() {
+  var arr = [
+    [
+      {
+
+        name: "王可欣",
+        coverpath: "../../../icon/default-avatar.png",
+        level: '设计总监',
+       exp: '11年',
+        tel: '152000000001',
+        time: "周一至周五（10：00-22：00）",
+        price1:"￥200",
+        price2: "￥100",
+        price3: "￥199",
+        price5: "￥160",
+        price6: "￥130",
+        message:"资深理发师"
+
+
+
+      },
+      
+    ]
+  ]
+  return arr
+}
+
+function getlifaData() {
+  var arr = [
+    [
+      {
+
+        state: "等待理发中",
+        coverpath: "../../../icon/default-avatar.png",
+        num: '106',
+        number: '106',
+        time: "20",
+        haircut: "板寸"
+
+      },
+
+    ]
+  ]
+  return arr
+}
+
+function getshopData() {
+  var arr = [
+    [
+      {
+
+        shopname: "天天美容美发",
+        coverpath: "../../../icon/recommend_img_03.png",
+        address: '朝阳区光华路1号院',
+        barbernum: '5',
+        time: "营业时间：周一至周五（10：00-22：00）",
+        custmer: "2"
+
+
+
+      },
+
+    ]
+  ]
+  return arr
+}
+
+function getworksData() {
+  var arr = [
+    [
+      {
+
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        haircut: '长刘海',
+        grade: '9分',
+
+      },
+      {
+
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        haircut: '短发',
+        grade: '9分',
+
+      },
+
+    ]
+  ]
+  return arr
+}
+
+function getorderData() {
+  var arr = [
+    [
+      {
+
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        price: '¥198',
+        address: '北京市朝阳区光华路10号',
+
+      },
+      {
+
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        price: '¥198',
+        address: '北京市朝阳区光华路10号',
+
+      },
+      
+    ]
+  ]
+  return arr
+}
+function getpersonsData() {
+  var arr = [
+    [
+      {
+
+        name: "王立欣",
+        cover: "../../../icon/default-avatar.png",
+        level: '设计总监',
+        exp: '10年经验',
+        income: '30.00',
+        order: '5',
+        custumerNum: '6',
+
+      },
+    ]
+  ]
+  return arr
+}
+
 /**
  * 技师 数据
  * */
@@ -246,6 +408,11 @@ module.exports = {
   userData: userData,
   provinceData: provinceData,
   cityData: cityData,
-  searchAddrFromAddrs: searchAddrFromAddrs
-
+  searchAddrFromAddrs: searchAddrFromAddrs,
+  getorderData: getorderData,
+  getworksData: getworksData,
+  getpersonsData: getpersonsData,
+  getbarberData: getbarberData,
+getshopData: getshopData,
+  getlifaData: getlifaData
 }

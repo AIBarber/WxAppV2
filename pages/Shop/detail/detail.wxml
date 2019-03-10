@@ -1,67 +1,74 @@
+<view wx:if="{{shop[curIndex]}}">
+        <block wx:for="{{shop[curIndex]}}" wx:key="item.id">
 <view class="aa">
-    <text >瑞丽美容美发(航天桥店）</text></view>
+  <text>{{item.shopname}}</text>
+</view>
+<view class="ar_coverpath">
+  <image src="{{item.coverpath}}" mode="aspectFill"></image>
+</view>
+<view class="ar_cont">
+  <image src="../../../icon/address.png"></image>
+  <text class="ar_cont_price">{{item.address}}</text>
+  <view class="ar_line"></view>
+  <image src="../../../icon/time.png"></image>
+  <text class="ar_cont_price">{{item.time}}</text>
 
-
-  
-  <view class="ar_coverpath">
-    <image src="../../../icon/recommend_img_03.png" mode="aspectFill"></image>
-  </view>
-  <view class="ar_cont">
-    <image src="../../../icon/address.png"></image>
-    <text class="ar_cont_price">朝阳区光华路10号院</text>
-    <view class="ar_line"></view>
-    <image src="../../../icon/time.png"></image>
-    <text class="ar_cont_price">营业时间：周一至周日（10：00-22：00）</text>
-
-    <view class="ar_line"></view>
+  <view class="ar_line"></view>
+  <view>
     <text class="ar_cont_h1">当前店内发型师</text>
-    <view class="ar_line"></view>
-    <view class="summary">
-      <!-- <view class="avatar-container"> -->
-      <image src="{{user.userInfo.avatar ? user.userInfo.avatar : '/icon/default-avatar.png'}}" class="avatar" />
-      <!-- </view> -->
-      <view class="nick">
-        <view class="nickname">王可欣 </view>
-        <view class="nickname">设计总监
-          <text class="nickname">  执业11年     </text>
-        </view>
-        <view class="nickname">状态：
-          <text class="nickname">理发中     </text>
-        </view>
-      </view>
-    </view>
-    <view class="ar_line"></view>
-    <text class="ar_cont_h1">当前店内顾客</text>
-    <view class="ar_line"></view>
-    <view class="summary">
-      <!-- <view class="avatar-container"> -->
-      <image src="{{user.userInfo.avatar ? user.userInfo.avatar : '/icon/default-avatar.png'}}" class="avatar" />
-      <!-- </view> -->
-      <view class="nick">
-        <view class="nickname">状态：
-          <text class="nickname">理发中 </text>
-        </view>
-        <view class="nickname">进店时长：
-          <text class="nickname">20分钟</text>
-        </view>
-      </view>
-    </view>
-<view class="ar_line"></view>
-    <view class="summary">
-      <!-- <view class="avatar-container"> -->
-      <image src="{{user.userInfo.avatar ? user.userInfo.avatar : '/icon/default-avatar.png'}}" class="avatar" />
-      <!-- </view> -->
-      <view class="nick">
-        <view class="nickname">状态：
-          <text class="nickname">洗发中 </text>
-        </view>
-        <view class="nickname">进店时长：
-          <text class="nickname">10分钟</text>
-        </view>
-      </view>
-    </view>
-    <view class="ar_line"></view>
-
-    <button class="ar_book" bindtap="bookTap">立即预定</button>
+    <text class="ar_cont_h1" decode="{{true}}">&nbsp;&nbsp;{{item.barbernum}}人</text>
   </view>
+  <view class="ar_line"></view>
+  <view class="summary">
+    <!-- <view class="avatar-container"> -->
+    <image src="{{user.userInfo.avatar ? user.userInfo.avatar : '/icon/default-avatar.png'}}" class="avatar" />
+    <!-- </view> -->
+    <view class="nick">
+      <view class="nickname">王可欣 </view>
+      <view class="nickname">设计总监
+        <text class="nickname">  执业11年     </text>
+      </view>
+      <view class="nickname">状态：
+        <text class="nickname">理发中     </text>
+      </view>
+    </view>
+  </view>
+  <view class="ar_line"></view>
+  <view>
+    <text class="ar_cont_h1">当前店内顾客</text>
+    <text class="ar_cont_h1" decode="{{true}}">&nbsp;&nbsp;{{item.custmer}}人</text>
+  </view>
+  <view class="ar_line"></view>
+  <view class="summary">
+    <!-- <view class="avatar-container"> -->
+    <image src="{{user.userInfo.avatar ? user.userInfo.avatar : '/icon/default-avatar.png'}}" class="avatar" />
+    <!-- </view> -->
+    <view class="nick">
+      <view class="nickname">状态：
+        <text class="nickname">理发中 </text>
+      </view>
+      <view class="nickname">进店时长：
+        <text class="nickname">20分钟</text>
+      </view>
+    </view>
+  </view>
+  <view class="ar_line"></view>
+  <view class="summary">
+    <!-- <view class="avatar-container"> -->
+    <image src="{{user.userInfo.avatar ? user.userInfo.avatar : '/icon/default-avatar.png'}}" class="avatar" />
+    <!-- </view> -->
+    <view class="nick">
+      <view class="nickname">状态：
+        <text class="nickname">洗发中 </text>
+      </view>
+      <view class="nickname">进店时长：
+        <text class="nickname">10分钟</text>
+      </view>
+    </view>
+  </view>
+  <view class="ar_line"></view>
 
+  <button class="ar_book" bindtap="bookTap">立即预定</button>
+</view>
+</block>
+</view>

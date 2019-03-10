@@ -252,3 +252,26 @@ color: white;
     background: #ddd;
     margin:10rpx 10rpx;
 }
+
+.container{
+    padding:0;
+    margin:0;
+}
+.ar_picker{
+    width:100%;
+    font-size:30rpx;
+    color:#000;
+    background: #efeff4;
+    margin:0;
+    padding:10rpx 0rpx;
+}
+
+.ar_picker .ar_picker_wrap{
+    width: 670rpx;
+    background-size:25rpx 14rpx;
+    background-position:650rpx;
+    border-radius:20rpx;
+    padding:10rpx 30rpx;
+    margin:10rpx auto;
+    border:1px solid #ddd;
+}

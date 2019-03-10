@@ -92,6 +92,34 @@
 	display: flex;
 	flex-direction:column;
 }
+.summary1 {
+	background: #0099ff00;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.summary1 .avatar {
+	width: 60px;
+	height: 60px;
+	margin: 10px;
+	border-radius: 50%;
+  
+}
+
+/*昵称*/
+.summary1 .nickname {
+	color:gray;
+	font-size: 12px;
+}
+.summary1 .nickname1 {
+	color:white;
+	font-size: 10px;
+}
+.summary1 .nick {
+	display: flex;
+	flex-direction:column;
+}
 .btn
 {
   background:rgb(22, 223, 189);

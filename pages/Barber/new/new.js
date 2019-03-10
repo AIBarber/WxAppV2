@@ -23,6 +23,7 @@ Page({
     // nav 初始化
     navTopItems: fileData.getIndexNavData(),
     navSectionItems: fileData.getIndexNavSectionData(),
+    orderItems: fileData.getorderData(),
     curNavId: 1,
     curIndex: 0,
     skillData: fileData.getSkilledData(),
@@ -44,7 +45,8 @@ Page({
   onLoad: function () {
     var that = this
     that.setData({
-      list: that.data.navSectionItems
+      list: that.data.navSectionItems,
+      orderlist: that.data.orderItems
     });
 
     wx.getSystemInfo({
@@ -59,6 +61,12 @@ Page({
     });
 
   },
+  navigate: function (e) {
+    wx.navigateTo({
+      url: '../order/order?artype=' + e.currentTarget.dataset.arid
+    })
+  },
+
   // 跳转至详情页
   navigateDetail: function (e) {
     wx.navigateTo({

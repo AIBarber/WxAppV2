@@ -104,7 +104,7 @@ function startPay(fee, paySn) {
     formData += "<mch_id>" + mch_id + "</mch_id>"
     formData += "<nonce_str>" + nonce_str + "</nonce_str>"
     formData += "<notify_url>" + notify_url + "</notify_url>"
-    formData += "<openid>oUpF8uMuAJO_M2pxb1Q9zNjWeS6o</openid>"
+    formData += "<openid>" + openid + "</openid>"
     formData += "<out_trade_no>" + paySn + "</out_trade_no>"
     formData += "<sign_type>" + sign_type + "</sign_type>"
     formData += "<spbill_create_ip>" + spbill_create_ip + "</spbill_create_ip>"

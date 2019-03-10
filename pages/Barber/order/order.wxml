@@ -1,0 +1,46 @@
+<!--pages/Barber/order/order.wxml-->
+<view class="a"><text>请选择预约时间（可多选）</text></view>
+<view class="page__bd">
+        <view class="section section_gap">
+            <radio-group class="radio-group" bindchange="radioChange">
+                <radio class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                    <text>{{item.value}}</text>
+                </radio>
+            </radio-group>
+        </view>
+    </view>
+<view class="listview">
+	<view class="item">
+		<navigator class="bd" url="../../pages/order/order" open-type="navigate" hover-class="none">其他时间</navigator>
+		<view class="ft"></view>
+	</view>
+</view>
+
+<view class="a"><text>请选择预约店铺（可多选）</text></view>
+<view class="page__bd">
+        <view class="section section_gap">
+            <radio-group class="radio-group" bindchange="radioChange">
+                <radio class="radio" wx:for-items="{{items1}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                    <text>{{item.value}}</text>
+                </radio>
+            </radio-group>
+        </view>
+    </view>
+<view class="listview">
+	<view class="item">
+		<navigator class="bd" url="../../pages/order/order" open-type="navigate" hover-class="none">其他店铺</navigator>
+		<view class="ft"></view>
+	</view>
+</view>
+
+<view class="a"><text>备注信息</text></view>
+<textarea class="c">中午前到店</textarea>
+<view class="a"><text>预约价格</text>
+<text class="s">￥200元</text>
+</view>
+<view>
+    <button class="btn" bindtap="navigate">接受</button>
+  </view>
+  <view>
+    <button class="btn1">拒绝</button>
+  </view>

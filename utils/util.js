@@ -43,7 +43,6 @@ module.exports = {
 
 function getCurrentTime() {
   return (new Date()).getTime();
-
 }
 
 function getCurrentSecond() {
@@ -246,7 +245,10 @@ function weshowRequest(url, data = {}, method = "GET") {
     'nonce': getNonce(),
     'signMethod': 'HmacSHA1'
   };
-  data = mergeJson(commonParams, data);
+  //data = mergeJson(commonParams, data);
+  var bizContentName = { "bizContent": data };
+  data = mergeJson(commonParams, bizContentName);
+
   if (api.NETWORK_DEBUG) {
     console.log(url);
   }
