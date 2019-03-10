@@ -10,24 +10,29 @@ Page({
    */
   data: {
   barberList:[],
-    // barberList: [{barberId:"123123", name: "张三", level: "高级理发师", years: 2, mobile: 123123123123, status: 2}]
   barberName:'',
   barberId:''
   },
   toServerItem:function(e){
     var that = this;
-    if(true){
+  
     var index=e.target.id;
     console.log("barberId:::" + that.data.barberList[index-1].barberId);
     that.setData({
       barberId: that.data.barberList[index - 1].barberId
     })
-    this.getBarberInfo();
-    }
-     wx.navigateTo({
-       url: 'ServerItem?barberId='+that.data.barberId+'&barberName='+that.data.barberName
-     })
-    console.log("barberList-barberName:" + that.data.barberName);
+    //从这里调用了 获得barberInfo的方法
+    that.getBarberInfo();
+   
+  
+  },
+   //barberName从这个方法里获取不到。。。？？？？？？？？？？？？？
+  toServer:function(){
+    var that=this;
+    console.log("点击预约后-barberName:--" + that.data.barberName + "barberId:--" + that.data.barberId);
+    wx.navigateTo({
+      url: 'ServerItem?barberId=' + that.data.barberId + '&barberName=' + that.data.barberName
+    })
   },
   getBarberList: function () {
     // console.log('getStoreList ' + api.StoreList);
@@ -84,10 +89,11 @@ Page({
         that.setData({
           barberName: res.data.bizContent.barberinfo.name
         })
+      
         console.log("request-barberName:"+this.data.barberName);
-
-        util.stopRefreshing;
-        util.waitUpdate;
+        this.toServer();
+        // util.stopRefreshing;
+        // util.waitUpdate;
       }).catch((err) => {
         console.log('barberlist err :' + err);
         // fail
@@ -99,6 +105,7 @@ Page({
         //   mask: true
         // });
       });
+
   },
   /**
    * 生命周期函数--监听页面加载
