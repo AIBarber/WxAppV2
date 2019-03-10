@@ -1,23 +1,35 @@
 {
   "pages": [
-"pages/Barber/BarberHome/personal",
     "pages/Barber/new/new",
+    "pages/Shop/ShopList/List",
+    "pages/Subcribe/Subscribe_action/FinishInfo",
+    "pages/PersonalHome/PersonalHome",
+    "pages/Barber/BarberHome/personal",
     "pages/Shop/ShopList/new",
     "pages/new/new",
     "pages/Barber/detail/technicain_detail",
     "pages/Shop/detail/detail",
     "pages/Barber/order/order",
-    "pages/Barber/start/start"
+    "pages/Barber/start/start",
+    "pages/Customer/myCustomers/personal",
+    "pages/Customer/camaraIdentity/camaraIdentity",
+    "pages/Customer/camaraIdentity/showPhoto",
+    "pages/Customer/myCustomers/toBarberSuccess",
+    "pages/Customer/myCustomers/jumpToBarber",
+    "pages/Subcribe/Subscribe_action/barberList",
+    "pages/Subcribe/Subscribe_action/ServerItem",
+    "pages/Subcribe/Subscribe_action/chooseShop",
+    "pages/Subcribe/Subscribe_action/confirmPay"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#0cc3b0",
     "navigationBarTitleText": "AIBarber",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#929292",
-    "selectedColor": "#FFA900",
+    "selectedColor": "#0cc3b0",
     "backgroundColor": "#FAFAFA",
     "borderStyle": "white",
     "list": [
@@ -32,6 +44,12 @@
         "text": "店铺",
         "iconPath": "icon/tab_icon_home_default.png",
         "selectedIconPath": "icon/tab_icon_home_selected.png"
+      },
+      {
+        "pagePath": "pages/Customer/myCustomers/personal",
+        "text": "顾客",
+        "iconPath": "icon/tab_icon_my_default.png",
+        "selectedIconPath": "icon/tab_icon_my_selected.png"
       },
       {
         "pagePath": "pages/Barber/BarberHome/personal",

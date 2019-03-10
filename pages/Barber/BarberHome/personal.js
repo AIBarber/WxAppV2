@@ -87,6 +87,7 @@ Page({
     console.log('getBarberInfo ' + api.BarberList);
     //wx.showNavigationBarLoading();
 
+    var that = this;
     util.weshowRequest(
       api.BarberList,
       {
@@ -102,9 +103,9 @@ Page({
         console.log('BarberList ');
         console.log(res.data);
         // success
-        that.setData({ barberDetails: res.data});
+        that.setData({ barberDetails: res.data.bizContent.list});
         console.log('BarberList ');
-        //console.log(barberDetails[0]);
+        console.log(barberDetails);
         console.log('BarberList ');
         //that.stopRefreshing();
         //that.waitUpdate();

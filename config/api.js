@@ -1,5 +1,5 @@
 //定义api接口地址
-//var ApiRootUrl = 'http://47.93.241.248/api/';
+var ApiRootTestUrl = 'http://47.93.241.248/api/';
 //var ApiRootUrl = 'http://www.imcou.com/api/'
 //var ApiRootUrl = 'https://www.imcou.com/api/'
 var ApiRootUrl = 'http://47.94.144.77:9090/weshow/'
@@ -24,14 +24,14 @@ module.exports = {
   WsOpen: WsRootUrl + 'api/quizuser/open',
   Getcustomerinfo: ApiRootUrl + 'customer/getcustomerinfo',
   GetFaceInfo: ApiRootUrl + 'customer/getfaceinfo',
-  DecryptShare: ApiRootUrl + 'auth/decryptshare',
-  ArgsDigest: ApiRootUrl + 'auth/argsig',
-  UploadSig: ApiRootUrl + 'auth/uploadsig',
-  GetWxSession: ApiRootUrl + 'auth/getwxsession',
+  DecryptShare: ApiRootTestUrl + 'auth/decryptshare',
+  ArgsDigest: ApiRootTestUrl + 'auth/argsig',
+  UploadSig: ApiRootTestUrl + 'auth/uploadsig',
+  GetWxSession: ApiRootTestUrl + 'auth/getwxsession',
   GetWxPayUnified: ApiRootUrl + 'auth/getwxpayunified',
-  UserList: ApiRootUrl + 'user/index',
-  UserInfo: ApiRootUrl + 'user/info',
-  UserAdd: ApiRootUrl + 'user/add',
+  UserList: ApiRootTestUrl + 'user/index',
+  UserInfo: ApiRootTestUrl + 'user/info',
+  UserAdd: ApiRootTestUrl + 'user/add',
   UserRegister: ApiRootUrl + 'barber/add',
   UserShare: ApiRootUrl + 'customer/share',
   StoreList: ApiRootUrl + 'store/list',
