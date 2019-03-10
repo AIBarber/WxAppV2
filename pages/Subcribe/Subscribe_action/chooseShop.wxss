@@ -51,7 +51,7 @@
   flex-direction:column;
   width: 100%;
   background-color: white;
-  font-size: 30rpx;
+  font-size: 35rpx;
   
 }
 .radio-group{
@@ -130,7 +130,7 @@ border: 0.5px solid orange;
   display: flex;
   flex-direction:column;
   background-color:white;
-  
+   font-size: 35rpx;
 }
 
 

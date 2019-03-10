@@ -97,7 +97,6 @@ Page({
         that.setData({ item: res.data.bizContent.barberinfo.barberServiceList[1].barberServiceServiceList});
         that.setData({ item2: res.data.bizContent.barberinfo.barberServiceList[2].barberServiceServiceList });
         that.setData({ item3: res.data.bizContent.barberinfo.barberServiceList[3].barberServiceServiceList });
-        // that.setData({ item4: res.data.bizContent.barberinfo.barberServiceList[4].barberServiceServiceList });
         console.log(that.data.barberinfoList);
         console.log("barberInfoListInfo:::" + res.data.bizContent.barberinfo.barberServiceList[0].storePrice);
         console.log("serverserver:"+res.data.bizContent.barberinfo.barberServiceList[1].barberServiceServiceList);
@@ -210,7 +209,7 @@ Page({
       barberName:options.barberName
     })
     this.getServiceList();
-    console.log("barberName"+this.data.barberName);
+    console.log("barberName:" + this.data.barberName);
   },
 
   /**

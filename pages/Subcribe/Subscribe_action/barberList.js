@@ -11,41 +11,81 @@ Page({
   data: {
   barberList:[],
     // barberList: [{barberId:"123123", name: "张三", level: "高级理发师", years: 2, mobile: 123123123123, status: 2}]
-  barberName:''
-     
+  barberName:'',
+  barberId:''
   },
-  toServerItem:function(){
-    var that=this;
+  toServerItem:function(e){
+    var that = this;
+    if(true){
+    var index=e.target.id;
+    console.log("barberId:::" + that.data.barberList[index-1].barberId);
+    that.setData({
+      barberId: that.data.barberList[index - 1].barberId
+    })
+    this.getBarberInfo();
+    }
      wx.navigateTo({
-       url: 'ServerItem?barberId='+this.data.barberId+'&barberName='+that.data.barberName
+       url: 'ServerItem?barberId='+that.data.barberId+'&barberName='+that.data.barberName
      })
+    console.log("barberList-barberName:" + that.data.barberName);
+  },
+  getBarberList: function () {
+    // console.log('getStoreList ' + api.StoreList);
+    //wx.showNavigationBarLoading();
+    var that = this;
+    var bizContent = {
+    }
+    util.weshowRequest(
+      api.BarberList,
+      bizContent,
+      'POST').then(res => {
+          var a=JSON.stringify(res.data);
+          // var a=JSON.parse(res.data);
+       
+        var barberinfo = JSON.stringify(res.data.bizContent.list);
+        // console.log('barberList:: ' + barberinfo);
+        that.setData({
+          barberList: res.data.bizContent.list,
+        });
+        // console.log("barberlist::" + that.data.barberList);
+        // console.log(this.data.barberList[0].name);
+        // that.setData({
+        //   barberName: this.data.barberList[0].name
+        // })
+        // console.log("request-barberName:"+this.data.barberName);
+        // console.log(that.data);
+        util.stopRefreshing;
+        util.waitUpdate;
+      }).catch((err) => {
+        console.log('barberlist err :' + err);
+        // fail
+        util.stopRefreshing;
+        // wx.showToast({
+        //   title: '正在获取数据…',
+        //   icon: 'loading',
+        //   duration: 3000,
+        //   mask: true
+        // });
+      });
   },
   getBarberInfo: function () {
     // console.log('getStoreList ' + api.StoreList);
     //wx.showNavigationBarLoading();
     var that = this;
     var bizContent = {
-      "barberId": "1"
+      "barberId": that.data.barberId
     }
+    console.log(bizContent);
     util.weshowRequest(
       api.Getbarberinfo,
       bizContent,
       'POST').then(res => {
-          var a=JSON.stringify(res.data);
-          // var a=JSON.parse(res.data);
-        console.log('barberList:: '+a);
-        var barberinfo = JSON.stringify(res.data.bizContent.barberinfo);
-        console.log("this.data" + that.data.barberList.name);
+
         that.setData({
-          barberList: res.data.bizContent.barberinfo,
-         
-        });
-        that.setData({
-          barberName: that.data.barberList.name
+          barberName: res.data.bizContent.barberinfo.name
         })
-     
-        
-        // console.log(that.data);
+        console.log("request-barberName:"+this.data.barberName);
+
         util.stopRefreshing;
         util.waitUpdate;
       }).catch((err) => {
@@ -65,7 +105,7 @@ Page({
    */
   onLoad: function (options) {
 
-    this.getBarberInfo();
+    this.getBarberList();
   },
 
   /**

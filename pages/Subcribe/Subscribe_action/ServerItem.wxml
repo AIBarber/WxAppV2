@@ -8,7 +8,7 @@
  <view class='ServerMain'>
    <view class="topBar">
      <view class="bar" bindtap='serviceList' style='{{serverStyle}}'>服务项目</view>
-     <view class="bar"bindtap='otherList' style='{{otherStyle}}'>其他项目</view>
+     <view class="bar" style='{{otherStyle}}'>其他项目</view>
    </view>
    <view class="serviceList" style='{{serviceDisplay}}'>
       <view class="explain"><text>他的服务项目</text></view>

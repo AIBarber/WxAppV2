@@ -14,7 +14,7 @@
              <text style='margin-top:6px;' wx:if="{{status==4}}">状态：理发中 </text>          
              <text style='margin-top:6px;margin-right:20px;width:60%;' wx:if="{{status!=3 && status!=4 }}">状态：空闲中  </text>
              <!-- <navigator url='ServerItem?barberId={{barberId}}&barberName={{that.data.barberList.name}}'> -->
-             <button style='color:white;background:green;position:relative; width:65px;height:33px;font-size:14px;margin-top:0px' bindtap='toServerItem'>预约</button>
+             <button style='color:white;background:green;position:relative; width:65px;height:33px;font-size:14px;margin-top:0px' bindtap='toServerItem' id="{{barberId}}">预约</button>
              <!-- </navigator> -->
          </view>   
       </view>

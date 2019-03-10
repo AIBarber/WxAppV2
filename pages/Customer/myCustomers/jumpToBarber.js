@@ -26,7 +26,6 @@ Page({
   },
   
   formSubmit:function(e){
-    
     var that=this;
    wx.navigateTo({
      url: 'toBarberSuccess',
@@ -35,7 +34,6 @@ Page({
       telNumber: e.detail.value.telNumber,
       verificationCode:e.detail.value.verificationCode
     });
-
     var photoPaths=[this.data.headPhotoBgC, this.data.idCardFront, this.data.idCardBehind];
     var that = this;
     var commonParams = {
@@ -49,38 +47,61 @@ Page({
       "version": "2.0"
     };
     var bizContent = {
-      'customerId': 1
+      'customerId': 1,
+      'telNumber':that.data.telNumber,
+      'verificationCode':that.data.verificationCode
     }
     var bizContentName = { "bizContent": bizContent };
     var body = util.mergeJson(commonParams, bizContentName);
-    wx.uploadFile({
-      url: api.GetFaceInfo,
-      header: {
-        "Content-Type": "multipart/form-data"
-      },
-      filePath: photoPaths[i],
-      name: 'faceImgFile',//这里根据自己的实际情况改
-      formData: { body: JSON.stringify(body) },//这里是上传图片时一起上传的数据
-      success: (resp) => {
-        success++;
-        console.log(resp)
-        console.log(i);
-      },
-      fail: (res) => {
-        fail++;//图片上传失败，图片上传失败的变量+1
-      },
-      complete: () => {
-        i++;//这个图片执行完上传后，开始上传下一张
-        console.log("complete:进行"+i+"次--成功："+success+"次,失败"+fail+"次");
-        if (success==photoPaths.length) {     
-          console.log('执行完毕');
-          console.log('成功：' + success + " 失败：" + fail);
-        } else {
-          console.log('进行几次' + i + "次");
-          this.formSubmit();
-        }
-      }
-    });
+    // var tempFilePaths = res.tempFilePaths
+    for (var i = 0; i < photoPaths.length; i++) {
+                          wx.uploadFile({
+                            url: api.GetFaceInfo,
+                            header: {
+                              "Content-Type": "multipart/form-data"
+                            },
+                            filePath: photoPaths[i],
+                            name: 'faceImgFile',
+                            formData: { body: JSON.stringify(body) },
+                                success: function (res) {
+                                      var data = JSON.parse(res.data);
+                                      console.log("图片：" + data.data);
+                                      return typeof cb == "function" && cb(data, rootDocment)
+                                },
+                            fail: (res) => {
+                               console.log("UploadFile,fail...");
+                            },
+                          });
+                    }
+  
+    // wx.uploadFile({
+    //   url: api.GetFaceInfo,
+    //   header: {
+    //     "Content-Type": "multipart/form-data"
+    //   },
+    //   filePath: photoPaths[i],
+    //   name: 'faceImgFile',//这里根据自己的实际情况改
+    //   formData: { body: JSON.stringify(body) },//这里是上传图片时一起上传的数据
+    //   success: (resp) => {
+    //     success++;
+    //     console.log(resp)
+    //     console.log(i);
+    //   },
+    //   fail: (res) => {
+    //     fail++;//图片上传失败，图片上传失败的变量+1
+    //   },
+    //   complete: () => {
+    //     i++;//这个图片执行完上传后，开始上传下一张
+    //     console.log("complete:进行"+i+"次--成功："+success+"次,失败"+fail+"次");
+    //     if (success==photoPaths.length) {     
+    //       console.log('执行完毕');
+    //       console.log('成功：' + success + " 失败：" + fail);
+    //     } else {
+    //       console.log('进行几次' + i + "次");
+    //       this.formSubmit();
+    //     }
+    //   }
+    // });
   
   },
 

@@ -13,7 +13,7 @@ Page({
     flag:0,
     currentTab:'0',
     checked:false,
-    postion:[],
+    postion:null,
     clickRadio:'',
     noLimitTime:'',
     adjustTime:0,
@@ -28,6 +28,7 @@ Page({
     barberName:'',
     re:false,
     shopAddress:'',
+    returnStatus:'',
     // shopList: [{ name: "店一", address: "北京", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.345, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }]
     shopList:""
   },
@@ -44,17 +45,17 @@ Page({
         barberId: "1"
       },
       'POST').then(res => {
-        console.log('barberList:: ' + res);
+        var resJson=JSON.stringify(res.data.bizContent);
+        console.log('resJson:: ' + resJson);
         that.setData({
-          postion: res.data.bizContent.postions
+          postion: resJson.positions
         });
-
-        console.log("this.data" + this.data.postion);
+        console.log("this.postion::" + that.data.postion);
         // console.log(that.data);
         util.stopRefreshing;
         util.waitUpdate;
       }).catch((err) => {
-        console.log('customerFaceInfo err :' + err);
+        console.log(' err :' + err);
         // fail
         util.stopRefreshing;
         // wx.showToast({
@@ -74,24 +75,7 @@ Page({
       postion2: id
     })
     if (page.data.currentTab == id) {
-      for(var i=0;i<pos.length;i++){
-        if(id==pos[i]){
-     
-        }
-      }
       console.log("重复");
-      // if (page.data.re == false) {
-      //   page.setData({
-      //     flag1: 11,
-      //     re: true
-      //   })
-      // } else {
-      //   page.setData({
-      //     flag1: 1,
-      //     re: false
-      //   })
-      // }
-      // return false;
     } 
     else {
       for(var i=0;i<pos.length;i++){
@@ -109,8 +93,7 @@ Page({
                 break;
               case '3':
                 page.setData({
-                  flag3: 3,
-               
+                  flag3: 3,    
                 })
                 break;
               case '4':
@@ -204,14 +187,77 @@ Page({
       console.log("chooseShop:" + that.data.adjustStore + ",f:" + that.data.checked);
     }
   },
-
   toServerInfo:function(){
-  
+    var that = this;
+    var bizContent = {
+      "barberId": that.data.barberId,
+      "customerId": that.data.customerId,
+      "orderRelaton": {
+        "noLimitTime": that.data.noLimitTime,
+        "adjustTime": that.data.adjustTime,
+        "positions": that.data.positions,
+    "noLimitStore": that.data.noLimitStore,
+        "adjustStore": that.data.adjustStore,
+        "storeIds": that.data.storeId
+  },
+  "amount": that.data.allMoney,
+  "barberServiceList": [
+    // {
+    //   "id": 1,
+    //   "service": "haircut",
+    //   "onlinePrice": 1500,
+    //   "storePrice": 3000,
+    //   "barberServiceServiceList": [
+    //   ]
+    // },
+    // {
+    //   "id": 2,
+    //   "barberId": 1,
+    //   "service": "hairdye",
+    //   "barberServiceServiceList": [
+    //     {
+    //       "id": 1,
+    //       "barberServiceId": 2,
+    //       "service": "简单染",
+    //       "onlinePrice": 5800,
+    //       "storePrice": 6800
+    //     }
+    //   ]
+    // }
+  ]
+};
+    
+    util.weshowRequest(
+      api.OrderInsert,
+      bizContent,
+      'POST').then(res => {
+        var a = JSON.stringify(res.data);
+        // var a=JSON.parse(res.data);
+        console.log('barberList:: ' + a);
+        var barberinfo = JSON.stringify(res.data.bizContent.status);
+        console.log("this.data" + res.data.bizContent.status);
+        that.setData({
+          returnStatus: res.data.bizContent.status,
+
+        });
+        console.log("-----------returnstatus:------------:"+that.data.returnStatus);
+        util.stopRefreshing;
+        util.waitUpdate;
+      }).catch((err) => {
+        console.log('barberlist err :' + err);
+        // fail
+        util.stopRefreshing;
+        // wx.showToast({
+        //   title: '正在获取数据…',
+        //   icon: 'loading',
+        //   duration: 3000,
+        //   mask: true
+        // });
+      });
     wx.navigateTo({
       url: 'FinishInfo?barberId=' + this.data.barberId + "&clickServer=" + this.data.clickServer + "&noLimitTime=" + this.data.noLimitTime + "&adjustTime=" + this.data.adjustTime + "&noLimitStore=" + this.data.noLimitStore + "&adjustStore=" + this.data.adjustStore + "&postion=" + this.data.postion2 + "&storeId=" + this.data.storeId + "&allMoney=" + this.data.allMoney + "&barberName=" + this.data.barberName + "&storeAddress=" + this.data.shopAddress
     })
   },
-
   chooseStore:function(e){
     var that = this;
       that.setData({
@@ -239,7 +285,6 @@ Page({
       allMoney:options.allMoney,
       barberName:options.barberName
     })
-    // this.barberSubscribeManage();
     this.getStoreList();
     var that=this;
     var pos = that.data.postion;
@@ -297,7 +342,6 @@ Page({
   },
   getStoreList: function () {
     console.log('getStoreList ' + api.StoreList);
-    //wx.showNavigationBarLoading();
     var that = this;
     var bizContent = {
       'start': "1",
@@ -336,23 +380,6 @@ Page({
       });
   },
 
-  // barberSubscribeManage: function () {
-  //   var that = this;
-  //   var bizContent = {
-  //     "barberId": that.data.barberId
-  //   }
-  //   util.weshowRequest(
-  //     api.BarberSubscribeManage,
-  //     bizContent,
-  //     'POST').then(res => {
-  //       console.log("shopList+res");
-  //       console.log(res);
-  //       that.setData({ postion: res.data.bizContent.list });
-  //       console.log(that.data);
-  //     }).catch((err) => {
-  //       console.log('shopList  err' + err);
-  //     });
-  // },
   
   /**
    * 生命周期函数--监听页面初次渲染完成

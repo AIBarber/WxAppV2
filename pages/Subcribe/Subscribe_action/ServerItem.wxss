@@ -40,6 +40,7 @@
   margin-top: 70px;
   background-color: rgb(223, 213, 213);
   height: 500rpx;
+  font-size: 18px;
 }
 .explain{
   color:#0cc4b1;
@@ -151,8 +152,10 @@ height: 120rpx;
   margin-top: 0rpx;
 }
 .toChoShop{
-  margin-top:100rpx;
-  margin-left: 500rpx;
-  width: 240rpx;
+ margin-top: 50rpx;
+  width: 650rpx;
+  border-radius: 250rpx;
+  background-color: #0cc4b1;
+  color: white;
  
 }
