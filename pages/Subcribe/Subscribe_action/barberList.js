@@ -9,38 +9,49 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //  barberList:'',
-    barberList: [{barberId:"123123", name: "张三", level: "高级理发师", years: 2, mobile: 123123123123, status: 2}]
+  barberList:[],
+    // barberList: [{barberId:"123123", name: "张三", level: "高级理发师", years: 2, mobile: 123123123123, status: 2}]
+  barberName:''
      
   },
-  getBarberList: function () {
-    console.log('getStoreList ' + api.StoreList);
+  toServerItem:function(){
+    var that=this;
+     wx.navigateTo({
+       url: 'ServerItem?barberId='+this.data.barberId+'&barberName='+that.data.barberName
+     })
+  },
+  getBarberInfo: function () {
+    // console.log('getStoreList ' + api.StoreList);
     //wx.showNavigationBarLoading();
     var that = this;
     var bizContent = {
-      'start': "1",
-      'limit': "3",
-      // 'category': "1",
-      // 'orderType': "1"
-      'type':1,
-        'orderType':1
+      "barberId": "1"
     }
     util.weshowRequest(
-      api.GetBarberList,
+      api.Getbarberinfo,
       bizContent,
       'POST').then(res => {
-        //if (res.data) {}
-        console.log("barberList+res");
-        console.log(res);
-        // success
-        that.setData({ barberList: res.data.bizContent.list });
-        console.log("that.data:" + res.data.bizContent);
-        // that.stopRefreshing();
-        //that.waitUpdate();
+          var a=JSON.stringify(res.data);
+          // var a=JSON.parse(res.data);
+        console.log('barberList:: '+a);
+        var barberinfo = JSON.stringify(res.data.bizContent.barberinfo);
+        console.log("this.data" + that.data.barberList.name);
+        that.setData({
+          barberList: res.data.bizContent.barberinfo,
+         
+        });
+        that.setData({
+          barberName: that.data.barberList.name
+        })
+     
+        
+        // console.log(that.data);
+        util.stopRefreshing;
+        util.waitUpdate;
       }).catch((err) => {
-        console.log('shopList  err' + err);
+        console.log('barberlist err :' + err);
         // fail
-        // that.stopRefreshing();
+        util.stopRefreshing;
         // wx.showToast({
         //   title: '正在获取数据…',
         //   icon: 'loading',
@@ -53,7 +64,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.getBarberList();
+
+    this.getBarberInfo();
   },
 
   /**

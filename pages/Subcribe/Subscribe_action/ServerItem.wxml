@@ -17,10 +17,10 @@
      <checkbox-group class="checkboxGroup" bindchange="checkboxChange" >
       <label class="checkboxLab">
       <checkbox class="checkbox1"  id="{{itemOne.money}}" value='{{itemOne.id}}' >
-      洗剪吹
+     
       </checkbox> 
-       <view  class="moneyYuan" style='margin-left:166rpx;'> ${{itemOne.moneyYuan}}</view>
-       <view class="money" >${{itemOne.money}}</view>  
+       <view  class="moneyYuan" style='margin-left:70rpx;'> ${{itemOne.storePrice}}</view>
+       <view class="money" >${{itemOne.onlinePrice}}</view>  
       </label>
  
  
@@ -29,22 +29,44 @@
       染发
       </view>
       <label class="checkboxLab" style='{{ranfa}}' wx:for="{{item}}" wx:key="{{item}}" >
-      <checkbox class="checkbox" value='{{item.id}}' id='{{item.id}}'>{{item.value}}
+      <checkbox class="checkbox" value='{{item.id}}' id='{{item.id}}'>{{item.service}}
       </checkbox> 
-      <view  class="moneyYuan"> ${{item.moneyYuan}}</view>
-       <view class="money" >${{item.money}}</view>
+      <view  class="moneyYuan"> ${{item.storePrice}}</view>
+       <view class="money" >${{item.onlinePrice}}</view>
       </label>
        <view class="ranfa" class="checkboxLab1" bindtap='tangfa' >
       烫发
       </view>
       <label class="checkboxLab" style='{{tangfa}}' wx:for="{{item2}}"  wx:key="{{item2}}">
       <checkbox class="checkbox" value='{{item.id}}' >
-       {{item.value}}
+       {{item.service}}
       </checkbox> 
-      <view class="moneyYuan"> ${{item.moneyYuan}}</view>
-       <view class="money">${{item.money}}</view>
+      <view class="moneyYuan"> ${{item.storePrice}}</view>
+       <view class="money">${{item.onlinePrice}}</view>
       
       </label>
+         <view class="ranfa" class="checkboxLab1" bindtap='diantangfa' >
+      护理
+      </view>
+      <label class="checkboxLab" style='{{diantangfa}}' wx:for="{{item3}}" wx:key="{{item3}}">
+      <checkbox class="checkbox" value='{{item.id}}' >
+       {{item.service}}
+      </checkbox> 
+      <view class="moneyYuan"> ${{item.storePrice}}</view>
+       <view class="money">${{item.onlinePrice}}</view>
+      
+      </label>
+             <!-- <view class="ranfa" class="checkboxLab1" bindtap='huli' >
+      护理
+      </view>
+      <label class="checkboxLab" style='{{huli}}' wx:for="{{item4}}"  wx:key="{{item4}}">
+      <checkbox class="checkbox" value='{{item.id}}' >
+       {{item.service}}
+      </checkbox> 
+      <view class="moneyYuan"> ${{item.storePrice}}</view>
+       <view class="money">${{item.onlinePrice}}</view>
+      
+      </label> -->
      </checkbox-group>
         
    </view>

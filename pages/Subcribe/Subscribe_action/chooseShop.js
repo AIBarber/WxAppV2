@@ -13,7 +13,7 @@ Page({
     flag:0,
     currentTab:'0',
     checked:false,
-    postion:[1,2,3,5,7],
+    postion:[],
     clickRadio:'',
     noLimitTime:'',
     adjustTime:0,
@@ -25,14 +25,54 @@ Page({
     allMoney:'',
     chooseStore:'',
     postion2:'',
+    barberName:'',
     re:false,
+    shopAddress:'',
     // shopList: [{ name: "店一", address: "北京", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.345, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }]
     shopList:""
+  },
+  getPostion: function () {
+    // console.log('getStoreList ' + api.StoreList);
+    //wx.showNavigationBarLoading();
+    var that = this;
+    var bizContent = {
+      "barberId": "1"
+    }
+    util.weshowRequest(
+      api.BarberSubscribeManage,
+      {
+        barberId: "1"
+      },
+      'POST').then(res => {
+        console.log('barberList:: ' + res);
+        that.setData({
+          postion: res.data.bizContent.postions
+        });
+
+        console.log("this.data" + this.data.postion);
+        // console.log(that.data);
+        util.stopRefreshing;
+        util.waitUpdate;
+      }).catch((err) => {
+        console.log('customerFaceInfo err :' + err);
+        // fail
+        util.stopRefreshing;
+        // wx.showToast({
+        //   title: '正在获取数据…',
+        //   icon: 'loading',
+        //   duration: 3000,
+        //   mask: true
+        // });
+      });
   },
   choiceTime:function(e){
     var page = this;
     var pos = page.data.postion;
     var id = e.target.id;
+    page.setData({
+      currentTab: id,
+      postion2: id
+    })
     if (page.data.currentTab == id) {
       for(var i=0;i<pos.length;i++){
         if(id==pos[i]){
@@ -104,16 +144,13 @@ Page({
                 })
                 break;
             }
-            page.setData({
-              currentTab: id,
-              postion2: id
-            })
+        
           }
       }
    
     }
   
-    console.log("postion="+page.data.postion2);
+    console.log("postion2="+page.data.postion2);
     // page.setData({ flag: id });
   },
   returnToServer:function(){
@@ -171,7 +208,7 @@ Page({
   toServerInfo:function(){
   
     wx.navigateTo({
-      url: 'FinishInfo?barberId=' + this.data.barberId + "&clickServer=" + this.data.clickServer + "&noLimitTime=" + this.data.noLimitTime + "&adjustTime=" + this.data.adjustTime + "&noLimitStore=" + this.data.noLimitStore + "&adjustStore=" + this.data.adjustStore + "&postion=" + this.data.postion + "&storeId=" + this.data.storeId+"&allMoney="+this.data.allMoney
+      url: 'FinishInfo?barberId=' + this.data.barberId + "&clickServer=" + this.data.clickServer + "&noLimitTime=" + this.data.noLimitTime + "&adjustTime=" + this.data.adjustTime + "&noLimitStore=" + this.data.noLimitStore + "&adjustStore=" + this.data.adjustStore + "&postion=" + this.data.postion2 + "&storeId=" + this.data.storeId + "&allMoney=" + this.data.allMoney + "&barberName=" + this.data.barberName + "&storeAddress=" + this.data.shopAddress
     })
   },
 
@@ -182,6 +219,12 @@ Page({
         checked: true,
       
       })
+      var storeIdbyInt=parseInt(that.data.storeId)
+      var shopAddress = this.data.shopList[storeIdbyInt].address;
+      console.log("shopaddress" + shopAddress);
+      that.setData({
+        shopAddress: shopAddress
+      })
    console.log("chooseStore:"+that.data.storeId)
   },
 
@@ -189,10 +232,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getPostion();
     this.setData({
       barberId: options.barberId,
       clickServer:options.clickServer,
-      allMoney:options.allMoney
+      allMoney:options.allMoney,
+      barberName:options.barberName
     })
     // this.barberSubscribeManage();
     this.getStoreList();
@@ -270,8 +315,12 @@ Page({
         console.log("shopList+res");
         console.log(res);
         // success
-        that.setData({shopList: res.data.bizContent.list});
-        console.log(that.data);
+        that.setData({
+          shopList: res.data.bizContent.list
+          });
+        console.log("this shop:"+this.data.shopList);
+       
+       
         // that.stopRefreshing();
         //that.waitUpdate();
       }).catch((err) => {
@@ -287,23 +336,23 @@ Page({
       });
   },
 
-  barberSubscribeManage: function () {
-    var that = this;
-    var bizContent = {
-      "barberId": that.data.barberId
-    }
-    util.weshowRequest(
-      api.BarberSubscribeManage,
-      bizContent,
-      'POST').then(res => {
-        console.log("shopList+res");
-        console.log(res);
-        that.setData({ postion: res.data.bizContent.list });
-        console.log(that.data);
-      }).catch((err) => {
-        console.log('shopList  err' + err);
-      });
-  },
+  // barberSubscribeManage: function () {
+  //   var that = this;
+  //   var bizContent = {
+  //     "barberId": that.data.barberId
+  //   }
+  //   util.weshowRequest(
+  //     api.BarberSubscribeManage,
+  //     bizContent,
+  //     'POST').then(res => {
+  //       console.log("shopList+res");
+  //       console.log(res);
+  //       that.setData({ postion: res.data.bizContent.list });
+  //       console.log(that.data);
+  //     }).catch((err) => {
+  //       console.log('shopList  err' + err);
+  //     });
+  // },
   
   /**
    * 生命周期函数--监听页面初次渲染完成

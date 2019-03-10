@@ -140,7 +140,7 @@ height: 120rpx;
 .moneyYuan{
     margin: 0rpx;
        margin-top: 35rpx;
-  margin-left: 220rpx;
+  margin-left: 120rpx;
   font-size: 20px;
   text-decoration:line-through;
 

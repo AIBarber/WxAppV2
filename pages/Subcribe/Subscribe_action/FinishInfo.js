@@ -16,13 +16,16 @@ Page({
     barberId: '',
     clickServer: '',
     address:'',
-    allMoney:null
+    allMoney:null,
+    barberName:'',
+    shopAddress:''
   },
   returnToChooseShop:function(){
       wx.navigateBack({
         
       })
   },
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -37,7 +40,9 @@ Page({
         adjustTime:options.adjustTime,
         adjustStore:options.adjustStore,
         clickServer:options.clickServer,
-        allMoney:options.allMoney
+        allMoney:options.allMoney,
+        barberName:options.barberName,
+        shopAddress:options.storeAddress
       })
        console.log(options);
   },

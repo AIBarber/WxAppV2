@@ -9,9 +9,9 @@
 <view class='main'>
 <view class='mainText'>
 <text class="textOut">时间：<text class="textIn">{{time}}</text></text>
-<text class="textOut">理发师：<text class="textIn">{{}}</text></text>
-<text class="textOut">店铺地址：<text class="textIn">{{}}</text></text>
-<text class="textOut">已成功支付：<text class="textIn">{{}}</text>元</text>
+<text class="textOut">理发师：<text class="textIn">{{barberName}}</text></text>
+<text class="textOut">店铺地址：<text class="textIn">{{shopAddress}}</text></text>
+<text class="textOut">已成功支付：<text class="textIn">{{allMoney}}</text>元</text>
 <text class="textOut">预约码：<text class="textIn">{{}}</text></text>
 </view>
  <image class="img" src='../../../icon/Customer/touxiang.png' mode="scaleToFill"></image>
