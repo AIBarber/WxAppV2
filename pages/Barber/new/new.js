@@ -1,16 +1,10 @@
 // pages/new/new.js
 
-<<<<<<< HEAD
 var app = getApp();
 var fileData = require('../../../utils/data.js');
 var util = require('../../../utils/util.js');
 var api = require('../../../config/api.js');
 var model = require('../../../utils/model.js');
-=======
-var app = getApp()
-var fileData = require('../../../utils/data.js')
-var util = require('../../../utils/util')
->>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
 
 Page({
 
@@ -24,10 +18,7 @@ Page({
     casArray1: ['智能排序', '离我最近', '人气最高', '面积最大'],
     banner_url: fileData.getBannerData(),
     indicatorDots: true,
-<<<<<<< HEAD
     barberDetails: [],
-=======
->>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
     vertical: false,
     autoplay: true,
     interval: 3000,
@@ -60,11 +51,7 @@ Page({
       list: that.data.navSectionItems,
       orderlist: that.data.orderItems
     });
-<<<<<<< HEAD
     this.getBarberInfo();
-=======
-
->>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
     wx.getSystemInfo({
 
       success: function (res) {
@@ -169,7 +156,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-<<<<<<< HEAD
   },
   getBarberInfo: function () {
     console.log('getBarberInfo ' + api.BarberList);
@@ -210,7 +196,3 @@ Page({
       });
   }
 }) 
-=======
-  }
-})
->>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2

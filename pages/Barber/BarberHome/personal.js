@@ -15,13 +15,8 @@ Page({
     winHeight: 0
   },
 
-<<<<<<< HEAD
   onLoad: function () {
     var that = this;
-=======
-	onLoad: function () {
-		var that = this;
->>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
     that.setData({
       person: that.data.personsItems
     });
@@ -34,7 +29,6 @@ Page({
           winHeight: res.windowHeight
         });
       }
-<<<<<<< HEAD
 
     });
 
@@ -45,18 +39,6 @@ Page({
       compid = event.currentTarget.dataset.compid,
       pageInstance = this.getCurrentPage();
 
-=======
-
-    });
-
-	},
-
-  tapFranchiseeLocation: function (event) {
-    var _this = this,
-      compid = event.currentTarget.dataset.compid,
-      pageInstance = this.getCurrentPage();
-
->>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
     function success(res) {
       var name = res.name,
         lat = res.latitude,
@@ -100,17 +82,10 @@ Page({
       cancel: cancel
     });
   },
-  
-  getBarberInfo: function() {
-    console.log('getBarberInfo ' + api.BarberList);
-    //wx.showNavigationBarLoading();
 
-<<<<<<< HEAD
   getBarberInfo: function () {
     console.log('getBarberInfo ' + api.BarberList);
     //wx.showNavigationBarLoading();
-=======
->>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
     var that = this;
     util.weshowRequest(
       api.BarberList,
@@ -127,15 +102,9 @@ Page({
         console.log('BarberList ');
         console.log(res.data);
         // success
-<<<<<<< HEAD
         that.setData({ barberDetails: res.data.bizContent.list });
         console.log('BarberList ');
         console.log(that.data.barberDetails);
-=======
-        that.setData({ barberDetails: res.data.bizContent.list});
-        console.log('BarberList ');
-        console.log(barberDetails);
->>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
         console.log('BarberList ');
         //that.stopRefreshing();
         //that.waitUpdate();

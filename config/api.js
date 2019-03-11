@@ -1,5 +1,5 @@
 //定义api接口地址
-var ApiRootTestUrl = 'http://47.93.241.248/api/';
+//var ApiRootUrl = 'http://47.93.241.248/api/';
 //var ApiRootUrl = 'http://www.imcou.com/api/'
 //var ApiRootUrl = 'https://www.imcou.com/api/'
 var ApiRootUrl = 'http://47.94.144.77:9090/weshow/'
@@ -22,16 +22,15 @@ module.exports = {
   WxSendUserMsg: WxSendUserMsg,
   WsUrl: WsRootUrl,
   WsOpen: WsRootUrl + 'api/quizuser/open',
-  Getcustomerinfo: ApiRootUrl + 'customer/getcustomerinfo',
-  GetFaceInfo: ApiRootUrl + 'customer/getfaceinfo',
-  DecryptShare: ApiRootTestUrl + 'auth/decryptshare',
-  ArgsDigest: ApiRootTestUrl + 'auth/argsig',
-  UploadSig: ApiRootTestUrl + 'auth/uploadsig',
-  GetWxSession: ApiRootTestUrl + 'auth/getwxsession',
+
+  DecryptShare: ApiRootUrl + 'auth/decryptshare',
+  ArgsDigest: ApiRootUrl + 'auth/argsig',
+  UploadSig: ApiRootUrl + 'auth/uploadsig',
+  GetWxSession: ApiRootUrl + 'auth/getwxsession',
   GetWxPayUnified: ApiRootUrl + 'auth/getwxpayunified',
-  UserList: ApiRootTestUrl + 'user/index',
-  UserInfo: ApiRootTestUrl + 'user/info',
-  UserAdd: ApiRootTestUrl + 'user/add',
+  UserList: ApiRootUrl + 'user/index',
+  UserInfo: ApiRootUrl + 'user/info',
+  UserAdd: ApiRootUrl + 'user/add',
   UserRegister: ApiRootUrl + 'barber/add',
   UserShare: ApiRootUrl + 'customer/share',
   StoreList: ApiRootUrl + 'store/list',
@@ -40,22 +39,13 @@ module.exports = {
   StoreCustomerList: ApiRootUrl + 'store/customerlist',
   StoreCustomerDetail: ApiRootUrl + 'customer/detailbyid',
   StoreBarberDetail: ApiRootUrl + 'barber/detailbyid',
-<<<<<<< HEAD
   BarberList: ApiRootUrl + 'barber/list',
-=======
-// <<<<<<< HEAD
-  GetBarberList: ApiRootUrl + 'barber/list',
-// =======
-  BarberList: ApiRootUrl + 'barber/list',
-// >>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
->>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
   BarberSubscribeList: ApiRootUrl + 'barber/subscribelist',
   BarberSubscribe: ApiRootUrl + 'barber/subscribe',
   BarberSubscribeTimes: ApiRootUrl + 'barber/subscribetimes',
   BarberSubscribeManage: ApiRootUrl + 'barber/subscribemanage',
   BarberOrderList: ApiRootUrl + 'barber/orderlist',
   CustomerOrderList: ApiRootUrl + 'customer/orderlist',
-  GetOrderDetial: ApiRootUrl + 'order/getorderdetail',
   OrderDetail: ApiRootUrl + 'order/detailbyid',
   GetFaceId: ApiRootUrl + 'bdcloud/getfaceid',
   FaceRegister: ApiRootUrl + 'bdcloud/faceregister',

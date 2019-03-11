@@ -20,7 +20,6 @@
   </view>
 
    <view class="nav_section">
-<<<<<<< HEAD
     <view wx:if="{{shoplist}}">
         <block wx:for="{{shoplist}}" wx:key="item.storeId">
             <view class="nav_section_items" bindtap="navigateDetail" data-aid="{{item.storeId}}">
@@ -28,15 +27,6 @@
                 <view class="section_image" >
                 <block wx:if="{{item.headImage}}">
                     <image src="{{item.headImage}}" mode="aspectFill"></image>
-=======
-    <view wx:if="{{list}}">
-        <block wx:for="{{list}}" wx:key="item.id">
-            <view class="nav_section_items" bindtap="navigateDetail" data-aid="{{item.id}}">
-                <!--image-->
-                <view class="section_image" >
-                <block wx:if="{{item.avatar}}">
-                    <image src="{{item.avatar}}" mode="aspectFill"></image>
->>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
                 </block>
                 <block wx:else>
                     <image src="../../../icon/default_pic.png" mode="aspectFill"></image>
@@ -45,7 +35,6 @@
                 <!--content-->
                 <view class="section_cont" >
                     <view class="section_cont_sub">
-<<<<<<< HEAD
                         <text style="font-size: 36rpx">{{item.name}}</text>
                     </view>
                     <view class="section_cont_price" style="color:#999999;font-size: 26rpx">在店人数：{{item.customerNum}}</view>
@@ -56,18 +45,6 @@
                 <!--book-->
                 <view class="section_book" >
                         <view><text>1656米</text></view>
-=======
-                        <text style="font-size: 36rpx">{{item.company}}</text>
-                    </view>
-                    <view class="section_cont_price" style="color:#999999;font-size: 26rpx">{{item.nickname}}</view>
-                    <view>
-                    <text class="section_cont_price" style="font-size: 26rpx">  {{item.price}}</text></view>
-                    <view>{{item.message}}</view>
-                </view>
-                <!--book-->
-                <view class="section_book" >
-                        <view>{{item.distance}}</view>
->>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
                 </view>
             </view>
             
