@@ -7,18 +7,18 @@ Page({
 
   /**
    * 页面的初始数据
-   */ 
+   */
   data: {
     // customerFaceInfo: {image:"", name: "慵懒的猫", frequency: 30, score:230},
-    customerFaceInfo:'',
+    customerFaceInfo: '',
     // headPhoto: {face: "70", age: 25, sex: '男', color: "yellow", type: "方形", glass: "have"},
-    headPhoto:'',
-      reservation: null,
-      attribute: null,
-      myHairSrc:null,
-    statusBarHeight: app.globalData.statusBarHeight
+    headPhoto: '',
+    reservation: null,
+    attribute: null,
+    myHairSrc: null,
+    // statusBarHeight: app.globalData.statusBarHeight
   },
-  jumpToBarber:function(){
+  jumpToBarber: function () {
     wx.navigateTo({
       url: 'jumpToBarber',
     })
@@ -61,37 +61,31 @@ Page({
   onLoad: function (options) {
     this.getPersonalData();
   },
-  changeHeadPhoto:function(){
- 
-  },
- onShow:function(){
-   this.getHeadPhoto();
- },
-  getHeadPhoto:function(){
-    // console.log("进入onShow")
-       var that=this;
-    if (wx.getStorageSync("personnal")==null){
-    
-    }else{
-       that.setData({
-         myHairSrc: wx.getStorageSync("personnal")
-      })
-      var bizContent = {'customerId': 1}
-     var photoPaths='';
-      photoPaths= wx.getStorageSync("personnal");
-      util.wxUploadFile(photoPaths, bizContent).then(res => {
-        //if (res.data) {}
-        var test ='"faceinfo":{"id":2,"customerId":1, "url":"http://barbertest.oss-cn-beijing.aliyuncs.com/hair/1552114830851.jpg?Expires=1867474827&OSSAccessKeyId=LTAI49csnneu5RSn&Signature=rUibMiy5OECoGEVwey3yklR4YsA%3D", "age":30, "gender":"male", "beauty":42.22, "faceShape":"round", "race":"yellow", "glasses":"common", "createdTime":"2019-03-09 07:00:28", "updateTime":"2019-03-09 07:00:28"}'
-        var content = JSON.parse(test);
-        var jsonCon=content.faceinfo;
-        console.log("biz:faceinfo::" +test);
-        // that.setData({
-        //   headPhoto: headPhotoBiz
-        // });
-       
+  changeHeadPhoto: function () {
 
-        // util.stopRefreshing;
-        // util.waitUpdate;
+  },
+  onShow: function () {
+    this.getHeadPhoto();
+  },
+  getHeadPhoto: function () {
+    // console.log("进入onShow")
+    var that = this;
+    if (wx.getStorageSync("personnal") == null) {
+
+    } else {
+      that.setData({
+        myHairSrc: wx.getStorageSync("personnal")
+      })
+      var bizContent = { 'customerId': 1 }
+      var photoPaths = '';
+      photoPaths = wx.getStorageSync("personnal");
+      util.wxUploadFile(photoPaths, bizContent).then(res => {
+        var face = res.data.bizContent;
+        var a = JSON.parse(res.data);
+        that.setData({
+          headPhoto: a.bizContent.faceinfo
+        })
+
       }).catch((err) => {
         console.log('HeadPhoto err :' + err);
         // fail
@@ -103,8 +97,8 @@ Page({
         //   mask: true
         // });
       });
-   
-      
+
+
     }
     wx.removeStorageSync("personnal");
   },
@@ -215,37 +209,37 @@ Page({
     wx.navigateBack({
     })
   },
-  goToMyShareStore:function(){
+  goToMyShareStore: function () {
     wx.navigateTo({
       url: '../../Shop/ShopList/List',
     })
   },
-  goToMyBarber:function(){
+  goToMyBarber: function () {
     wx.navigateTo({
       url: 'jumpToBarber',
     })
   },
 
-  goToCoupon:function(){
+  goToCoupon: function () {
     wx.navigateTo({
       url: '../myCoupon/coupon',
     })
   },
 
-  changeToBarber:function(){
-    if(app.globalData.userType!=1){
+  changeToBarber: function () {
+    if (app.globalData.userType != 1) {
       wx.navigateTo({
         url: '../FaceIdentity/Identity',
       })
-    }else{
+    } else {
       wx.navigateTo({
         url: '../BarBer/personal',
       })
     }
   },
 
-  goToConsumption:function(){
-  
+  goToConsumption: function () {
+
   },
   goToMyShareShop: function () {
     wx.navigateTo({
@@ -253,19 +247,19 @@ Page({
     })
   },
   uploadHairPhoto: function () {
-    var that=this;
+    var that = this;
     wx.navigateTo({
       url: '../camaraIdentity/camaraIdentity?photoName=personnal',
     })
   },
-  takePhoto:function(){
-    var that=this;
+  takePhoto: function () {
+    var that = this;
     wx.chooseImage({
-      count:9,
-      sizeType:['original','compressed'],
+      count: 9,
+      sizeType: ['original', 'compressed'],
       sourceType: ['camera'],
-      success: function(res) {
-        myHairSrc:res.tempFilePaths
+      success: function (res) {
+        myHairSrc: res.tempFilePaths
       },
     })
 
