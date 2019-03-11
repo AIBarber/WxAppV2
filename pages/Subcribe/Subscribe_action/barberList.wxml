@@ -1,0 +1,6 @@
+  <import src='../../template/barber.wxml'/>
+  <view style='width:100%;height:100%;border:1px solid black;margin-top:100rpx;'>
+  <block wx:for="{{barberList}}" wx:key="{{barberId}}">
+    <template is="barber" data="{{barberId:item.barberId,name:item.name,level:item.level,years:item.years,mobile:item.mobile,status:item.status}}"/>
+    </block>
+    </view>

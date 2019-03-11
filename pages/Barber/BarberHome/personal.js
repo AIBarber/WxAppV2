@@ -1,49 +1,111 @@
-// pages/BarBer/personal.js
+
+
 var app = getApp();
-var util = require('../../utils/util.js');
-var api = require('../../config/api.js');
-var model = require('../../utils/model.js');
-import myDialog from '../template/dialog';
+var fileData = require('../../../utils/data.js');
+var util = require('../../../utils/util.js');
+var api = require('../../../config/api.js');
+var model = require('../../../utils/model.js');
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    reservations:[],
-    orders:[],
-    barberDetails:[],
-    barberID:null
+    barberDetails: [],
+    personsItems: fileData.getpersonsData(),
+    curIndex: 0,
+    winWidth: 0,
+    winHeight: 0
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.getDataList_details();
-    this.getDataList_reservations();
-    this.getDataList_orders();
-    // getApp().editTabBar();
-  },
-
-  getDataList_details: function () {
-    console.log('getDataList ' + api.StoreDetail);
-    wx.showNavigationBarLoading();
+  onLoad: function () {
     var that = this;
+    that.setData({
+      person: that.data.personsItems
+    });
+    this.getBarberInfo();
+    wx.getSystemInfo({
 
+      success: function (res) {
+        that.setData({
+          winWidth: res.windowWidth,
+          winHeight: res.windowHeight
+        });
+      }
+
+    });
+
+  },
+
+  tapFranchiseeLocation: function (event) {
+    var _this = this,
+      compid = event.currentTarget.dataset.compid,
+      pageInstance = this.getCurrentPage();
+
+    function success(res) {
+      var name = res.name,
+        lat = res.latitude,
+        lng = res.longitude,
+        newdata = {},
+        param, requestData;
+
+      newdata[compid + '.location_address'] = name;
+      pageInstance.setData(newdata);
+
+      for (var index in pageInstance.franchiseeComps) {
+        if (pageInstance.franchiseeComps[index].param.id = compid) {
+          param = pageInstance.franchiseeComps[index].param;
+          param.latitude = lat;
+          param.longitude = lng;
+        }
+      }
+      requestData = {
+        id: compid,
+        form: 'app_shop',
+        page: 1,
+        sort_key: param.sort_key,
+        sort_direction: param.sort_direction,
+        latitude: param.latitude,
+        longitude: param.longitude,
+        idx_arr: param.idx_arr
+      }
+      _this.refreshFranchiseeList(compid, requestData, pageInstance);
+    }
+
+    function cancel() {
+      console.log('cancel');
+    }
+
+    function fail() {
+      console.log('fail');
+    }
+    this.chooseLocation({
+      success: success,
+      fail: fail,
+      cancel: cancel
+    });
+  },
+
+  getBarberInfo: function () {
+    console.log('getBarberInfo ' + api.BarberList);
+    //wx.showNavigationBarLoading();
+    var that = this;
     util.weshowRequest(
-      api.StoreDetail,
+      api.BarberList,
       {
+        "longitude": "143.45",
+        "latitude": "123.32",
+        "orderType": "1",
+        "type": "1",
         'size': 10,
-        'storeid': that.data.barberID
+        //'barberid': app.globalData.userid
       },
       'POST').then(res => {
         //if (res.data) {}
-        console.log('getDataList ');
-        console.log(res.data.data);
+        console.log('BarberList ');
+        console.log(res.data);
         // success
-        that.setData({ barberDetails: res.data.data });
-        // console.log(that.data);
+        that.setData({ barberDetails: res.data.bizContent.list });
+        console.log('BarberList ');
+        console.log(that.data.barberDetails);
+        console.log('BarberList ');
         //that.stopRefreshing();
         //that.waitUpdate();
       }).catch((err) => {
@@ -56,86 +118,7 @@ Page({
           duration: 3000,
           mask: true
         });
-        that.setData({ barberDetails: (wx.getStorageSync('barberDetails') || []) });
+        //that.setData({ barberDetails: (wx.getStorageSync('barberDetails') || []) });
       });
-  },
-
-  getDataList_reservations: function () {
-    console.log('getDataList ' + api.StoreDetail);
-    wx.showNavigationBarLoading();
-    var that = this;
-
-    util.weshowRequest(
-      api.StoreDetail,
-      {
-        'size': 10,
-        'storeid': that.data.barberID
-      },
-      'POST').then(res => {
-        //if (res.data) {}
-        console.log('getDataList ');
-        console.log(res.data.data);
-        // success
-        that.setData({ reservations: res.data.data });
-        // console.log(that.data);
-        //that.stopRefreshing();
-        //that.waitUpdate();
-      }).catch((err) => {
-        console.log('getDataList err' + err);
-        // fail
-        //that.stopRefreshing();
-        wx.showToast({
-          title: '正在获取数据…',
-          icon: 'loading',
-          duration: 3000,
-          mask: true
-        });
-        that.setData({ reservations: (wx.getStorageSync('reservations') || []) });
-      });
-  },
-
-  getDataList_orders: function () {
-    console.log('getDataList ' + api.StoreDetail);
-    wx.showNavigationBarLoading();
-    var that = this;
-
-    util.weshowRequest(
-      api.StoreDetail,
-      {
-        'size': 10,
-        'storeid': that.data.barberID
-      },
-      'POST').then(res => {
-        //if (res.data) {}
-        console.log('getDataList ');
-        console.log(res.data.data);
-        // success
-        that.setData({ orders: res.data.data });
-        // console.log(that.data);
-        //that.stopRefreshing();
-        //that.waitUpdate();
-      }).catch((err) => {
-        console.log('getDataList err' + err);
-        // fail
-        //that.stopRefreshing();
-        wx.showToast({
-          title: '正在获取数据…',
-          icon: 'loading',
-          duration: 3000,
-          mask: true
-        });
-        that.setData({ orders: (wx.getStorageSync('orders') || []) });
-      });
-  },
-
-  backToprevPage: function () {
-    wx.navigateBack({
-    })
-  },
-
-  changeToCustomer:function(){
-    wx.navigateTo({
-      url: '../myReservation/personal',
-    })
   }
-})
+}) 

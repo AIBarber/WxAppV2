@@ -1,0 +1,29 @@
+<!--pages/Barber/start/start.wxml-->
+<view wx:if="{{lifa[curIndex]}}">
+         <block wx:for="{{lifa[curIndex]}}" wx:key="item.id">
+      <view class="summary" bindtap="navigate" >
+	<!-- <view class="avatar-container"> -->
+		<image src="{{item.coverpath}}" class="avatar" />
+	<!-- </view> -->
+  <view class ="nick">
+    <view class="nickname">状态：<text class="nickname">{{item.state}}</text></view>
+    <view class="nickname">理发次数：<text class="nickname">{{item.num}}次</text></view>
+    <view class="nickname">洗发次数：<text class="nickname">{{item.number}}次</text></view>
+    <view class="nickname">上次发型：<text class="nickname">{{item.haircut}}</text></view>
+    <view class="nickname">进店时长：<text class="nickname">{{item.time}}分钟</text></view>
+    </view>
+</view>
+<!--<view class='nicc'>
+<button>接受</button>
+<button>拒绝</button>
+</view>-->
+<view class="ar_line"></view>
+</block>
+</view>
+
+<view>
+    <button class="btn" bindtap="navigatea">开始理发</button>
+  </view>
+  <view>
+    <button class="btn1" bindtap="navigatea">结束理发</button>
+  </view>
