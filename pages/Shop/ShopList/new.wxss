@@ -113,10 +113,17 @@
     color:#999999;
 }
 .nav_section_items .section_book{
+<<<<<<< HEAD
     height:150rpx;
     font-size:26rpx;
     background-size:17rpx 28rpx;
     line-height: 150rpx;
+=======
+    height:80rpx;
+    font-size:26rpx;
+    background-size:17rpx 28rpx;
+    line-height: 80rpx;
+>>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
     color:#d24a58;
     text-align: left;
     margin-top:35rpx;

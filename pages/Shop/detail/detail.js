@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var app = getApp();
 var fileData = require('../../../utils/data.js');
 var util = require('../../../utils/util.js');
@@ -8,6 +9,14 @@ Page( {
   data: {
     shopItems: fileData.getshopData(),
     shopdetail: [],
+=======
+var app = getApp()
+var fileData = require('../../../utils/data.js')
+var util = require('../../../utils/util')
+Page( {
+  data: {
+    shopItems: fileData.getshopData(),
+>>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
     curIndex: 0,
     winWidth: 0,
     winHeight: 0
@@ -17,7 +26,10 @@ Page( {
     that.setData({
       shop: that.data.shopItems
     });
+<<<<<<< HEAD
     this.getshopInfo();
+=======
+>>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
 
     wx.getSystemInfo({
 
@@ -40,6 +52,7 @@ Page( {
     wx.navigateTo({
       url:'../book/book'
     })
+<<<<<<< HEAD
   },
   getshopInfo: function () {
     console.log('getshopInfo ' + api.StoreDetail);
@@ -75,5 +88,7 @@ Page( {
         });
         //that.setData({ barberDetails: (wx.getStorageSync('barberDetails') || []) });
       });
+=======
+>>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
   }
 })

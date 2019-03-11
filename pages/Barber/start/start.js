@@ -77,9 +77,12 @@ Page({
   onReachBottom: function () {
 
   },
+<<<<<<< HEAD
   navigatea: function (e) {
     wx.navigateBack()
   },
+=======
+>>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
 
   /**
    * 用户点击右上角分享

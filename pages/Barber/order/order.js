@@ -31,12 +31,15 @@ Page({
       url: '../start/start?artype=' + e.currentTarget.dataset.arid
     })
   },
+<<<<<<< HEAD
   navigatea: function (e) {
     
       wx.navigateBack()
   
   },
 
+=======
+>>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
 
   /**
    * 生命周期函数--监听页面初次渲染完成

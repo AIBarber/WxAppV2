@@ -60,6 +60,7 @@ scroll-y
     style="height: 360px;"
 >
    <view class="nav_section">
+<<<<<<< HEAD
     <view wx:if="{{barberDetails}}">
         <block wx:for="{{barberDetails}}" wx:key="item.id">
             <view class="nav_section_items" >
@@ -67,6 +68,15 @@ scroll-y
                 <view class="section_image" bindtap="navigateDetail" data-aid="{{item.id}}">
                 <block wx:if="{{item.headImageUrl}}">
                     <image src="{{item.headImageUrl}}" mode="aspectFill"></image>
+=======
+    <view wx:if="{{list[curIndex]}}">
+        <block wx:for="{{list[curIndex]}}" wx:key="item.id">
+            <view class="nav_section_items" >
+                <!--image-->
+                <view class="section_image" bindtap="navigateDetail" data-aid="{{item.id}}">
+                <block wx:if="{{item.coverpath}}">
+                    <image src="{{item.coverpath}}" mode="aspectFill"></image>
+>>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
                 </block>
                 <block wx:else>
                     <image src="../../icon/default_pic.png" mode="aspectFill"></image>
@@ -75,11 +85,19 @@ scroll-y
                 <!--content-->
                 <view class="section_cont" bindtap="navigateDetail" data-aid="{{item.id}}">
                     <view class="section_cont_sub">
+<<<<<<< HEAD
                         <text>{{item.name}}</text>
                     </view>
                     <view class="section_cont_price">级别：{{item.level}}</view>
                     <view>{{item.years}}年经验</view>
                     <view>状态：{{item.status}}</view>
+=======
+                        <text>{{item.subject}}</text>
+                    </view>
+                    <view class="section_cont_price">起步价：{{item.price}}</view>
+                    <view>{{item.message}}</view>
+                    <view>{{item.state}}</view>
+>>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
                 </view>
                 <!--book-->
                 <view class="section_book" bindtap="bookTap" data-aid="{{item.id}}">

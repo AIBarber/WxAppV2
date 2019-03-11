@@ -1,10 +1,16 @@
 // pages/new/new.js
 
+<<<<<<< HEAD
 var app = getApp();
 var fileData = require('../../../utils/data.js');
 var util = require('../../../utils/util.js');
 var api = require('../../../config/api.js');
 var model = require('../../../utils/model.js');
+=======
+var app = getApp()
+var fileData = require('../../../utils/data.js')
+var util = require('../../../utils/util')
+>>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
 
 Page({
 
@@ -16,7 +22,10 @@ Page({
     // cas picker
     casArray: ['只看自营店', '只看社区店'],
     casArray1: ['智能排序', '离我最近', '人气最高', '面积最大'],
+<<<<<<< HEAD
     shoplist: [],
+=======
+>>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
     banner_url: fileData.getBannerData(),
     indicatorDots: true,
     vertical: false,
@@ -43,8 +52,12 @@ Page({
     var that = this
     that.setData({
       list: that.data.skillData
+<<<<<<< HEAD
     });
     this.getshopInfo();
+=======
+    })
+>>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
   },
   // 跳转至详情页
   navigateDetail: function (e) {
@@ -104,6 +117,7 @@ Page({
   onReachBottom: function () {
 
   },
+<<<<<<< HEAD
   getshopInfo: function () {
     console.log('getshopInfo ' + api.StoreList);
     //wx.showNavigationBarLoading();
@@ -141,5 +155,13 @@ Page({
         });
         //that.setData({ barberDetails: (wx.getStorageSync('barberDetails') || []) });
       });
+=======
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+>>>>>>> 7221ad17ce4fda0798de5e73a30d137a699f23d2
   }
 })
