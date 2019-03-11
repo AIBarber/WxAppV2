@@ -6,7 +6,7 @@ Page({
    */
   data: {
     jsonContent:'',
-    time: '',
+    time:'',
     clickRadio: '',
     noLimitTime: '',
     adjustTime: '',
@@ -18,7 +18,8 @@ Page({
     address:'',
     allMoney:null,
     barberName:'',
-    shopAddress:''
+    shopAddress:'',
+    timeChineseStr:''
   },
   returnToChooseShop:function(){
       wx.navigateBack({
@@ -31,8 +32,47 @@ Page({
    */
   onLoad: function (options) {
     var that=this;
+    var timePostion = options.postion;
+    console.log("timePositon::"+timePostion)
+    var timeChinese='';
+    for (var i = 0; i < timePostion.length;i++){
+          if(timePostion[i]!=0){
+            switch (timePostion[i]) {
+              case '1':
+                timeChinese+="今天上午 ";
+                break;
+              case '2':
+                timeChinese += "今天下午 ";
+                break;
+              case '3':
+                timeChinese += "今天晚上 ";
+                break;
+              case '4':
+                timeChinese += "明天上午 ";
+                break;
+              case '5':
+                timeChinese += "明天下午 ";
+                break;
+              case '6':
+                timeChinese += "明天晚上 ";
+                break;
+              case '7':
+                timeChinese += "后天上午 ";
+                break;
+              case '8':
+                timeChinese += "后天下午 ";
+                break;
+              case '9':
+                timeChinese += "后天晚上 ";
+                break;
+            }
+        
+          }
+    }
+  
+    console.log("timeChinese::" + timeChinese);
       that.setData({
-        time:options.postion,
+        time: timeChinese,
         barberId: options.barberId,
         address: options.storeId,  
         noLimitTime:options.noLimitTime,

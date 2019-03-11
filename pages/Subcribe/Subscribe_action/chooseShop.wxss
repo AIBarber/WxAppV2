@@ -43,9 +43,10 @@
   flex-direction: column;
   text-align: center;
   background-color: rgb(236, 236, 236);
+  margin-top: 0rpx;
 }
 .radioView{
-  margin-top: 145rpx;
+  margin-top: -200rpx;
   margin-bottom: 30rpx;
   display: flex;
   flex-direction:column;
@@ -94,16 +95,7 @@ margin-top: -5rpx;
   margin-left: auto;
   margin-right: auto;
 }
-.timeTable{
-  width: 33.3%;
-  height: 23%;
-  /* border: 0.5px solid #0cc4b1; */
-  border-radius: 0rpx;
-  border:0rpx;
-  line-height: 70rpx;
-  background-color: #0cc4b1;
-  /* border:0.5px solid #0cc4b1; */
-}
+
 .normal{
   width: 33%;
   height: 23%;
@@ -246,4 +238,29 @@ font-weight: 600;
   color: white;
 
 }
+
+.canOrder{
+   width: 33.3%;
+  height: 23.3%;
+  /* border: 0.5px solid #0cc4b1; */
+  line-height: 70rpx;
+   margin:0rpx;
+}
+.noOrder{
+ width: 33.3%;
+  height: 23.3%;
+  /* border: 0.5px solid #0cc4b1; */
+  line-height: 70rpx;
+  opacity: 0.2;
+  margin:0rpx;
+}
+
+.timeTable{
+     width: 33.3%;
+  height: 23.3%;
+  background-color: #0cc4b1;
+  line-height: 70rpx;
+   margin:0rpx;
+}
+
 

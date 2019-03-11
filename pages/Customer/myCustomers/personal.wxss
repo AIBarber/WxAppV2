@@ -113,7 +113,7 @@
   /* height: 380rpx; */
   height:340rpx ;
   width: 690rpx;
- box-shadow:1px 5px 10px #00a896;
+  box-shadow:1px 5px 10px #00a896;
   border:1px solid #ececec;
   border-radius: 30rpx;
 }
@@ -124,10 +124,10 @@
  
   border-top-left-radius: 30rpx;
   border-top-right-radius: 30rpx;
-    display:flex;
-   justify-content:center;
-     font-size: 13px;
-    background-color: white;
+  display:flex;
+  justify-content:center;
+  font-size: 13px;
+  background-color: white;
 }
 .myHairStyle_btn{
   /* width: 60px; */
@@ -137,7 +137,7 @@
   border:1px solid #ececec;
   border-radius: 30px;
   line-height: 25px;
-position:absolute;
+  position:absolute;
 }
 .hairStyleBottom{
   border-bottom-left-radius: 30rpx;
@@ -187,17 +187,17 @@ position:absolute;
   font-size:17px;
   margin:0px;
   margin-top: -18px;
- background-color: white;
+  background-color: white;
  /* height: 100%; */
 }
 
 .text2{
   display:flex;
   flex-direction:row;
- background-color: white;
- margin-bottom: 5rpx;
- height: 95rpx;
- margin-top: 0rpx;
+  background-color: white;
+  margin-bottom: 5rpx;
+  height: 95rpx;
+  margin-top: 0rpx;
   margin-left: 0px;
   font-size: 16px;
   font-weight: 200;

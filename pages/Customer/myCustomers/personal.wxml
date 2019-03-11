@@ -30,7 +30,7 @@
     <view class='view-right'>
       <text class="myHairStyle_btn" style='padding-left:20rpx; padding-right:20rpx;left:480rpx;top:30rpx;'>肤色:{{headPhoto.race}}</text>
       <text class="myHairStyle_btn" style='padding-left:10rpx;padding-right:10rpx;left:510rpx;top:110rpx;'>脸型:{{headPhoto.faceShape}}</text>
-      <text class="myHairStyle_btn" style='padding-left:20rpx;padding-right:20rpx;left:480rpx;top:185rpx;'>眼镜:{{headPhoto.glasses}}</text>
+      <text class="myHairStyle_btn" style='padding-left:10rpx;padding-right:20rpx;left:480rpx;top:185rpx;'>眼镜:{{headPhoto.glasses}}</text>
     </view>
     </view>
     <view class="hairStyleBottom"  bindtap='uploadHairPhoto'>重新检测我的发型</view>

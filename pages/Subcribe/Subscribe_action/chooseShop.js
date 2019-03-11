@@ -13,7 +13,8 @@ Page({
     flag:0,
     currentTab:'0',
     checked:false,
-    postion:null,
+    // postion:null,
+    postion:[1,3,5,6,9],
     clickRadio:'',
     noLimitTime:'',
     adjustTime:0,
@@ -24,11 +25,38 @@ Page({
     clickserver:'',
     allMoney:'',
     chooseStore:'',
-    postion2:'',
+    postion2:[0,0,0,0,0,0,0,0,0],
     barberName:'',
     re:false,
     shopAddress:'',
     returnStatus:'',
+    flag1: 0,
+    flag2: 0,
+    flag3: 0,
+    flag4: 0,
+    flag5: 0,
+    flag6: 0,
+    flag7: 0,
+    flag8: 0,
+    flag9: 0,
+    status1: 0,
+    status2: 0,
+    status3: 0,
+    status4: 0,
+    status5: 0,
+    status6: 0,
+    status7: 0,
+    status8: 0,
+    status9: 0,
+    clickState1: 0,
+    clickState2: 0,
+    clickState3: 0,
+    clickState4: 0,
+    clickState5: 0,
+    clickState6: 0,
+    clickState7: 0,
+    clickState8: 0,
+    clickState9: 0,
     // shopList: [{ name: "店一", address: "北京", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.345, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }]
     shopList:""
   },
@@ -70,65 +98,151 @@ Page({
     var page = this;
     var pos = page.data.postion;
     var id = e.target.id;
-    page.setData({
-      currentTab: id,
-      postion2: id
-    })
-    if (page.data.currentTab == id) {
-      console.log("重复");
-    } 
-    else {
-      for(var i=0;i<pos.length;i++){
-          if(parseInt(id)==pos[i]){
-            switch (id) {
-              case '1':
-                page.setData({
-                  flag1: 1,
-                });
-                break;
-              case '2':
-                page.setData({
-                  flag2: 2,
-                })
-                break;
-              case '3':
-                page.setData({
-                  flag3: 3,    
-                })
-                break;
-              case '4':
-                page.setData({
-                  flag4: 4,
-                })
-                break;
-              case '5':
-                page.setData({
-                  flag5: 5,
-                })
-                break;
-              case '6':
-                page.setData({
-                  flag6: 6,
-                })
-                break;
-              case '7':
-                page.setData({
-                  flag7: 7,
-                })
-                break;
-              case '8':
-                page.setData({
-                  flag8: 8,
-                })
-                break;
-              case '9':
-                page.setData({
-                  flag9: 9,
-                })
-                break;
+    // page.setData({
+  
+    //   postion2: id
+    // })
+    for (var i = 0; i < pos.length; i++) {
+      if (parseInt(id) == pos[i]) {
+        switch (id) {
+          case '1':
+            if (page.data.clickState1 == 0) {
+              page.setData({
+                flag1: 1,
+                clickState1: 1,
+                'postion2[0]':id,
+              });
+            } else {
+              page.setData({
+                flag1: 0,
+                clickState1: 0,
+                 'postion2[0]': 0,
+              });
             }
-        
-          }
+            break;
+          case '2':
+            if (page.data.clickState2 == 0) {
+              page.setData({
+                flag2: 2,
+                clickState2: 1,
+                'postion2[1]': id,
+              });
+            } else {
+              page.setData({
+                flag2: 0,
+                clickState2: 0,
+                'postion2[1]': 0
+              });
+            }
+            break;
+          case '3':
+            if (page.data.clickState3 == 0) {
+              page.setData({
+                flag3: 3,
+                clickState3: 1,
+                 'postion2[2]': id,
+              });
+            } else {
+              page.setData({
+                flag3: 0,
+                clickState3: 0,
+                'postion2[2]':0
+              });
+            }
+            break;
+          case '4':
+            if (page.data.clickState4 == 0) {
+              page.setData({
+                flag4: 4,
+                clickState4: 1,
+                  'postion2[3]': id,
+              });
+            } else {
+              page.setData({
+                flag4: 0,
+                clickState4: 0,
+                  'postion2[3]': 0
+              });
+            }
+            break;
+          case '5':
+            if (page.data.clickState5 == 0) {
+              page.setData({
+                flag5: 5,
+                clickState5: 1,
+                  'postion2[4]': id,
+              });
+            } else {
+              page.setData({
+                flag5: 0,
+                clickState5: 0,
+                'postion2[4]': 0,
+              });
+            }
+            break;
+          case '6':
+            if (page.data.clickState6 == 0) {
+              page.setData({
+                flag6: 6,
+                clickState6: 1,
+                'postion2[5]': id,
+              });
+            } else {
+              page.setData({
+                flag6: 0,
+                clickState6: 0,
+                  'postion2[5]': 0,
+              });
+            }
+            break;
+          case '7':
+            if (page.data.clickState7 == 0) {
+              page.setData({
+                flag7: 7,
+                clickState7: 1,
+                'postion2[6]': id,
+              });
+            } else {
+              page.setData({
+                flag7: 0,
+                clickState7: 0,
+                'postion2[6]': 0,
+              });
+            }
+            break;
+          case '8':
+            if (page.data.clickState8 == 0) {
+              page.setData({
+                flag8: 8,
+                clickState8: 1,
+                  'postion2[7]': id,
+              });
+            } else {
+              page.setData({
+                flag8: 0,
+                clickState8: 0,
+                'postion2[7]': 0,
+              });
+            }
+            break;
+          case '9':
+            if (page.data.clickState9 == 0) {
+              page.setData({
+                flag9: 9,
+                clickState9: 1,
+                'postion2[8]': id,
+              });
+            } else {
+              page.setData({
+                flag9: 0,
+                clickState9: 0,
+                'postion2[8]':0,
+              });
+            }
+            break;
+        }
+
+
       }
    
     }
@@ -292,48 +406,48 @@ Page({
       console.log("加载位置："+pos[i]);
       switch (pos[i]) {
         case 1:
-        that.setData({
-          flag1 :11
-        })
+          that.setData({
+            status1: 1
+          })
           break;
         case 2:
           that.setData({
-            flag2: 22
+            status2: 1
           })
           break;
         case 3:
           that.setData({
-            flag3:33
+            status3: 1
           })
           break;
         case 4:
           that.setData({
-            flag4:  44
+            status4: 1
           })
           break;
         case 5:
           that.setData({
-            flag5:  55
+            status5: 1
           })
           break;
         case 6:
           that.setData({
-            flag6:  66
+            status6: 1
           })
           break;
         case 7:
           that.setData({
-            flag7:  77
+            status7: 1
           })
           break;
         case 8:
           that.setData({
-            flag8:  88
+            status8: 1
           })
           break;
         case 9:
           that.setData({
-            flag9:  99
+            status9: 1
           })
           break;
       }
