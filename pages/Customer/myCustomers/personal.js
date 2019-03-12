@@ -216,7 +216,7 @@ Page({
   },
   goToMyBarber: function () {
     wx.navigateTo({
-      url: 'jumpToBarber',
+      url: '../myBarber/myBarber',
     })
   },
 

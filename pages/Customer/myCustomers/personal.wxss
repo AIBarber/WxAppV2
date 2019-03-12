@@ -54,7 +54,7 @@
   display:flex;
   flex-direction:column;
   height: 100%;
-  background-color: gainsboro;
+  background-color: #f4f4f4;
  
 }
 .headView{
@@ -103,7 +103,7 @@
   left: auto;
   right: auto;
   font-size: 14px;
-    background-color: white;
+    background-color: #ffffff;
   /* display:flex;
    justify-content:center; */
    display: flex;

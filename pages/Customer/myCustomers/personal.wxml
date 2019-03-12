@@ -55,7 +55,7 @@
         <image class='image5' src='../../../icon/Customer/youjiantou.png' mode='scaleToFill'/>
     </view>
     <view style='line' style='width:98%;height:0px;border:0.5px solid #ececec;margin-left:17px;'></view>
-    <view class='text2' bindtap='goToConsumption'>
+    <view class='text2' bindtap='goToCoupon'>
       <image class='image4' src='../../../icon/Customer/wodexiaofeijilu.png' mode='scaleToFill'/>
        <text style='margin-top:auto;margin-bottom:auto;width:80%;'>我的消费记录</text>
         <image class='image5' src='../../../icon/Customer/youjiantou.png' mode='scaleToFill'/>
@@ -67,7 +67,7 @@
        <text style='margin-top:auto;margin-bottom:auto;width:80%;'>切换为发型师</text>
         <image class='image5' src='../../../icon/Customer/youjiantou.png' mode='scaleToFill'/>
     </view>
-       <view class='text2' bindtap='goToConsumption' style='margin-top:35rpx; '>
+       <view class='text2' bindtap='goToConsumption' style='margin-top:25rpx; '>
        <image class='image4' src='../../../icon/Customer/shezhi.png' mode='scaleToFill'/>
        <text style='margin-top:auto;margin-bottom:auto;width:80%;'>设置</text>
         <image class='image5' src='../../../icon/Customer/youjiantou.png' mode='scaleToFill'/>

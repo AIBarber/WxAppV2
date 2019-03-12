@@ -1,9 +1,8 @@
-<!--pages/myBarber/myBarber.wxml-->
-<!-- <button class='buttonLeft' bindtap='backToprevPage'>
-       <image src='../../icon/back.png' mode='widthFix' class='imageLeft'></image>
-</button> -->
+<import src='../../template/myBarberList.wxml'/>
 
-<view class='text'>
-  <text>我的发型师</text>
+<view class='myBarberList'>
+<block wx:for="{{myBarberList}}" wx:key="{{id}}">
+  <template is="myBarberList" data="{{id:item.id}}"/>
+  </block>
 </view>
 
