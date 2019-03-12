@@ -1,8 +1,16 @@
 {
   "pages": [
+    "pages/Customer/myCoupon/coupon",
+    "pages/Subcribe/Subscribe_action/ServerItem",
+    "pages/Customer/myCustomers/personal",
+    "pages/Subcribe/Subscribe_action/barberList",
+    "pages/Subcribe/Subscribe_action/FinishInfo",
+    "pages/Customer/myBarber/myBarber",
+   
+   
+    "pages/Subcribe/Subscribe_action/chooseShop",
     "pages/Barber/new/new",
     "pages/Shop/ShopList/List",
-    "pages/Subcribe/Subscribe_action/FinishInfo",
     "pages/PersonalHome/PersonalHome",
     "pages/Barber/BarberHome/personal",
     "pages/Shop/ShopList/new",
@@ -11,14 +19,13 @@
     "pages/Shop/detail/detail",
     "pages/Barber/order/order",
     "pages/Barber/start/start",
-    "pages/Customer/myCustomers/personal",
     "pages/Customer/camaraIdentity/camaraIdentity",
     "pages/Customer/camaraIdentity/showPhoto",
     "pages/Customer/myCustomers/toBarberSuccess",
     "pages/Customer/myCustomers/jumpToBarber",
-    "pages/Subcribe/Subscribe_action/barberList",
-    "pages/Subcribe/Subscribe_action/ServerItem",
-    "pages/Subcribe/Subscribe_action/chooseShop",
+   
+  
+   
     "pages/Subcribe/Subscribe_action/confirmPay"
   ],
   "window": {

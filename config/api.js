@@ -29,6 +29,7 @@ module.exports = {
   UploadSig: ApiRootTestUrl + 'auth/uploadsig',
   GetWxSession: ApiRootTestUrl + 'auth/getwxsession',
   GetWxPayUnified: ApiRootUrl + 'auth/getwxpayunified',
+  Getcustomerorderlist: ApiRootUrl + 'order/getcustomerorderlist',
   UserList: ApiRootTestUrl + 'user/index',
   UserInfo: ApiRootTestUrl + 'user/info',
   UserAdd: ApiRootTestUrl + 'user/add',
@@ -40,9 +41,9 @@ module.exports = {
   StoreCustomerList: ApiRootUrl + 'store/customerlist',
   StoreCustomerDetail: ApiRootUrl + 'customer/detailbyid',
   StoreBarberDetail: ApiRootUrl + 'barber/detailbyid',
-// <<<<<<< HEAD
+  Getbarberinfo: ApiRootUrl + 'barber/getbarberinfo',
+  GetorderInsert: ApiRootUrl + 'order/insert',
   GetBarberList: ApiRootUrl + 'barber/list',
-// =======
   BarberList: ApiRootUrl + 'barber/list',
 // >>>>>>> 89468cd8a30a5ee656c7a248db2dbbfbb6ad158b
   BarberSubscribeList: ApiRootUrl + 'barber/subscribelist',
