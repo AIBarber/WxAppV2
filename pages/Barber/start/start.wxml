@@ -22,8 +22,8 @@
 </view>
 
 <view>
-    <button class="btn">接受</button>
+    <button class="btn" bindtap="navigatea">开始理发</button>
   </view>
   <view>
-    <button class="btn1">拒绝</button>
+    <button class="btn1" bindtap="navigatea">结束理发</button>
   </view>

@@ -1,10 +1,8 @@
 // pages/new/new.js
 
-var app = getApp();
-var fileData = require('../../../utils/data.js');
-var util = require('../../../utils/util.js');
-var api = require('../../../config/api.js');
-var model = require('../../../utils/model.js');
+var app = getApp()
+var fileData = require('../../../utils/data.js')
+var util = require('../../../utils/util')
 
 Page({
 
@@ -16,7 +14,6 @@ Page({
     // cas picker
     casArray: ['只看自营店', '只看社区店'],
     casArray1: ['智能排序', '离我最近', '人气最高', '面积最大'],
-    shoplist: [],
     banner_url: fileData.getBannerData(),
     indicatorDots: true,
     vertical: false,
@@ -26,9 +23,15 @@ Page({
     // nav 初始化
     navTopItems: fileData.getIndexNavData(),
     navSectionItems: fileData.getIndexNavSectionData(),
+    orderItems: fileData.getorderData(),
     curNavId: 1,
     curIndex: 0,
-    skillData: fileData.getSkilledData()
+    skillData: fileData.getSkilledData(),
+    winWidth: 0,
+    winHeight: 0,
+    // tab切换
+    currentTab: 0
+
   },
   bindCasPickerChange: function (e) {
     console.log('Category picker发送选择改变，携带值为', e.detail.value)
@@ -42,14 +45,32 @@ Page({
   onLoad: function () {
     var that = this
     that.setData({
-      list: that.data.skillData
+      list: that.data.navSectionItems,
+      orderlist: that.data.orderItems
     });
-    this.getshopInfo();
+
+    wx.getSystemInfo({
+
+      success: function (res) {
+        that.setData({
+          winWidth: res.windowWidth,
+          winHeight: res.windowHeight
+        });
+      }
+
+    });
+
   },
+  navigate: function (e) {
+    wx.navigateTo({
+      url: '../order/order?artype=' + e.currentTarget.dataset.arid
+    })
+  },
+
   // 跳转至详情页
   navigateDetail: function (e) {
     wx.navigateTo({
-      url: '../detail/detail?artype=' + e.currentTarget.dataset.arid
+      url: '../detail/technicain_detail?artype=' + e.currentTarget.dataset.arid
     })
   },
   // 加载更多
@@ -62,6 +83,28 @@ Page({
     that.setData({
       list: that.data.skillData,
     })
+  },
+
+  bindChange: function (e) {
+
+    var that = this;
+    that.setData({ currentTab: e.detail.current });
+
+  },
+  /**
+   * 点击tab切换
+   */
+  swichNav: function (e) {
+
+    var that = this;
+
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -104,42 +147,11 @@ Page({
   onReachBottom: function () {
 
   },
-  getshopInfo: function () {
-    console.log('getshopInfo ' + api.StoreList);
-    //wx.showNavigationBarLoading();
-    var that = this;
-    util.weshowRequest(
-      api.StoreList,
-      {
-        "longitude": "143.45",
-        "latitude": "123.32",
-        "orderType": "1",
-        "category": "1",
-        'size': 10,
-        //'barberid': app.globalData.userid
-      },
-      'POST').then(res => {
-        //if (res.data) {}
-        console.log('StoreList ');
-        console.log(res.data);
-        // success
-        that.setData({ shoplist: res.data.bizContent.list });
-        console.log('StoreList ');
-        console.log(that.data.shoplist);
-        console.log('shopList ');
-        //that.stopRefreshing();
-        //that.waitUpdate();
-      }).catch((err) => {
-        console.log('getDataList err' + err);
-        // fail
-        //that.stopRefreshing();
-        wx.showToast({
-          title: '正在获取数据…',
-          icon: 'loading',
-          duration: 3000,
-          mask: true
-        });
-        //that.setData({ barberDetails: (wx.getStorageSync('barberDetails') || []) });
-      });
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
   }
 })

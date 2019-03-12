@@ -15,8 +15,8 @@ Page({
     winHeight: 0
   },
 
-	onLoad: function () {
-		var that = this;
+  onLoad: function () {
+    var that = this;
     that.setData({
       person: that.data.personsItems
     });
@@ -32,7 +32,7 @@ Page({
 
     });
 
-	},
+  },
 
   tapFranchiseeLocation: function (event) {
     var _this = this,
@@ -82,11 +82,10 @@ Page({
       cancel: cancel
     });
   },
-  
-  getBarberInfo: function() {
+
+  getBarberInfo: function () {
     console.log('getBarberInfo ' + api.BarberList);
     //wx.showNavigationBarLoading();
-
     var that = this;
     util.weshowRequest(
       api.BarberList,
@@ -103,9 +102,9 @@ Page({
         console.log('BarberList ');
         console.log(res.data);
         // success
-        that.setData({ barberDetails: res.data.bizContent.list});
+        that.setData({ barberDetails: res.data.bizContent.list });
         console.log('BarberList ');
-        console.log(barberDetails);
+        console.log(that.data.barberDetails);
         console.log('BarberList ');
         //that.stopRefreshing();
         //that.waitUpdate();

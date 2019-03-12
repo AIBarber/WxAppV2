@@ -42,5 +42,5 @@
     <button class="btn" bindtap="navigate">接受</button>
   </view>
   <view>
-    <button class="btn1">拒绝</button>
+    <button class="btn1" bindtap="navigatea">拒绝</button>
   </view>

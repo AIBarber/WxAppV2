@@ -77,6 +77,9 @@ Page({
   onReachBottom: function () {
 
   },
+  navigatea: function (e) {
+    wx.navigateBack()
+  },
 
   /**
    * 用户点击右上角分享

@@ -1,9 +1,18 @@
 // pages/new/new.js
 
+
 var app = getApp()
 var fileData = require('../../../utils/data.js')
 var util = require('../../../utils/util');
 var api = require('../../../config/api.js');
+
+var app = getApp();
+var fileData = require('../../../utils/data.js');
+var util = require('../../../utils/util.js');
+var api = require('../../../config/api.js');
+var model = require('../../../utils/model.js');
+
+
 Page({
 
   /**
@@ -16,6 +25,7 @@ Page({
     casArray1: ['智能排序', '离我最近', '人气最高', '面积最大'],
     banner_url: fileData.getBannerData(),
     indicatorDots: true,
+    barberDetails: [],
     vertical: false,
     autoplay: true,
     interval: 3000,
@@ -152,7 +162,7 @@ Page({
       list: that.data.navSectionItems,
       orderlist: that.data.orderItems
     });
-
+    this.getBarberInfo();
     wx.getSystemInfo({
 
       success: function (res) {
@@ -257,5 +267,43 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getBarberInfo: function () {
+    console.log('getBarberInfo ' + api.BarberList);
+    //wx.showNavigationBarLoading();
+    var that = this;
+    util.weshowRequest(
+      api.BarberList,
+      {
+        "longitude": "143.45",
+        "latitude": "123.32",
+        "orderType": "1",
+        "type": "1",
+        'size': 10,
+        //'barberid': app.globalData.userid
+      },
+      'POST').then(res => {
+        //if (res.data) {}
+        console.log('BarberList ');
+        console.log(res.data);
+        // success
+        that.setData({ barberDetails: res.data.bizContent.list });
+        console.log('BarberList ');
+        console.log(that.data.barberDetails);
+        console.log('BarberList ');
+        //that.stopRefreshing();
+        //that.waitUpdate();
+      }).catch((err) => {
+        console.log('getDataList err' + err);
+        // fail
+        //that.stopRefreshing();
+        wx.showToast({
+          title: '正在获取数据…',
+          icon: 'loading',
+          duration: 3000,
+          mask: true
+        });
+        //that.setData({ barberDetails: (wx.getStorageSync('barberDetails') || []) });
+      });
   }
-})
+}) 
