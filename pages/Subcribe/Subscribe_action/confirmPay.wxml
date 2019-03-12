@@ -1,0 +1,3 @@
+<view>
+<button bindtap='wxpay'>支付</button>
+</view>

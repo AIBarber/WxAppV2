@@ -1,0 +1,20 @@
+<template name='shoplist_order'> 
+<view class='shoplistMain' data-id='{{storeId}}'>
+ <image class="shopImg" src='{{headImage}}'></image>
+ <view class="shopInfo">
+  <view class='shopInfo_StoreName'>{{name}}</view>
+  <view>{{customerNum}}</view>
+   <view>{{address}}</view>
+ </view>
+ <view class="shopDis">
+  <label >
+  <view >距离:{{distance}}</view>
+  <radio-group bindchange="checkboxChange" class='shopListRadio'>
+   </radio-group>
+      </label>
+  </view>
+
+</view>
+  
+  
+</template>

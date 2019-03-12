@@ -1,0 +1,111 @@
+<view class="ar_coverpath">
+ <view wx:if="{{barber[curIndex]}}">
+        <block wx:for="{{barber[curIndex]}}" wx:key="item.id">
+  <view class="summary">
+    <!-- <view class="avatar-container"> -->
+    <image src="{{item.coverpath}}" class="avatar" />
+    <!-- </view> -->
+    <view class="nick">
+      <view class="nickname1">{{item.name}}</view>
+      <view class="nickname1">{{item.level}}|
+        <text class="nickname1"> {{item.exp}}</text>
+      </view>
+      <view class="nickname1">电话：
+        <text class="nickname1">{{item.tel}}</text>
+        <text class="nickname1" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11</text>
+      </view>
+    </view>
+  </view>
+  </block>
+  </view>
+</view>
+<view wx:if="{{barber[curIndex]}}">
+        <block wx:for="{{barber[curIndex]}}" wx:key="item.id">
+<view class="ar_cont">
+  <view>预约时间：
+    <text>{{item.time}}</text>
+  </view>
+  <view class="ar_cont_h2">
+    【他/她的服务项目】
+  </view>
+
+  <view class="ar_sevice_item" style="border-top:1px solid #ddd;">
+    <text class="ar_cont_subject">洗剪吹</text>
+    <text class="ar_cont_price">{{item.price1}}</text>
+    <view class="section_book" bindtap="bookTap" data-aid="{{item.id}}">
+      <text>预约</text>
+    </view>
+  </view>
+
+  <view class="ar_sevice_item">
+    <text class="ar_cont_subject">洗吹</text>
+    <text class="ar_cont_price">{{item.price2}}</text>
+    <view class="section_book" bindtap="bookTap" data-aid="{{item.id}}">
+      <text>预约</text>
+
+    </view>
+  </view>
+
+  <view class="ar_sevice_item">
+    <text class="ar_cont_subject">染发</text>
+    <text class="ar_cont_price">{{item.price3}}</text>
+    <view class="section_book" bindtap="bookTap" data-aid="{{item.id}}">
+      <text>预约</text>
+    </view>
+  </view>
+
+
+  <view class="ar_sevice_item">
+    <text class="ar_cont_subject">烫发</text>
+    <text class="ar_cont_price">{{item.price5}}</text>
+    <view class="section_book" bindtap="bookTap" data-aid="{{item.id}}">
+      <text>预约</text>
+    </view>
+
+  </view>
+
+  <view class="ar_sevice_item">
+    <text class="ar_cont_subject">护理</text>
+    <text class="ar_cont_price">{{item.price6}}</text>
+    <view class="section_book" bindtap="bookTap" data-aid="{{item.id}}">
+      <text>预约</text>
+    </view>
+
+  </view>
+
+  <view class="ar_cont_h2">
+    【他/她的简介】
+  </view>
+  <view>
+    <text>{{item.message}}</text>
+  </view>
+  <view class="ar_cont_h2">
+    【他/她的作品】
+  </view>
+  <view wx:if="{{workslist[curIndex]}}">
+    <block wx:for="{{workslist[curIndex]}}" wx:key="item.id">
+      <view class="summary1">
+        <!-- <view class="avatar-container"> -->
+        <image src="{{item.coverpath}}" class="avatar" />
+        <!-- </view> -->
+        <view class="nick">
+          <view class="nickname">时间：
+            <text class="nickname">{{item.time}}  </text>
+          </view>
+          <view class="nickname">发型：
+            <text class="nickname"> {{item.haircut}}   </text>
+          </view>
+          <view class="nickname">评分：
+            <text class="nickname">  {{item.grade}}   </text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view>
+    <button class="btn">立即预约</button>
+  </view>
+</view>
+</block>
+</view>

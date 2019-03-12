@@ -1,0 +1,9 @@
+ 
+ .returnCusIndex{
+ margin-top: 520rpx;
+   width:690rpx;
+  height: 88rpx;
+   border-radius: 44rpx;
+   background-color: #0cc4b1;
+   color: white;
+ }

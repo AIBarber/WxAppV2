@@ -1,16 +1,16 @@
 // pages/Dial/dial.js
-Page({
+/*Page({
 
   /**
    * 页面的初始数据
-   */
+   
   data: {
     phone: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
-   */
+   
   onLoad: function (options) {
     this.setData({
       phone: options.phone
@@ -30,6 +30,19 @@ Page({
       fail: function () {
         console.log("拨打电话失败！")
       }
+    })
+  }
+})*/
+var app = getApp()
+Page({
+  data: {
+  },
+  onLoad: function () {
+  },
+  // 预定
+  bookTap: function () {
+    wx.navigateTo({
+      url: '../book/book'
     })
   }
 })

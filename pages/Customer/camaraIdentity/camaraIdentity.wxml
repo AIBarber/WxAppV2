@@ -1,0 +1,18 @@
+<!--pages/FaceIdentity/Identity.wxml-->
+   <!-- 调用前置摄像机 -->
+   <view class="cameraView">
+<camera device-position="{{position}}" flash="auto" binderror="error"  style='z-index:10'class='cameraArea'style="background-color:black">
+<!-- 拍照按钮 -->
+</camera>
+<view class="viewBorder">
+ <button class='buttonLeft' bindtap='backToprevPage'>
+      <image src='../../../icon/fanhui.png' mode='scaleToFill' class='imageLeft'></image>
+   </button>
+  <button class='takePhoto' bindtap='takePhoto'  hover-class='none'>
+     <image src='../../../icon/queding.png' mode='scaleToFill' class='iconCircle'></image>
+    </button>
+   <button  class='buttonRight' bindtap='switchCamera'>
+      <image src='../../../icon/fanzhuan.png' mode='scaleToFill' class='imageRight'></image>
+   </button>
+</view>
+</view>

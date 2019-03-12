@@ -1,0 +1,161 @@
+.titleView{
+ display:flex;
+   position: fixed;
+  top:0rpx;
+  left:00rpx;
+  height: 110rpx;
+  width: 100%;
+  margin-top: 0rpx;
+
+}
+.return{
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  margin-top: 50rpx;
+  margin-left: 10rpx;
+  font-size: 20px;
+  color: black
+ 
+}
+.returnImg{
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+  width: 20rpx;
+  height: 40rpx;
+  color: black
+}
+.title{
+  position: fixed;
+  left:140rpx;
+  top: 2rpx;
+  font-size: 20px;
+  margin-top: 54rpx;
+  color:black;
+  margin-left: 120rpx;
+}
+
+
+.ServerMain{
+  margin-top: 70px;
+  background-color: rgb(223, 213, 213);
+  height: 500rpx;
+  font-size: 18px;
+}
+.explain{
+  color:#0cc4b1;
+  font-size: 26rpx;
+  height: 100rpx;
+  width: 100%;
+  background-color:white;
+  margin-top: 25rpx;
+   border-bottom: 1px solid #0cc4b1;
+ /* border:1px solid #0cc4b1; */
+ display: flex;
+ flex-direction: row;
+
+}
+.explain text{
+  font-size: 40rpx;
+  color: black;
+  margin-left: 30rpx;
+ margin-top: 20rpx;
+
+}
+.topBar{
+  display: flex;
+  flex-direction: flex;
+  justify-content: center;
+  background-color: white;
+margin-top: 0rpx;
+width: 100%;
+height: 120rpx;
+}
+
+.bar:nth-of-type(1){
+  width: 40%;
+  text-align: center;
+  border-top-left-radius: 100rpx;
+  border-bottom-left-radius: 100rpx;
+  border:1px solid #0cc4b1;
+  height: 75rpx;
+  line-height: 68rpx;
+  background-color: #0cc4b1;
+  color: white;
+}
+
+.bar:nth-of-type(2){
+  width: 40%;
+  text-align: center;
+  border:1px solid #0cc4b1;
+  border-top-right-radius: 100rpx;
+  border-bottom-right-radius: 100rpx;
+    height: 75rpx;
+   line-height: 68rpx;
+}
+
+.checkboxLab{
+  border-bottom:1px solid #0cc4b1;
+ display: flex;
+ flex-direction:row;
+  width: 99%;
+  height: 120rpx;
+  background-color: white;
+  margin-top: 0rpx;
+  
+  margin-left: 30rpx;
+}
+.checkboxLab1{
+  border-bottom:1px solid #0cc4b1;
+ display: flex;
+ flex-direction:row;
+  width: 99%;
+  height: 100rpx;
+  background-color: white;
+  margin-top: 0rpx;
+  line-height: 90rpx;
+  margin-left: 30rpx;
+}
+.checkboxGroup{
+   display: flex;
+ flex-direction:column;
+  background-color: white;
+}
+.checkbox{
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 43%;
+}
+.checkbox1{
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 50%;
+    margin-left: 0rpx;
+}
+.money{
+   margin-top: 35rpx;
+  margin-left: 10rpx;
+  font-size: 20px;
+
+}
+.moneyYuan{
+    margin: 0rpx;
+       margin-top: 35rpx;
+  margin-left: 120rpx;
+  font-size: 20px;
+  text-decoration:line-through;
+
+ color: #0cc4b1;
+}
+.btmBtn{
+  background-color: white;
+  margin-top: 0rpx;
+}
+.toChoShop{
+ margin-top: 50rpx;
+  width: 650rpx;
+  border-radius: 250rpx;
+  background-color: #0cc4b1;
+  color: white;
+ 
+}
