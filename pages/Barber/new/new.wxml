@@ -82,7 +82,8 @@ scroll-y
                     <view>{{item.state}}</view>
                 </view>
                 <!--book-->
-                <view class="section_book" bindtap="bookTap" data-aid="{{item.id}}">
+                <view class="section_book" bindtap="toServerItem" data-aid="{{item.id}}">
+                <!-- bookTap -->
                         <text>预约</text>
                 </view>
             </view>
