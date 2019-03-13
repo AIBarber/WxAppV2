@@ -7,7 +7,7 @@ var model = require('../../../utils/model.js');
 Page({
 
   /**
-   * 页面的初始数据
+   * 页面的初始数据结构
    */
   data: {
     discountList: [],
