@@ -33,6 +33,22 @@
   color:black;
   margin-left: 220rpx;
 }
+
+.drawCash{
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+.text1{
+  font-size: 21px;
+  margin-bottom: 10rpx;
+}
+.text2{
+  font-size: 13px;
+  color: #999999;
+  margin-bottom: 50rpx;
+}
 .buttonLeft{
   margin-top: 0%;
   margin-left: 0%;

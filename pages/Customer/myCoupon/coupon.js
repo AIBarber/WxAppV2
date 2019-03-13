@@ -14,6 +14,7 @@ Page({
     amountList:[],
     couponList:[],
     couponTime:[],
+    couponAll:{},
     icon_path: '../../icon/icon_paid.png'
   
   },
@@ -69,6 +70,7 @@ Page({
 
   makeCouponLists:function(resm){
     var that=this;
+    var couponAll={};
     var couponList=[];
     var couponTime=[];
     var couponStore=[];
@@ -76,16 +78,18 @@ Page({
       if (resm.data.bizContent.order[i].status == 3) {
         couponList.push(resm.data.bizContent.order[i].amount);
         couponTime.push(resm.data.bizContent.order[i].createdTime);
-      
-        // couponStore.push(resm.data.bizContent.order[i].orderRelaton.storeList[1].name);
-        console.log("单个数据:" + resm.data.bizContent.order[i].amount);
       }
     }
+    couponAll.couponList = couponList;
+    couponAll.couponTime = couponTime;
+    var couponAllJson = couponAll;
     that.setData({
       couponList: couponList,
-      couponTime: couponTime
+      couponTime: couponTime,
+      couponAll:couponAll,
     })
-    console.log("amount List:" + couponList+"couponTime:"+couponTime+"store:"+couponStore);
+    console.log("conponAll:"+couponAll.couponTime);
+    console.log("amount List:" + couponList+"  couponTime:"+couponTime+"store:"+couponStore);
   },
 
   stopRefreshing: function () {

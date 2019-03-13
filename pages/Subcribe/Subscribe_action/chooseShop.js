@@ -57,7 +57,6 @@ Page({
     clickState7: 0,
     clickState8: 0,
     clickState9: 0,
-    // shopList: [{ name: "店一", address: "北京", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.345, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }]
     shopList:""
   },
   getPostion: function () {

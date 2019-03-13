@@ -22,6 +22,7 @@ Page({
     barberName:'',
     serviceDisplay:"",
     otherDisplay:"",
+    cutHair:"",
     ranfa:"display:none",
     tangfa: "display:none",
     diantangfa: "display:none",
@@ -48,10 +49,11 @@ Page({
   },
 
   calculate:function(){
+    var that=this;
      var server=this.data.clickServer;
      for(var i=0;i<server.length;i++){ 
        for(var j=0;j<this.data.item.length;j++){
-       if(this.data.item[j].id==server[i]){
+         if (this.data.item[j].id==server[i]){
          this.data.clickMoney += this.data.item[j].onlinePrice;
        }
        }
@@ -70,9 +72,14 @@ Page({
            this.data.clickMoney += this.data.item4[j].onlinePrice;
          }
        }
-       if (this.data.itemOne.id == server[i]) {
-         this.data.clickMoney += this.data.itemOne.onlinePrice;
+       for (var j = 0; j < this.data.itemOne.length; j++) {
+         if (this.data.itemOne[j].id == server[i]) {
+           this.data.clickMoney += this.data.itemOne[j].onlinePrice;
+         }
        }
+      //  if (this.data.itemOne.id == server[i]) {
+      //    this.data.clickMoney += this.data.itemOne.onlinePrice;
+      //  }
      }
   
     console.log("计算:money:"+this.data.clickMoney);
@@ -89,11 +96,11 @@ Page({
       },
       'POST').then(res => {
         //if (res.data) {}
-        console.log('getShopList ');
+        // console.log('getShopList '+ res.data.bizContent.barberinfo.barberServiceList[0].barberServiceServiceList);
         console.log(res);
         // success
-        that.setData({ barberinfoList: res.data.bizContent.barberinfo });
-        that.setData({ itemOne: res.data.bizContent.barberinfo.barberServiceList[0]});
+        that.setData({ barberinfoList: res.data.bizContent.barberinfo});
+        that.setData({ itemOne: res.data.bizContent.barberinfo.barberServiceList[0].barberServiceServiceList});
         that.setData({ item: res.data.bizContent.barberinfo.barberServiceList[1].barberServiceServiceList});
         that.setData({ item2: res.data.bizContent.barberinfo.barberServiceList[2].barberServiceServiceList });
         that.setData({ item3: res.data.bizContent.barberinfo.barberServiceList[3].barberServiceServiceList });
@@ -119,7 +126,7 @@ Page({
      var that=this;
      that.setData({
        serviceDisplay:"",
-       otherStyle: "color:black;background-color:white;",
+       otherStyle: "color:grey;background-color:white;",
        serverStyle: "color:white;background-color:#0cc4b1;",
        otherDisplay:"display:none"
      })
@@ -127,11 +134,23 @@ Page({
   otherList:function(){
     var that = this;
     that.setData({
-      serviceDisplay: "display:none;",
-      serverStyle:"color:black;background-color:white;",
+      // serviceDisplay: "display:none;",
+      serverStyle:"color:grey;background-color:white;",
       otherStyle: "color:white;background-color:#0cc4b1;",
       otherDisplay: "",
     })
+  },
+ cuthair: function () {
+    var that = this;
+   if (this.data.cutHair == "display:none") {
+      that.setData({
+        cutHair: ""
+      })
+    } else {
+      that.setData({
+        cutHair: "display:none"
+      })
+    }
   },
   ranfa:function(){
     var that=this;
@@ -190,8 +209,9 @@ Page({
     that.setData({
       clickServer: e.detail.value,
     })
-    console.log("clickServer:" + e.detail.value);
+    console.log("chooseServer:" + e.detail.value);
   },
+  
   toChoShop:function(){
     this.calculate();
  var that=this;

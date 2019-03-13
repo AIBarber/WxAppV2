@@ -4,7 +4,7 @@
  <!-- <view class="return" style='margin-top:-30rpx;' bindtap='return'>
   <image class="returnImg" src='../../../icon/arrow_xia.png' mode='scaleToFill'></image>
   <text class="" style=' margin-left:10rpx;margin-top:30rpx;line-height:0rpx;'>返回</text>
- </view>
+ </view> 
  <view class="title">发现</view> -->
  </view>
   <view class="headView">

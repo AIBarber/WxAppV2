@@ -42,17 +42,17 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  background-color: rgb(236, 236, 236);
+  background-color: #ececec;
   margin-top: 0rpx;
 }
 .radioView{
-  margin-top: -200rpx;
+  margin-top: -180rpx;
   margin-bottom: 30rpx;
   display: flex;
   flex-direction:column;
   width: 100%;
   background-color: white;
-  font-size: 35rpx;
+  font-size: 16px;
   
 }
 .radio-group{
@@ -67,8 +67,8 @@
   display: flex;
   width: 100%;
   height: 90rpx;
-   margin-left: 35rpx;
-    border-bottom: 1px solid #0cc4b1;
+   margin-left: 38rpx;
+    border-bottom: 1px solid #ececec;
 }
 .radio text{
  line-height: 90rpx;
@@ -76,11 +76,40 @@
  margin-left: -40rpx;
 }
 .rad{
-  margin-left: 430rpx;
-  margin-top: 15rpx;
-    border-radius: 50%;
+  margin-left: 460rpx;
+margin-top: auto;
+margin-bottom: auto;
+   
 }
-
+radio .wx-radio-input{
+  width: 18px;
+  height: 18px;
+}
+radio .wx-radio-input.wx-radio-input-checked::before{
+  width: 18px;
+  height: 18px;
+  background-color: #0cc4b1;
+border: 3px solid #0cc4b1;
+  border-radius: 50rpx;
+  font-size:18px;
+  line-height: 32rpx;
+color:white;
+}
+checkbox .wx-checkbox-input{
+  width: 18px;
+  height: 18px;
+  border-radius: 50rpx;
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+  width: 18px;
+  height: 18px;
+    border-radius: 50rpx;
+    background-color: #0cc4b1;
+border: 3px solid #0cc4b1;
+  color:white;
+  font-size:18px;
+  line-height: 32rpx;
+}
 /* .adjust{
   margin-left: 80rpx;
   margin-top: 68rpx;
@@ -99,7 +128,7 @@ margin-top: -5rpx;
 .normal{
   width: 33%;
   height: 23%;
-  border: 0.5px solid #0cc4b1;
+  border: 0.5px solid #ececec;
   line-height: 70rpx;
 }
 .touch{
@@ -122,7 +151,7 @@ border: 0.5px solid orange;
   display: flex;
   flex-direction:column;
   background-color:white;
-   font-size: 35rpx;
+   font-size: 16px;
 }
 
 
@@ -141,7 +170,7 @@ border: 0.5px solid orange;
  width: 100%;
  height: 170rpx;
  margin-top: 20rpx;
-   border-bottom: 1px solid #0cc4b1;
+   border-bottom: 1px solid #ececec;
    background-color: white
 }
 .shopImg{
@@ -150,7 +179,7 @@ border: 0.5px solid orange;
   margin-right: 20rpx;
   width: 120rpx;
   height: 120rpx;
-  border: 1px solid gainsboro;
+  border: 1px solid #ececec;
 }
 .shopInfo{
   width: 200rpx;
