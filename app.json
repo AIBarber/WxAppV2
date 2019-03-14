@@ -1,10 +1,15 @@
 {
   "pages": [
       "pages/Customer/myCustomers/personal",
-    "pages/Customer/myCoupon/coupon",
-  
-   "pages/Customer/myCoupon/drawcash",
+      "pages/Customer/myHistoryCost/cost",
+    "pages/template/cost_list",
+   
     "pages/Subcribe/Subscribe_action/ServerItem",
+    
+    "pages/Customer/myCoupon/coupon",
+
+   "pages/Customer/myCoupon/drawcash",
+    
     "pages/Barber/new/new",
     "pages/Subcribe/Subscribe_action/chooseShop",
     "pages/Subcribe/Subscribe_action/barberList",

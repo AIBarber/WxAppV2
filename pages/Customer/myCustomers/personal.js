@@ -219,7 +219,11 @@ Page({
       url: '../myBarber/myBarber',
     })
   },
-
+  goToHistoryCost:function(){
+    wx.navigateTo({
+      url: '../myHistoryCost/cost',
+    })
+  },
   goToCoupon: function () {
     wx.navigateTo({
       url: '../myCoupon/coupon',
