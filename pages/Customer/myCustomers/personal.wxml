@@ -43,7 +43,7 @@
        <image class='image5'  src='../../../icon/Customer/youjiantou.png' mode='scaleToFill'/>
     </view>
       <view style='line' style='width:98%;height:0px;border:0.5px solid #ececec;margin-left:17px;'></view>
-     <view class='text2' bindtap='goToMyBarber'>
+     <view class='text2' bindtap='goToMyBarber' hover-class='hoverClass'>
       <image class='image4' src='../../../icon/Customer/wodefaxingshi.png' mode='scaleToFill'/>
        <text style='margin-top:auto;margin-bottom:auto;width:80%;'>我的发型师</text>
         <image class='image5' src='../../../icon/Customer/youjiantou.png' mode='scaleToFill'/>
@@ -51,13 +51,13 @@
     <view style='line' style='width:98%;height:0px;border:0.5px solid #ececec;margin-left:17px;'></view>
     <view class='text2' bindtap='goToCoupon'>
       <image class='image4' src='../../../icon/Customer/wodeshouyi.png' mode='scaleToFill'/>
-       <text style='margin-top:auto;margin-bottom:auto;width:80%;'>我的收益</text>
+       <text style='margin-top:auto;margin-bottom:auto;width:80%;'>我的余额</text>
         <image class='image5' src='../../../icon/Customer/youjiantou.png' mode='scaleToFill'/>
     </view>
     <view style='line' style='width:98%;height:0px;border:0.5px solid #ececec;margin-left:17px;'></view>
     <view class='text2' bindtap='goToCoupon'>
       <image class='image4' src='../../../icon/Customer/wodexiaofeijilu.png' mode='scaleToFill'/>
-       <text style='margin-top:auto;margin-bottom:auto;width:80%;'>我的消费记录</text>
+       <text style='margin-top:auto;margin-bottom:auto;width:80%;'>我的订单记录</text>
         <image class='image5' src='../../../icon/Customer/youjiantou.png' mode='scaleToFill'/>
     </view>
     

@@ -25,11 +25,11 @@ module.exports = {
   DecryptShare: ApiRootTestUrl + 'auth/decryptshare',
   ArgsDigest: ApiRootTestUrl + 'auth/argsig',
   UploadSig: ApiRootTestUrl + 'auth/uploadsig',
-
+  WxApply:ApiRootUrl+'extract/apply',
   GetWxSession: ApiRootTestUrl + 'auth/getwxsession',
-
+GetMybarberList:ApiRootUrl+'customer/getmybarberlist',
   GetWxSession: ApiRootUrl + 'weixin/getopenid',
-
+  GetInCome:ApiRootUrl +'customer/getincome',
   GetWxPayUnified: ApiRootUrl + 'auth/getwxpayunified',
   Getcustomerorderlist: ApiRootUrl + 'order/getcustomerorderlist',
   GetFaceInfo: ApiRootUrl +'customer/getfaceinfo',

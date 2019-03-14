@@ -1,20 +1,21 @@
 <!--pages/myCoupon/coupon.wxml-->
 <import src='../../template/coupon.wxml'/>
 <view class="main" style='margin-top:0rpx;background-color:#f4f4f4'>
-  <view class="drawCash">
+  <!-- <view class="drawCash">
  <text class="text1">提现</text>
   <text class="text2">提现到 微信钱包>我的余额</text>
- </view>
+ </view> -->
   <view class="yue" style='height:260rpx;display:flex;flex-direction:column;margin-bottom:20rpx;background-color:white'>
 
-  <text style='font-size:38px;font-weight:600;margin-top:30rpx;margin-left:20rpx;'>￥15.00{{money.balance}}</text>
-  <view class="line" style='width:97%;height:0rpx;border:0.5px solid #ececec;margin-left:auto;margin-right:auto;'></view>
-  <label style=" margin-top:20rpx;margin-left:30rpx;color:grey;font-size:24rpx;">当前余额 (元)</label>
-  <button style='margin-right:30rpx;margin-top:-35rpx;width:160rpx;height:48rpx;font-size:26rpx;border-radius:22rpx;line-height:45rpx;'>全部提现</button>
+  <text style='font-size:38px;font-weight:400;margin-top:40rpx;margin-left:20rpx;'>￥{{accountInfo.amount}}</text>
+  <!-- <view class="line" style='width:97%;height:0rpx;border:0.5px solid #ececec;margin-left:auto;margin-right:auto;'></view> -->
+  <label style=" margin-top:10rpx;margin-left:30rpx;color:grey;font-size:24rpx;">当前余额 (元)</label>
+  <button style='margin-right:20rpx;margin-top:-35rpx;width:160rpx;height:48rpx;font-size:26rpx;border-radius:15rpx;line-height:45rpx;' bindtap='drawCash'>提现</button>
   </view>
-   <view wx:for="{{couponAll}}" wx:key='{{item.couponList}}'>
+   <view wx:for="{{myBarberList}}" wx:key='{{item.id}}'>
    <!-- 取不到数据。。。 -->
-       <template is="coupon" data="{{couponList:item.couponList,couponTime:item.couponTime}}" />
+       <template is="coupon" data="{{item:item}}" />
    </view>
        <!-- <template is="coupon" data="{{id:item.id,path:icon_path,money:item.value,time:item.price}}"/> -->
+      
       </view>

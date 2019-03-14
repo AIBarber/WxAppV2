@@ -10,13 +10,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    discountList: [],
+    accountInfo:null,
     amountList:[],
     couponList:[],
     couponTime:[],
-    couponAll:{},
-    icon_path: '../../icon/icon_paid.png'
-  
+    couponAll:[],
+    icon_path: '../../icon/icon_paid.png',
+    myBarberList:null,
+    accountAmount:null
   },
   returnBtn: function () {
     wx.navigateBack({
@@ -27,32 +28,65 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getDiscountList();
+    this.getCustomerAccountInfo();
+    this.getCustomerAccount();
   },
-
-  getDiscountList: function () {
-    // console.log('getDiscountList ' + api.CustomerDiscountList);
-    //wx.showNavigationBarLoading();
-    var that = this;
+  drawCash:function(){
+    var that=this;
+    wx.navigateTo({
+      url: 'drawcash'
+    })
+  },
+  getCustomerAccountInfo:function(){
+    var that=this;
     util.weshowRequest(
-      api.Getcustomerorderlist,
+      api.GetInCome,
       {
-        'statusStr': 3,
-        'customerId': 1
+        'customerId': 2
       },
       'POST').then(res => {
-        //if (res.data) {}
-        // console.log('getDiscountList ');
-        // console.log(res);
-        // success
-        // var dataJson = JSON.stringify(res.data.bizContent.order);
-        // console.log("dataJson:"+dataJson);
-        that.setData({ 
-          discountList: res.data.bizContent.order
-          });
-        console.log("discountList:"+that.data.discountList);
-        this.makeCouponLists(res);
+        that.setData({
+          accountInfo: res.data.bizContent.customerAccount,
+          accountAmount: res.data.bizContent.customerAccount.amount
+        });
        
+        console.log("discountList:" + JSON.stringify(res.data.bizContent.customerAccount));
+        // this.makeCouponLists(res);
+        // that.stopRefreshing();
+        //that.waitUpdate();
+      }).catch((err) => {
+        console.log('getDataList err' + err);
+        // fail
+        // that.stopRefreshing();
+        // wx.showToast({
+        //   title: '正在获取数据…',
+        //   icon: 'loading',
+        //   duration: 3000,
+        //   mask: true
+        // });
+      });
+  },
+  getCustomerAccount: function () {
+    var that = this;
+    util.weshowRequest(
+      api.GetInCome,
+      {
+        'customerId': 2
+      },
+      'POST').then(res => {
+        that.setData({
+          customerAccount: res.data.bizContent.customerAccount
+          });
+        console.log("cus::" + JSON.stringify(res.data.bizContent.customerAccount));
+        var cusIncomeList = res.data.bizContent.customerAccount.customerIncomeList;
+        for (var i = 0; i < cusIncomeList.length;i++){
+            var incomeListIndex="myBarberList["+i+"]";
+        that.setData({
+          [incomeListIndex]: res.data.bizContent.customerAccount.customerIncomeList[i]
+          });
+        }
+        console.log("discountList:" + that.data.customerAccount);
+        // this.makeCouponLists(res);
         // that.stopRefreshing();
         //that.waitUpdate();
       }).catch((err) => {
@@ -67,31 +101,55 @@ Page({
         // });
       });
   },
-
   makeCouponLists:function(resm){
     var that=this;
-    var couponAll={};
-    var couponList=[];
-    var couponTime=[];
-    var couponStore=[];
+    var couponAll=[];
     for (var i = 0; i < that.data.discountList.length; i++) {
+       // 这里还得改 应该是status==5是完成的订单
       if (resm.data.bizContent.order[i].status == 3) {
-        couponList.push(resm.data.bizContent.order[i].amount);
-        couponTime.push(resm.data.bizContent.order[i].createdTime);
+        // couponList.push(resm.data.bizContent.order[i].amount);
+        // couponTime.push(resm.data.bizContent.order[i].createdTime);
+        couponAll=resm.data.bizContent.order[i];
+        var couponIndex = "couponAll[" + i + "]";
+        that.setData({
+          [couponIndex]: couponAll,
+        })
       }
+    console.log("i:"+i);
     }
-    couponAll.couponList = couponList;
-    couponAll.couponTime = couponTime;
-    var couponAllJson = couponAll;
-    that.setData({
-      couponList: couponList,
-      couponTime: couponTime,
-      couponAll:couponAll,
-    })
-    console.log("conponAll:"+couponAll.couponTime);
-    console.log("amount List:" + couponList+"  couponTime:"+couponTime+"store:"+couponStore);
+    console.log("conponAll:"+JSON.stringify(that.data.couponAll[0]));
+    // console.log("amount List:" + couponList+"  couponTime:"+couponTime+"store:"+couponStore);
   },
+  getDiscountList: function () {
+    // console.log('getDiscountList ' + api.CustomerDiscountList);
+    //wx.showNavigationBarLoading();
+    var that = this;
+    var bizContent={
+      
+    }
+    util.weshowRequest(
+      api.Getcustomerorderlist,
+     bizContent,
+      'POST').then(res => {
+        that.setData({
+          discountList: res.data.bizContent.order
+        });
 
+ // this.makeCouponLists(res);
+        // that.stopRefreshing();
+        //that.waitUpdate();
+      }).catch((err) => {
+        console.log('getDataList err' + err);
+        // fail
+        that.stopRefreshing();
+        // wx.showToast({
+        //   title: '正在获取数据…',
+        //   icon: 'loading',
+        //   duration: 3000,
+        //   mask: true
+        // });
+      });
+  },
   stopRefreshing: function () {
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();

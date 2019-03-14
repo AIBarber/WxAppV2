@@ -1,38 +1,36 @@
 // pages/myBarber/myBarber.js
+var app = getApp();
+var util = require('../../../utils/util.js');
+var api = require('../../../config/api.js');
+var model = require('../../../utils/model.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    myBarberList:[{id:1},{id:2}]
+    myBarberList:null
   },
   getSelectedBarber: function () {
     // console.log('getStoreList ' + api.StoreList);
     //wx.showNavigationBarLoading();
     var that = this;
     var bizContent = {
-      
+      "customerId": "1"
     }
     util.weshowRequest(
-      api.GetorderInsert,
+      api.GetMybarberList,
       bizContent,
       'POST').then(res => {
         var a = JSON.stringify(res.data);
-        // var a=JSON.parse(res.data);
-
-        var barberinfo = JSON.stringify(res.data.bizContent.list);
-        // console.log('barberList:: ' + barberinfo);
+        var barberinfo = res.data.bizContent.list;
+        for(var i=0;i<barberinfo.length;i++){
+          var listIndex="myBarberList["+i+"]";
         that.setData({
-          barberList: res.data.bizContent.list,
+          [listIndex]: res.data.bizContent.list[i],
         });
-        // console.log("barberlist::" + that.data.barberList);
-        // console.log(this.data.barberList[0].name);
-        // that.setData({
-        //   barberName: this.data.barberList[0].name
-        // })
-        // console.log("request-barberName:"+this.data.barberName);
-        // console.log(that.data);
+        }
+         console.log("barberList:::"+JSON.stringify(that.data.barberList));
         util.stopRefreshing;
         util.waitUpdate;
       }).catch((err) => {
@@ -51,7 +49,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getSelectedBarber();
   },
 
   backToprevPage: function () {

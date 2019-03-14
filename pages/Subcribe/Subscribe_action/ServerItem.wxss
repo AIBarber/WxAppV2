@@ -127,7 +127,7 @@ height: 160rpx;
  display: flex;
  flex-direction:row;
   width: 99%;
-  height: 120rpx;
+  height: 100rpx;
   background-color: white;
  margin-top: auto;
  margin-bottom: auto;
@@ -139,7 +139,7 @@ height: 160rpx;
  display: flex;
  flex-direction:row;
   width: 99%;
-  height: 100rpx;
+  height: 90rpx;
   background-color: white;
   margin-top: auto;
  margin-bottom: auto;
@@ -174,7 +174,7 @@ height: 160rpx;
 }
 .money{
   
-  margin-left: 20rpx;
+  margin-left: 10rpx;
   text-align: right;
   font-size: 16px;
     margin-top:auto;

@@ -55,15 +55,15 @@
   flex-direction:column;
   height: 100%;
   background-color: #f4f4f4;
- 
 }
 .headView{
   margin-top:0rpx;
   display:flex;
   flex-direction:row;
   height:300rpx;
-  
-
+}
+.hoverClass{
+  background-color: #0cc4b1;
 }
 .image2{
   width:65px;

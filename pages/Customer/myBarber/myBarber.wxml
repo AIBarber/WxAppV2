@@ -1,8 +1,8 @@
 <import src='../../template/myBarberList.wxml'/>
 
 <view class='myBarberList'>
-<block wx:for="{{myBarberList}}" wx:key="{{id}}">
-  <template is="myBarberList" data="{{id:item.id}}"/>
+<block wx:for="{{myBarberList}}" wx:key="{{item.id}}">
+  <template is="myBarberList" data="{{item:item}}"/>
   </block>
 </view>
 

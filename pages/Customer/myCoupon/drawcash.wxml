@@ -1,0 +1,15 @@
+ <view class="drawCashView">
+  <view class="drawCash">
+ <text class="text1">提现</text>
+  <text class="text2">提现到 微信钱包>我的余额</text>
+ </view>
+ <view>
+ <form bindsubmit='getMoney'>
+ <input type='text' name="money" style='height:80rpx;margin-top:-20rpx;margin-left:20rpx;'/>
+  <view class="line" style='width:95%;height:0rpx;border:0.5px solid #ececec;margin-left:auto;margin-right:auto;'></view>
+  <label style="height:80rpx; margin-top:10rpx;margin-left:30rpx;color:grey;font-size:13px;">当前余额<text>{{amount}}</text>(元)</label>
+  <button style='margin-right:20rpx;margin-top:-35rpx;width:160rpx;height:48rpx;font-size:26rpx;border-radius:15rpx;line-height:45rpx;' bindtap='drawCash'>全部提现</button>
+     <button form-type="submit" class="toChoShop" style='' >提现</button>
+     </form>
+ </view>
+ </view>

@@ -76,3 +76,53 @@
   margin-left: 10px;
   margin-bottom: 10px;
 }
+.btnAndMoney{
+  display: flex;
+  flex-direction: column;
+  /* border:1px solid black; */
+  /* text-align: right; */
+  margin-left: 200rpx;
+  width: 200rpx;
+  height: 80%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.money{
+  margin-left:0rpx;
+  margin-right: 20rpx;
+  text-align:right;
+  margin-top:auto;
+  margin-bottom:auto;
+  font-size:34rpx;
+  color:#ff6600;
+ 
+}
+.getMoneyBtn{
+  margin-right:5rpx;
+
+  margin-bottom:auto;
+  width:90rpx;
+  height:48rpx;
+  font-size:26rpx;
+  border-radius:16rpx;
+  line-height:38rpx;
+  padding:0rpx;
+}
+.moneyNT{
+  
+  width: 300rpx;
+  display:flex;flex-direction:column;margin-left:30rpx;
+  height: 80%;
+  margin-top: auto;
+  margin-bottom: auto;
+  /* padding-top: auto;
+  padding-bottom: auto; */
+}
+.moneyName{
+ font-size:30rpx;color:#333333;
+   margin-top: auto;
+}
+.moneyTime{
+  font-size:26rpx;color:#999999;
+    margin-bottom: auto;
+  }

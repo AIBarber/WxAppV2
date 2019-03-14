@@ -1,12 +1,18 @@
 <template name='coupon'>
 
-  <view style='display:flex;flex-direction:row;margin-top:0px; width:100%;background:white; border-bottom:1px solid #f4f4f4;height:130rpx;' data-id='{{id}}'>
-  <view class="moneyNT" style='display:flex;flex-direction:column;margin-left:40rpx;'>
-   <view class="moneyName" style='margin-top:30rpx;font-size:30rpx;color:#333333' >来源{{name}}</view>
-     <view class="moneyTime" style='font-size:26rpx;color:#999999'>2019-2-2{{couponTime}}</view>
+  <view class="moneyView" style='display:flex;flex-direction:row;margin-top:0px; width:100%;background:white; border-bottom:1px solid #f4f4f4;height:130rpx;' data-id='{{id}}'>
+  <view class="moneyNT" >
+   <view class="moneyName"  >来源：{{item.title}}</view>
+     <view class="moneyTime" ><text>{{item.createdTime}}</text></view>
      </view>
-     <view class="money" style='margin-left:360rpx;margin-top:40rpx;font-size:34rpx;color:#ff6600'>{{couponList}}</view>
-      <button style='margin-left:5rpx;margin-top:auto;margin-bottom:auto;width:120rpx;height:48rpx;font-size:26rpx;border-radius:22rpx;line-height:38rpx;padding:0rpx;'>提现</button>
+     <view class="btnAndMoney" >
+     <view class="money">
+     <text wx:if="{{item.type==1}}">+</text><text wx:elif="{{item.type==2}}"></text>
+     {{item.amount}}</view>
+     <!-- <block wx:if="{{item.type==1}}">
+      <button class="getMoneyBtn">提现</button>
+      </block> -->
+      </view>
     </view>
     <view style='line' style='width:4%;height:0px;border:0.5px solid white;margin-left:0px;margin-top:-2rpx;;'></view>
 </template>

@@ -1,11 +1,11 @@
 <template name="myBarberList">
 <view class="list">
-   <image class="img"></image>
+   <image class="img" src="{{item.headUrl}}"></image>
    <view class="content">
-    <text class="barberName">王可欣{{name}}</text>
-    <text class="text">设计总监{{}} | {{years}}</text>
-    <text class="text">发型：{{name}}</text>
-    <text class="text">理发时间：{{cutHairTime}}</text>
+    <text class="barberName">{{item.name}}</text>
+    <text class="text">级别：{{item.level}} | 年限：{{item.years}}</text>
+    <text class="text">发型：{{item.name}}</text>
+    <text class="text">理发时间：{{item.hairCutTime}}</text>
    </view>
 </view>
 </template>
