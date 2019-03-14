@@ -14,17 +14,14 @@ Page({
   
   },
 
-
   getMoney:function(e){
      console.log("提现："+e.detail.value.money);
     var money = e.detail.value.money;
     this.getApply(money);
   },
 
-
-
   getApply: function ( money) {
-     this.money=money;
+    //  this.money=money;
     var that = this;
     var bizContent={
       'customerId': 2,
@@ -37,7 +34,7 @@ Page({
         that.setData({
           status:res.data.bizContent.status
         });
-
+        console.log("money:"+money);
         console.log("status:::" + that.data.status);
         this.getCustomerAccountInfo();
         // this.makeCouponLists(res);
@@ -68,7 +65,7 @@ Page({
           amount: res.data.bizContent.customerAccount.amount
         });
 
-        console.log("discountList:" + JSON.stringify(res.data.bizContent.customerAccount.amount));
+        console.log("getAccountInfo:" + JSON.stringify(res.data.bizContent.customerAccount.amount));
         // this.makeCouponLists(res);
         // that.stopRefreshing();
         //that.waitUpdate();
@@ -84,6 +81,11 @@ Page({
         // });
       });
   },
+  drawCashAll:function(){
+    var that=this;
+    that.getApply(that.data.amount);
+
+  }, 
     /**
    * 生命周期函数--监听页面加载
    */
