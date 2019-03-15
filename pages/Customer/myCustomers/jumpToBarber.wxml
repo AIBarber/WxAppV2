@@ -1,11 +1,11 @@
 
-<view class="titleView">
+<!-- <view class="titleView">
  <view class="return" bindtap='returnBtn'>
   <image class="returnImg" src='../../../icon/arrow_xia.png' mode='scaleToFill'></image>
-  <text class="" style=' margin-left:10rpx;margin-top:30rpx;line-height:0rpx;'>返回</text>
+  <text class="" style=' margin-left:10rpx;margin-top:30rpx;line-height:0rpx;'>上一步</text>
  </view>
  <view class="title">发现</view>
- </view>
+ </view> -->
 
  <view class="main">
  <form bindsubmit="formSubmit" bindreset="formReset">

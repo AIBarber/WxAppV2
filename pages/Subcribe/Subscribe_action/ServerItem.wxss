@@ -92,6 +92,7 @@ line-height: 35rpx;
 margin-top: 0rpx;
 width: 100%;
 height: 160rpx;
+color:grey;
 }
 
 .bar:nth-of-type(1){

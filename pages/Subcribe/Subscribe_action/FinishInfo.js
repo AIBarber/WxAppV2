@@ -1,4 +1,8 @@
 // pages/myDateServer/DateServerInfo.js
+var app = getApp();
+var util = require('../../../utils/util.js');
+var api = require('../../../config/api.js');
+var model = require('../../../utils/model.js');
 Page({
 
   /**
@@ -16,7 +20,7 @@ Page({
     barberId: '',
     clickServer: '',
     address:'',
-    allMoney:null,
+    allMoney:'',
     barberName:'',
     shopAddress:'',
     timeChineseStr:''
@@ -26,11 +30,23 @@ Page({
         
       })
   },
-  
+  saveSelectedBarberId:function(){
+    var that=this;
+    var seledBarId = app.globalData.selectedBarberId;
+    console.log("全局标量：：" + app.globalData.selectedBarberId);
+    for (var i = 0; i < seledBarId.length;i++){
+        if(that.data.barberId==seledBarId[i]){
+        }else{
+          selectBarId.push(that.data.barberId);
+        }
+    }
+    console.log("globalData-selectedBarberId" + getApp().globalData.selectedBarberId);
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+  
     var that=this;
     var timePostion = options.postion;
     console.log("timePositon::"+timePostion)
@@ -92,13 +108,15 @@ Page({
    */
   onReady: function () {
     // console.log(this.data.time + "--" + this.data.address);
+   
        },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    that.saveSelectedBarberId();
   },
 
   /**

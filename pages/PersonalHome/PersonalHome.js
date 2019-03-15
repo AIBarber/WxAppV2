@@ -1,11 +1,11 @@
-var util = require('../../utils/util.js');
-var api = require('../../config/api.js');
-var model = require('../../utils/model.js');
-var LoginMain = require('./LoginMain.js');
-var CustomerHome = require('./CustomerHome.js');
-var BarberHome = require('./BarberHome.js');
-import myDialog from '../template/dialog';
+// var util = require('../../utils/util.js');
+// var api = require('../../config/api.js');
+// var model = require('../../utils/model.js');
 
+var CustomerHome = require('../Customer/myCustomers/personal.js');
+var BarberHome = require('../Barber/BarberHome/personal.js');
+// import myDialog from '../template/dialog';
+// var LoginMain = require('../../LoginMain.js');
 var app = getApp();
 
 var isPullDownRefreshing = false;
@@ -17,68 +17,71 @@ Page({
    */
   data: {
     // LoginMain
-    faceid: app.globalData.faceid,
-    userType: 0,
-    userInfo: app.globalData.userInfo,
-    accountInfo: app.globalData.accountInfo,
-    hasUserInfo: app.globalData.hasUserInfo,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    // faceid: app.globalData.faceid,
+    faceid:123123,
+    userType: 1,
+    // userInfo: app.globalData.userInfo,
+    // accountInfo: app.globalData.accountInfo,
+    // hasUserInfo: app.globalData.hasUserInfo,
+    // canIUse: wx.canIUse('button.open-type.getUserInfo'),
 
     // CustomerHome
-    info: null,
-    reservation: null,
+    customerFaceInfo: '',
+    headPhoto: '',
+    // reservation: null,
     attribute: null,
-    mysubscribe: null,
-    cur_service: null,
+    myHairSrc: null,
 
     //BarberHome
     reservations: [],
     orders: [],
     barberDetails: [],
     barberID: null,
-    timeToReserve: []
+    timeToReserve: [],
+    barberInfo:'',
+    chooseTime: 0
   },
 
   onLoad: function (options) {
     console.log('onLoad...');
     console.log('onLoad... global');
-    console.log(app.globalData.faceid);
-
-    this.setData({
-      userInfo: app.globalData.userInfo,
-      faceid: app.globalData.faceid,
-      userType: 2
-    })
-
+    console.log("customerHome:"+CustomerHome);
+    //      if(options.userType!=null){
+    // this.setData({
+    //   // userInfo: app.globalData.userInfo,
+    //   // faceid: 123123,
+    //   userType:options.userType
+    // })
+    //      }
     var that = this;
     if (this.data.faceid == null) {
-      util.login().then(res => {
-        console.log('home login success');
-        console.log(res);
-        LoginMain.onLogin(that, res);
-      }).catch((err) => {
-        // fail
-        console.log('home login fail');
-        console.log(err);
-        LoginMain.onLogin(that, null);
-        that = null;
-      });
+      // util.login().then(res => {
+      //   console.log('home login success');
+      //   console.log(res);
+      //   LoginMain.onLogin(that, res);
+      // }).catch((err) => {
+      //   // fail
+      //   console.log('home login fail');
+      //   console.log(err);
+      //   LoginMain.onLogin(that, null);
+      //   that = null;
+      // });
     }
 
     //CustomerHome
-    else if (this.data.userType == 2) {
-      CustomerHome.getInfo(this);
-      CustomerHome.getReservation(this);
-      CustomerHome.getAttribute(this);
-      CustomerHome.getCurService(this);
+    else if (that.data.userType == 2) {
+      CustomerHome.getPersonalData(that);
+    
+      // CustomerHome.getAttribute(this);
+      // CustomerHome.getCurService(this);
     }
 
     //BarberHome
     else {
-      BarberHome.getDataList_details(this);
-      BarberHome.getDataList_reservations(this);
-      BarberHome.getDataList_orders(this);
-      BarberHome.getDataList_time(this)
+      BarberHome.getBarberInfo(that);
+      // BarberHome.getDataList_reservations(this);
+      // BarberHome.getDataList_orders(this);
+      // BarberHome.getDataList_time(this)
     }
   },
 
@@ -89,7 +92,8 @@ Page({
   onShow: function () {
     //this.getAccount(app.globalData.userid);
     console.log('onShow... data');
-
+   var that=this;
+    CustomerHome.getHeadPhoto(that);
     if (app.globalData.faceid == null) {
     }
     else {
@@ -102,11 +106,24 @@ Page({
   onReady: function () {
     console.log('onReady... data');
   },
-
+  uploadHairPhoto:function(){
+  
+    CustomerHome.uploadHairPhoto();
+  },
+  toCustomer:function(){
+    var that=this;
+    BarberHome.toCustomer(that);
+  },
+  backToprevPage:function(){
+    CustomerHome.backToprevPage();
+  },
+  goToMyShareStore:function(){
+    CustomerHome.goToMyShareStore();
+  },
   onGotUserInfo: function (e) {
     LoginMain.onGotUserInfo(this, e);
   },
-
+  
   goToMyBarber: function () {
     CustomerHome.goToMyBarber();
   },
@@ -119,8 +136,8 @@ Page({
     CustomerHome.goToConsumption();
   },
 
-  goToMyOrders: function () {
-    BarberHome.goToMyOrders();
+  goToHistoryCost: function () {
+    CustomerHome.goToHistoryCost();
   },
 
   goToMyCustomers: function () {
@@ -130,25 +147,30 @@ Page({
   gotoCashdraw: function () {
     BarberHome.gotoCashdraw();
   },
-
-  changeToBarber: function () {
-    CustomerHome.changeToBarber(this);
-    BarberHome.getDataList_details(this);
-    BarberHome.getDataList_reservations(this);
-    BarberHome.getDataList_orders(this);
-    BarberHome.getDataList_time(this);
+  showTime:function(){
+    var that=this
+     BarberHome.showTime(that);
   },
-
+  changeToBarber: function () {
+    // CustomerHome.changeToBarber(this);
+    // BarberHome.getDataList_details(this);
+    // BarberHome.getDataList_reservations(this);
+    // BarberHome.getDataList_orders(this);
+    // BarberHome.getDataList_time(this);
+  },
+  jumpToBarber:function(){
+    CustomerHome.jumpToBarber();
+  },
   backToprevPage: function () {
     BarberHome.backToprevPage();
   },
 
   changeToCustomer: function () {
-    BarberHome.changeToCustomer(this);
-    CustomerHome.getInfo(this);
-    CustomerHome.getReservation(this);
-    CustomerHome.getAttribute(this);
-    CustomerHome.getCurService(this);
+    // BarberHome.changeToCustomer(this);
+    // CustomerHome.getInfo(this);
+    // CustomerHome.getReservation(this);
+    // CustomerHome.getAttribute(this);
+    // CustomerHome.getCurService(this);
   },
 
   select0: function (event) {

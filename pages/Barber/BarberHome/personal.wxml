@@ -1,21 +1,22 @@
+<import src='../../template/chooseTime.wxml'/>
 <!-- 个人信息 -->
-<view wx:if="{{person[curIndex]}}">
-        <block wx:for="{{person[curIndex]}}" wx:key="item.id">
+<view wx:if="{{barberInfo}}">
+        <!-- <block wx:for="{{person[curIndex]}}" wx:key="item.id"> -->
 <view class="summary">
 	<!-- <view class="avatar-container"> -->
-		<image src="{{item.cover}}" class="avatar" />
+		<image src="{{barberInfo.headImageUrl}}" class="avatar" />
 	<!-- </view> -->
   <view class ="nick">
-		<view class="nickname">{{item.name}}</view>
-    <view class="nickname1" >{{item.level}}|<text class="nickname1">{{item.exp}}</text></view>
+		<view class="nickname">{{barberInfo.name}}</view>
+    <view class="nickname1" >{{barberInfo.level}}|<text class="nickname1">{{barberInfo.years}}</text></view>
     </view>
 </view>
-</block>
+<!-- </block> -->
 </view>
 
 <!-- 账户 -->
-<view wx:if="{{person[curIndex]}}">
-        <block wx:for="{{person[curIndex]}}" wx:key="item.id">
+<view wx:if="{{barberInfo}}">
+        <!-- <block wx:for="{{person[curIndex]}}" wx:key="item.id"> -->
 <view class="account">
 	<view class="item">
 		<view class="value balance">{{item.income}}</view>
@@ -30,22 +31,25 @@
 		<view class="caption">我的顾客</view>
 	</view>
 </view>
-</block>
+<!-- </block> -->
 </view>
 <!-- 列表 -->
 
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/shijian.png" />
-		<navigator class="bd" url="../time/time" open-type="navigate" hover-class="none">预约时段管理</navigator>
+		<view class="bd" bindtap='showTime' hover-class="none">预约时段管理</view>
+
 		<view class="ft"></view>
 	</view>
 </view>
-
+    <view style="{{chooseTime==1?'':'display:none'}}" class="chooseTime">
+   <template is="chooseTime"/>
+   </view>
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/zuopin.png" />
-		<navigator class="bd" url="../../pages/order/order" open-type="navigate" hover-class="none">我的作品</navigator>
+		<navigator class="bd" url="../Barber/order/order" open-type="navigate" hover-class="none">我的作品</navigator>
 		<view class="ft"></view>
 	</view>
 </view>
@@ -53,7 +57,7 @@
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/gongxiangdianpu.png"/>
-		<navigator class="bd" url="../../new/new" open-type="navigate" hover-class="none">我的共享店铺</navigator>
+		<navigator class="bd" url="../new/new" open-type="navigate" hover-class="none">我的共享店铺</navigator>
 		<view class="ft"></view>
 	</view>
 </view>
@@ -61,7 +65,7 @@
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/fuwudianpu.png" />
-		<navigator class="bd" url="../address/list/list" open-type="navigate" hover-class="none">我的服务店铺</navigator>
+		<navigator class="bd" url="../Barber/detail/technicain_detail" open-type="navigate" hover-class="none">我的服务店铺</navigator>
 		<view class="ft"></view>
 	</view>
 </view>
@@ -69,7 +73,7 @@
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/qiehuanguke.png"/>
-		<navigator class="bd" url="../../address/list/list" open-type="navigate" hover-class="none">切换用户</navigator>
+		<view class="bd" url="../Barber/firstpage/firstpage" bindtap='toCustomer' open-type="navigate" hover-class="none">切换用户</view>
 		<view class="ft"></view>
 	</view>
 </view>
@@ -77,7 +81,7 @@
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/shezhi.png" />
-		<navigator class="bd" url="../../pages/new/new" open-type="navigate" hover-class="none">设置</navigator>
+		<navigator class="bd" url="../Barber/start/start" open-type="navigate" hover-class="none">设置</navigator>
 		<view class="ft"></view>
 	</view>
  </view>

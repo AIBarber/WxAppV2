@@ -1,4 +1,5 @@
  <view class='viewContainer'>
+ <view class="halfView">
  <view class="titleAll">
  <view class="titleView">
  <!-- <view class="return" style='margin-top:-30rpx;' bindtap='return'>
@@ -72,4 +73,5 @@
        <text style='margin-top:auto;margin-bottom:auto;width:80%;'>设置</text>
         <image class='image5' src='../../../icon/Customer/youjiantou.png' mode='scaleToFill'/>
     </view>
+ </view>
  </view>

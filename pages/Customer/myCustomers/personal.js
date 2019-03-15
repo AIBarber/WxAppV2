@@ -3,31 +3,28 @@ var util = require('../../../utils/util.js');
 var api = require('../../../config/api.js');
 var wxpay = require('../../../utils/wxpay.js');
 var app = getApp();
-Page({
+// Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    // customerFaceInfo: {image:"", name: "慵懒的猫", frequency: 30, score:230},
-    customerFaceInfo: '',
-    // headPhoto: {face: "70", age: 25, sex: '男', color: "yellow", type: "方形", glass: "have"},
-    headPhoto: '',
-    reservation: null,
-    attribute: null,
-    myHairSrc: null,
-    // statusBarHeight: app.globalData.statusBarHeight
-  },
-  jumpToBarber: function () {
+//   /**
+//    * 页面的初始数据
+//    */
+//   data: {
+//     customerFaceInfo: '',
+//     headPhoto: '',
+//     reservation: null,
+//     attribute: null,
+//     myHairSrc: null,
+//   },
+function jumpToBarber () {
     wx.navigateTo({
-      url: 'jumpToBarber',
+      url: '../Customer/myCustomers/jumpToBarber',
     })
-  },
+  };
   /**
    * 生命周期函数--监听页面加载
    */
-  getPersonalData: function () {
-    var that = this;
+function getPersonalData(object) {
+    var that = object;
     util.weshowRequest(
       api.Getcustomerinfo,
       {
@@ -41,7 +38,7 @@ Page({
         that.setData({
           customerFaceInfo: res.data.bizContent.customerinfo
         });
-        console.log("this.data.customerFaceInfo:" + this.data.customerFaceInfo);
+        console.log("this.data.customerFaceInfo:" + that.data.customerFaceInfo);
         // console.log(that.data);
 
         util.stopRefreshing;
@@ -57,19 +54,17 @@ Page({
         //   mask: true
         // });
       });
-  },
-  onLoad: function (options) {
+  };
+function onLoad(options) {
     this.getPersonalData();
-  },
-  changeHeadPhoto: function () {
+  };
 
-  },
-  onShow: function () {
+function onShow() {
     this.getHeadPhoto();
-  },
-  getHeadPhoto: function () {
+  };
+function getHeadPhoto(object) {
     // console.log("进入onShow")
-    var that = this;
+   var that = object;
     if (wx.getStorageSync("personnal") == null) {
 
     } else {
@@ -77,7 +72,7 @@ Page({
         myHairSrc: wx.getStorageSync("personnal")
       })
       var bizContent = { 'customerId': 1 }
-      var photoPaths = '';
+    var photoPaths='';
       photoPaths = wx.getStorageSync("personnal");
       util.wxUploadFile(photoPaths, bizContent).then(res => {
         var face = res.data.bizContent;
@@ -101,7 +96,7 @@ Page({
 
     }
     wx.removeStorageSync("personnal");
-  },
+  };
 
   // getInfo:function(){
   //   console.log('getDataList ' + api.StoreCustomerDetail);
@@ -205,32 +200,32 @@ Page({
   //     });
   // },
 
-  backToprevPage: function () {
+function backToprevPage() {
     wx.navigateBack({
     })
-  },
-  goToMyShareStore: function () {
+  };
+function goToMyShareStore() {
     wx.navigateTo({
-      url: '../../Shop/ShopList/List',
+      url: '../Customer/ShopList/List',
     })
-  },
-  goToMyBarber: function () {
+  };
+function goToMyBarber() {
     wx.navigateTo({
-      url: '../myBarber/myBarber',
+      url: '../Customer/myBarber/myBarber',
     })
-  },
-  goToHistoryCost:function(){
+  };
+function goToHistoryCost(){
     wx.navigateTo({
-      url: '../myHistoryCost/cost',
+      url: '../Customer/myHistoryCost/cost',
     })
-  },
-  goToCoupon: function () {
+  };
+function goToCoupon() {
     wx.navigateTo({
-      url: '../myCoupon/coupon',
+      url: '../Customer/myCoupon/coupon',
     })
-  },
+  };
 
-  changeToBarber: function () {
+function changeToBarber() {
     if (app.globalData.userType != 1) {
       wx.navigateTo({
         url: '../FaceIdentity/Identity',
@@ -240,23 +235,23 @@ Page({
         url: '../BarBer/personal',
       })
     }
-  },
+  };
 
-  goToConsumption: function () {
+function goToConsumption() {
 
-  },
-  goToMyShareShop: function () {
+  };
+function goToMyShareShop() {
     wx.navigateTo({
       url: '../myHistoryCost/cost',
     })
-  },
-  uploadHairPhoto: function () {
+  };
+function uploadHairPhoto() {
     var that = this;
     wx.navigateTo({
-      url: '../camaraIdentity/camaraIdentity?photoName=personnal',
+      url: '../Customer/camaraIdentity/camaraIdentity?photoName=personnal',
     })
-  },
-  takePhoto: function () {
+  };
+function takePhoto() {
     var that = this;
     wx.chooseImage({
       count: 9,
@@ -269,5 +264,19 @@ Page({
 
     console.log(myHairSrc);
   }
-})
+// })
 
+module.exports = {
+  getPersonalData,
+  jumpToBarber,
+  getHeadPhoto,
+  backToprevPage,
+  goToMyShareStore,
+  goToMyBarber,
+  goToCoupon,
+  goToConsumption,
+  changeToBarber,
+  uploadHairPhoto,
+  takePhoto,
+  goToHistoryCost
+}

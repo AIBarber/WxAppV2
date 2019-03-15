@@ -1,1 +1,7 @@
-{}
+{
+
+      "backgroundTextStyle": "light",
+      "navigationBarBackgroundColor": "white",
+      "navigationBarTitleText": "我的理发师",
+      "navigationBarTextStyle": "black"
+}

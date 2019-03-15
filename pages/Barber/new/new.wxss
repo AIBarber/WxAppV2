@@ -116,6 +116,7 @@
 /* 导航对应内容项 */
 .nav_section{
     width:100%;
+    height: 500rpx;
 }
 .nav_section_items{
     display:flex;
@@ -209,7 +210,7 @@
 color: white;
 }
  
-.swiper-box{ display: block; height: 100%; width: 100%; overflow: hidden; }
+.swiper-box{ display: block; height: 500rpx; width: 100%; overflow: hidden; }
 
 .summary {
 	background: #0099ff00;

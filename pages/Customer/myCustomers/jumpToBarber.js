@@ -24,7 +24,7 @@ Page({
     changeBarber:'',
     color:'background-color:'
   },
-  
+ 
   formSubmit:function(e){
     var that=this;
    wx.navigateTo({

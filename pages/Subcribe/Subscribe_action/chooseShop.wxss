@@ -125,7 +125,7 @@ margin-top: -5rpx;
   margin-right: auto;
 }
 
-.normal{
+/* .normal{
   width: 33%;
   height: 23%;
   border: 0.5px solid #ececec;
@@ -142,7 +142,7 @@ border: 0.5px solid orange;
   height: 23%;
   background-color: blue;
   border: 0.5px solid blue;
-}
+} */
 .radioView2{
   margin-top: 30rpx;
   margin-left: 0rpx;

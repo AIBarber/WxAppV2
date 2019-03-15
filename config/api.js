@@ -26,6 +26,7 @@ module.exports = {
   ArgsDigest: ApiRootTestUrl + 'auth/argsig',
   UploadSig: ApiRootTestUrl + 'auth/uploadsig',
   WxApply:ApiRootUrl+'extract/apply',
+  GetOrderDetail:ApiRootUrl+'order/getorderdetail',
   GetWxSession: ApiRootTestUrl + 'auth/getwxsession',
 GetMybarberList:ApiRootUrl+'customer/getmybarberlist',
   GetWxSession: ApiRootUrl + 'weixin/getopenid',

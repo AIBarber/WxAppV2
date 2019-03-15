@@ -5,12 +5,12 @@
 
 <!-- <view class="container"> -->
   <block wx:if="{{userType != 1 && faceid != null}}">
-    <include src="./CustomerHome.wxml"/>
-  </block>
+    <include src="../Customer/myCustomers/personal.wxml"/>
+ </block>
   <block wx:elif="{{faceid == null}}">
     <include src="./LoginMain.wxml"/>
   </block>
   <block wx:else>
-    <include src="./BarberHome.wxml"/>
+    <include src="../Barber/BarberHome/personal.wxml"/>
   </block>
 <!-- </view> -->

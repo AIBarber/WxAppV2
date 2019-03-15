@@ -5,11 +5,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userType:''
   },
   returnCusIndex:function(){
     wx.switchTab({
       url: 'personal'
+    })
+  },
+  toBarber: function () {
+
+    var that = this;
+    that.setData({
+      userType: 1
+    })
+    wx.navigateTo({
+      url: '../../PersonalHome/PersonalHome?userType='+that.data.userType,
     })
   },
   /**

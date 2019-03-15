@@ -6,11 +6,11 @@ var fileData = require('../../../utils/data.js')
 var util = require('../../../utils/util');
 var api = require('../../../config/api.js');
 
-var app = getApp();
-var fileData = require('../../../utils/data.js');
-var util = require('../../../utils/util.js');
-var api = require('../../../config/api.js');
-var model = require('../../../utils/model.js');
+// var app = getApp();
+// var fileData = require('../../../utils/data.js');
+// var util = require('../../../utils/util.js');
+// var api = require('../../../config/api.js');
+// var model = require('../../../utils/model.js');
 
 
 Page({
@@ -48,14 +48,15 @@ Page({
   },
   toServerItem: function (e) {
     var that = this;
+
     var index = e.target.id;
-    console.log("barberId:::" + that.data.barberList[index - 1].barberId);
+    console.log("toServerItem::barberId:::" + that.data.barberList[index - 1].barberId);
     that.setData({
       barberId: that.data.barberList[index - 1].barberId
-    })
-    that.getBarberInfo();
+    });
+    //从这里调用了 获得barberInfo的方法
+    this.getBarberInfo();
   },
-
   toServer: function () {
     var that = this;
     console.log("点击预约后-barberName:--" + that.data.barberName + "barberId:--" + that.data.barberId);
@@ -63,8 +64,9 @@ Page({
       url: '../../Subcribe/Subscribe_action/ServerItem?barberId=' + that.data.barberId + '&barberName=' + that.data.barberName
     })
   },
-
   getBarberList: function () {
+    // console.log('getStoreList ' + api.StoreList);
+    //wx.showNavigationBarLoading();
     var that = this;
     var bizContent = {
     }
@@ -73,14 +75,25 @@ Page({
       bizContent,
       'POST').then(res => {
         var a = JSON.stringify(res.data);
+        // var a=JSON.parse(res.data);
+
         var barberinfo = JSON.stringify(res.data.bizContent.list);
+        // console.log('barberList:: ' + barberinfo);
         that.setData({
           barberList: res.data.bizContent.list,
         });
+        // console.log("barberlist::" + that.data.barberList);
+        // console.log(this.data.barberList[0].name);
+        // that.setData({
+        //   barberName: this.data.barberList[0].name
+        // })
+        // console.log("request-barberName:"+this.data.barberName);
+        // console.log(that.data);
         util.stopRefreshing;
         util.waitUpdate;
       }).catch((err) => {
         console.log('barberlist err :' + err);
+        // fail
         util.stopRefreshing;
         // wx.showToast({
         //   title: '正在获取数据…',
@@ -90,8 +103,9 @@ Page({
         // });
       });
   },
-
   getBarberInfo: function () {
+    console.log("进入getBarberInfo");
+    //wx.showNavigationBarLoading();
     var that = this;
     var bizContent = {
       "barberId": that.data.barberId
@@ -101,15 +115,27 @@ Page({
       api.Getbarberinfo,
       bizContent,
       'POST').then(res => {
+
         that.setData({
           barberName: res.data.bizContent.barberinfo.name
         })
+
         console.log("request-barberName:" + this.data.barberName);
         this.toServer();
+        // util.stopRefreshing;
+        // util.waitUpdate;
       }).catch((err) => {
         console.log('barberlist err :' + err);
+        // fail
         util.stopRefreshing;
+        // wx.showToast({
+        //   title: '正在获取数据…',
+        //   icon: 'loading',
+        //   duration: 3000,
+        //   mask: true
+        // });
       });
+
   },
 
   bindCasPickerChange: function (e) {
@@ -162,7 +188,7 @@ Page({
       list: that.data.navSectionItems,
       orderlist: that.data.orderItems
     });
-    this.getBarberInfo();
+ 
     wx.getSystemInfo({
 
       success: function (res) {
@@ -175,6 +201,42 @@ Page({
     });
 
   },
+  // getBarberList: function () {
+  //   // console.log('getStoreList ' + api.StoreList);
+  //   //wx.showNavigationBarLoading();
+  //   var that = this;
+  //   var bizContent = {
+  //     "longitude": "143.45",
+  //     "latitude": "123.32",
+  //     "orderType": "1",
+  //     "type": "1"
+  //   }
+  //   util.weshowRequest(
+  //     api.StoreBarberList,
+  //     bizContent
+  //   ,
+  //     'POST').then(res => {
+  //       var resJson = JSON.stringify(res);
+  //       console.log('resJson:: ' + resJson);
+  //       that.setData({
+  //         barberList: resJson.bizContent.list
+  //       });
+  //       console.log("barberList:::::" + that.bizContent.list);
+  //       // console.log(that.data);
+  //       util.stopRefreshing;
+  //       util.waitUpdate;
+  //     }).catch((err) => {
+  //       console.log(' err :' + err);
+  //       // fail
+  //       util.stopRefreshing;
+  //       // wx.showToast({
+  //       //   title: '正在获取数据…',
+  //       //   icon: 'loading',
+  //       //   duration: 3000,
+  //       //   mask: true
+  //       // });
+  //     });
+  // },
   navigate: function (e) {
     wx.navigateTo({
       url: '../order/order?artype=' + e.currentTarget.dataset.arid
@@ -268,42 +330,5 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getBarberInfo: function () {
-    console.log('getBarberInfo ' + api.BarberList);
-    //wx.showNavigationBarLoading();
-    var that = this;
-    util.weshowRequest(
-      api.BarberList,
-      {
-        "longitude": "143.45",
-        "latitude": "123.32",
-        "orderType": "1",
-        "type": "1",
-        'size': 10,
-        //'barberid': app.globalData.userid
-      },
-      'POST').then(res => {
-        //if (res.data) {}
-        console.log('BarberList ');
-        console.log(res.data);
-        // success
-        that.setData({ barberDetails: res.data.bizContent.list });
-        console.log('BarberList ');
-        console.log(that.data.barberDetails);
-        console.log('BarberList ');
-        //that.stopRefreshing();
-        //that.waitUpdate();
-      }).catch((err) => {
-        console.log('getDataList err' + err);
-        // fail
-        //that.stopRefreshing();
-        wx.showToast({
-          title: '正在获取数据…',
-          icon: 'loading',
-          duration: 3000,
-          mask: true
-        });
-        //that.setData({ barberDetails: (wx.getStorageSync('barberDetails') || []) });
-      });
-  }
+ 
 }) 

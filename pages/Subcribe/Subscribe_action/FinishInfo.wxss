@@ -41,6 +41,7 @@
 .main{
   display: flex;
   flex-direction: column;
+  margin-top: -140rpx;
 }
 .mainText{
   margin-top: 180rpx;

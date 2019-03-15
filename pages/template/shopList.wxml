@@ -1,5 +1,5 @@
 <template name='shoplist_order'> 
-<view class='shoplistMain' data-id='{{storeId}}'>
+<view class='shoplistMain' id='{{storeId}}'>
  <image class="shopImg" src='{{headImage}}'></image>
  <view class="shopInfo">
   <view class='shopInfo_StoreName'>{{name}}</view>

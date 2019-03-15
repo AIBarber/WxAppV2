@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+"backgroundTextStyle": "light",
+"navigationBarBackgroundColor": "white",
+"navigationBarTitleText": "选择时间",
+"navigationBarTextStyle": "black"
 }

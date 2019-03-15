@@ -2,7 +2,7 @@
 <view class="orderView">
 <view class="orderText">
 <text class="text1">订单编号：<text class="text2">{{item.orderId}}</text></text>
-<text class="text1" decode="{{true}}">发型：<text class="text2">{{}}</text></text>
+<text class="text1" decode="{{true}}" style='margin-left:56rpx;'>发型：<text class="text2">{{}}</text></text>
 <text class="text1">消费金额：<text class="text2">{{item.amount}}</text></text>
 <text class="text1">消费时间：<text class="text2">{{item.createdTime}}</text></text>
 <text class="text1">理发用时：<text class="text2">{{}}</text></text>
