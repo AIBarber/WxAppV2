@@ -1,0 +1,67 @@
+/* pages/Barber/BarberHome/pictureShow.wxss */
+.slide-image {
+  position: absolute;
+  height: 225rpx;
+  width: 570rpx;
+  border-radius: 15rpx;
+  z-index: 5;
+  opacity: 0.7;
+  top: 13%;
+  margin: 0 20rpx;
+}
+
+swiper {
+  height: 430rpx;
+}
+
+.active {
+  opacity: 1;
+  z-index: 10;
+  height: 280rpx;
+  width: 570rpx;
+  top: 7%;
+  transition: all 0.2s ease-in 0s;
+}
+
+.ceshi_swiper {
+  width: 599rpx;
+  margin: 10rpx auto;
+  position: relative;
+}
+
+.ceshi_prew text {
+  color: #fff;
+  font-size: 30rpx;
+  float: left;
+  margin-top: 15rpx;
+}
+
+.ceshi_next text {
+  color: #fff;
+  font-size: 30rpx;
+  display: block;
+  float: right;
+  margin-top: 15rpx;
+}
+
+.ceshi_next {
+  width: 40rpx;
+  height: 80rpx;
+  position: absolute;
+  top: 120rpx;
+  right: 0rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-top-left-radius: 80rpx;
+  border-bottom-left-radius: 80rpx;
+}
+
+.ceshi_prew {
+  width: 40rpx;
+  height: 80rpx;
+  position: absolute;
+  top: 120rpx;
+  left: 0rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-top-right-radius: 80rpx;
+  border-bottom-right-radius: 80rpx;
+}

@@ -246,6 +246,161 @@ function getorderData() {
   ]
   return arr
 }
+
+//即将理发的客户列表
+function getCustomersWillHaircut() {
+  var arr = [
+    [
+      {
+        id:1,
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        hairType: '长发'
+      },
+      {
+        id: 2,
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        hairType: '长发'
+      },
+      {
+        id: 3,
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        hairType: '长发'
+      },
+      {
+        id: 1,
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        hairType: '长发'
+      },
+      {
+        id: 2,
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        hairType: '长发'
+      },
+      {
+        id: 3,
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        hairType: '长发'
+      },
+      {
+        id: 1,
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        hairType: '长发'
+      },
+      {
+        id: 2,
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        hairType: '长发'
+      },
+      {
+        id: 3,
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        hairType: '长发'
+      }
+
+    ]
+  ]
+  return arr
+}
+
+//最近理发的客户列表
+function getCustomersNearTimeHaircut() {
+  var arr = [
+    [
+      {
+        id: 1,
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        hairType: '中分'
+      },
+      {
+        id: 2,
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        hairType: '板寸'
+      },
+      {
+        id: 3,
+        time: "2019.2.1",
+        coverpath: "../../../icon/default-avatar.png",
+        hairType: '长发'
+      }
+
+    ]
+  ]
+  return arr
+}
+
+//即将理发的客户列表
+function getMyProducts() {
+  var products = [
+    {
+      name: '大脸猫爱吃鱼大脸猫爱吃鱼大脸猫爱吃鱼大脸猫爱吃鱼大脸猫爱吃鱼',
+      heart_num: '1',
+      title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
+      url: 'http://f10.baidu.com/it/u=121654667,1482133440&fm=72',
+      avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
+    },
+    {
+      name: '大脸猫爱吃鱼',
+      heart_num: '2',
+      title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
+      url: 'http://img3.imgtn.bdimg.com/it/u=1417732605,3777474040&fm=26&gp=0.jpg',
+      avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
+    },
+    {
+      name: '大脸猫爱吃鱼',
+      heart_num: '3',
+      title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
+      url: 'http://img3.imgtn.bdimg.com/it/u=1417732605,3777474040&fm=26&gp=0.jpg',
+      avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
+    }, {
+      name: '大脸猫爱吃鱼',
+      heart_num: '4',
+      title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
+      url: 'http://f10.baidu.com/it/u=121654667,1482133440&fm=72',
+      avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
+    },
+    {
+      name: '大脸猫爱吃鱼',
+      heart_num: '5',
+      title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
+      url: 'http://f10.baidu.com/it/u=121654667,1482133440&fm=72',
+      avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
+    },
+    {
+      name: '大脸猫爱吃鱼',
+      heart_num: '6',
+      title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
+      url: 'http://img3.imgtn.bdimg.com/it/u=1417732605,3777474040&fm=26&gp=0.jpg',
+      avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
+    },
+    {
+      name: '大脸猫爱吃鱼',
+      heart_num: '7',
+      title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
+      url: 'http://img4.imgtn.bdimg.com/it/u=2748975304,2710656664&fm=26&gp=0.jpg',
+      avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
+    }, {
+      name: '大脸猫爱吃鱼',
+      heart_num: '8',
+      title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
+      url: 'http://img2.imgtn.bdimg.com/it/u=1561660534,130168102&fm=26&gp=0.jpg',
+      avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
+    }
+  ]
+  return products
+}
+
+
 function getpersonsData() {
   var arr = [
     [
@@ -413,6 +568,9 @@ module.exports = {
   getworksData: getworksData,
   getpersonsData: getpersonsData,
   getbarberData: getbarberData,
-getshopData: getshopData,
-  getlifaData: getlifaData
+  getshopData: getshopData,
+  getlifaData: getlifaData,
+  getCustomersWillHaircut: getCustomersWillHaircut,
+  getCustomersNearTimeHaircut: getCustomersNearTimeHaircut,
+  getMyProducts:getMyProducts
 }
