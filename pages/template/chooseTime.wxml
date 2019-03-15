@@ -1,0 +1,28 @@
+<template name="chooseTime" >
+<view class="chooseTime">
+   <view class="canOrder" style='height:30%;font-size:28rpx; line-height:93rpx; '>上午(12:00)之前</view>
+   <view class="canOrder" style='height:30%;font-size:28rpx; line-height:70rpx;display:flex; flex-direction:column;'><text style='margin-top:-10rpx;'>下午</text><text style='margin-top:-25rpx;'>(12:00-18:00)</text></view>
+   <view class="canOrder"style='height:30%;font-size:28rpx; line-height:93rpx;'>晚上(18:00)之后</view>
+    <button hover-class='timeTable' class="canOrder" id='1' >今天上午</button>
+   
+    <button  hover-class='timeTable' class="canOrder" id="2">今天下午</button>
+
+    <button hover-class='timeTable' class="canOrder" id="3">今天晚上</button>
+ 
+    <button  hover-class='timeTable' class="canOrder" id="4">明天上午</button>
+
+   
+    <button hover-class='timeTable' class="canOrder" id="5">明天下午</button>
+
+    <button hover-class='timeTable' class="canOrder" id="6">明天晚上</button>
+
+
+    <button hover-class='timeTable' class="canOrder" id="7">后天上午</button>
+
+    <button hover-class='timeTable' class="canOrder" id="8">后天下午</button>
+
+    <button hover-class='timeTable' class="canOrder" id="9">后天晚上</button>
+
+
+ </view>
+ </template>

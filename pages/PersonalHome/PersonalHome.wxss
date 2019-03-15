@@ -1,9 +1,9 @@
 /* pages/PersonalHome/PersonalHome.wxss */
 @import "./LoginMain.wxss";
-@import "./CustomerHome.wxss";
-@import "./BarberHome.wxss";
-
-.container {
+@import "../Barber/BarberHome/personal.wxss";
+@import "../Customer/myCustomers/personal.wxss";
+@import'../template/chooseTime.wxss';
+/* .container {
   width: 100%;
   height: 100%;
   background: #FEFEFE;
@@ -13,7 +13,7 @@
   justify-content: baseline;
   padding: 2rpx 0;
   box-sizing: content-box;
-}
+} */
 
 /***************************************/
 /* LoginMain Page wxss BEGIN */

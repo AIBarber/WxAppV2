@@ -22,17 +22,19 @@ module.exports = {
   WxSendUserMsg: WxSendUserMsg,
   WsUrl: WsRootUrl,
   WsOpen: WsRootUrl + 'api/quizuser/open',
-
   DecryptShare: ApiRootTestUrl + 'auth/decryptshare',
   ArgsDigest: ApiRootTestUrl + 'auth/argsig',
   UploadSig: ApiRootTestUrl + 'auth/uploadsig',
+  WxApply:ApiRootUrl+'extract/apply',
+  GetOrderDetail:ApiRootUrl+'order/getorderdetail',
   GetWxSession: ApiRootTestUrl + 'auth/getwxsession',
-
+GetMybarberList:ApiRootUrl+'customer/getmybarberlist',
+  GetWxSession: ApiRootUrl + 'weixin/getopenid',
+  GetInCome:ApiRootUrl +'customer/getincome',
   GetWxPayUnified: ApiRootUrl + 'auth/getwxpayunified',
   Getcustomerorderlist: ApiRootUrl + 'order/getcustomerorderlist',
-
+  GetFaceInfo: ApiRootUrl +'customer/getfaceinfo',
   GetWxPayUnified: ApiRootTestUrl + 'auth/getwxpayunified',
-
   UserList: ApiRootTestUrl + 'user/index',
   UserInfo: ApiRootTestUrl + 'user/info',
   UserAdd: ApiRootTestUrl + 'user/add',
@@ -44,11 +46,10 @@ module.exports = {
   StoreCustomerList: ApiRootUrl + 'store/customerlist',
   StoreCustomerDetail: ApiRootUrl + 'customer/detailbyid',
   StoreBarberDetail: ApiRootUrl + 'barber/detailbyid',
-
+  Getcustomerinfo: ApiRootUrl +'customer/getcustomerinfo',
   Getbarberinfo: ApiRootUrl + 'barber/getbarberinfo',
   GetorderInsert: ApiRootUrl + 'order/insert',
   GetBarberList: ApiRootUrl + 'barber/list',
-
   BarberList: ApiRootUrl + 'barber/list',
   BarberSubscribeList: ApiRootUrl + 'barber/subscribelist',
   BarberSubscribe: ApiRootUrl + 'barber/subscribe',

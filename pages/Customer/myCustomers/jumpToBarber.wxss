@@ -50,7 +50,7 @@
 .circle1{
   width: 40rpx;
   height: 40rpx;
-  background-color:rgb(236, 236, 236);
+  background-color:#ececec;
   border-radius: 20rpx;
   margin-right: -20rpx;
 }
@@ -58,14 +58,14 @@
 
   width: 40rpx;
   height: 40rpx;
-  background-color:rgb(236, 236, 236);
+  background-color:#ececec;
   border-radius: 20rpx;
  
 }
 .circle3{
   width: 40rpx;
   height: 40rpx;
-  background-color:rgb(236, 236, 236);
+  background-color:#ececec;
   border-radius: 20rpx;
   margin-left:-20rpx;
 }
@@ -75,27 +75,27 @@
   margin-top:19rpx;
    width: 134rpx;
   height: 0px;
-  border:1px solid rgb(236, 236, 236);
+  border:1px solid #ececec;
 }
 .line2{
   margin-right: -20rpx;
   margin-top:19rpx;
    width: 134rpx;
   height: 0px;
-  border:1px solid rgb(236, 236, 236);
+  border:1px solid #ececec;
 }
 .line3{
   margin-left:-20rpx;
   margin-top:19rpx;
    width: 134rpx;
   height: 0px;
-  border:1px solid rgb(236, 236, 236);
+  border:1px solid #ececec;
 }
 .line4{
   margin-top:19rpx;
    width: 134rpx;
   height: 0px;
-  border:1px solid rgb(236, 236, 236);
+  border:1px solid #ececec;
  
 }
 .view1{
@@ -115,6 +115,13 @@
   margin-right: auto;
   margin-bottom: 40rpx;
   
+}
+.headPhotoText1{
+  font-size: 18px;
+}
+.headPhotoText2{
+  font-size: 15px;
+  opacity: 0.5;
 }
 .byCamara{
   margin-top: 250rpx;

@@ -22,7 +22,7 @@
   </radio-group>
  <checkbox-group class="radio-group"  bindchange="radioChange2">
    <label class="radio">
-    <text>接受调整</text><checkbox class="rad" checked='{{checked}}' value="1" />
+    <text>接受调整</text><checkbox class="rad"  value="1" />
   </label>
   </checkbox-group>
  </view>

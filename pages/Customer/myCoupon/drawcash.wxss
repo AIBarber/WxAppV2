@@ -1,0 +1,30 @@
+.drawCashView{
+  background-color: white;
+  height: 500rpx;
+}
+.drawCash{
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+.text1{
+  font-size: 21px;
+  margin-bottom: 10rpx;
+}
+.text2{
+  font-size: 13px;
+  color: #999999;
+  margin-bottom: 50rpx;
+}
+.toChoShop{
+ margin-top: 80rpx;
+  width: 650rpx;
+  height: 80rpx;
+  border-radius: 250rpx;
+  background-color: #0cc4b1;
+  text-align: center;
+  line-height: 80rpx;
+  color: white;
+ 
+}

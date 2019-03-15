@@ -1,20 +1,23 @@
 {
   "pages": [
-    "pages/Customer/myCoupon/coupon",
-    "pages/Subcribe/Subscribe_action/ServerItem",
+    "pages/PersonalHome/PersonalHome",
+      "pages/Barber/BarberHome/personal",
+     
     "pages/Customer/myCustomers/personal",
+    
+    "pages/Customer/myHistoryCost/cost",
+    "pages/template/cost_list",
+    "pages/Subcribe/Subscribe_action/ServerItem",
+    "pages/Customer/myCoupon/coupon",
+   "pages/Customer/myCoupon/drawcash",
+    "pages/Barber/new/new",
+    "pages/Subcribe/Subscribe_action/chooseShop",
     "pages/Subcribe/Subscribe_action/barberList",
+    "pages/new/new",
     "pages/Subcribe/Subscribe_action/FinishInfo",
     "pages/Customer/myBarber/myBarber",
-   
-   
-    "pages/Subcribe/Subscribe_action/chooseShop",
-    "pages/Barber/new/new",
     "pages/Shop/ShopList/List",
-    "pages/PersonalHome/PersonalHome",
-    "pages/Barber/BarberHome/personal",
     "pages/Shop/ShopList/new",
-    "pages/new/new",
     "pages/Barber/detail/technicain_detail",
     "pages/Shop/detail/detail",
     "pages/Barber/order/order",
@@ -23,9 +26,6 @@
     "pages/Customer/camaraIdentity/showPhoto",
     "pages/Customer/myCustomers/toBarberSuccess",
     "pages/Customer/myCustomers/jumpToBarber",
-   
-  
-   
     "pages/Subcribe/Subscribe_action/confirmPay"
   ],
   "window": {
@@ -53,13 +53,13 @@
         "selectedIconPath": "icon/tab_shop_selected.png"
       },
       {
-        "pagePath": "pages/Customer/myCustomers/personal",
+        "pagePath": "pages/Shop/ShopList/new",
         "text": "顾客",
         "iconPath": "icon/tab_my_normal.png",
         "selectedIconPath": "icon/tab_my_selected.png"
       },
       {
-        "pagePath": "pages/Barber/BarberHome/personal",
+        "pagePath": "pages/PersonalHome/PersonalHome",
         "text": "个人",
         "iconPath": "icon/tab_my_normal.png",
         "selectedIconPath": "icon/tab_my_selected.png"

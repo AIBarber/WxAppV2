@@ -1,1 +1,9 @@
-{}
+{
+
+ 
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "white",
+    "navigationBarTitleText": "他的服务",
+    "navigationBarTextStyle": "black"
+
+}

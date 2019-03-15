@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "white",
+    "navigationBarTitleText": "选择理发师",
+    "navigationBarTextStyle": "black"
 }

@@ -57,7 +57,6 @@ Page({
     clickState7: 0,
     clickState8: 0,
     clickState9: 0,
-    // shopList: [{ name: "店一", address: "北京", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.345, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }, { name: "店二", address: "上海", ImgSrc: "asdfsdfasf", distance: [12.34, 32.45] }]
     shopList:""
   },
   getPostion: function () {
@@ -379,8 +378,9 @@ Page({
         checked: true,
       
       })
+      console.log("storeid::"+that.data.storeId);
       var storeIdbyInt=parseInt(that.data.storeId)
-      var shopAddress = this.data.shopList[storeIdbyInt].address;
+      var shopAddress = this.data.shopList[storeIdbyInt-1].address;
       console.log("shopaddress" + shopAddress);
       that.setData({
         shopAddress: shopAddress
@@ -458,7 +458,7 @@ Page({
     console.log('getStoreList ' + api.StoreList);
     var that = this;
     var bizContent = {
-      'start': "1",
+      'start': "0",
       'limit': "3",
       // 'category': "1",
       // 'orderType': "1"

@@ -1,0 +1,34 @@
+.chooseTime{
+  display: flex;
+ flex-wrap:wrap;
+  width: 93%;
+  height: 340rpx;
+margin-top: 10rpx;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.canOrder{
+   width: 33.3%;
+  height: 23.3%;
+  /* border: 0.5px solid #0cc4b1; */
+  line-height: 70rpx;
+   margin:0rpx;
+}
+.noOrder{
+ width: 33.3%;
+  height: 23.3%;
+  /* border: 0.5px solid #0cc4b1; */
+  line-height: 70rpx;
+  opacity: 0.2;
+  margin:0rpx;
+}
+
+.timeTable{
+     width: 33.3%;
+  height: 23.3%;
+  background-color: #0cc4b1;
+  line-height: 70rpx;
+   margin:0rpx;
+}
