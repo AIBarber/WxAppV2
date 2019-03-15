@@ -1,7 +1,11 @@
 <!--pages/new/new.wxml-->
-<view class="ar_picker" style="background:#fff">
+<view class="s">
+<view class="ss"><Select prop-array='{{selectArray}}'></Select></view>
+<view><Select prop-array='{{selectArray1}}'></Select></view>
+</view>
+<!--<view class="ar_picker" style="background:#fff">
   <view class="ar_picker_wrap">
-    <!-- <picker bindchange="bindCasPickerChange" value="{{casIndex}}" range="{{casArray}}">-->
+    <!-- <picker bindchange="bindCasPickerChange" value="{{casIndex}}" range="{{casArray}}">
     <view class="sort-list">
       <picker bindchange="bindCasPickerChange" value="{{casIndex1}}" range="{{casArray1}}">
         <view class="sort" bindtap="changeBoxBtn" data-num="2"> 智能排序
@@ -14,10 +18,10 @@
         </view>
       </picker>
     </view>
-    <!-->
-    </picker>-->
+    
+    </picker>
   </view>
-  </view>
+  </view>-->
 
    <view class="nav_section">
     <view wx:if="{{shoplist}}">
@@ -40,7 +44,7 @@
                     <view class="section_cont_price" style="color:#999999;font-size: 26rpx">在店人数：{{item.customerNum}}</view>
                     <view>
                     <text class="section_cont_price" style="font-size: 26rpx">起步价：{{item.startingPrice}}元</text></view>
-                    <view>电话：{{item.mobile}}</view>
+                    <view>地址：{{item.address}}</view>
                 </view>
                 <!--book-->
                 <view class="section_book" >
