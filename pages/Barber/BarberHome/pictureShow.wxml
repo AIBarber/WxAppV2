@@ -1,0 +1,13 @@
+<swiper  interval="{{interval}}" circular previous-margin="{{leftMargin}}" next-margin="{{rightMargin}}" bindchange="handleChange">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image {{currentIndex == index ? 'active': ''}}"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='ceshi_next' bindtap='prevImg'>
+      <text class='icon iconfont icon-you'></text>
+    </view>
+    <view class='ceshi_prew' bindtap='nextImg'>
+      <text class='icon iconfont icon-zuo'></text>
+    </view>
