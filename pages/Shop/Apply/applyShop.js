@@ -90,21 +90,36 @@ Page({
     console.log('getDataList ' + api.OpenStoreAdd);
     wx.showNavigationBarLoading();
     var that = this;
+    console.log(that.data.photo);
+
+    var commonParams = {
+      "openId": app.globalData.userid,
+      // "timestamp": getCurrentSecond(),
+      "timestamp": "2019-03-2",
+      "appid": app.globalData.appid,
+      "nonce": "123",
+      "algorithm": "1",
+      "token": "12313",
+      "version": "2.0"
+    };
+    var bizContent = {
+      "customerId": app.globalData.userid,
+      "name": that.data.name,
+      "mobile": "13833338888",
+      "category": 1,
+      "seatNum": 6,
+      "businessTime": that.data.openTime,
+      "address": that.data.address,
+      "acreage": that.data.size
+    }
+    var bizContentName = { "bizContent": bizContent };
+    var body = util.mergeJson(commonParams, bizContentName);
     // util.weshowRequest(
       wx.uploadFile({
         url: api.OpenStoreAdd,
         filePath: that.data.photo,
         name: 'faceImgFile',
-        formData: {
-        "customerId": app.globalData.userid,
-        "name": that.data.name,
-        "mobile": "13833338888",
-        "category": 1,
-        "seatNum": 6,
-        "businessTime": that.data.openTime,
-        "address": that.data.address,
-        "acreage": that.data.size
-      },
+        formData: { body: JSON.stringify(body) },
       success: function (res) {
         console.log(res)
         var data = JSON.parse(res.data);
