@@ -1,15 +1,12 @@
 {
   "pages": [
     "pages/PersonalHome/PersonalHome",
-      "pages/Barber/BarberHome/personal",
-     
-    "pages/Customer/myCustomers/personal",
     
     "pages/Customer/myHistoryCost/cost",
     "pages/template/cost_list",
     "pages/Subcribe/Subscribe_action/ServerItem",
     "pages/Customer/myCoupon/coupon",
-   "pages/Customer/myCoupon/drawcash",
+    "pages/Customer/myCoupon/drawcash",
     "pages/Barber/new/new",
     "pages/Subcribe/Subscribe_action/chooseShop",
     "pages/Subcribe/Subscribe_action/barberList",
@@ -51,12 +48,6 @@
         "text": "店铺",
         "iconPath": "icon/tab_shop_normal.png",
         "selectedIconPath": "icon/tab_shop_selected.png"
-      },
-      {
-        "pagePath": "pages/Shop/ShopList/new",
-        "text": "顾客",
-        "iconPath": "icon/tab_my_normal.png",
-        "selectedIconPath": "icon/tab_my_selected.png"
       },
       {
         "pagePath": "pages/PersonalHome/PersonalHome",
