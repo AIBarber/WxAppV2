@@ -19,7 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log("页面加载")
   },
 
   /**
@@ -54,9 +54,17 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
   },
-
+  loadImages (e) {
+    console.log("加载更多")
+   //加载数据
+    var loadData = fileData.getMyProducts();
+    var newData = this.data.note.concat(loadData)
+    this.setData({
+      note: newData,
+    })
+  }
+  ,
   /**
    * 页面上拉触底事件的处理函数
    */
@@ -69,5 +77,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
 })

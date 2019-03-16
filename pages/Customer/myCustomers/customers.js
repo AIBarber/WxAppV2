@@ -23,31 +23,14 @@ Page({
     skillData: fileData.getSkilledData(),
     // tab切换
     currentTab: 0,
-    customerListWillHaircut: fileData.getCustomersWillHaircut(),
-    customerListNearTimeHaircut: fileData.getCustomersNearTimeHaircut()
+    customerListWillHaircut:[],
+    customerListNearTimeHaircut: []
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    var that = this
-    this.getBarberList();
-    that.setData({
-      list: that.data.navSectionItems,
-      orderlist: that.data.orderItems
-    });
-    this.getBarberInfo();
-    wx.getSystemInfo({
-
-      success: function (res) {
-        that.setData({
-          winWidth: res.windowWidth,
-          winHeight: res.windowHeight
-        });
-      }
-
-    });
-
+    this.getCustomerList();
   },
 
   bindChange: function (e) {
@@ -96,7 +79,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
@@ -118,5 +101,41 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getCustomerList:function () {
+    util.weshowRequest(
+      api.Getmycustomerlist,
+      {
+        barberId: 1
+      },
+      'POST').then(res => {
+        //if (res.data) {}
+        console.log('bizContent:: ');
+
+        // success
+        this.setData({
+          customerListWillHaircut: res.data.bizContent.nearlist,
+          
+        });
+        this.setData({
+          customerListNearTimeHaircut: res.data.bizContent.normallist
+        });
+        
+        console.log("this.data.bizContent:" + this.data.customerListNearTimeHaircut);
+        // console.log(that.data);
+
+        util.stopRefreshing;
+        util.waitUpdate;
+      }).catch((err) => {
+        console.log('customerFaceInfo err :' + err);
+        // fail
+        util.stopRefreshing;
+        // wx.showToast({
+        //   title: '正在获取数据…',
+        //   icon: 'loading',
+        //   duration: 3000,
+        //   mask: true
+        // });
+      })
   }
 }) 

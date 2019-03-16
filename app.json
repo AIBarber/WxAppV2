@@ -1,7 +1,9 @@
 {
   "pages": [
+    "pages/Customer/myCustomers/customers",
+    "pages/Barber/BarberHome/myProducts",
+    "pages/Barber/BarberHome/pictureShow",
     "pages/PersonalHome/PersonalHome",
-    
     "pages/Customer/myHistoryCost/cost",
     "pages/template/cost_list",
     "pages/Subcribe/Subscribe_action/ServerItem",

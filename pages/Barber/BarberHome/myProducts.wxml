@@ -1,7 +1,7 @@
-<view class="content">
+<scroll-view scroll-y="true" bindscrolltolower="loadImages" style='height:1000px'>
       <view class="left">
         <block wx:for="{{note}}" wx:key="">
-          <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+          <template is="item" data="{{...item}}"  wx:if="{{index%2==0}}"></template>
         </block>
       </view>
       <view class="right">
@@ -9,7 +9,7 @@
           <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
         </block>
       </view>
-    </view>》
+</scroll-view>
 <!--  下面是一个模块 -->
 <template name="item">
   <view class="item">
