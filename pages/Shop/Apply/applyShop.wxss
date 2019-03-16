@@ -1,4 +1,4 @@
-/* pages/Barber/BarberHome/Apply/applyShop.wxss */
+/* pages/Shop/Apply/applyShop.wxss */
 .row{
   display:flex;
   flex-direction:row;
@@ -50,4 +50,7 @@
   border-radius: 10px;
   background: rgb(87, 190, 168);
   color: white;
+}.button-hover{
+  background: rgb(216, 212, 212);
+  color: black;
 }

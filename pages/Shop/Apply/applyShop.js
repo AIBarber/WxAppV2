@@ -1,14 +1,14 @@
-// pages/Barber/BarberHome/Apply/applyShop.js
+// pages/Shop/Apply/applyShop.js
 var app = getApp();
-var util = require('../../../../utils/util.js');
-var api = require('../../../../config/api.js');
+var util = require('../../../utils/util.js');
+var api = require('../../../config/api.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    photo: '../../icon/headPhoto.png',
+    photo: '../../../icon/headPhoto.png',
     name: null,
     address: null,
     openTime: null,
@@ -24,16 +24,37 @@ Page({
 
   //拍照事件处理
   takePhoto: function () {
-    const ctx = wx.createCameraContext()
-    ctx.takePhoto({
-      quality: 'high',
+    // const ctx = wx.createCameraContext()
+    // ctx.takePhoto({
+    //   quality: 'high',
+    //   success: (res) => {
+    //     this.setData({
+    //       photo: res.tempImagePath
+    //     })
+    //   }
+    // })
+     wx.chooseImage({
+      count: 1, //最多可以选择的图片张数,默认9
+      //sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: (res) => {
-        this.setData({
-          photo: res.tempImagePath
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var tempFilePaths = res.tempFilePaths;
+        var that=this;
+        that.setData({
+          photo: tempFilePaths[0]
+        })
+        console.log(that.data.photo);
+      },
+      fail: (res) => {
+        wx.showModal({
+          title: '提示',
+          content: '上传失败，请重试！',
         })
       }
     })
-  },
+   },
 
   /*返回前一页*/
   backToprevPage: function () {
@@ -73,8 +94,7 @@ Page({
     util.weshowRequest(
       api.OpenStoreAdd,
       {
-        // "customerId": app.globalData.userid,
-        "customerId": 1,
+        "customerId": app.globalData.userid,
         "name": that.data.name,
         "mobile": "13833338888",
         "category": 1,

@@ -1,7 +1,7 @@
-<!--pages/Barber/BarberHome/Apply/applyShop.wxml-->
+<!--pages/Shop/Apply/applyShop.wxml-->
 <view class='row'>
  <!-- 返回 -->
-        <image src='../../icon/back.png' mode='widthFix' class='imageLeft' bindtap='backToprevPage'></image>共享申请
+        <image src='../../../icon/back.png' mode='widthFix' class='imageLeft' bindtap='backToprevPage'></image>共享申请
 </view>
 
 <!-- 头像区域 -->

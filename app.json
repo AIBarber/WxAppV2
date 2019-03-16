@@ -1,5 +1,8 @@
 {
-  "pages": [
+  "pages": [ 
+    "pages/Shop/Openshare/share",
+    "pages/Shop/Apply/applyShop",
+    "pages/Shop/ServiceShop/serviceShop",
     "pages/Barber/new/new",
     "pages/PersonalHome/PersonalHome",
     "pages/Subcribe/Subscribe_action/ServerItem",
@@ -22,13 +25,14 @@
     "pages/Customer/camaraIdentity/showPhoto",
     "pages/Customer/myCustomers/toBarberSuccess",
     "pages/Customer/myCustomers/jumpToBarber",
-    "pages/Subcribe/Subscribe_action/confirmPay"
+    "pages/Subcribe/Subscribe_action/confirmPay",
+    "pages/Profile/profile"
   ],
-    "permission": {
-      "scope.userLocation": {
-        "desc": "你的位置信息将用于小程序位置接口的效果展示"
-      }
-    },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#0cc3b0",

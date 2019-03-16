@@ -1,0 +1,58 @@
+<!--pages/Profile/profile.wxml-->
+<view style='display:flex;flex-direction:row;'>
+  <text class='title'>我的资料</text>
+  <button class='button_change' bindtap='changeFlag'> {{content}} </button>
+</view>
+
+<!-- 头像区域 -->
+  <view class='photo' bindtap='changeHead'>
+    <image class='image' src='{{photo}}' mode='scaleToFill'>
+    </image>
+  </view>
+
+<view class='column'>
+ <view class='row'>
+ <text style='width:40%'>我的级别：</text>
+<!-- 下拉框 -->
+  <view class='choice' >
+  <view bindtap='bindShowMsg' style='width:100%'><text>{{choice}}</text>
+  <image src='../../icon/arrow.png' class='icon'></image>
+  </view>
+   <view class="select_box" wx:if="{{select}}">
+  <view wx:for="{{array}}" wx:key="unique">
+    <view class="select_one" bindtap="mySelect" data-name="{{item}}">{{item}}</view>
+  </view>
+</view>
+ </view>
+  </view>
+ 
+ <view class='row'>
+ <text style='width:40%'>我的工作年限：</text>
+ <textarea class='table' bindinput='getValue' value='{{info[1]}}' disabled='{{!flag}}'></textarea>
+
+ </view>
+ <view class='row'>
+ <text style='width:40%'>我的电话：</text>
+ <textarea class='table' bindinput='getValue' value='{{info[2]}}' disabled='{{!flag}}'> </textarea>
+
+ </view>
+ <view class='row'>
+ <text style='width:40%'>我的简介：</text>
+ <textarea class='intro' bindinput='getValue' value='{{info[3]}}' disabled='{{!flag}}'></textarea>
+
+ </view>
+</view>
+   
+   <view class='row'>
+   <text>\n\n\n我的服务项目：</text>
+  <checkbox-group bindchange="checkboxChange" >
+  <view class='column'>
+       <label  wx:for="{{service}}">
+       <view class='row'>
+           <checkbox value='{{item.id}}' style='width:40%' disabled='{{!flag}}' checked='{{choose[item.id]}}'>{{item.value}}</checkbox>
+           <input class='service' value='{{price[item.id]}}' bindinput='changePriceValue' disabled='{{!flag}}' id='{{item.id}}'></input>元
+       </view>
+       </label>   
+  </view>
+   </checkbox-group>
+   </view>

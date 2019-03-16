@@ -1,0 +1,11 @@
+<!--pages/Shop/ServiceShop/serviceShop.wxml-->
+<import src='../../template/shopList.wxml'/><!--导入模板-->
+<view class='row'>
+        <image src='../../../icon/back.png' mode='widthFix' class='imageLeft' bindtap='backToprevPage'></image>
+  <text class='title'>我的接单范围：</text> 
+  <button class='button' bindtap='addHandle'>+添加</button>
+</view>
+
+<view  wx:for="{{shopList}}" wx:key="id">
+            <template is="share_add" data="{{id:item.storeId,name:item.name,path:item.headImage,address:item.address}}"/>
+</view>   

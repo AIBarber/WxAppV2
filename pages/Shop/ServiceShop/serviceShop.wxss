@@ -1,0 +1,30 @@
+/* pages/Shop/ServiceShop/serviceShop.wxss */
+.row{
+  display:flex;
+  flex-direction:row;
+  margin-left: 5%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.title{
+  font-size: 17px;
+  margin-left: 2%;
+}
+.button{
+  margin-right: 5%;
+  margin-top: -1%;
+  border-left-color: black;
+  border-top-color: black;
+  border-bottom-color: black;
+  border-right-color: black;
+  border-radius: 5px;
+  background: white;
+  color: black;
+  font-size: 15px;
+}.button-hover{
+   background: rgb(87, 190, 168);
+}
+.imageLeft{
+  width: 25px;
+  height: 25px;
+}
