@@ -1,0 +1,170 @@
+/* pages/baeber/barber_info.wxss */
+.section{
+  background-color: #f4f4f4;
+}
+.imgbackground{
+  background: linear-gradient(to right, #727375 ,#615444);
+  width: 100%;
+  height: 100px;
+}
+.imgbackground>image{
+  width: 65px;
+  height: 65px;
+  border-radius: 30px;
+  margin:15px 20px;
+  float: left;
+}
+.imgtext{
+  width:140px;
+  height: 100px;
+  display: inline-block;
+}
+.imgtext text{
+  display: block;
+  color: #fff;
+}
+.textone{
+  font-size: 16px;
+  margin:15px 0 6px 0;
+}
+.texttwo{
+  font-size: 14px;
+}
+.headicon{
+  display: inline-block;
+  width:20%;
+  height: 110px;
+  float: right;
+  text-align: center;
+}
+.headicon>image{
+  width:20px;
+  height:20px;
+  margin-top:30px;
+}
+.headicon>text{
+  display: block;
+  font-size: 14px;
+  color: #fff;
+}
+.appointment{
+  height: 45px;
+  width: 100%;
+  background-color:#fff;
+}
+.appointment>text{
+  width: 90%;
+  margin:0 5%;
+  font-size: 15px;
+  display: inline-block;
+}
+.barproject,.barprojectwork{
+  width: 100%;
+  margin-top:10px;
+  background-color:#fff; 
+}
+.barproject>text,.barprojectwork>text{
+  font-size: 16px;
+  margin:5px 0;
+  width:90%;
+  padding:0 5%;
+  display: inline-block;
+  height: 30px;
+  line-break: 30px;
+  border-bottom: 1px solid #ececec;
+}
+.proiect{
+  width: 90%;
+  padding:0 5%;
+  height: 33px;
+  border-bottom: 1px solid #ececec;
+}
+.proiectdetail{
+  width:90%;
+  padding:0 5%;
+  line-height: 30px;
+}
+.bartitle{
+  font-size: 14px;
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+}
+.oldprice{
+  float: right;
+  font-size: 14px;
+  line-height: 33px;
+  color: #bfbfbf;
+  text-decoration: line-through;
+}
+.price{
+  float: right;
+  font-size: 14px;
+  line-height: 33px;
+  color: #f18d00;
+}
+.downicon{
+  float: right;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  margin:8px 0px 0 8px;
+}
+.detail{
+  margin:4px 0;
+  padding-bottom:8px; 
+  font-size:14px;
+  line-height: 22px;
+  color: #bfbfbf;
+}
+.hairdetail{
+  font-size:14px;
+  line-height: 22px;
+  color: #333;
+  width:90%;
+  padding:0 5%;
+  padding-bottom:8px; 
+}
+.portrait{
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin:15px 20px;
+  float: left;
+}
+.hairdet{
+  padding-top: 10px;
+  height: 100px;
+  border-bottom: 1px solid #ececec;
+}
+.hairdet>text{
+  display: block;
+}
+.worktit{
+  
+  font-size: 16px;
+}
+.detailspan{
+  font-size: 14px;
+  color: #9a9a9a;
+}
+.barbutton{
+  position: fixed;
+  bottom: 0px;
+  width:100%;
+  height: 50px;
+  background-color: #fff;
+  text-align: center;
+}
+.barbutton>button{
+  width:96%;
+  background-color: #0cc3b1;
+  border-radius: 20px;
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+  margin-top:5px;
+}
+.barprojectwork{
+  margin-bottom: 60px;
+}

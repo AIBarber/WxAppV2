@@ -1,0 +1,64 @@
+<view class='section'>
+  <view class='imgbackground'>
+    <image src='{{barber.headImageUrl}}'></image>
+    <view class='imgtext'>
+      <text class='textone'>{{barber.name}}</text>
+      <text class='texttwo'>{{barber.level==1?'设计师':barber.level==2?'高级设计师 ':barber.level==3?'设计总监':''}}|{{barber.years}}年</text>
+      <text class='texttwo'>电话：{{barber.mobile}}</text>
+    </view>
+    <view class='headicon'>
+      <image src='../../img/vote.png'></image>
+      <text>11</text>
+    </view>
+  </view>
+  <view class='appointment'>
+    <text>可预约时间：每周1-5</text>
+  </view>
+  <view class='barproject'>
+    <text>他的服务项目</text>
+    <view class='proiect'>
+      <text class='bartitle'>洗剪吹</text>
+      <text class='price'>￥98</text>
+      <text class='oldprice'>￥200</text>
+    </view>
+    <view class='proiect'>
+      <text class='bartitle'>染发</text>
+      <text class='price'>￥98</text>
+      <text class='oldprice'>￥200</text>
+    </view>
+    <picker bindchange="bindPickerChange"  value="{{index}}" range="{{objectArray}}" range-key='name'>
+      <view class='proiectdetail'>
+        <text class='bartitle'>{{objectArray[index].name}}</text>
+        <image src='../../img/down.png' class='downicon'></image>
+        <text class='price'>￥98</text>
+        <text class='oldprice'>￥200</text>
+        <view class='detail'>
+          <text>{{objectArray[index].text}}</text>
+        </view>
+      </view>
+    </picker>
+    
+  </view>
+  <view class='barproject'>
+    <text>发型师介绍</text>
+    <view class='hairdetail'>
+      <text>{{barber.introduction}}</text>
+    </view>
+  </view>
+  <view class='barprojectwork'>
+    <text>作品</text>
+    <view class='haircard'>
+      <image src='../../img/headimg.jpg' class='portrait'></image>
+      <view class='hairdet'>
+        <text class='worktit'>{{worktitle}}</text>
+        <text class='detailspan'>完成时间：{{endtime}}</text>
+        <text class='detailspan'>发型：{{hairstyle}}</text>
+        <text class='detailspan'>评分：{{barscore}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='barbutton'>
+    <button>立即预约</button>
+  </view>
+  
+</view>
