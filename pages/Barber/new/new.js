@@ -44,7 +44,9 @@ Page({
     barberList: [],
     barberName: '',
     barberId: '',
-    statusChn:'',
+    statusChn: '',
+    selectedStyle: "color:grey;background-color:white;",
+    normalStyle: "color:white;background-color:#0cc4b1;",
     myLatitude:null,
     myLongitude:null
 
@@ -285,17 +287,29 @@ Page({
    * 点击tab切换
    */
   swichNav: function (e) {
-
-    var that = this;
+   console.log(e);
 
     if (this.data.currentTab === e.target.dataset.current) {
       return false;
     } else {
-      that.setData({
-        currentTab: e.target.dataset.current
+      this.setData({
+        currentTab: e.target.id
+      })
+    }
+    if (this.data.currentTab == 0) {
+      this.setData({
+        selectedStyle: "color:grey;background-color:white;",
+        normalStyle: "color:white;background-color:#0cc4b1;"
+      })
+    }
+    else {
+      this.setData({
+        normalStyle: "color:grey;background-color:white;",
+        selectedStyle: "color:white;background-color:#0cc4b1;"
       })
     }
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

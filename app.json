@@ -1,9 +1,7 @@
 {
   "pages": [
-    "pages/PersonalHome/PersonalHome",
     "pages/Barber/new/new",
-    "pages/Barber/BarberHome/personal",
-    "pages/Customer/myCustomers/personal",
+    "pages/PersonalHome/PersonalHome",
     "pages/Subcribe/Subscribe_action/ServerItem",
     "pages/Customer/myCoupon/coupon",
     "pages/Customer/myCoupon/drawcash",

@@ -238,11 +238,8 @@
 	width: 100%;
 	text-align: center;
 	line-height: 80rpx;
- 
- 
-  background-color: white;
   }
-.swiper-tab-list1{  font-size: 30rpx;
+/*.swiper-tab-list1{  font-size: 30rpx;
     display: inline-block;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -258,15 +255,48 @@
     border-bottom-right-radius: 20px;
     border-top:1px solid #08979cad; 
    border-bottom: 1px solid #08979cad;
-
 	width: 45%;
 	color:#08979cad;
 }
-
-.on{ background: #08979cad;
-color: white;
-}
+.on{
+  background: #08979cad;
+  color: white;
+}*/
  
+.topBar{
+  display: flex;
+  flex-direction: flex;
+  justify-content: center;
+  padding: 10rpx;
+  width: 100%;
+  color:grey;
+}
+.bar:nth-of-type(1) {
+  width: 42%;
+  font-size: 16px;
+  margin-top: 10rpx;
+  text-align: center;
+  border-top-left-radius: 100rpx;
+  border-bottom-left-radius: 100rpx;
+  border:1px solid #0cc3b0;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #0cc3b0;
+  color: white; 
+}
+
+.bar:nth-of-type(2) {
+  width: 42%;
+  margin-top: 10rpx;
+  font-size: 16px;
+  text-align: center;
+  border:1px solid #0cc3b0;
+  border-top-right-radius: 100rpx;
+  border-bottom-right-radius: 100rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+
 .swiper-box{ display: block; height: 900rpx; width: 100%; overflow: hidden; }
 
 .summary {

@@ -1,8 +1,12 @@
 <!--pages/new/new.wxml-->
   <import src='../../template/barber.wxml'/>
 <view class="swiper-tab">
-    <view class="swiper-tab-list1 {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">我的订单</view>
-    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">理发师列表</view>
+    <!--view class="swiper-tab-list1 {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">我的订单</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">理发师列表</view-->
+   <view class="topBar">
+     <view class="bar" id='0' bindtap='swichNav' style='{{normalStyle}}'>我的订单</view>
+     <view class="bar" id='1' bindtap='swichNav' style='{{selectedStyle}}'>理发师列表</view>
+   </view>
 </view>
 
 <swiper current="{{currentTab}}" class="swiper-box" bindchange="bindChange">
