@@ -11,7 +11,7 @@ Page({
     photo: '../../../icon/headPhoto.png',
     name: null,
     address: null,
-    openTime: null,
+    openTime: '如：周一到周日09：00—21：00',
     size: null,
     status: null
   },
@@ -90,10 +90,12 @@ Page({
     console.log('getDataList ' + api.OpenStoreAdd);
     wx.showNavigationBarLoading();
     var that = this;
-
-    util.weshowRequest(
-      api.OpenStoreAdd,
-      {
+    // util.weshowRequest(
+      wx.uploadFile({
+        url: api.OpenStoreAdd,
+        filePath: that.data.photo,
+        name: 'faceImgFile',
+        formData: {
         "customerId": app.globalData.userid,
         "name": that.data.name,
         "mobile": "13833338888",
@@ -103,22 +105,22 @@ Page({
         "address": that.data.address,
         "acreage": that.data.size
       },
-      'POST').then(res => {
-        console.log(res.data);
-        // success
+      success: function (res) {
+        console.log(res)
+        var data = JSON.parse(res.data);
+        console.log(data)
+        // if (data.data.result == 'success') {
+         
+        // }
         that.stopRefreshing();
-        //that.waitUpdate();
-      }).catch((err) => {
-        console.log('getDataList err' + err);
-        // fail
-        that.stopRefreshing();
-        wx.showToast({
-          title: '正在获取数据…',
-          icon: 'loading',
-          duration: 3000,
-          mask: true
-        });
-      });
+      },
+      fail: function (res) {
+        wx.showModal({
+          title: '提示',
+          content: '上传失败，请重试！',
+        })
+      }
+    })
   },
 
   stopRefreshing: function () {

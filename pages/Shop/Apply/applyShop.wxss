@@ -10,8 +10,8 @@
   flex-direction:column;
 }
 .imageLeft{
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
 }
 .image{
   margin-left: 1%;
@@ -32,8 +32,9 @@
 }
 .table{
   width: 50%;
-  height: 60rpx;
+  height: 70rpx;
   margin-left: 1%;
+  margin-top: -3px;
   border: 1px solid rgb(219, 211, 211);
   padding: 0 10rpx;
   font-size: 15px;

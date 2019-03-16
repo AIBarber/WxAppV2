@@ -1,7 +1,8 @@
 <!--pages/Shop/Apply/applyShop.wxml-->
 <view class='row'>
  <!-- 返回 -->
-        <image src='../../../icon/back.png' mode='widthFix' class='imageLeft' bindtap='backToprevPage'></image>共享申请
+        <image src='../../../icon/arrow_xia.png' mode='widthFix' class='imageLeft' bindtap='backToprevPage'></image>
+        <text style='margin-left:8px'>共享申请</text>
 </view>
 
 <!-- 头像区域 -->
@@ -24,7 +25,7 @@
  </view>
  <view class='row'>
  <text style='width:35%'>营业时间：</text>
- <textarea class='table' bindinput='getValue' value='{{opentime}}' id='4'></textarea>
+ <textarea class='table' bindinput='getValue' value='{{opentime}}' id='4' placeholder='如：周一到周日09：00—21：00'></textarea>
  </view>
 </view>
 
