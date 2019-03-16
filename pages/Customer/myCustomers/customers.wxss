@@ -209,7 +209,7 @@
 color: white;
 }
  
-.swiper-box{ display: block; height: 100%; width: 100%; overflow: hidden; }
+.swiper-box{ display: block; height: 400px; width: 100%; overflow: hidden; }
 
 .summary {
 	background: #0099ff00;
