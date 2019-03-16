@@ -194,15 +194,16 @@
 	color:#08979cad;
 }
 
-.swiper-tab-list{  font-size: 30rpx;
+.swiper-tab-list{  
+    font-size: 40rpx;
+    font-weight: bold;
     display: inline-block;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     border-top:1px solid #08979cad; 
-   border-bottom: 1px solid #08979cad;
-
-	width: 45%;
-	color:#08979cad;
+    border-bottom: 1px solid #08979cad;
+	  width: 40%;
+	  color:#08979cad;
 }
 
 .on{ background: #08979cad;
