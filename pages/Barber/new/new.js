@@ -1,8 +1,8 @@
 // pages/new/new.js
 
 
-var app = getApp()
-var fileData = require('../../../utils/data.js')
+var app = getApp();
+var fileData = require('../../../utils/data.js');
 var util = require('../../../utils/util');
 var api = require('../../../config/api.js');
 
@@ -43,13 +43,16 @@ Page({
     currentTab: 0,
     barberList: [],
     barberName: '',
-    barberId: ''
+    barberId: '',
+    statusChn:'',
+    myLatitude:null,
+    myLongitude:null
 
   },
   toServerItem: function (e) {
     var that = this;
 
-    var index = e.target.id;
+    var index = e.currentTarget.id;
     console.log("toServerItem::barberId:::" + that.data.barberList[index - 1].barberId);
     that.setData({
       barberId: that.data.barberList[index - 1].barberId
@@ -69,6 +72,10 @@ Page({
     //wx.showNavigationBarLoading();
     var that = this;
     var bizContent = {
+      "longitude": "143.45",
+      "latitude": "123.32",
+      "orderType": "1",
+      "type": "1"
     }
     util.weshowRequest(
       api.BarberList,
@@ -81,8 +88,9 @@ Page({
         // console.log('barberList:: ' + barberinfo);
         that.setData({
           barberList: res.data.bizContent.list,
+
         });
-        // console.log("barberlist::" + that.data.barberList);
+        console.log("barberlist::" + JSON.stringify(that.data.barberList));
         // console.log(this.data.barberList[0].name);
         // that.setData({
         //   barberName: this.data.barberList[0].name
@@ -118,8 +126,9 @@ Page({
 
         that.setData({
           barberName: res.data.bizContent.barberinfo.name
+         
         })
-
+       
         console.log("request-barberName:" + this.data.barberName);
         this.toServer();
         // util.stopRefreshing;
@@ -182,13 +191,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
+  
     var that = this
     this.getBarberList();
     that.setData({
       list: that.data.navSectionItems,
-      orderlist: that.data.orderItems
-    });
- 
+      orderlist: that.data.orderItems,
+    
+    }); 
+    var myLatitude = app.globalData.userid ;
+    var myLongitude=app.globalData.myLongitude;
+   
+    console.log(app.globalData.userid + "--" + this.myLongitude);
     wx.getSystemInfo({
 
       success: function (res) {

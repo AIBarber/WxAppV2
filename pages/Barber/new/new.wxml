@@ -28,17 +28,17 @@
     </swiper-item>
     <swiper-item>
       <view>
-<view class="ar_picker" style="background:#fff">
+<view class="ar_picker" style="background:white">
   <view class="ar_picker_wrap">
     <view class="sort-list">
-      <picker bindchange="bindCasPickerChange" value="{{casIndex1}}" range="{{casArray1}}">
+      <picker class="picker1" bindchange="bindCasPickerChange" value="{{casIndex1}}" range="{{casArray1}}">
         <view class="sort" bindtap="changeBoxBtn" data-num="2"> 智能排序
-          <image style="width:9px;height:9px;"></image>
+          <image style="width:25rpx;height:20rpx;" mode='widthFix' src='../../../icon/arrow_down.png'></image>
         </view>
       </picker>
-      <picker bindchange="bindCasPickerChange" value="{{casIndex}}" range="{{casArray}}">
+      <picker class="picker2" bindchange="bindCasPickerChange" value="{{casIndex}}" range="{{casArray}}">
         <view class="sort" bindtap="changeBoxBtn" data-num="3"> 筛选
-          <image style="width:9px;height:9px;"></image>
+         <image style="width:25rpx;height:20rpx;" mode='widthFix'src='../../../icon/arrow_down.png'></image>
         </view>
       </picker>
     </view>
@@ -46,12 +46,13 @@
   </view>
 <scroll-view
 scroll-y
-    style="height: 460rpx;"
+    style="height: 100%;width:100%;"
 >
    <view class="nav_section">
     <view wx:if="{{barberList}}">
         <block wx:for="{{barberList}}" wx:key="{{item.barberId}}">
             <view class="nav_section_items" >
+               <view style='display:flex; flex-directionflex:row;width:100%'>
                 <view class="section_image" >
                 <block wx:if="{{item.headImageUrl}}">
                     <image class=""src="{{item.headImageUrl}}" mode="aspectFill"></image>
@@ -64,13 +65,22 @@ scroll-y
                     <view class="section_cont_sub">
                         <text>{{item.name}}</text>
                     </view>
-                    <view class="section_cont_price">级别：{{item.level}}</view>
-                    <view>{{item.years}}年经验</view>
-                    <view>状态：{{item.status}}</view>
+                    <view class="section_levelyear">
+                    <text class="section_cont_price" wx:if="{{item.level==1}}">设计师</text>
+                    <text class="section_cont_price" wx:elif="{{item.level==2}}">高级设计师</text>
+                    <text class="section_cont_price" wx:else="{{item.level==3}}">设计总监</text>
+                    | <text>{{item.years}}年</text></view>
+                    <view>地址：{{item.status}}</view>
                 </view>
+                <view class="distance" >据您 {{item.distance}} km</view>
+                </view>
+                <view style='display:flex;flex-direction:row;border-top:1px solid #ececec;margin-top:30rpx;padding-top:20rpx;padding-bottom:20rpx;'>
+                <view class="status" wx:if="{{item.status==0}}">状态：休息中</view>
+                <view class="status" wx:elif="{{item.status==1}}">状态：空闲中</view>
+                <view class="status" wx:else="{{item.status==2}}">状态：理发中</view>
                 <view class="section_book" bindtap="toServerItem" id="{{item.barberId}}">
-                       预约
-                </view>
+                      <image style='width:28rpx;height:28rpx;margin:0rpx;margin-top:auto;margin-bottom:auto;' src='../../../icon/yuyue.png' mode='scaleToFill'></image><text style='margin:0rpx;margin-top:auto;margin-bottom:auto;margin-left:10rpx;'>预约</text> 
+                </view></view>
             </view>
         </block>
           <!-- <block wx:for="{{barberList}}" wx:key="{{barberId}}">
