@@ -1,16 +1,12 @@
 // pages/photo_share/share.js
 var app = getApp();
-var api = require('../../config/api.js');
-var util = require('../../utils/util.js');
-var model = require('../../utils/model.js');
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    img: null,
+    img: "",
     flag: null
   },
 
@@ -19,11 +15,10 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    console.log(options.share_img)
     this.setData({
-      img: options.share_img,
-      flag: options.flag
+      img: "http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg"
     })
+    console.log(this.data.img);
   },
 
   onShareAppMessage: function (ops) {
