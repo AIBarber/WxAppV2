@@ -1,0 +1,24 @@
+<!--pages/Barber/BarberHome/Openshare/share.wxml-->
+<import src='../../../template/shopList.wxml'/><!--导入模板-->
+<view class='row'>
+ <!-- 返回 -->
+        <image src='../../../../icon/back.png' mode='widthFix' class='imageLeft' bindtap='backToprevPage'></image>返回
+  <text class='title'>我的共享店铺</text> 
+</view>
+
+<view wx:if='{{flag}}'>
+   <!-- <switch-group class="switch-group" bindchange="switchChange"> -->
+        <label  wx:for="{{shopList}}" wx:key="id">
+            <template is="share_shop" data="{{id:item.storeId,name:item.name,path:item.headImage,count:item.faceNum,address:item.address,checked:item.share}}"/>
+        </label>   
+  <!-- </switch-group> -->
+</view>
+
+<view wx:if='{{!flag}}' style=' display:flex;flex-direction:column;align-items:center'>
+<image src='../../../../icon/default_pic.png' class='image' mode='widthFix' ></image> 
+<text style='font-size:17px;margin-bottom:5px;'>您还没有开通共享店铺</text>
+<text style='font-size:15px;color:grey'>点击下方按钮申请共享店主吧</text>
+<button class='button' bindtap='applyShop'>申请成为共享店主</button>
+</view>
+
+ 

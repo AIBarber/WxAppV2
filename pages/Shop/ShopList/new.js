@@ -17,6 +17,28 @@ Page({
     casArray: ['只看自营店', '只看社区店'],
     casArray1: ['智能排序', '离我最近', '人气最高', '面积最大'],
     shoplist: [],
+    selectArray: [{
+      "id": "10",
+      "text": "智能排序"
+    }, {
+      "id": "21",
+      "text": "离我最近"
+    },
+      {
+        "id": "30",
+        "text": "人气最高"
+      }, {
+        "id": "22",
+        "text": "面积最大"
+      }
+    ],
+    selectArray1: [{
+      "id": "10",
+      "text": "只看自营店"
+    }, {
+        "id": "21",
+        "text": "只看社区店"
+      }],
     banner_url: fileData.getBannerData(),
     indicatorDots: true,
     vertical: false,

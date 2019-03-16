@@ -1,0 +1,31 @@
+<!--pages/Barber/BarberHome/Apply/applyShop.wxml-->
+<view class='row'>
+ <!-- 返回 -->
+        <image src='../../icon/back.png' mode='widthFix' class='imageLeft' bindtap='backToprevPage'></image>共享申请
+</view>
+
+<!-- 头像区域 -->
+  <view class='photo' bindtap='takePhoto'>
+    <image class='image' src='{{photo}}' mode='scaleToFill'></image>
+  </view>
+
+<view class='column'>
+<view class='row'>
+ <text style='width:35%'>店铺名称：</text>
+ <textarea class='table' bindinput='getValue' value='{{name}}' id='1'></textarea>
+ </view>
+ <view class='row'>
+ <text style='width:35%'>店内面积：</text>
+ <textarea class='table' bindinput='getValue' value='{{size}}' id='2'> </textarea>
+ </view>
+ <view class='row'>
+ <text style='width:35%'>店铺地址：</text>
+ <textarea class='table' bindinput='getValue' value='{{address}}' id='3'></textarea>
+ </view>
+ <view class='row'>
+ <text style='width:35%'>营业时间：</text>
+ <textarea class='table' bindinput='getValue' value='{{opentime}}' id='4'></textarea>
+ </view>
+</view>
+
+<button class='button' bindtap='applySubmit'>提交申请</button>

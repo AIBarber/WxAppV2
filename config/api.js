@@ -72,6 +72,7 @@ module.exports = {
   StartService: ApiRootUrl + 'service/start',
   EndService: ApiRootUrl + 'service/complete',
   CurrentOrder: ApiRootUrl + 'customer/currentorder',
+  Getmycustomerlist: ApiRootUrl + 'customer/getmycustomerlist',
   SCENE_GROUP: 1044,
   USER_LEVEL_DEFAULT: 0,
   USER_LEVEL_NORMAL: 1,
