@@ -1,16 +1,19 @@
 {
   "pages": [
     "pages/PersonalHome/PersonalHome",
+  "pages/Barber/new/new",
+  
       "pages/Barber/BarberHome/personal",
-     
+     "pages/Barber/barHistoryOrder/cost",
+     "pages/Barber/barCustomer/myCustomer",
     "pages/Customer/myCustomers/personal",
-    
+      "pages/Barber/BarCoupon/coupon",
     "pages/Customer/myHistoryCost/cost",
     "pages/template/cost_list",
     "pages/Subcribe/Subscribe_action/ServerItem",
     "pages/Customer/myCoupon/coupon",
    "pages/Customer/myCoupon/drawcash",
-    "pages/Barber/new/new",
+      "pages/template/barber_costList",
     "pages/Subcribe/Subscribe_action/chooseShop",
     "pages/Subcribe/Subscribe_action/barberList",
     "pages/new/new",
@@ -28,6 +31,11 @@
     "pages/Customer/myCustomers/jumpToBarber",
     "pages/Subcribe/Subscribe_action/confirmPay"
   ],
+    "permission": {
+      "scope.userLocation": {
+        "desc": "你的位置信息将用于小程序位置接口的效果展示"
+      }
+    },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#0cc3b0",
