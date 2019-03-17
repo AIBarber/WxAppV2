@@ -1,10 +1,10 @@
 <!--pages/Barber/order/order.wxml-->
-<view class="a"><text>请选择预约时间（可多选）</text></view>
+<view class="list-title"><text>请选择预约时间</text></view>
 <view class="page__bd">
         <view class="section section_gap">
             <radio-group class="radio-group" bindchange="radioChange">
-                <radio class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
-                    <text>{{item.value}}</text>
+                <radio class="radio" wx:for-items="{{orderInfo.orderRelaton.timeList}}" wx:key="name" value="{{item}}" checked="{{item.checked}}">
+                    <text>{{item}}</text>
                 </radio>
             </radio-group>
         </view>
@@ -16,12 +16,12 @@
 	</view>
 </view>
 
-<view class="a"><text>请选择预约店铺（可多选）</text></view>
+<view class="list-title"><text>请选择预约店铺</text></view>
 <view class="page__bd">
         <view class="section section_gap">
             <radio-group class="radio-group" bindchange="radioChange">
-                <radio class="radio" wx:for-items="{{items1}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
-                    <text>{{item.value}}</text>
+                <radio class="radio" wx:for-items="{{orderInfo.orderRelaton.storeList}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                    <text>{{item.name}}</text>
                 </radio>
             </radio-group>
         </view>
@@ -34,13 +34,13 @@
 </view>
 
 <view class="a"><text>备注信息</text></view>
-<textarea class="c">中午前到店</textarea>
+<textarea class="c">{{orderInfo.remard}}</textarea>
 <view class="a"><text>预约价格</text>
-<text class="s">￥200元</text>
+<text class="s">￥{{orderInfo.amount}}元</text>
 </view>
 <view>
-    <button class="btn" bindtap="navigate">接受</button>
+    <button class="btn" bindtap="acceptOrder">接受</button>
   </view>
   <view>
-    <button class="btn1" bindtap="navigatea">拒绝</button>
+    <button class="btn1" bindtap="rejectOrder">拒绝</button>
   </view>

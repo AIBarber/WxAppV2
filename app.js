@@ -127,6 +127,7 @@ App({
               console.log(res1);
               that.globalData.userid = res1.data.bizContent.openid;
               that.globalData.sessionKey = res1.data.bizContent.sessionKey;
+              console.log(that.globalData.userid);
               wx.setStorageSync('userid', res1.data.bizContent.openid);
               wx.setStorageSync('session_key', res1.data.bizContent.sessionKey);
               that.getUserInfoIfAuthed();
@@ -270,6 +271,7 @@ App({
     inviter_id: null,
     shareOpenid: '0',
     shareInviterCode: '0',
+    selectedBarberId: '',
     userid: null,
     faceid: null,
     userLevel: 0,

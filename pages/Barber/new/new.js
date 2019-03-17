@@ -2,7 +2,6 @@
 
 
 var app = getApp();
-var fileData = require('../../../utils/data.js');
 var util = require('../../../utils/util');
 var api = require('../../../config/api.js');
 
@@ -23,7 +22,7 @@ Page({
     // cas picker
     casArray: ['只看自营店', '只看社区店'],
     casArray1: ['智能排序', '离我最近', '人气最高', '面积最大'],
-    banner_url: fileData.getBannerData(),
+    //banner_url: fileData.getBannerData(),
     indicatorDots: true,
     barberDetails: [],
     vertical: false,
@@ -31,12 +30,12 @@ Page({
     interval: 3000,
     duration: 1000,
     // nav 初始化
-    navTopItems: fileData.getIndexNavData(),
-    navSectionItems: fileData.getIndexNavSectionData(),
+    //navTopItems: fileData.getIndexNavData(),
+    //navSectionItems: fileData.getIndexNavSectionData(),
     orderList: [],
     curNavId: 1,
     curIndex: 0,
-    skillData: fileData.getSkilledData(),
+    //skillData: fileData.getSkilledData(),
     winWidth: 0,
     winHeight: 0,
     // tab切换
@@ -78,7 +77,7 @@ Page({
     var that = this;
     var bizContent = {
       "barberId": "1",
-      "statusStr": "2,3"
+      "statusStr": "2,3,4"
     }
     util.weshowRequest(
       api.BarberOrderList,
@@ -325,8 +324,9 @@ Page({
   //     });
   // },
   navigate: function (e) {
+    console.log(e);
     wx.navigateTo({
-      url: '../order/order?artype=' + e.currentTarget.dataset.arid
+      url: '../order/order?id=' + e.currentTarget.id
     })
   },
 

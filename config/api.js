@@ -56,6 +56,8 @@ module.exports = {
   BarberSubscribeTimes: ApiRootUrl + 'barber/subscribetimes',
   BarberSubscribeManage: ApiRootUrl + 'barber/subscribemanage',
   BarberOrderList: ApiRootUrl + 'order/getbarberorderlist',
+  BarberOrderDetail: ApiRootUrl + 'order/getorderdetail',
+  BarberOrderConfirm: ApiRootUrl + 'order/orderconfirm',
   Getmycustomerlist:ApiRootUrl+'customer/getmycustomerlist',
   CustomerOrderList: ApiRootUrl + 'customer/orderlist',
   OrderDetail: ApiRootUrl + 'order/detailbyid',

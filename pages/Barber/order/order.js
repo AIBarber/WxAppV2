@@ -1,42 +1,92 @@
 // pages/Barber/order/order.js
+var util = require('../../../utils/util');
+var api = require('../../../config/api.js');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    items: [
-      { name: 'U', value: '2019年2月2日  12:00' },
-      { name: 'C', value: '2019年2月3日  12:00'},
-    ],
-    items1: [
-      { name: 'v', value: '天空沙龙' },
-      { name: 's', value: '美美发型' },
-    ]
+    orderId: 10,
+    orderInfo: ''
   },
+
   radioChange(e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value)
-
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options);
+    this.setData({oderId: options.id});
+    this.getOrderDetail();
   },
 
-  navigate: function (e) {
+  acceptOrder: function (e) {
+    this.confirmOrder(1);
+    var that = this;
     wx.navigateTo({
-      url: '../start/start?artype=' + e.currentTarget.dataset.arid
+      url: '../start/start?id=' + that.data.orderId
     })
   },
-  navigatea: function (e) {
-    
-      wx.navigateBack()
-  
+
+  rejectOrder: function (e) {
+    this.confirmOrder(0);
+    wx.navigateBack()
   },
 
+  getOrderDetail: function () {
+    console.log('getOrderDetail ' + api.BarberOrderDetail);
+    //wx.showNavigationBarLoading();
+    var that = this;
+    var bizContent = {
+      "orderId": that.data.orderId
+    }
+    util.weshowRequest(
+      api.BarberOrderDetail,
+      bizContent,
+      'POST').then(res => {
+        console.log(res)
+        that.setData({
+          orderInfo: res.data.bizContent.order,
+        });
+        console.log(that.data.orderInfo);
+        //util.stopRefreshing;
+      }).catch((err) => {
+        console.log('barberOrderlist err :' + err);
+        // fail
+        util.stopRefreshing;
+      });
+  },
+
+  confirmOrder: function (type) {
+    console.log('confirmOrder ' + api.BarberOrderConfirm);
+    //wx.showNavigationBarLoading();
+    var that = this;
+    var bizContent = {
+      "orderId": that.data.orderId,
+      "type": type,
+      "orderRelation": {
+        "positions": "1",
+        "storeIds": "1"
+      },
+      "remark": "test"
+    }
+    util.weshowRequest(
+      api.BarberOrderConfirm,
+      bizContent,
+      'POST').then(res => {
+        console.log(res)
+        //util.stopRefreshing;
+      }).catch((err) => {
+        console.log('BarberOrderConfirm err :' + err);
+        // fail
+        util.stopRefreshing;
+      });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

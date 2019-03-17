@@ -1,9 +1,11 @@
 {
   "pages": [
+    "pages/Barber/new/new",
+    
     "pages/Customer/myCustomers/my",
     "pages/Customer/myCustomers/introduce",
    
-  "pages/Barber/seat/seat",
+    "pages/Barber/seat/seat",
     "pages/PersonalHome/PersonalHome",
     "pages/Shop/Openshare/share",
     "pages/Shop/Apply/applyShop",
@@ -17,7 +19,6 @@
     "pages/Barber/BarberHome/pictureShow",
     "pages/Barber/BarberHome/myProducts",
     "pages/More/photo_share/share",
-    "pages/Barber/new/new",
     "pages/Subcribe/Subscribe_action/ServerItem",
     "pages/Customer/myCoupon/coupon",
     "pages/Customer/myCoupon/drawcash",
