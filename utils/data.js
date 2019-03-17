@@ -110,18 +110,22 @@ function getorderData() {
     [
       {
 
+        name: "姓名",
         time: "2019.2.1",
         coverpath: "../../../icon/default-avatar.png",
         price: '¥198',
-        address: '北京市朝阳区光华路10号',
+        address: '北京市朝阳区光华路1号',
+        status: 1
 
       },
       {
 
+        name: "姓名",
         time: "2019.2.1",
         coverpath: "../../../icon/default-avatar.png",
         price: '¥198',
-        address: '北京市朝阳区光华路10号',
+        address: '北京市朝阳区光华路2号',
+        status: 2
 
       },
 

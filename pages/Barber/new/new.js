@@ -33,7 +33,7 @@ Page({
     // nav 初始化
     navTopItems: fileData.getIndexNavData(),
     navSectionItems: fileData.getIndexNavSectionData(),
-    orderItems: fileData.getorderData(),
+    orderList: [],
     curNavId: 1,
     curIndex: 0,
     skillData: fileData.getSkilledData(),
@@ -51,6 +51,7 @@ Page({
     myLongitude:null
 
   },
+
   toServerItem: function (e) {
     var that = this;
 
@@ -62,6 +63,7 @@ Page({
     //从这里调用了 获得barberInfo的方法
     this.getBarberInfo();
   },
+
   toServer: function () {
     var that = this;
     console.log("点击预约后-barberName:--" + that.data.barberName + "barberId:--" + that.data.barberId);
@@ -69,6 +71,72 @@ Page({
       url: '../../Subcribe/Subscribe_action/ServerItem?barberId=' + that.data.barberId + '&barberName=' + that.data.barberName
     })
   },
+
+  getBarberOrderList: function () {
+    console.log('getBarberOrderList ' + api.BarberOrderList);
+    //wx.showNavigationBarLoading();
+    var that = this;
+    var bizContent = {
+      "barberId": "1",
+      "statusStr": "2,3"
+    }
+    util.weshowRequest(
+      api.BarberOrderList,
+      bizContent,
+      'POST').then(res => {
+        // var a = JSON.stringify(res.data);
+        console.log(res)
+        //  var a=JSON.parse(res.data);
+        //  console.log(a)
+        //var barberinfo = JSON.stringify(res.data.bizContent.list);
+        // console.log('barberList:: ' + barberinfo);
+        that.setData({
+          orderList: res.data.bizContent.order,
+        });
+        util.stopRefreshing;
+      }).catch((err) => {
+        console.log('barberOrderlist err :' + err);
+        // fail
+        util.stopRefreshing;
+      });
+  },
+
+  getBarberInfo: function () {
+    console.log("进入getBarberInfo");
+    //wx.showNavigationBarLoading();
+    var that = this;
+    var bizContent = {
+      "barberId": that.data.barberId
+    }
+    console.log(bizContent);
+    util.weshowRequest(
+      api.Getbarberinfo,
+      bizContent,
+      'POST').then(res => {
+
+        that.setData({
+          barberName: res.data.bizContent.barberinfo.name
+
+        })
+
+        console.log("request-barberName:" + this.data.barberName);
+        this.toServer();
+        // util.stopRefreshing;
+        // util.waitUpdate;
+      }).catch((err) => {
+        console.log('barberlist err :' + err);
+        // fail
+        util.stopRefreshing;
+        // wx.showToast({
+        //   title: '正在获取数据…',
+        //   icon: 'loading',
+        //   duration: 3000,
+        //   mask: true
+        // });
+      });
+
+  },
+
   getBarberList: function () {
     // console.log('getStoreList ' + api.StoreList);
     //wx.showNavigationBarLoading();
@@ -92,7 +160,7 @@ Page({
           barberList: res.data.bizContent.list,
 
         });
-        console.log("barberlist::" + JSON.stringify(that.data.barberList));
+       // console.log("barberlist::" + JSON.stringify(that.data.barberList));
         // console.log(this.data.barberList[0].name);
         // that.setData({
         //   barberName: this.data.barberList[0].name
@@ -102,7 +170,7 @@ Page({
         util.stopRefreshing;
         util.waitUpdate;
       }).catch((err) => {
-        console.log('barberlist err :' + err);
+      //  console.log('barberlist err :' + err);
         // fail
         util.stopRefreshing;
         // wx.showToast({
@@ -113,6 +181,7 @@ Page({
         // });
       });
   },
+
   getBarberInfo: function () {
     console.log("进入getBarberInfo");
     //wx.showNavigationBarLoading();
@@ -155,6 +224,7 @@ Page({
       casIndex: e.detail.value
     })
   },
+  
   bookTap: function () {
     // console.log('getStoreList ' + api.StoreList);
     //wx.showNavigationBarLoading();
@@ -189,6 +259,7 @@ Page({
       });
 
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -196,10 +267,9 @@ Page({
   
     var that = this
     this.getBarberList();
+    this.getBarberOrderList();
     that.setData({
-      list: that.data.navSectionItems,
-      orderlist: that.data.orderItems,
-    
+      list: that.data.navSectionItems, 
     }); 
     var myLatitude = app.globalData.userid ;
     var myLongitude=app.globalData.myLongitude;
@@ -217,6 +287,7 @@ Page({
     });
 
   },
+
   // getBarberList: function () {
   //   // console.log('getStoreList ' + api.StoreList);
   //   //wx.showNavigationBarLoading();
@@ -265,6 +336,7 @@ Page({
       url: '../detail/technicain_detail?artype=' + e.currentTarget.dataset.arid
     })
   },
+
   // 加载更多
   loadMore: function (e) {
     console.log('加载更多')
@@ -283,6 +355,7 @@ Page({
     that.setData({ currentTab: e.detail.current });
 
   },
+
   /**
    * 点击tab切换
    */

@@ -11,7 +11,7 @@
     </view>
 <view class="listview">
 	<view class="item">
-		<navigator class="bd" url="../../pages/order/order" open-type="navigate" hover-class="none">其他时间</navigator>
+		<navigator class="bd" url="../time/time" open-type="navigate" hover-class="none">其他时间</navigator>
 		<view class="ft"></view>
 	</view>
 </view>
@@ -28,7 +28,7 @@
     </view>
 <view class="listview">
 	<view class="item">
-		<navigator class="bd" url="../../pages/order/order" open-type="navigate" hover-class="none">其他店铺</navigator>
+		<navigator class="bd" url="../order/order" open-type="navigate" hover-class="none">其他店铺</navigator>
 		<view class="ft"></view>
 	</view>
 </view>

@@ -5,7 +5,7 @@
     <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">理发师列表</view-->
    <view class="topBar">
      <view class="bar" id='0' bindtap='swichNav' style='{{normalStyle}}'>我的订单</view>
-     <view class="bar" id='1' bindtap='swichNav' style='{{selectedStyle}}'>理发师列表</view>
+     <view class="bar" id='1' bindtap='swichNav' style='{{selectedStyle}}'>附近发型师</view>
    </view>
 </view>
 
@@ -15,16 +15,25 @@
     scroll-y
     style="height: 360px;"
 >
-      <view wx:if="{{orderlist[curIndex]}}">
-         <block wx:for="{{orderlist[curIndex]}}" wx:key="item.id">
+      <view wx:if="{{orderList}}">
+         <block wx:for="{{orderList}}" wx:key="item.id">
       <view class="summary" bindtap="navigate" >
-		<image src="{{item.coverpath}}" class="avatar"/>
+		<image src="{{item.customer.headurl}}" class="avatar"/>
   <view class ="nick">
-    <view class="nickname">预约时间：<text class="nickname">{{item.time}}</text></view>
+   <view class="nickname">预约人：<text class="nickname">{{item.customer.name}}
+   </text></view>
+    <view class="nickname">预约时间：<text class="nickname">{{item.createdTime}}</text></view>
     <view class="nickname">预约价格：<text class="nickname">{{item.price}}</text></view>
     <view class="nickname">预约地址：<text class="nickname">{{item.address}}</text></view>
-    </view>
+     </view>
 </view>
+ <view style='display:flex;flex-direction:row;border-top:1px solid #ececec;margin-top:20rpx;padding-top:10rpx;padding-bottom:10rpx;padding-left:30rpx;'> 
+                <view class="status_order" wx:if="{{item.status==1}}">订单状态：待付款</view>
+                <view class="status_order" wx:elif="{{item.status==2}}" >订单状态：待确认</view>
+                <view class="status_order" wx:elif="{{item.status==3}}" >订单状态：预约成功</view>
+                 <view class="status_order" wx:elif="{{item.status==4}}">订单状态：理发师拒绝</view>
+                  <view class="status_order" wx:else="{{item.status==5}}">订单状态：已完成</view>
+    </view>
 <view class="ar_line"></view>
 </block>
 </view>
@@ -74,10 +83,11 @@ scroll-y
                     <text class="section_cont_price" wx:elif="{{item.level==2}}">高级设计师</text>
                     <text class="section_cont_price" wx:else="{{item.level==3}}">设计总监</text>
                     | <text>{{item.years}}年</text></view>
+                     <view>起步价：￥{{item.status}}</view>
                     <view>地址：{{item.status}}</view>
                 </view>
-                <view class="distance" >据您 {{item.distance}} km</view>
-                </view>
+                <!-- <view class="distance" >据您 {{item.distance}} km</view>-->
+                </view> 
                 <view style='display:flex;flex-direction:row;border-top:1px solid #ececec;margin-top:30rpx;padding-top:20rpx;padding-bottom:20rpx;'>
                 <view class="status" wx:if="{{item.status==0}}">状态：休息中</view>
                 <view class="status" wx:elif="{{item.status==1}}">状态：空闲中</view>

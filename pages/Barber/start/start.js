@@ -78,7 +78,9 @@ Page({
 
   },
   navigatea: function (e) {
-    wx.navigateBack()
+    wx.navigateTo({
+      url: '../seat/seat',
+    })
   },
 
   /**

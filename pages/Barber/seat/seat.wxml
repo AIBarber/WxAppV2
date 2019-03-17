@@ -1,0 +1,28 @@
+<!--pages/Barber/seat/seat.wxml-->
+<view class='row'>
+        <image src='../../../icon/arrow_xia.png' mode='widthFix' class='imageLeft' bindtap='backToprevPage'></image>
+        <text  style='margin-left:5px'>返回</text>
+        <text class='title'>输入座位信息</text>
+        <!-- <button class='button' bindtap='skip'>跳过</button> -->
+</view>
+
+<view class='line'></view>
+
+<view class='row'>
+  <input value='{{seatNum}}' class='input' bindinput='getValue' placeholder='请输入座位号'></input>
+  <button class='button2' bindtap='getSeatlist'>确认座位号</button>
+</view>
+
+<view class='line'></view>
+
+ <view wx:if="{{seatList}}">
+    <block wx:for="{{seatList}}" wx:key="item.id">
+    <navigator url='../seat/seat'>
+      <view class ="list">
+		   <image src="{{item.haircutImg.url}}" class="avatar"  mode="aspectFill"/>
+       <text class="time">{{item.haircutImg.createTime}}</text>
+       <image src="../../../icon/Customer/youjiantou.png" class="imageRight"  mode="aspectFill"/>
+      </view>
+      </navigator>
+   </block>
+</view>

@@ -8,14 +8,16 @@ Page({
     photo:'../../icon/headPhoto.png',
     flag:false , //标志个人资料是否可以修改
     content:'修改',  //按钮字样
-    array:['高级设计师','普通设计师'], //级别种类
-    choice:'高级设计师', //默认级别
+    array: ['设计师','高级设计师','设计总监'], //级别种类
+    choice:'设计师', //默认级别
     select:false,   //标志修改按钮是否可用
     service:[{id:0,value:'洗吹'},{id:1,value:'洗剪吹'},{id:2,value:'染发'},{id:3,value:'烫发'},{id:4,value:'护理'}], //服务总类别
     service_choice:[],  //提供的服务类别
     choose:[]  ,//服务项目是否选中
-    info:[]   , //存储 级别、工作年限、电话、简介
-    price:['15','35','200','300','200']   //价格
+    price:['15','35','200','300','200'],   //价格
+    year: null,
+    mobile: null,
+    info: null
   },
 
   /**
@@ -29,11 +31,17 @@ Page({
 
  changeFlag: function(){
    var that=this;
-   
-   that.setData({
-     flag: true,
-     content:'提交'
-   })
+   if(that.data.flag==false){
+     that.setData({
+       flag: true,
+       content: '提交'
+     })
+   }else{
+    that.setData({
+      flag: false,
+      content:'修改'
+    })
+   }
  },
 
   /*  点击下拉框 */
@@ -45,12 +53,33 @@ Page({
     }
   },
 
-  mySelect(e) {
+  mySelect:function(e) {
     var name = e.currentTarget.dataset.name
     this.setData({
       choice: name,
       select: false
     })
+  },
+
+  // 获取当前输入框的值
+  getValue: function (e) {
+   // console.log(e);
+    var index = e.target.id;
+    var value = e.detail.value;
+    if (index == 1) {
+      this.setData({
+        year: value
+      })
+    } else if (index == 2) {
+      this.setData({
+        mobile: value
+      })
+    } else {
+      this.setData({
+        info: value
+      })
+    }
+    console.log(this.data)
   },
 
   changeHead:function(){

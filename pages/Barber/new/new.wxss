@@ -181,6 +181,12 @@
   font-size: 28rpx;
   color: #999999;
 }
+.status_order{
+  width: 300rpx;
+  margin-left: 0rpx;
+  font-size: 28rpx;
+  color: #999999;
+}
 .nav_section_items .section_book{
   display:flex;
   flex-direction: row;
@@ -318,7 +324,7 @@
 /*昵称*/
 .summary .nickname {
 	color:gray;
-	font-size: 16px;
+	font-size: 15px;
 }
 .summary .nickname1 {
 	color: rgb(7, 7, 7);

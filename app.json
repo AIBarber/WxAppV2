@@ -1,29 +1,25 @@
 {
   "pages": [
+  "pages/Barber/seat/seat",
+    "pages/PersonalHome/PersonalHome",
+    "pages/Shop/Openshare/share",
+    "pages/Shop/Apply/applyShop",
+    "pages/Profile/profile",
+    "pages/Shop/ServiceShop/serviceShop",
     "pages/Customer/myCustomers/my",
     "pages/Customer/myCustomers/customers",
-     "pages/Shop/Openshare/share",
-      "pages/Shop/Apply/applyShop",
-      "pages/Shop/ServiceShop/serviceShop",
-     
-      "pages/PersonalHome/PersonalHome",
     "pages/Barber/firstpage/firstpage",
-   "pages/Barber/BarberHome/pictureShow",
-   "pages/Barber/BarberHome/myProducts",
+    "pages/Barber/BarberHome/pictureShow",
+    "pages/Barber/BarberHome/myProducts",
     "pages/More/photo_share/share",
     "pages/Barber/new/new",
-    
-  
     "pages/Subcribe/Subscribe_action/ServerItem",
     "pages/Customer/myCoupon/coupon",
     "pages/Customer/myCoupon/drawcash",
     "pages/Subcribe/Subscribe_action/chooseShop",
     "pages/Subcribe/Subscribe_action/barberList",
-   
-    
     "pages/Subcribe/Subscribe_action/FinishInfo",
     "pages/Customer/myBarber/myBarber",
-   
     "pages/Shop/ShopList/new",
     "pages/Barber/detail/technicain_detail",
     "pages/Shop/detail/detail",
@@ -33,8 +29,9 @@
     "pages/Customer/camaraIdentity/showPhoto",
     "pages/Customer/myCustomers/toBarberSuccess",
     "pages/Customer/myCustomers/jumpToBarber",
-    "pages/Subcribe/Subscribe_action/confirmPay",
-    "pages/Profile/profile"
+    "pages/Subcribe/Subscribe_action/confirmPay"
+   
+   
   ],
   "permission": {
     "scope.userLocation": {
