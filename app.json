@@ -1,5 +1,8 @@
 {
   "pages": [
+    "pages/Customer/myCustomers/my",
+    "pages/Customer/myCustomers/introduce",
+   
   "pages/Barber/seat/seat",
     "pages/PersonalHome/PersonalHome",
     "pages/Shop/Openshare/share",
@@ -8,9 +11,7 @@
     "pages/Shop/ServiceShop/serviceShop",
     "pages/Shop/detail/detail",
     "pages/Barber/Show/barber_detail",
-    "pages/Shop/ShopList/new",
-    "pages/Barber/new/new",
-    "pages/Customer/myCustomers/my",
+
     "pages/Customer/myCustomers/customers",
     "pages/Barber/firstpage/firstpage",
     "pages/Barber/BarberHome/pictureShow",

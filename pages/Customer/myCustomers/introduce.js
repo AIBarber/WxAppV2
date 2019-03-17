@@ -1,4 +1,4 @@
-// pages/Customer/myCustomers/my.js
+// pages/Customer/myCustomers/introduce.js
 Page({
 
   /**
@@ -62,11 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  jumpToIntroduce: function () {
-    wx.navigateTo({
-      url: '/pages/Customer/myCustomers/introduce',
-    })
   }
 })

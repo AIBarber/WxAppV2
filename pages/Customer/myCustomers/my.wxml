@@ -1,5 +1,5 @@
 
- <view class='item-line' style='background-color:#fff;margin-left:0px;margin-top:10px;'>
+ <view class='item-line' bindtap='jumpToIntroduce' style='background-color:#fff;margin-left:0px;margin-top:10px;'>
       <view class='left'>
         <view class='left-top' style='text-indent: 20rpx;'>我的资料</view>
       </view>
