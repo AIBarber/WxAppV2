@@ -15,7 +15,7 @@ swiper {
 .active {
   opacity: 1;
   z-index: 10;
-  zoom:1.4;
+  zoom:1.5;
   top: 7%;
   transition: all 0.2s ease-in 0s;
 }
@@ -61,4 +61,53 @@ swiper {
   background-color: rgba(0, 0, 0, 0.5);
   border-top-right-radius: 80rpx;
   border-bottom-right-radius: 80rpx;
+}
+
+/* pages/photo_share/share.wxss */
+.button{
+  margin-top: 10%;
+  margin-left: 5%;
+  width: 40%;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  background-color: rgb(82, 173, 82);
+  float: left;
+}
+.button2{
+  margin-top: 10%;
+  margin-right: 5%;
+  width: 40%;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  background-color: #0cc3b0;
+  float:right;
+}
+.img{
+  margin-top: 5%;
+  margin-left: 20%;
+  /* margin-top: 1%; */
+  width: 60%;
+  height: 220px;
+  background-color: white;
+}
+.text{
+  font-size: 16px;
+  color: black;
+  width: 70%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 15%;
+}
+
+.btn-view {
+  position: relative;
+  border-radius: 15rpx;
+  top:70%;
+  margin: 0 20rpx;
+   opacity: 1;
+  z-index: 11;
+  transition: all 0.2s ease-in 0s;
+  
 }

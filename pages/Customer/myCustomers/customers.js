@@ -23,8 +23,9 @@ Page({
     skillData: fileData.getSkilledData(),
     // tab切换
     currentTab: 0,
-    customerListWillHaircut:[],
-    customerListNearTimeHaircut: []
+    customerListWillHaircut: [],
+    customerListNearTimeHaircut: [],
+    customerListWillHaircutHandle: []
   },
   /**
    * 生命周期函数--监听页面加载
@@ -79,7 +80,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**
@@ -102,7 +103,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getCustomerList:function () {
+  getCustomerList: function () {
     util.weshowRequest(
       api.Getmycustomerlist,
       {
@@ -115,12 +116,14 @@ Page({
         // success
         this.setData({
           customerListWillHaircut: res.data.bizContent.nearlist,
-          
         });
+        this.setData({
+          customerListWillHaircutHandle: this.handle2RowsList(res.data.bizContent.normallist)
+        })
         this.setData({
           customerListNearTimeHaircut: res.data.bizContent.normallist
         });
-        
+
         console.log("this.data.bizContent:" + this.data.customerListNearTimeHaircut);
         // console.log(that.data);
 
@@ -137,5 +140,14 @@ Page({
         //   mask: true
         // });
       })
+  },
+  handle2RowsList: function (nearlist) {
+    var nearHandleList = [];
+    for (var i = 0; i < nearlist.length; i += 2) {
+      nearHandleList.push(nearlist.slice(i, i + 2));
+    }
+    console.log('返回数据' + nearHandleList);
+    return nearHandleList;
   }
+
 }) 

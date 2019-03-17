@@ -1,42 +1,55 @@
 <!--pages/new/new.wxml-->
-
-<scroll-view scroll-y style="height: 500px;">
-<view class="swiper-tab-list">即将理发的顾客</view>
-  <view>
-    <block wx:for="{{customerListWillHaircut}}" wx:key="item.customerId">
-      <view class="summary" bindtap="navigate">
-        <!-- <view class="avatar-container"> -->
-        <image src="{{item.headurl}}" class="avatar" />
-        <!-- </view> -->
-        <view class="nick">
-          <view class="nickname">顾客：
-            <text class="nickname">{{item.name}}</text>
+<view style='height:45px;line-height:45px;background-color:#fff; text-indent: 20rpx;font-size:18px;'> 即将理发的顾客</view>
+<view class="scroll_box" style='min-height:240px;' wx:if="customerListWillHaircutHandle.length > 0">
+  <scroll-view class="scroll-view_x" scroll-x style="width: auto;overflow:hidden;">
+    <block wx:for="{{customerListWillHaircutHandle}}" wx:for-item="customerListWillHaircut">
+      <view class="item_list">
+        <block wx:for="{{customerListWillHaircut}}" wx:for-item="item">
+          <view style='display:flex; flex-direction:column;padding-left:10px;'>
+            <view class="summary_line" bindtap="navigate">
+              <!-- <view class="avatar-container"> -->
+              <image src="{{item.headurl}}" class="avatar" />
+              <!-- </view> -->
+              <view class="nick">
+                <view class="nickname">
+                  <text class="nickname">{{item.name}}</text>
+                </view>
+                <view class="nickname">
+                  <text class="nickname" style='color:grey'>{{item.hairCutTime}}</text>
+                </view>
+                <text style='color:gray;font-size:15px;'>查看详情...</text>
+              </view>
+            </view>
           </view>
-          <view class="nickname">时间：
-            <text class="nickname">{{item.hairCutTime}}</text>
-          </view>
-        </view>
+        </block>
       </view>
-      <view class="ar_line"></view>
+
     </block>
-  </view>
-<view class="swiper-tab-list">最近理发的顾客</view>
-  <view wx:if="{{customerListNearTimeHaircut[curIndex]}}">
+
+  </scroll-view>
+</view>
+<view class="title" style=' text-indent: 20rpx;font-size:18px;'> 最近理发的顾客</view>
+<view class="ar_line" style='margin:2px;'></view>
+<scroll-view scroll-y style="height: 500px;">
+  <view wx:if="{{customerListNearTimeHaircut[curIndex]}}" style='background-color:#fff'>
     <block wx:for="{{customerListNearTimeHaircut}}" wx:for-item="item" wx:for-index="index">
       <view class="summary" bindtap="navigate">
         <!-- <view class="avatar-container"> -->
         <image src="{{item.headurl}}" class="avatar" />
         <!-- </view> -->
         <view class="nick">
-          <view class="nickname">顾客：
-            <text class="nickname">{{item.name}}</text>
+          <view class="nickname">
+            <text class="nickname" style='color:black'>{{item.name}}</text>
           </view>
-          <view class="nickname">时间：
+          <view class="nickname">
             <text class="nickname">{{item.hairCutTime}}</text>
           </view>
+
         </view>
+        <image style='width:10px;height:20px;display:inline-block;margin-left:80px;' src='/icon/icon_rightarrow.png'></image>
       </view>
-      <view class="ar_line"></view>
+
+      <view class="ar_line" background-color="grey"></view>
     </block>
   </view>
 </scroll-view>

@@ -251,9 +251,15 @@ color: white;
     height:5rpx;
     content: '';
     background: #ddd;
-    margin:10rpx 10rpx;
+    margin:20rpx 20rpx;
 }
 
+.ar_line_title{
+    width:100%;
+    height:5rpx;
+    content: '';
+    background: #ddd;
+}
 .container{
     padding:0;
     margin:0;
@@ -275,4 +281,59 @@ color: white;
     padding:10rpx 30rpx;
     margin:10rpx auto;
     border:1px solid #ddd;
+}
+.title{
+  height: 45px;
+  line-height: 45px;
+  background-color: #fff;
+  width:100%;
+  margin:0px;
+}
+
+
+.summary_line {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+  overflow: hidden;
+  background-color:#fff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/*头像*/
+.summary_line .avatar {
+	max-width: 80px;
+  min-width: 80px;
+	height: 80px;
+	margin: 10px;
+	border-radius: 50%;
+  
+}
+
+/*昵称*/
+.summary_line .nickname {
+	color:black;
+	font-size: 16px;
+}
+.summary_line .nickname1 {
+	color: rgb(7, 7, 7);
+	font-size: 10px;
+}
+.summary_line .nick {
+	display: flex;
+	flex-direction:column;
+}
+.scroll_box{
+width: 100%;
+height: 307rpx;
+overflow: hidden;
+padding: 20rpx;
+white-space: nowrap;
+}
+.item_list{
+width: 625rpx;
+height: 220px;
+margin-right: 23rpx;
+display: inline-block;
 }

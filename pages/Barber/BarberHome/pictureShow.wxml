@@ -1,12 +1,17 @@
-<swiper  interval="{{interval}}" circular previous-margin="{{leftMargin}}" next-margin="{{rightMargin}}" bindchange="handleChange">
-    <block wx:for="{{imgUrls}}">
-      <swiper-item>
-        <image src="{{item}}" class="slide-image {{currentIndex == index ? 'active': ''}}"/>
-        <button style='width:80px;' wx:if='{{currentIndex == index}}'>分享</button>
-      </swiper-item>
-    </block>
-  </swiper>
-  <!-- <view class='ceshi_next' bindtap='prevImg'>
+<swiper interval="{{interval}}" circular previous-margin="{{leftMargin}}" next-margin="{{rightMargin}}" bindchange="handleChange" style="height:100%">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item >
+      <image src="{{item}}" class="slide-image {{currentIndex == index ? 'active': ''}}" />
+
+
+      <view wx:if='{{currentIndex == index}}' class='btn-view'>
+        <button open-type="share" class='button'>分享</button>
+        <button class='button2' bindtap='saveToLocal'> 保存至相册</button>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
+<!-- <view class='ceshi_next' bindtap='prevImg'>
       <text class='icon iconfont icon-you'></text>
     </view>
     <view class='ceshi_prew' bindtap='nextImg'>
