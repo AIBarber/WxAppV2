@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/Customer/myCustomers/my",
     "pages/Customer/myCustomers/customers",
      "pages/Shop/Openshare/share",
       "pages/Shop/Apply/applyShop",

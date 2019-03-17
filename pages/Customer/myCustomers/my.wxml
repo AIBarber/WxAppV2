@@ -1,0 +1,48 @@
+
+ <view class='item-line' style='background-color:#fff;margin-left:0px;margin-top:10px;'>
+      <view class='left'>
+        <view class='left-top' style='text-indent: 20rpx;'>我的资料</view>
+      </view>
+      <view class='right-img'>
+        <image src='/icon/icon_rightarrow.png' class='arro-right-img'></image>
+      </view>
+  </view>
+  <view class="ar_line" style='margin:4px;'></view>
+
+<view class='list'>
+    <view class='item-line' style='margin:0px;' bindtap='jumpToIntroduce' >
+      <view class='left'>
+        <view class='left-top'>常见问题</view>
+      </view>
+      <view class='right-img'  >
+        <image src='/icon/icon_rightarrow.png' class='arro-right-img'></image>
+      </view>
+    </view>
+    <view class='item-line' bindtap='jumpToIntroduce'>
+   
+      <view class='left'>
+        <view class='left-top'>意见反馈</view>
+      </view>
+      <view class='right-img'>
+        <image src='/icon/icon_rightarrow.png' class='arro-right-img'></image>
+      </view>
+    </view>
+    <view class='item-line'  bindtap='jumpToIntroduce'>
+   
+      <view class='left'>
+        <view class='left-top'>联系客服</view>
+      </view>
+      <view class='right-img'>
+        <image src='/icon/icon_rightarrow.png' class='arro-right-img'></image>
+      </view>
+    </view>
+    <view class='item-line'  bindtap='jumpToIntroduce'>
+   
+      <view class='left'>
+        <view class='left-top'>关于我们</view>
+      </view>
+      <view class='right-img'>
+        <image src='/icon/icon_rightarrow.png' class='arro-right-img'></image>
+      </view>
+    </view>
+  </view>

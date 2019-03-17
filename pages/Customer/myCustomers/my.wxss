@@ -1,0 +1,27 @@
+.right-img {
+
+  display: inline-block;
+  line-height: 50px;
+  vertical-align: middle;
+  
+}
+
+.arro-right-img {
+width:8px;height:12px;margin-right:14px;
+margin-left:300px;
+}
+
+.item-line {
+	display: flex;
+	flex-direction: row;
+	line-height: 50px;
+	color: #666;
+	border-bottom: 1px solid #eee;
+	font-size: 14px;
+  background-color: #fff;
+}
+
+.left-top {
+  text-indent: 20rpx;
+  font-size:18px;
+}
