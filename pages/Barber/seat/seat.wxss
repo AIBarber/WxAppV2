@@ -7,9 +7,9 @@
   font-size: 15px;
   background: white;
   height: 35px;
+  text-align: center;
 }
 .title{
-  margin-left:22%;
   font-size: 17px;
 }
 .imageLeft{
