@@ -49,7 +49,7 @@
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/zuopin.png" />
-		<navigator class="bd" url="../Barber/order/order" open-type="navigate" hover-class="none">我的作品</navigator>
+		<navigator class="bd" url="../Barber/BarberHome/myProducts" open-type="navigate" hover-class="none">我的作品</navigator>
 		<view class="ft"></view>
 	</view>
 </view>
@@ -57,7 +57,7 @@
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/gongxiangdianpu.png"/>
-		<navigator class="bd" url="../new/new" open-type="navigate" hover-class="none">我的共享店铺</navigator>
+		<navigator class="bd" url="../Shop/Openshare/share" open-type="navigate" hover-class="none">我的共享店铺</navigator>
 		<view class="ft"></view>
 	</view>
 </view>
@@ -65,7 +65,7 @@
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/fuwudianpu.png" />
-		<navigator class="bd" url="../Barber/detail/technicain_detail" open-type="navigate" hover-class="none">我的服务店铺</navigator>
+		<navigator class="bd" url="../Shop/ServiceShop/serviceShop" open-type="navigate" hover-class="none">我的服务店铺</navigator>
 		<view class="ft"></view>
 	</view>
 </view>
