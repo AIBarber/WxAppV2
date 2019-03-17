@@ -81,7 +81,7 @@
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/shezhi.png" />
-		<navigator class="bd" url="../Barber/start/start" open-type="navigate" hover-class="none">设置</navigator>
+		<navigator class="bd" url="../Customer/myCustomers/my" open-type="navigate" hover-class="none">设置</navigator>
 		<view class="ft"></view>
 	</view>
  </view>
