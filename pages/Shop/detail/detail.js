@@ -8,6 +8,7 @@ Page( {
   data: {
     shopItems: fileData.getshopData(),
     shopdetail: [],
+    imageList:[],
     curIndex: 0,
     winWidth: 0,
     winHeight: 0
@@ -58,11 +59,7 @@ Page( {
         console.log(res.data);
         // success
         that.setData({ shopdetail:res.data.bizContent.store});
-        console.log('StoreList ');
-        console.log(that.data.shopdetail);
-        console.log('shopList ');
-        //that.stopRefreshing();
-        //that.waitUpdate();
+        that.setData({ imageList: res.data.bizContent.store.imageList});
       }).catch((err) => {
         console.log('getDataList err' + err);
         // fail
