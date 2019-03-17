@@ -7,8 +7,9 @@
 }
 
 .arro-right-img {
-width:8px;height:12px;margin-right:14px;
-margin-left:300px;
+width:8px;
+height:12px;
+margin-right:14px;
 }
 
 .item-line {
@@ -24,4 +25,7 @@ margin-left:300px;
 .left-top {
   text-indent: 20rpx;
   font-size:18px;
+}
+.left {
+  flex: 1; /* 重要 */
 }
