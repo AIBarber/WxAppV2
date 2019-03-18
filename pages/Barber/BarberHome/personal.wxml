@@ -18,18 +18,24 @@
 <view wx:if="{{barberInfo}}">
         <!-- <block wx:for="{{person[curIndex]}}" wx:key="item.id"> -->
 <view class="account">
-	<view class="item">
+	<navigator class="item" url="../Customer/myCoupon/coupon" open-type="navigate" hover-class="none">
+	<!--view class="item"-->
 		<view class="value balance">{{item.income}}</view>
 		<view class="caption">我的收入</view>
-	</view>
-	<view class="item">
+	<!--/view-->
+  </navigator>
+	<navigator class="item" url="../Customer/myOrders/orders" open-type="navigate" hover-class="none">
+	<!--view class="item"-->
 		<view class="value coupon">{{item.order}}</view>
 		<view class="caption">我的订单</view>
-	</view>
-	<view class="item">
+	<!--/view-->
+  </navigator>
+	<navigator class="item" url="../Customer/myCustomers/customers" open-type="navigate" hover-class="none">
+	<!--view class="item"-->
 		<view class="value credit">{{item.custumerNum}}</view>
 		<view class="caption">我的顾客</view>
-	</view>
+	<!--/view-->
+  </navigator>
 </view>
 <!-- </block> -->
 </view>
