@@ -316,7 +316,7 @@
 .summary .avatar {
 	width: 130rpx;
 	height: 130rpx;
-	margin: 30rpx;
+	margin: 20rpx;
 	border-radius: 50%;
   
 }
@@ -324,11 +324,11 @@
 /*昵称*/
 .summary .nickname {
 	color:gray;
-	font-size: 30rpx;
+	font-size: 26rpx;
 }
 .summary .nickname1 {
 	color: rgb(7, 7, 7);
-	font-size: 30rpx;
+	font-size: 28rpx;
 }
 .summary .nick {
 	display: flex;

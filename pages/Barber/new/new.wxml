@@ -22,9 +22,9 @@
   <view class ="nick">
    <view class="nickname">预约人：<text class="nickname">{{item.customer.name}}
    </text></view>
-    <view class="nickname">预约时间：<text class="nickname">{{item.createdTime}}</text></view>
-    <view class="nickname">预约价格：<text class="nickname">{{item.price}}</text></view>
-    <view class="nickname">预约地址：<text class="nickname">{{item.address}}</text></view>
+    <view class="nickname">预约时间：<text class="nickname">{{item.orderRelaton.timeList[0]}}</text></view>
+    <view class="nickname">预约价格：<text class="nickname">{{item.amount}}元</text></view>
+    <view class="nickname">预约地址：<text class="nickname">{{item.orderRelaton.storeList[0].address}}</text></view>
      </view>
 </view>
  <view style='display:flex;flex-direction:row;border-top:1px solid #ececec;margin-top:20rpx;padding-top:10rpx;padding-bottom:10rpx;padding-left:30rpx;'> 

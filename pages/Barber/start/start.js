@@ -11,7 +11,8 @@ Page({
     curIndex: 0,
     lifaData: fileData.getlifaData(),
     winWidth: 0,
-    winHeight: 0
+    winHeight: 0,
+    storeid: null
   },
 
   /**
@@ -21,7 +22,8 @@ Page({
     console.log(options);
     var that = this
     that.setData({
-      lifa: that.data.lifaData
+      lifa: that.data.lifaData,
+      storeid: options.storeid
     });
 
     wx.getSystemInfo({
@@ -80,7 +82,7 @@ Page({
   },
   navigatea: function (e) {
     wx.navigateTo({
-      url: '../seat/seat',
+      url: '../seat/seat?storeid='+this.data.storeid,
     })
   },
 

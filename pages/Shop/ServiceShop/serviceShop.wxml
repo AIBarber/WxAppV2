@@ -1,11 +1,16 @@
 <!--pages/Shop/ServiceShop/serviceShop.wxml-->
 <import src='../../template/shopList.wxml'/><!--导入模板-->
 <view class='row'>
-        <image src='../../../icon/back.png' mode='widthFix' class='imageLeft' bindtap='backToprevPage'></image>
   <text class='title'>我的接单范围：</text> 
-  <button class='button' bindtap='addHandle'>+添加</button>
+   <button class='button' bindtap='addHandle' wx:if="{{flag}}">添加</button>
+   <button class='button' bindtap='confirm' wx:elif="{{!flag}}">确认</button>
 </view>
 
-<view  wx:for="{{shopList}}" wx:key="id">
-            <template is="share_add" data="{{id:item.storeId,name:item.name,path:item.headImage,address:item.address}}"/>
+<view  wx:for="{{shopList}}" wx:key="id" wx:if="{{flag}}">
+            <template is="share_add" data="{{id:item.storeId,name:item.name,path:item.headImage,address:item.address,distance:item.distance,flag:flag}}"/>
+</view> 
+
+<view style='padding-top:50rpx;'></view>
+<view  wx:for="{{addList}}" wx:key="id" wx:if="{{!flag}}">
+            <template is="share_add" data="{{id:item.storeId,name:item.name,path:item.headImage,address:item.address,distance:item.distance,flag:flag}}"/>
 </view>   

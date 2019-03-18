@@ -81,6 +81,8 @@ module.exports = {
   ShareStatus: ApiRootUrl + 'store/share',
   OpenStoreAdd: ApiRootUrl + 'store/add',
   GetServiceshop: ApiRootUrl + 'store/getservicingstore',
+  BindbarbeRandstore: ApiRootUrl + 'store/bindbarberandstore',
+  RemovebarbeRandstore: ApiRootUrl + 'store/removestore',
   GetfacebySeat: ApiRootUrl + 'face/getfacebyseat',
   SCENE_GROUP: 1044,
   USER_LEVEL_DEFAULT: 0,
