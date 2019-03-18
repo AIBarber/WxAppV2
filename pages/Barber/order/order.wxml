@@ -20,7 +20,7 @@
 <view class="page__bd">
         <view class="section section_gap">
             <radio-group class="radio-group" bindchange="radioChange">
-                <radio class="radio" wx:for-items="{{orderInfo.orderRelaton.storeList}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                <radio class="radio" wx:for-items="{{orderInfo.orderRelaton.storeList}}" wx:key="name" value="{{item.storeId}}" checked="{{item.checked}}">
                     <text>{{item.name}}</text>
                 </radio>
             </radio-group>

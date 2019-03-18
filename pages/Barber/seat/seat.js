@@ -8,14 +8,18 @@ Page({
    */
   data: {
     seatList: [{ 'id': 1, 'haircutImg': { 'url': '../../../icon/default_pic.png', 'createTime': '当前' } }, { 'id': 2, 'haircutImg': { 'url': '../../../icon/default_pic.png', 'createTime': '当前' } }],
-    seatNum: null
+    seatNum: null,
+    storeId: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options);
+    this.setData({
+      storeId:options.storeid
+    })
   },
  
   getValue:function(e){
@@ -27,12 +31,12 @@ Page({
 
 
   getSeatlist:function(){
-    //console.log('getSeatList ' + api.GetfacebySeat);
+    console.log('getSeatList ' + api.GetfacebySeat);
     //wx.showNavigationBarLoading();
     var that = this;
     var bizContent = {
       "seatNo": that.data.seatNum,
-      "storeId": 1
+      "storeId": that.data.storeId     
     }
     util.weshowRequest(
       api.GetfacebySeat,

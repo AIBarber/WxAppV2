@@ -9,11 +9,15 @@ Page({
    */
   data: {
     orderId: 10,
-    orderInfo: ''
+    orderInfo: '',
+    storeId: null
   },
 
   radioChange(e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    console.log('radio发生change事件，携带value值为：', e)
+    this.setData({
+      storeId:e.detail.value
+    })
   },
 
   /**
@@ -29,7 +33,7 @@ Page({
     this.confirmOrder(1);
     var that = this;
     wx.navigateTo({
-      url: '../start/start?id=' + that.data.orderId
+      url: '../start/start?orderid=' + that.data.orderId + '&storeid=' + that.data.storeId
     })
   },
 

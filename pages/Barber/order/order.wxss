@@ -41,6 +41,7 @@
 	font-size: 32rpx;
 	margin-left: 10rpx;
 	flex: 1;
+  padding: 10rpx;
 }
 .radio-group {
     border-bottom: 1rpx solid #ddd;
@@ -49,8 +50,11 @@
 	font-size: 34rpx;
   display: block;
   border-top: 1rpx solid #ddd;
-  padding: 5rpx;
+  padding: 15rpx;
   margin-bottom: 10rpx;  
+}
+.a{
+  padding: 20rpx;
 }
 .c
 {
@@ -59,7 +63,7 @@
 .radio {
     display: block;
     border-top: 1rpx solid #ddd;
-    padding: 5rpx;
+    padding: 10rpx;
 	  font-size: 30rpx;
 }
 
@@ -85,6 +89,6 @@
 .s
 {
   color: red;
-  margin-left: 170px;
+  margin-left: 180px;
 }
 

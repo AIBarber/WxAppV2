@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-      shopList: []
+      shopList: [],
+      addList: [],
+      flag: true  //显示已有列表还是添加列表
   },
 
   /**
@@ -56,12 +58,109 @@ Page({
       });
   },
 
-  addHandle:function(){
+// 获取可以添加的店铺列表
+  getShopList: function () {
+    console.log('getDataList ' + api.StoreList);
+    wx.showNavigationBarLoading();
+    var that = this;
 
+    util.weshowRequest(
+      api.StoreList,
+      {
+        "longitude": "143.45",
+        "latitude": "123.32",
+        "orderType": "1",
+        "category": "1"
+      },
+      'POST').then(res => {
+        console.log(res);
+        // success
+        that.setData({
+          addList: res.data.bizContent.list,
+        });
+        that.stopRefreshing();
+        //that.waitUpdate();
+      }).catch((err) => {
+        console.log('getDataList err' + err);
+        // fail
+        that.stopRefreshing();
+        // wx.showToast({
+        //   title: '正在获取数据…',
+        //   icon: 'loading',
+        //   duration: 3000,
+        //   mask: true
+        // });
+      });
   },
 
-  removeHandle:function(){
+  addHandle:function(e){
+    if(this.data.flag==true){
+      this.getShopList();
+    }
+      this.setData({
+        flag: false
+      })
+  },
+   
+  confirm:function(e){
+    this.setData({
+      flag: true
+    })
+    this.getDataList();
+  },
 
+   add:function(e){
+     console.log(e);
+    console.log('BindbarbeRandstore ' + api.BindbarbeRandstore);
+    wx.showNavigationBarLoading();
+    var that = this;
+
+    util.weshowRequest(
+      api.BindbarbeRandstore,
+      {
+        "barberId": 1,
+        "storeId": e.target.id
+      },
+      'POST').then(res => {
+        console.log(res.data);
+        // success
+        that.stopRefreshing();
+      }).catch((err) => {
+        console.log('getDataList err' + err);
+        // fail
+        that.stopRefreshing();
+      });
+  },
+
+  removeHandle:function(e){
+    console.log(e);
+    console.log('getDataList ' + api.RemovebarbeRandstore);
+    wx.showNavigationBarLoading();
+    var that = this;
+
+    util.weshowRequest(
+      api.RemovebarbeRandstore,
+      {
+        // "barberId": app.globalData.userid,
+        "barberId": 1,
+        "storeId": e.target.id
+      },
+      'POST').then(res => {
+        console.log(res.data);
+        that.stopRefreshing();
+      }).catch((err) => {
+        console.log('getDataList err' + err);
+        // fail
+        that.stopRefreshing();
+        wx.showToast({
+          title: '正在获取数据…',
+          icon: 'loading',
+          duration: 3000,
+          mask: true
+        });     
+      });
+
+      that.getDataList();
   },
   
   /*返回前一页*/
