@@ -1,57 +1,80 @@
 <!--pages/new/new.wxml-->
-<view class="s">
-<view class="ss"><Select prop-array='{{selectArray}}'></Select></view>
-<view><Select prop-array='{{selectArray1}}'></Select></view>
-</view>
-<!--<view class="ar_picker" style="background:#fff">
+<!-- <view class="s"> -->
+<!-- <view class="ss"><Select prop-array='{{selectArray}}'></Select></view>
+<view><Select prop-array='{{selectArray1}}'></Select></view> -->
+<!-- </view> -->
+<!-- <view class="ar_picker" style="background:#fff">
   <view class="ar_picker_wrap">
-    <!-- <picker bindchange="bindCasPickerChange" value="{{casIndex}}" range="{{casArray}}">
-    <view class="sort-list">
-      <picker bindchange="bindCasPickerChange" value="{{casIndex1}}" range="{{casArray1}}">
-        <view class="sort" bindtap="changeBoxBtn" data-num="2"> 智能排序
-          <image style="width:9px;height:9px;"></image>
-        </view>
-      </picker>
-      <picker bindchange="bindCasPickerChange" value="{{casIndex}}" range="{{casArray}}">
-        <view class="sort" bindtap="changeBoxBtn" data-num="3"> 筛选
-          <image style="width:9px;height:9px;"></image>
-        </view>
-      </picker>
-    </view>
-    
+    <picker bindchange="bindCasPickerChange" value="{{casIndex}}" range="{{casArray}}">
+      <view class="sort-list">
+        <picker bindchange="bindCasPickerChange" value="{{casIndex1}}" range="{{casArray1}}">
+          <view class="sort" bindtap="changeBoxBtn" data-num="2"> 智能排序
+            <image style="width:9px;height:9px;"></image>
+          </view>
+        </picker>
+        <picker bindchange="bindCasPickerChange" value="{{casIndex}}" range="{{casArray}}">
+          <view class="sort" bindtap="changeBoxBtn" data-num="3"> 筛选
+            <image style="width:9px;height:9px;"></image>
+          </view>
+        </picker>
+      </view>
+
     </picker>
   </view>
-  </view>-->
+</view> -->
 
-   <view class="nav_section">
-    <view wx:if="{{shoplist}}">
-        <block wx:for="{{shoplist}}" wx:key="item.storeId">
-            <view class="nav_section_items" bindtap="navigateDetail" data-aid="{{item.storeId}}">
-                <!--image-->
-                <view class="section_image" >
-                <block wx:if="{{item.headImage}}">
-                    <image src="{{item.headImage}}" mode="aspectFill"></image>
-                </block>
-                <block wx:else>
-                    <image src="../../../icon/default_pic.png" mode="aspectFill"></image>
-                </block>
-                </view>
-                <!--content-->
-                <view class="section_cont" >
-                    <view class="section_cont_sub">
-                        <text style="font-size: 26rpx" decode="{{true}}">{{item.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text> <text style="color:#999999;font-size: 22rpx">距您</text><text style="color:#999999;font-size: 22rpx">{{item.distance}}</text><text style="color:#999999;font-size: 22rpx">米</text>
-                        
-                    </view>
-                    <view class="section_cont_price" style="color:#999999;font-size: 22rpx">在店人数：{{item.customerNum}}</view>
-                    <view>起步价:
-                    <text class="section_cont_price" style="font-size: 22rpx">{{item.startingPrice}}</text>元</view>
-                    <view style="font-size: 22rpx">地址：{{item.address}}</view>
-                </view>
-            </view>
-            
-        </block>
+<view class="ar_picker" style="background:white">
+  <view class="ar_picker_wrap">
+    <view class="sort-list">
+      <picker class="picker1" bindchange="bindCasPickerChange" value="{{casIndex1}}" range="{{casArray1}}">
+        <view class="sort" style='border-right:0px;' bindtap="changeBoxBtn" data-num="2"> 智能排序
+          <image style="width:25rpx;height:20rpx;" mode='widthFix' src='../../../icon/arrow_down.png'></image>
+        </view>
+      </picker>
+      <picker class="picker2" bindchange="bindCasPickerChange" value="{{casIndex}}" range="{{casArray}}">
+        <view class="sort" bindtap="changeBoxBtn" style='border-right:0px;'  data-num="3"> 筛选
+          <image style="width:25rpx;height:20rpx;" mode='widthFix' src='../../../icon/arrow_down.png'></image>
+        </view>
+      </picker>
     </view>
-    
-    <view wx:else>暂无数据</view>
-          
+  </view>
+</view>
+
+<view class="nav_section">
+  <view wx:if="{{shoplist}}">
+    <block wx:for="{{shoplist}}" wx:key="item.storeId">
+      <view class="nav_section_items" bindtap="navigateDetail" data-aid="{{item.storeId}}">
+        <!--image-->
+        <view class="section_image">
+          <block wx:if="{{item.headImage}}">
+            <image src="{{item.headImage}}" mode="aspectFill"></image>
+          </block>
+          <block wx:else>
+            <image src="../../../icon/default_pic.png" mode="aspectFill"></image>
+          </block>
+        </view>
+        <!--content-->
+        <view class="section_cont">
+          <view class="section_cont_sub">
+            <text style="font-size: 36rpx">{{item.name}}</text>
+          </view>
+          <view class="section_cont_price" style="color:#999999;font-size: 26rpx">在店人数：{{item.customerNum}}</view>
+          <view>
+            <text class="section_cont_price" style="font-size: 26rpx">起步价：{{item.startingPrice}}元</text>
+          </view>
+          <view>地址：{{item.address}}</view>
+        </view>
+        <!--book-->
+        <view class="section_book">
+          <view>
+            <text>1656米</text>
+          </view>
+        </view>
+      </view>
+
+    </block>
+  </view>
+
+  <view wx:else>暂无数据</view>
+
 </view>
