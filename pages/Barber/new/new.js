@@ -150,14 +150,14 @@ Page({
       api.BarberList,
       bizContent,
       'POST').then(res => {
-        var a = JSON.stringify(res.data);
+        console.log(res);
+        //var a = JSON.stringify(res.data);
         // var a=JSON.parse(res.data);
 
-        var barberinfo = JSON.stringify(res.data.bizContent.list);
+        //var barberinfo = JSON.stringify(res.data.bizContent.list);
         // console.log('barberList:: ' + barberinfo);
         that.setData({
-          barberList: res.data.bizContent.list,
-
+          barberList: res.data.bizContent.list
         });
        // console.log("barberlist::" + JSON.stringify(that.data.barberList));
         // console.log(this.data.barberList[0].name);
@@ -267,9 +267,7 @@ Page({
     var that = this
     this.getBarberList();
     this.getBarberOrderList();
-    that.setData({
-      list: that.data.navSectionItems, 
-    }); 
+    
     var myLatitude = app.globalData.userid ;
     var myLongitude=app.globalData.myLongitude;
    

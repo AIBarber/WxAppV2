@@ -1,7 +1,7 @@
 // pages/myOrders/orders.js
 var app = getApp();
-var util = require('../../utils/util.js');
-var api = require('../../config/api.js');
+var util = require('../../../utils/util.js');
+var api = require('../../../config/api.js');
 Page({
 
   /**
