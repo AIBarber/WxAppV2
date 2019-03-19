@@ -1,5 +1,5 @@
-/* pages/Shop/ServiceShop/serviceShop.wxss */
-.button_add{
+/* pages/Shop/addShop/addshop.wxss */
+.button_confirm{
   width: 70px;
   height: 30px;
   border-radius: 50rpx;
@@ -13,9 +13,9 @@
   justify-content: center;
   margin-top: 10px;
   margin-bottom: 10px;
-}.button_add-hover{
+}.button_confirm-hover{
   background: rgb(76, 184, 160);
-}button_add::after {
+}button_confirm::after {
   border-radius: 50rpx;
 }
 .imageLeft{

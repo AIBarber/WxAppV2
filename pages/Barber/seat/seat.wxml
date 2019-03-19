@@ -1,10 +1,7 @@
 <!--pages/Barber/seat/seat.wxml-->
-<view class='row'>
-        <!-- <image src='../../../icon/arrow_xia.png' mode='widthFix' class='imageLeft' bindtap='backToprevPage'></image>
-        <text  style='margin-left:5px'>返回</text> -->
+<!-- <view class='row'>
         <text class='title'>输入座位信息</text>
-        <!-- <button class='button' bindtap='skip'>跳过</button> -->
-</view>
+</view> -->
 
 <view class='line'></view>
 

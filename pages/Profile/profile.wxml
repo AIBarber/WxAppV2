@@ -1,8 +1,8 @@
 <!--pages/Profile/profile.wxml-->
-<view style='display:flex;flex-direction:row;'>
-  <text class='title'>我的资料</text>
+<!-- <view style='display:flex;flex-direction:row;'> -->
+  <!-- <text class='title'>我的资料</text> -->
   <button class='button_change' bindtap='changeFlag'> {{content}} </button>
-</view>
+<!-- </view> -->
 
 <!-- 头像区域 -->
   <view class='photo' bindtap='changeHead'>

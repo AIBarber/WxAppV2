@@ -10,10 +10,18 @@ Page({
   data: {
     orderId: 10,
     orderInfo: '',
-    storeId: null
+    storeId: null,
+    orderTime: null
   },
 
-  radioChange(e) {
+  radioChange1(e) {
+    console.log('radio发生change事件，携带value值为：', e)
+    this.setData({
+      orderTime: e.detail.value
+    })
+  },
+
+  radioChange2(e) {
     console.log('radio发生change事件，携带value值为：', e)
     this.setData({
       storeId:e.detail.value
@@ -75,7 +83,7 @@ Page({
       "type": type,
       "orderRelation": {
         "positions": "1",
-        "storeIds": "1"
+        "storeIds": that.data.orderId
       },
       "remark": "test"
     }

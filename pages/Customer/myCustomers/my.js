@@ -66,7 +66,7 @@ Page({
 
   jumpToIntroduce: function () {
     wx.navigateTo({
-      url: '/pages/Customer/myCustomers/introduce',
+      url: '/pages/Profile/profile',
     })
   }
 })

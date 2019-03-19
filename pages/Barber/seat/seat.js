@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    seatList: [{ 'id': 1, 'haircutImg': { 'url': '../../../icon/default_pic.png', 'createTime': '当前' } }, { 'id': 2, 'haircutImg': { 'url': '../../../icon/default_pic.png', 'createTime': '当前' } }],
+    // seatList: [{ 'id': 1, 'haircutImg': { 'url': '../../../icon/default_pic.png', 'createTime': '当前' } }, { 'id': 2, 'haircutImg': { 'url': '../../../icon/default_pic.png', 'createTime': '当前' } }],
+    seatList: [],
     seatNum: null,
     storeId: null
   },

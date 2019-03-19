@@ -5,15 +5,22 @@
 }
 
 .button_change{
-  background:  whitesmoke;
-  color: black;
-  width: 80px;
-  height: 45px;
-  margin-top: 3%;
+  width: 70px;
+  height: 30px;
+  border-radius: 50rpx;
+  color: rgb(63, 197, 164);
+  font-size: 15px;
+  border: 1px solid rgb(63, 197, 164);
+  display: flex;
+  flex-direction: column;
   margin-right: 5%;
-  border-radius: 8px;
-  text-align: center;
-   border-width:5px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}.button_change-hover{
+  background: rgb(76, 184, 160);
+}button_change::after {
+  border-radius: 50rpx;
 }
 
 .photo{
@@ -21,7 +28,7 @@
   height: 22%;
   margin-left: 5%;
   margin-right: 5%;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 10px;
   border-right: 15rpx solid lightgrey;
   border-top: 15rpx solid lightgrey;

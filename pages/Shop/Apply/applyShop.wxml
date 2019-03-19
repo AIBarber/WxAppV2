@@ -1,9 +1,8 @@
 <!--pages/Shop/Apply/applyShop.wxml-->
-<view class='row'>
- <!-- 返回 -->
+<!-- <view class='row'>
         <image src='../../../icon/arrow_xia.png' mode='widthFix' class='imageLeft' bindtap='backToprevPage'></image>
         <text style='margin-left:8px'>共享申请</text>
-</view>
+</view> -->
 
 <!-- 头像区域 -->
   <view class='photo' bindtap='takePhoto'>

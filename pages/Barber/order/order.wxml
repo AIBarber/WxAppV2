@@ -2,7 +2,7 @@
 <view class="list-title"><text>请选择预约时间</text></view>
 <view class="page__bd">
         <view class="section section_gap">
-            <radio-group class="radio-group" bindchange="radioChange">
+            <radio-group class="radio-group" bindchange="radioChange1">
                 <radio class="radio" wx:for-items="{{orderInfo.orderRelaton.timeList}}" wx:key="name" value="{{item}}" checked="{{item.checked}}">
                     <text>{{item}}</text>
                 </radio>
@@ -10,16 +10,16 @@
         </view>
     </view>
 <view class="listview">
-	<view class="item">
+	<!-- <view class="item">
 		<navigator class="bd" url="../time/time" open-type="navigate" hover-class="none">其他时间</navigator>
 		<view class="ft"></view>
-	</view>
+	</view> -->
 </view>
 
 <view class="list-title"><text>请选择预约店铺</text></view>
 <view class="page__bd">
         <view class="section section_gap">
-            <radio-group class="radio-group" bindchange="radioChange">
+            <radio-group class="radio-group" bindchange="radioChange2">
                 <radio class="radio" wx:for-items="{{orderInfo.orderRelaton.storeList}}" wx:key="name" value="{{item.storeId}}" checked="{{item.checked}}">
                     <text>{{item.name}}</text>
                 </radio>
@@ -27,10 +27,10 @@
         </view>
     </view>
 <view class="listview">
-	<view class="item">
+	<!-- <view class="item">
 		<navigator class="bd" url="../order/order" open-type="navigate" hover-class="none">其他店铺</navigator>
 		<view class="ft"></view>
-	</view>
+	</view> -->
 </view>
 
 <view class="a"><text>备注信息</text></view>

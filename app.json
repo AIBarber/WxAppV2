@@ -1,11 +1,8 @@
 {
   "pages": [
-    
     "pages/Barber/new/new",
-    
     "pages/Customer/myCustomers/my",
     "pages/Customer/myCustomers/introduce",
-   
     "pages/Barber/seat/seat",
     "pages/PersonalHome/PersonalHome",
     "pages/Shop/Openshare/share",
@@ -14,7 +11,6 @@
     "pages/Shop/ServiceShop/serviceShop",
     "pages/Shop/detail/detail",
     "pages/Barber/Show/barber_detail",
-
     "pages/Customer/myCustomers/customers",
     "pages/Barber/firstpage/firstpage",
     "pages/Barber/BarberHome/pictureShow",
@@ -29,16 +25,14 @@
     "pages/Customer/myBarber/myBarber",
     "pages/Shop/ShopList/new",
     "pages/Barber/detail/technicain_detail",
-    
     "pages/Barber/order/order",
     "pages/Barber/start/start",
     "pages/Customer/camaraIdentity/camaraIdentity",
     "pages/Customer/camaraIdentity/showPhoto",
     "pages/Customer/myCustomers/toBarberSuccess",
     "pages/Customer/myCustomers/jumpToBarber",
-    "pages/Subcribe/Subscribe_action/confirmPay"
-   
-   
+    "pages/Subcribe/Subscribe_action/confirmPay",
+    "pages/Shop/addShop/addshop"
   ],
   "permission": {
     "scope.userLocation": {

@@ -1,7 +1,10 @@
-<!--pages/Shop/ServiceShop/serviceShop.wxml-->
+<!--pages/Shop/addShop/addshop.wxml-->
 <import src='../../template/shopList.wxml'/><!--导入模板-->
-<button class='button_add' bindtap='addHandle'>添加</button>
+<button class='button_confirm' bindtap='confirm'>确认</button>
 
-<view  wx:for="{{shopList}}" wx:key="{{id}}">
+<view  wx:for="{{addList}}" wx:key="{{id}}">
             <template is="share_add" data="{{id:item.storeId,name:item.name,path:item.headImage,address:item.address,flag:flag}}"/>
 </view> 
+
+
+
