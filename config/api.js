@@ -3,6 +3,7 @@ var ApiRootTestUrl = 'http://47.93.241.248/api/';
 //var ApiRootUrl = 'http://www.imcou.com/api/'
 //var ApiRootUrl = 'https://www.imcou.com/api/'
 var ApiRootUrl = 'http://47.94.144.77:9090/weshow/'
+//var ApiRootUrl = 'https://www.imcou.com:9090/weshow/'
 var WsRootUrl = 'wss://www.imcou.com/socket.io/?transport=websocket'
 //var WxLoginRoot = 'https://api.weixin.qq.com/sns/jscode2session';
 var WxSendUserMsg = 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token='
@@ -61,6 +62,7 @@ module.exports = {
   Getmycustomerlist:ApiRootUrl+'customer/getmycustomerlist',
   CustomerOrderList: ApiRootUrl + 'customer/orderlist',
   OrderDetail: ApiRootUrl + 'order/detailbyid',
+  OrderInsert: ApiRootUrl + 'order/insert',
   GetFaceId: ApiRootUrl + 'bdcloud/getfaceid',
   FaceRegister: ApiRootUrl + 'bdcloud/faceregister',
   FaceDetect: ApiRootUrl + 'bdcloud/facedetect',

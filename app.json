@@ -19,6 +19,7 @@
     "pages/Subcribe/Subscribe_action/ServerItem",
     "pages/Customer/myCoupon/coupon",
     "pages/Customer/myCoupon/drawcash",
+    "pages/Customer/myOrders/orders",
     "pages/Subcribe/Subscribe_action/chooseShop",
     "pages/Subcribe/Subscribe_action/barberList",
     "pages/Subcribe/Subscribe_action/FinishInfo",
