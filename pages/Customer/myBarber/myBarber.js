@@ -23,6 +23,7 @@ Page({
       bizContent,
       'POST').then(res => {
         var a = JSON.stringify(res.data);
+        console.log(res.data);
         var barberinfo = res.data.bizContent.list;
         for(var i=0;i<barberinfo.length;i++){
           var listIndex="myBarberList["+i+"]";

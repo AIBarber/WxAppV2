@@ -22,8 +22,9 @@
 
 <!-- 共享店铺模板 -->
 <template name='share_shop'> 
-<!-- <navigator url='../ShopDetial/detial?shop_id={{id}}'> -->
+
 <view style=' width:100%;height:8px; border: 1px solid rgb(236, 229, 229);background:rgb(236, 229, 229)'></view>
+<navigator url='../OpenstoreDetail/storeDetail?shopid={{id}}'>
    <view style='display:flex;flex-direction:row;background:white' data-id='{{id}}'>
    <image style="width:90px;height:80px;margin-left:6px;margin-top:12px;margin-bottom:12px;" src='{{path}}' mode='scaleToFill' />
       <view style="display:flex;flex-direction:column;margin-left:10px;font-size:15px" >
@@ -32,6 +33,7 @@
           <text decode='true' style='margin-top:6px;color:#ccc'>{{address}}</text> 
       </view>
     </view>
+ </navigator>
 
 <view style='width:100%;height:1px;background-color:rgb(236, 229, 229)'></view>
 
@@ -41,8 +43,8 @@
     <switch style='margin-left:50%;margin-top:4px;' checked="{{checked}}" color="rgb(132, 218, 210)" bindchange="changeShareStatus" id='{{id}}'/>
   </view>
 
-  <!-- </navigator> -->
 </template>
+
 
 
 <!-- 服务店铺模板 -->

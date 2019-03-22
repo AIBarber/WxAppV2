@@ -1,41 +1,45 @@
-// pages/myOrders/orders.js
+// pages/Shop/OpenstoreDetail/storeDetail.js
 var app = getApp();
 var util = require('../../../utils/util.js');
 var api = require('../../../config/api.js');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    works: []
+    shopid:'',
+    shopList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getDataList_works();
+    console.log(options);
+    this.setData({
+      shopid:options.shopid
+    })
+    this.getDataList();
   },
 
-  getDataList_works: function () {
-    console.log('getDataList ' + api.BarberOrderList);
+  getDataList: function () {
+    console.log('getDataList ' + api.ShareStoreDetail);
     wx.showNavigationBarLoading();
     var that = this;
 
     util.weshowRequest(
-      api.BarberOrderList,
+      api.ShareStoreDetail,
       {
-        "barberId": "1",
-        "statusStr": "1,2,3"
+        "storeId": that.data.shopid
       },
       'POST').then(res => {
-        //if (res.data) {}
-        console.log('getDataList8888888888888888888888888888888888 ');
-        console.log(res);
+        console.log(res.data);
         // success
-        that.setData({ works: res.data.bizContent.order });
-        // console.log(that.data);
+        that.setData({
+          shopList: res.data.bizContent.list,
+        });
         that.stopRefreshing();
         //that.waitUpdate();
       }).catch((err) => {
@@ -48,7 +52,6 @@ Page({
           duration: 3000,
           mask: true
         });
-        that.setData({ works: (wx.getStorageSync('works') || []) });
       });
   },
 
@@ -56,4 +59,11 @@ Page({
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();
   },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
 })

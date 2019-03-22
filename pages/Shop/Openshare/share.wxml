@@ -1,16 +1,10 @@
 <!--pages/Barber/BarberHome/Openshare/share.wxml-->
 <import src='../../template/shopList.wxml'/><!--导入模板-->
-<!-- <view class='row'>
-        <image src='../../../../icon/arrow_xia.png' mode='widthFix' class='imageLeft' bindtap='backToprevPage'></image>
-  <text class='title'>我的共享店铺</text> 
-</view> -->
 
 <view wx:if='{{flag}}'>
-   <!-- <switch-group class="switch-group" bindchange="switchChange"> -->
         <label  wx:for="{{shopList}}" wx:key="id">
             <template is="share_shop" data="{{id:item.storeId,name:item.name,path:item.headImage,count:item.faceNum,address:item.address,checked:item.share}}"/>
         </label>   
-  <!-- </switch-group> -->
 </view>
 
 <view wx:if='{{!flag}}' style=' display:flex;flex-direction:column;align-items:center'>

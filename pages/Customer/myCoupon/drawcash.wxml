@@ -5,7 +5,7 @@
  </view>
  <view>
  <form bindsubmit='getMoney'>
- <input type='text' name="money" style='height:80rpx;margin-top:-20rpx;margin-left:20rpx;'/>
+ <input type='text' name="money" style='height:80rpx;margin-top:-20rpx;margin-left:20rpx;' value='{{money}}'/>
   <view class="line" style='width:95%;height:0rpx;border:0.5px solid #ececec;margin-left:auto;margin-right:auto;'></view>
   <label style="height:80rpx; margin-top:10rpx;margin-left:30rpx;color:grey;font-size:13px;">当前余额<text decode="{{true}}" style='color:#ff9a49'>&nbsp;&nbsp;{{amount}}&nbsp;&nbsp;</text>(元)</label>
   <button style='border:1px solid #0cc4b1;margin-right:20rpx;margin-top:-35rpx;width:160rpx;height:48rpx;font-size:26rpx;border-radius:25rpx;line-height:25rpx;background-color:#ffffff;color:#0cc4b1;padding:10rpx;' bindtap='drawCashAll'>全部提现</button>

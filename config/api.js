@@ -84,6 +84,7 @@ module.exports = {
   BindbarbeRandstore: ApiRootUrl + 'store/bindbarberandstore',
   RemovebarbeRandstore: ApiRootUrl + 'store/removestore',
   GetfacebySeat: ApiRootUrl + 'face/getfacebyseat',
+  ShareStoreDetail: ApiRootUrl + 'store/sharestoredetail',
   SCENE_GROUP: 1044,
   USER_LEVEL_DEFAULT: 0,
   USER_LEVEL_NORMAL: 1,

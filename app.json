@@ -33,7 +33,8 @@
     "pages/Customer/myCustomers/toBarberSuccess",
     "pages/Customer/myCustomers/jumpToBarber",
     "pages/Subcribe/Subscribe_action/confirmPay",
-    "pages/Shop/addShop/addshop"
+    "pages/Shop/addShop/addshop",
+    "pages/Shop/OpenstoreDetail/storeDetail"
   ],
   "permission": {
     "scope.userLocation": {

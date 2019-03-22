@@ -11,13 +11,16 @@ Page({
   data: {
     amount:'',
     status:'',
-  
+    money: ''
   },
 
   getMoney:function(e){
      console.log("提现："+e.detail.value.money);
     var money = e.detail.value.money;
     this.getApply(money);
+    this.setData({
+      money:money
+    })
   },
 
   getApply: function ( money) {
@@ -83,8 +86,10 @@ Page({
   },
   drawCashAll:function(){
     var that=this;
+    that.setData({
+      money:that.data.amount
+    })
     that.getApply(that.data.amount);
-
   }, 
     /**
    * 生命周期函数--监听页面加载
