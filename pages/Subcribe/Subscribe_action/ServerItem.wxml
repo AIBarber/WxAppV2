@@ -16,13 +16,6 @@
    <!-- <view class="explain">{{explain}}</view> -->
 
      <checkbox-group class="checkboxGroup" bindchange="checkboxChange" >
-      <!-- <label class="checkboxLab">
-      <checkbox class="checkbox1"  id="{{item.id}}}" value='{{item.id}}' >
-        剪发
-      </checkbox> 
-       <view  class="moneyYuan" style='margin-left:70rpx;'> ${{itemOne.storePrice}}</view>
-       <view class="money" >${{itemOne.onlinePrice}}</view>  
-      </label> -->
       <view class="ranfa" class="checkboxLab1" bindtap='cuthair'>
       剪发
       </view>
@@ -75,8 +68,8 @@
      
       </view>
       </label>
-             <!-- <view class="ranfa" class="checkboxLab1" bindtap='huli' >
-      护理
+             <view class="ranfa" class="checkboxLab1" bindtap='huli' >
+      洗吹
       </view>
       <label class="checkboxLab" style='{{huli}}' wx:for="{{item4}}"  wx:key="{{item4}}">
       <checkbox class="checkbox" value='{{item.id}}' >
@@ -85,7 +78,7 @@
       <view class="moneyYuan"> ${{item.storePrice}}</view>
        <view class="money">${{item.onlinePrice}}</view>
       
-      </label> -->
+      </label>
      </checkbox-group>
         
    </view>

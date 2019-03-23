@@ -1,5 +1,23 @@
 {
   "pages": [
+    "pages/Shop/ShopList/List",
+    "pages/Subcribe/Subscribe_action/ServerItem",
+    "pages/Customer/myCustomers/personal",
+    "pages/Barber/BarberHome/personal",
+    "pages/Profile/profile",
+    "pages/Customer/myCustomers/customers",
+    "pages/Login/IDConfirm/IDConfirm",
+    "pages/Customer/myHistoryCost/cost",
+    "pages/Barber/BarberHome/myProducts",
+    "pages/More/photo_share/share",
+    "pages/Customer/camaraIdentity/showPhoto",
+
+    "pages/Barber/BarberHome/pictureShow",
+    
+   
+   
+    
+    
     "pages/Barber/new/new",
     "pages/Customer/myCustomers/my",
     "pages/Customer/myCustomers/introduce",
@@ -7,20 +25,21 @@
     "pages/PersonalHome/PersonalHome",
     "pages/Shop/Openshare/share",
     "pages/Shop/Apply/applyShop",
-    "pages/Profile/profile",
+    
     "pages/Shop/ServiceShop/serviceShop",
     "pages/Shop/detail/detail",
     "pages/Barber/Show/barber_detail",
-    "pages/Customer/myCustomers/customers",
+    "pages/Subcribe/Subscribe_action/chooseShop",
+    
     "pages/Barber/firstpage/firstpage",
-    "pages/Barber/BarberHome/pictureShow",
-    "pages/Barber/BarberHome/myProducts",
-    "pages/More/photo_share/share",
-    "pages/Subcribe/Subscribe_action/ServerItem",
+   
+   
+    
+    
     "pages/Customer/myCoupon/coupon",
     "pages/Customer/myCoupon/drawcash",
     "pages/Customer/myOrders/orders",
-    "pages/Subcribe/Subscribe_action/chooseShop",
+
     "pages/Subcribe/Subscribe_action/barberList",
     "pages/Subcribe/Subscribe_action/FinishInfo",
     "pages/Customer/myBarber/myBarber",
@@ -29,7 +48,7 @@
     "pages/Barber/order/order",
     "pages/Barber/start/start",
     "pages/Customer/camaraIdentity/camaraIdentity",
-    "pages/Customer/camaraIdentity/showPhoto",
+   
     "pages/Customer/myCustomers/toBarberSuccess",
     "pages/Customer/myCustomers/jumpToBarber",
     "pages/Subcribe/Subscribe_action/confirmPay",

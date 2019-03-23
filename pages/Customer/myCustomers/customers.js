@@ -118,10 +118,10 @@ Page({
           customerListWillHaircut: res.data.bizContent.nearlist,
         });
         this.setData({
-          customerListWillHaircutHandle: this.handle2RowsList(res.data.bizContent.normallist)
+          customerListWillHaircutHandle: this.handle2RowsList(res.data.bizContent.nearlist)
         })
         this.setData({
-          customerListNearTimeHaircut: res.data.bizContent.normallist
+          customerListNearTimeHaircut: res.data.bizContent.nearlist
         });
 
         console.log("this.data.bizContent:" + this.data.customerListNearTimeHaircut);

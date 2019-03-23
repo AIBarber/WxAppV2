@@ -1,83 +1,124 @@
-<view wx:if="{{shop[curIndex]}}">
-  <block wx:for="{{shop[curIndex]}}" wx:key="item.id">
+<wxs module="m1">
+  var getBarberLevel = function(barberLevel) {
+    switch (barberLevel) {
+      case 1:
+        return '设计师';
+      case 2:
+        return '高级设计师 ';
+      case 3:
+        return '设计总监';
+      default:
+        return '';
+    }
+  };
+  var getBarberStatus = function(barberStatus) {
+    switch (barberLevel) {
+      case 0:
+        return '休息中';
+      case 1:
+        return '空闲中 ';
+      case 2:
+        return '理发中';
+      default:
+        return '';
+    }
+  };
+  var getFaceStatus = function(faceStatus) {
+    switch (faceStatus) {
+      case 1:
+        return '进店 ';
+      case 2:
+        return '洗发';
+      case 3:
+        return '理发';
+      case 4:
+        return '烫头';
+      case 5:
+        return '染发';
+      case 6:
+        return '离店';
+      default:
+        return '';
+    }
+  };
+  
+  module.exports.getBarberLevel = getBarberLevel;
+  module.exports.getBarberStatus = getBarberStatus;
+</wxs>
+
+<view wx:if="{{shopItem}}">
   <view style='margin-top:10px;margin-bottom:10px;text-indent: 15px;'>
-  <text >{{item.shopname}}</text>
+    <text>{{shopItem.name}}</text>
   </view>
-    
-    <view class="ar_coverpath" style="">
-      <view class="section">
-        <scroll-view class="scroll-view_H" scroll-x>
-          <image wx:for="{{imageList}}" wx:for-item="imageItem" src="{{imageItem.url}}" mode="aspectFill" style='width:220px;height:150px;display: inline-block;'></image>
-        </scroll-view>
-      </view>
 
+  <view class="ar_coverpath" style="">
+    <view class="section">
+      <scroll-view class="scroll-view_H" scroll-x>
+        <image wx:for="{{imageList}}" wx:for-item="imageItem" src="{{imageItem.url}}" mode="aspectFill" style='width:220px;height:150px;display: inline-block;'></image>
+      </scroll-view>
     </view>
-    <view class="ar_cont">
-     <view>
+
+  </view>
+  <view class="ar_cont">
+    <view>
       <image src="../../../icon/time.png"></image>
-      <text class="ar_cont_price">{{item.time}}</text>
-      </view>
-      <view class="ar_line" style="height:2rpx;margin-top:3px;"></view>
-       <view>
+      <text class="ar_cont_price">{{shopItem.time}}</text>
+    </view>
+    <view class="ar_line" style="height:2rpx;margin-top:3px;"></view>
+    <view>
       <image src="../../../icon/address.png"></image>
-      <text class="ar_cont_price" style="color:black">{{item.address}}</text>
-      </view>
-      <view class="ar_line" style='height:10px;'></view>
-      <view style='text-indent:15px;margin-top:3px;margin-bottom:3px;'>
-        <text class="ar_cont_h1" >当前店内发型师</text>
-        <text class="ar_cont_h1" decode="{{true}}">&nbsp;&nbsp;{{item.barbernum}}人</text>
-      </view>
-      <view class="ar_line"></view>
+      <text class="ar_cont_price" style="color:black">{{shopItem.address}}</text>
+    </view>
+    <view class="ar_line" style='height:10px;'></view>
+    <view style='text-indent:15px;margin-top:3px;margin-bottom:3px;'>
+      <text class="ar_cont_h1">当前店内发型师</text>
+      <text class="ar_cont_h1" decode="{{true}}">&nbsp;&nbsp;{{shopItem.barberNum}}人</text>
+    </view>
+    <view class="ar_line"></view>
+    <block wx:for="{{barberList}}" wx:for-item="barberItem">
       <view class="summary">
         <!-- <view class="avatar-container"> -->
-        <image src="{{user.userInfo.avatar ? user.userInfo.avatar : '/icon/default-avatar.png'}}" class="avatar" />
+        <image src="{{barberItem.headImageUrl ? barberItem.headImageUrl : '/icon/default-avatar.png'}}" class="avatar" />
         <!-- </view> -->
         <view class="nick">
-          <view class="nickname">王可欣 </view>
-          <view class="nickname">设计总监
-            <text class="nickname">  执业11年     </text>
+          <view class="nickname">{{barberItem.name}} </view>
+
+          <view class="nickname">{{m1.getBarberLevel(barberItem.level)}}级别
+            <text class="nickname">  执业{{barberItem.years}}年     </text>
           </view>
           <view class="nickname">状态：
-            <text class="nickname">理发中     </text>
+            <text class="nickname">{{m1.getBarberStatus(barberItem.status)}}</text>
           </view>
         </view>
       </view>
       <view class="ar_line" style='height:1px;'></view>
-      <view style='text-indent:15px;margin-top:3px;margin-bottom:3px;'>
-        <text class="ar_cont_h1" >当前店内顾客</text>
-        <text class="ar_cont_h1" decode="{{true}}">&nbsp;&nbsp;{{item.custmer}}人</text>
-      </view>
-      <view class="ar_line" style='height:1px;'></view>
+
+    </block>
+
+    <view style='text-indent:15px;margin-top:3px;margin-bottom:3px;'>
+      <text class="ar_cont_h1">当前店内顾客</text>
+      <text class="ar_cont_h1" decode="{{true}}">&nbsp;&nbsp;{{shopItem.faceNum}}人</text>
+    </view>
+    <view class="ar_line" style='height:1px;'></view>
+
+    <block wx:for="{{faceList}}" wx:for-item="faceItem">
+
       <view class="summary">
         <!-- <view class="avatar-container"> -->
-        <image src="{{user.userInfo.avatar ? user.userInfo.avatar : '/icon/default-avatar.png'}}" class="avatar" />
+        <image src="{{faceItem.headImg.url ? faceItem.headImg.url : '/icon/default-avatar.png'}}" class="avatar" />
         <!-- </view> -->
         <view class="nick">
           <view class="nickname">状态：
-            <text class="nickname">理发中 </text>
+            <text class="nickname">{{m1.getFaceStatus(faceItem.hairStatus)}} </text>
           </view>
           <view class="nickname">进店时长：
-            <text class="nickname">20分钟</text>
-          </view>
-        </view>
-      </view>
-      <view class="ar_line"></view>
-      <view class="summary">
-        <!-- <view class="avatar-container"> -->
-        <image src="{{user.userInfo.avatar ? user.userInfo.avatar : '/icon/default-avatar.png'}}" class="avatar" />
-        <!-- </view> -->
-        <view class="nick">
-          <view class="nickname">状态：
-            <text class="nickname">洗发中 </text>
-          </view>
-          <view class="nickname">进店时长：
-            <text class="nickname">10分钟</text>
+            <text class="nickname">{{faceItem.inStoreTime}}分钟</text>
           </view>
         </view>
       </view>
       <view class="ar_line"></view>
 
-      <button class="ar_book" bindtap="bookTap">立即预定</button>
-    </view>
-  </block>
+
+    </block>
+  </view>
 </view>

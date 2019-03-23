@@ -1,3 +1,51 @@
+<wxs module="m1">
+  var getBarberLevel = function(barberLevel) {
+    switch (barberLevel) {
+      case 1:
+        return '设计师';
+      case 2:
+        return '高级设计师 ';
+      case 3:
+        return '设计总监';
+      default:
+        return '';
+    }
+  };
+  var getBarberStatus = function(barberStatus) {
+    switch (barberLevel) {
+      case 0:
+        return '休息中';
+      case 1:
+        return '空闲中 ';
+      case 2:
+        return '理发中';
+      default:
+        return '';
+    }
+  };
+  var getFaceStatus = function(faceStatus) {
+    switch (faceStatus) {
+      case 1:
+        return '进店 ';
+      case 2:
+        return '洗发';
+      case 3:
+        return '理发';
+      case 4:
+        return '烫头';
+      case 5:
+        return '染发';
+      case 6:
+        return '离店';
+      default:
+        return '';
+    }
+  };
+  
+  module.exports.getBarberLevel = getBarberLevel;
+  module.exports.getBarberStatus = getBarberStatus;
+</wxs>
+
 <import src='../../template/chooseTime.wxml'/>
 <!-- 个人信息 -->
 <view wx:if="{{barberInfo}}">
@@ -8,7 +56,7 @@
 	<!-- </view> -->
   <view class ="nick">
 		<view class="nickname">{{barberInfo.name}}</view>
-    <view class="nickname1" >{{barberInfo.level}}|<text class="nickname1">{{barberInfo.years}}</text></view>
+    <view class="nickname1" >{{m1.getBarberLevel(barberInfo.level)}}|<text class="nickname1">{{barberInfo.years}}年</text></view>
     </view>
 </view>
 <!-- </block> -->
@@ -20,19 +68,19 @@
 <view class="account">
 	<navigator class="item" url="../Customer/myCoupon/coupon" open-type="navigate" hover-class="none">
 	<!--view class="item"-->
-		<view class="value balance">{{item.income}}</view>
+		<view class="value balance">{{barberInfo.totalIncome}}</view>
 		<view class="caption">我的收入</view>
 	<!--/view-->
   </navigator>
 	<navigator class="item" url="../Customer/myOrders/orders" open-type="navigate" hover-class="none">
 	<!--view class="item"-->
-		<view class="value coupon">{{item.order}}</view>
+		<view class="value coupon">{{barberInfo.orderNum}}</view>
 		<view class="caption">我的订单</view>
 	<!--/view-->
   </navigator>
 	<navigator class="item" url="../Customer/myCustomers/customers" open-type="navigate" hover-class="none">
 	<!--view class="item"-->
-		<view class="value credit">{{item.custumerNum}}</view>
+		<view class="value credit">{{barberInfo.customerNum}}</view>
 		<view class="caption">我的顾客</view>
 	<!--/view-->
   </navigator>
@@ -55,7 +103,7 @@
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/zuopin.png" />
-		<navigator class="bd" url="../Barber/BarberHome/myProducts" open-type="navigate" hover-class="none">我的作品</navigator>
+		<navigator class="bd" url="/pages/Barber/BarberHome/myProducts" open-type="navigate" hover-class="none">我的作品</navigator>
 		<view class="ft"></view>
 	</view>
 </view>
@@ -63,7 +111,7 @@
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/gongxiangdianpu.png"/>
-		<navigator class="bd" url="../Shop/Openshare/share" open-type="navigate" hover-class="none">我的共享店铺</navigator>
+		<navigator class="bd" url="/pages/Shop/Openshare/share" open-type="navigate" hover-class="none">我的共享店铺</navigator>
 		<view class="ft"></view>
 	</view>
 </view>
@@ -71,7 +119,7 @@
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/fuwudianpu.png" />
-		<navigator class="bd" url="../Shop/ServiceShop/serviceShop" open-type="navigate" hover-class="none">我的服务店铺</navigator>
+		<navigator class="bd" url="/pages/Shop/ServiceShop/serviceShop" open-type="navigate" hover-class="none">我的服务店铺</navigator>
 		<view class="ft"></view>
 	</view>
 </view>
@@ -79,7 +127,7 @@
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/qiehuanguke.png"/>
-		<view class="bd" url="../Barber/firstpage/firstpage" bindtap='toCustomer' open-type="navigate" hover-class="none">切换用户</view>
+		<navigator class="bd" url="/pages/Customer/myCustomers/personal" bindtap='toCustomer' open-type="navigate" hover-class="none">切换用户</navigator>
 		<view class="ft"></view>
 	</view>
 </view>
@@ -87,7 +135,7 @@
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/shezhi.png" />
-		<navigator class="bd" url="../Customer/myCustomers/my" open-type="navigate" hover-class="none">设置</navigator>
+		<navigator class="bd" url="/pages/Customer/myCustomers/my" open-type="navigate" hover-class="none">设置</navigator>
 		<view class="ft"></view>
 	</view>
  </view>

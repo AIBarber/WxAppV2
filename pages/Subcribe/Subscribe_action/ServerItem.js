@@ -33,7 +33,11 @@ Page({
     allMoney:'',
     money:'',
     barberinfoList:'',
-    barberinfoListInfo:[]
+    barberinfoListInfo:[],
+    serviceKeyMap:{},
+    serviceGroupList:[],
+    serviceGroupKeyMap:{},
+    serviceItemIdSet:[]
   },
 
   returnBtn:function(){
@@ -48,41 +52,39 @@ Page({
     })
   },
 
-  calculate:function(){
-    var that=this;
-     var server=this.data.clickServer;
+calculate:function () {
+    var server = this.data.clickServer;
+    var totalMoney = 0;
      for(var i=0;i<server.length;i++){ 
-       for(var j=0;j<this.data.item.length;j++){
+       for (var j = 0; j < this.data.item.length;j++){
          if (this.data.item[j].id==server[i]){
-         this.data.clickMoney += this.data.item[j].onlinePrice;
+           totalMoney += this.data.item[j].onlinePrice;
        }
        }
        for (var j = 0; j < this.data.item2.length; j++) {
          if (this.data.item2[j].id == server[i]) {
-           this.data.clickMoney += this.data.item2[j].onlinePrice;
+           totalMoney += this.data.item2[j].onlinePrice;
          }
        }
        for (var j = 0; j < this.data.item3.length; j++) {
          if (this.data.item3[j].id == server[i]) {
-           this.data.clickMoney += this.data.item3[j].onlinePrice;
+           totalMoney += this.data.item3[j].onlinePrice;
          }
        }
        for (var j = 0; j < this.data.item4.length; j++) {
          if (this.data.item4[j].id == server[i]) {
-           this.data.clickMoney += this.data.item4[j].onlinePrice;
+           totalMoney += this.data.item4[j].onlinePrice;
          }
        }
        for (var j = 0; j < this.data.itemOne.length; j++) {
          if (this.data.itemOne[j].id == server[i]) {
-           this.data.clickMoney += this.data.itemOne[j].onlinePrice;
+           totalMoney += this.data.itemOne[j].onlinePrice;
          }
        }
-      //  if (this.data.itemOne.id == server[i]) {
-      //    this.data.clickMoney += this.data.itemOne.onlinePrice;
-      //  }
      }
   
-    console.log("计算:money:"+this.data.clickMoney);
+    console.log("计算:money:" + totalMoney);
+    return totalMoney;
   },
 
   getServiceList: function () {
@@ -95,20 +97,25 @@ Page({
         "barberId": "1"
       },
       'POST').then(res => {
-        //if (res.data) {}
-        // console.log('getShopList '+ res.data.bizContent.barberinfo.barberServiceList[0].barberServiceServiceList);
-        console.log(res);
         // success
+        for (var i = 0; i < res.data.bizContent.barberinfo.barberServiceList.length;i++) {
+          var serviceGroup = res.data.bizContent.barberinfo.barberServiceList[i];
+          this.data.serviceGroupList.push(serviceGroup);
+          for (var j = 0; j < serviceGroup.barberServiceServiceList.length;j++){
+            var serviceItem = serviceGroup.barberServiceServiceList[j];
+            this.data.serviceKeyMap[serviceItem.id] = serviceItem;
+            this.data.serviceGroupKeyMap[serviceItem.id] = serviceGroup;
+            if (!this.data.serviceItemIdSet.includes(serviceItem.id)){
+              this.data.serviceItemIdSet.push(serviceItem.id);
+            }
+          }
+        }
         that.setData({ barberinfoList: res.data.bizContent.barberinfo});
         that.setData({ itemOne: res.data.bizContent.barberinfo.barberServiceList[0].barberServiceServiceList});
         that.setData({ item: res.data.bizContent.barberinfo.barberServiceList[1].barberServiceServiceList});
         that.setData({ item2: res.data.bizContent.barberinfo.barberServiceList[2].barberServiceServiceList });
         that.setData({ item3: res.data.bizContent.barberinfo.barberServiceList[3].barberServiceServiceList });
-        console.log(that.data.barberinfoList);
-        console.log("barberInfoListInfo:::" + res.data.bizContent.barberinfo.barberServiceList[0].storePrice);
-        console.log("serverserver:"+res.data.bizContent.barberinfo.barberServiceList[1].barberServiceServiceList);
-        // that.stopRefreshing();
-        //that.waitUpdate();
+        that.setData({ item4: res.data.bizContent.barberinfo.barberServiceList[4].barberServiceServiceList });
       }).catch((err) => {
         console.log('getShopList err' + err);
         // fail
@@ -209,14 +216,66 @@ Page({
     that.setData({
       clickServer: e.detail.value,
     })
+   
     console.log("chooseServer:" + e.detail.value);
   },
-  
+  //2个集合的差集 在arr不存在
+  minus: function (arrSource, arr) {
+    var result = new Array();
+    var obj = {};
+    for (var i = 0; i < arr.length; i++) {
+      obj[arr[i]] = 1;
+    }
+    for (var j = 0; j < arrSource.length; j++) {
+      if (!obj[arrSource[j]]) {
+        obj[arrSource[j]] = 1;
+        result.push(arrSource[j]);
+      }
+    }
+    return result;
+  },
   toChoShop:function(){
-    this.calculate();
- var that=this;
+    var totalMoney = this.calculate();
+    var that = this;
+    var clickServer = that.data.clickServer;
+    var selectServiceItemList = [];
+    var serviceGroupList = that.data.serviceGroupList;
+    var serviceGroupKeyMap = that.data.serviceGroupKeyMap;
+
+    var needToDeleteItemIdList = this.minus(that.data.serviceItemIdSet,clickServer)
+    var needToDeleteParentId = [];
+    var groupServiceItemList = [];
+    for (var i = 0; i < serviceGroupList.length; i++){
+      var serviceGroup = serviceGroupList[i];
+      var serviceItemList = serviceGroup.barberServiceServiceList; 
+      var deletePosList = [];
+      for (var pos = 0; pos < serviceItemList.length; pos++) {
+        var item = serviceItemList[pos];
+        if (needToDeleteItemIdList.includes(item.id)){
+          deletePosList.push(pos);
+        }
+      }
+      if (deletePosList.length == serviceGroup.barberServiceServiceList.length){
+          //全部删除
+        needToDeleteParentId.push(serviceGroup.id);
+      }else{
+        for (var deletePos = 0; deletePos < deletePosList.length; deletePos++) {
+          serviceGroup.barberServiceServiceList.splice(deletePosList[deletePos], 1);
+        }
+      }
+      
+    }
+    //整理 删除后的父节点
+    var serviceGroupListNew = []
+    for (var t = 0; t < serviceGroupList.length;t++){
+      if (!needToDeleteParentId.includes(serviceGroupList[t].id)){
+        serviceGroupListNew.push(serviceGroupList[t]);
+      }
+    }  
+   debugger
+
     wx.navigateTo({
-      url: 'chooseShop?clickServer=' + that.data.clickServer +"&barberId="+that.data.barberId+"&allMoney="+that.data.clickMoney+"&barberName="+that.data.barberName,
+      url: 'chooseShop?serviceGroupList=' + JSON.stringify(serviceGroupListNew) + "&barberId=" + that.data.barberId + "&allMoney=" + totalMoney+"&barberName="+that.data.barberName,
     })
   },
   

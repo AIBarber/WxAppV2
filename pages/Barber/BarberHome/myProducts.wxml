@@ -1,29 +1,25 @@
-<scroll-view scroll-y="true" bindscrolltolower="loadImages" style='height:1000px'>
+<scroll-view scroll-y="true" style='height:1000px'>
       <view class="left">
-        <block wx:for="{{note}}" wx:key="">
-          <template is="item" data="{{...item}}"  wx:if="{{index%2==0}}"></template>
+        <block wx:for="{{note}}" wx:key="" wx:for-item="item" wx:for-index="idx">
+          <template is="item" data="{{item:item,idx:idx}}"  wx:if="{{idx%2==0}}"></template>
         </block>
       </view>
       <view class="right">
-        <block wx:for="{{note}}" wx:key="">
-          <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+        <block wx:for="{{note}}" wx:key="" wx:for-item="item" wx:for-index="idx">
+          <template is="item" data="{{item:item,idx:idx}}" wx:if="{{idx%2==1}}"></template>
         </block>
       </view>
 </scroll-view>
 <!--  下面是一个模块 -->
 <template name="item">
-  <view class="item">
-    <image class="item-img" src="{{url}}" mode="widthFix"></image>
-    <view class="item-title-box">
-      <navigator url="url" class="item-title">{{title}}</navigator> 
-      <image class="arrow" src="../../image/arrow.png"></image>  
-    </view>
+  <view class="item" bindtap="navToPicshow" data-index='{{idx}}'>
+    <image class="item-img" src="{{item.endImg.url}}" mode="widthFix"></image>
     <view class="name">
-      <image class="item-ava" src="{{avatar}}"></image>    
-      <text class="name-title">{{name}}</text>
+      <image class="item-ava" src="{{item.barber.headImageUrl}}"></image>    
+      <text class="name-title">{{item.barber.name}}{{idx}}</text>
       <view class="heart_">
         <image class="heart" src="../../image/heart.png"></image>
-        <text>{{heart_num}}</text>
+        <text>{{item.endImg.fileSize}}</text>
       </view>
     </view>
   </view>

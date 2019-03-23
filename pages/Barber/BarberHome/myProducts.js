@@ -12,14 +12,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    note: fileData.getMyProducts()
+    note: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("页面加载")
+    this.loadImages();
   },
 
   /**
@@ -55,14 +55,25 @@ Page({
    */
   onPullDownRefresh: function () {
   },
-  loadImages (e) {
-    console.log("加载更多")
-   //加载数据
-    var loadData = fileData.getMyProducts();
-    var newData = this.data.note.concat(loadData)
-    this.setData({
-      note: newData,
-    })
+  loadImages:function () {
+    var that = this;
+    util.weshowRequest(
+      api.BarberOrderList,
+      {
+        "barberId": "1",
+        "statusStr": "1,2,3"
+      },
+      'POST').then(res => {
+        var orderInfo = res.data.bizContent.order;
+
+        // success
+        that.setData({
+          note: orderInfo
+        });
+       
+      }).catch((err) => {
+        console.log('barberInfo err :' + err);
+      });
   }
   ,
   /**
@@ -78,4 +89,16 @@ Page({
   onShareAppMessage: function () {
 
   },
+  navToPicshow: function (e){
+    var index = e.currentTarget.dataset.index
+    var orderInfo = this.data.note;
+    var imageList = [];
+    imageList.push(encodeURIComponent(orderInfo[index].endImg.url));
+    imageList.push(encodeURIComponent(orderInfo[index].beginImg.url));
+    var imgList = JSON.stringify(imageList);
+    console.log(imgList);
+    wx.navigateTo({
+      url: 'pictureShow?imageList=' + imgList
+    })
+  }
 })

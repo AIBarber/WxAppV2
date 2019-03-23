@@ -181,8 +181,7 @@ function getlifaData() {
 }
 
 function getshopData() {
-  var arr = [
-    [
+  var arr = 
       {
 
         shopname: "天天美容美发",
@@ -194,10 +193,8 @@ function getshopData() {
 
 
 
-      },
+      }
 
-    ]
-  ]
   return arr
 }
 

@@ -8,13 +8,13 @@
  
 <view class='main'>
 <view class='mainText'>
-<text class="textOut">时间：<text class="textIn">{{time}}</text></text>
-<text class="textOut">理发师：<text class="textIn">{{barberName}}</text></text>
-<text class="textOut">店铺地址：<text class="textIn">{{shopAddress}}</text></text>
-<text class="textOut">已成功支付：<text class="textIn">{{allMoney}}</text>元</text>
-<text class="textOut">预约码：<text class="textIn">{{}}</text></text>
+<text class="textOut">时间：<text class="textIn">{{order.createdTime}}</text></text>
+<text class="textOut">理发师：<text class="textIn">{{order.barber.nickname}}</text></text>
+<text class="textOut">店铺地址：<text class="textIn">{{order.orderRelaton.storeList[0].address}}</text></text>
+<text class="textOut">已成功支付：<text class="textIn">{{order.amount/100}}</text>元</text>
+<text class="textOut">预约码：<text class="textIn">这个没有返回</text></text>
 </view>
- <image class="img" src='../../../icon/Customer/touxiang.png' mode="scaleToFill"></image>
+ <image class="img" src='{{order.customer.headurl}}' mode="scaleToFill"></image>
   <text class='text1'>您还没有发型照片</text>
   <text class='text2'>拍摄头像进行精准发行匹配</text>
   <view class='bottomPayInfo'>

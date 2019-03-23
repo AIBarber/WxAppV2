@@ -6,31 +6,40 @@ var model = require('../../../utils/model.js');
 
 Page( {
   data: {
-    shopItems: fileData.getshopData(),
+    shopItem: {},
     shopdetail: [],
-    imageList:[],
+    imageList:[],//店铺图片列表
+    barberList:[],//理发师列表
+    faceList:[],//顾客列表
     curIndex: 0,
     winWidth: 0,
     winHeight: 0
   },
-  onLoad: function () {
-    var that = this
-    that.setData({
-      shop: that.data.shopItems
-    });
-    this.getshopInfo();
+  onLoad: function (options) {
+    var that = this;
+    var storeId = options.storeId;
+    //请求获取店铺详情
+    util.weshowRequest(
+      api.StoreDetail,
+      {
+        "storeId": storeId
+      },
+      'POST').then(res => {
+        // success
+        var bizContent = res.data.bizContent;
+        this.setData({
+          shopItem: bizContent.store,
+          imageList: bizContent.store.imageList,
+          barberList: bizContent.store.barberList,
+          faceList: bizContent.store.faceList
+        })
+        
+      }).catch((err) => {
+      });
+  },
 
-    wx.getSystemInfo({
-
-      success: function (res) {
-        that.setData({
-          winWidth: res.windowWidth,
-          winHeight: res.windowHeight
-        });
-      }
-
-    });
-
+  getStoreDetail(){
+   
   },
   getLocation:function(){
     wx.navigateTo({
@@ -41,36 +50,5 @@ Page( {
     wx.navigateTo({
       url:'../book/book'
     })
-  },
-  getshopInfo: function () {
-    console.log('getshopInfo ' + api.StoreDetail);
-    //wx.showNavigationBarLoading();
-    var that = this;
-    util.weshowRequest(
-      api.StoreDetail,
-      {
-        "storeId": "1",
-        'size': 10,
-        //'barberid': app.globalData.userid
-      },
-      'POST').then(res => {
-        //if (res.data) {}
-        console.log('SteList ');
-        console.log(res.data);
-        // success
-        that.setData({ shopdetail:res.data.bizContent.store});
-        that.setData({ imageList: res.data.bizContent.store.imageList});
-      }).catch((err) => {
-        console.log('getDataList err' + err);
-        // fail
-        //that.stopRefreshing();
-        wx.showToast({
-          title: '正在获取数据…',
-          icon: 'loading',
-          duration: 3000,
-          mask: true
-        });
-        //that.setData({ barberDetails: (wx.getStorageSync('barberDetails') || []) });
-      });
   }
 })

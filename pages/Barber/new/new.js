@@ -141,10 +141,9 @@ Page({
     //wx.showNavigationBarLoading();
     var that = this;
     var bizContent = {
-      "longitude": "143.45",
-      "latitude": "123.32",
-      "orderType": "1",
-      "type": "1"
+      "longitude": "116.45",
+      "latitude": "39.93",
+      "orderType": "1"
     }
     util.weshowRequest(
       api.BarberList,

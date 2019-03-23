@@ -93,9 +93,10 @@ Page({
 
 
 //获取应用实例
-var app = getApp()
-var fileData = require('../../../utils/data.js')
-var util = require('../../../utils/util')
+var app = getApp();
+var fileData = require('../../../utils/data.js');
+var util = require('../../../utils/util.js');
+var api = require('../../../config/api.js');
 
 Page({
   // 页面初始数据
@@ -120,15 +121,33 @@ Page({
   },
 
   onLoad: function () {
-    var that = this
-    that.setData({
-      list: that.data.skillData
-    })
+    this.getShopList();
+  },
+
+  getShopList: function () {
+    debugger
+    util.weshowRequest(
+      api.StoreList,
+      {
+        "longitude": "116.45",
+        "latitude": "39.93",
+        "orderType": this.data.casIndex,
+        "category": "1"
+      },
+      'POST').then(res => {
+        // success
+        var bizContent = res.data.bizContent;
+        this.setData({
+          list: bizContent.list
+        })    
+      }).catch((err) => {
+      });
   },
   // 跳转至详情页
   navigateDetail: function (e) {
+    debugger
     wx.navigateTo({
-      url: '../detail/detail?artype=' + e.currentTarget.dataset.arid
+      url: '../detail/detail?storeId=' + e.currentTarget.dataset.aid
     })
   },
   // 加载更多
@@ -144,10 +163,11 @@ Page({
   },
   // 地址选择
   bindAddrPickerChange: function (e) {
-    console.log('Category picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       addrIndex: e.detail.value
     })
+
+    this.getShopList();
   }
 
 

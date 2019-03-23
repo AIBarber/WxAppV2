@@ -16,7 +16,7 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.setData({
-      img: "http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg"
+      img: decodeURIComponent(options.imageItem)
     })
     console.log(this.data.img);
   },

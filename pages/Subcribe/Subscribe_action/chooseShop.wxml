@@ -94,7 +94,6 @@
   </view>
   <view class="payMoney">￥{{allMoney}}</view>
   </view>
-   <button form-type='submit' bindtap='toServerInfo' class="confirmPay" >确定预约</button>
-
+   <button  bindtap='toServerInfo' class="confirmPay" >确定预约</button>
  </view>
  </form>
