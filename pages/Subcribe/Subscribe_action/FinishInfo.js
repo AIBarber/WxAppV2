@@ -11,6 +11,12 @@ Page({
   data: {
     order: {}
   },
+  uploadHairPhoto: function () {
+    var that = this;
+    wx.navigateTo({
+      url: '/pages/Customer/camaraIdentity/camaraIdentity?photoName=personnal',
+    })
+  },
   saveSelectedBarberId: function () {
     var that = this;
     var seledBarId = app.globalData.selectedBarberId;
@@ -32,7 +38,7 @@ Page({
     //查询订单详情
     util.weshowRequest(
       api.GetOrderDetail,
-      { orderId:orderId },
+      { orderId:10 },
       'POST').then(res => {
         that.setData({
           order: res.data.bizContent.order

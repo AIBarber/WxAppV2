@@ -14,11 +14,11 @@
 <text class="textOut">已成功支付：<text class="textIn">{{order.amount/100}}</text>元</text>
 <text class="textOut">预约码：<text class="textIn">这个没有返回</text></text>
 </view>
- <image class="img" src='{{order.customer.headurl}}' mode="scaleToFill"></image>
-  <text class='text1'>您还没有发型照片</text>
-  <text class='text2'>拍摄头像进行精准发行匹配</text>
+ <image class="img" src='{{order.customer.customerFaceInfo.url}}' mode="scaleToFill"></image>
+  <text class='text1' wx:if="{{!order.customer.customerFaceInfo.url}}">您还没有发型照片</text>
+  <text class='text2' wx:if="{{!order.customer.customerFaceInfo.url}}">拍摄头像进行精准发行匹配</text>
   <view class='bottomPayInfo'>
-   <button form-type='submit' bindtap='toServerInfo' class="confirmPay" >拍摄头像</button>
+   <button form-type='submit' bindtap='uploadHairPhoto' class="confirmPay" wx:if="{{!order.customer.customerFaceInfo.url}}">拍摄头像</button>
    <button form-type='submit' bindtap='toServerInfo' class="returnIndex" >返回首页</button>
  </view>
   </view>
