@@ -53,6 +53,7 @@
 .column{
   display:flex;
   flex-direction:column;
+  background: white;
 }
 
 .choice{
@@ -166,4 +167,107 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
   border: 1px solid rgb(219, 211, 211);
   font-size: 15px;
   text-align: center;
+}
+.serviceList{
+  font-size: 16px;
+}
+.explain{
+  color:#0cc4b1;
+  font-size: 26rpx;
+  height: 90rpx;
+  width: 100%;
+  background-color:white;
+  margin-top: 25rpx;
+   border-bottom: 1px solid #ececec;
+ /* border:1px solid #0cc4b1; */
+ display: flex;
+ flex-direction: row;
+}
+.explain text{
+  font-size: 16px;
+  color: black;
+  margin-left: 30rpx;
+ margin-top: auto;
+ margin-bottom: auto;
+}
+.checkboxLab{
+  border-top:1px solid white;
+  border-bottom:1px solid #ececec;
+ display: flex;
+ flex-direction:row;
+  width: 99%;
+  height: 100rpx;
+  background-color: white;
+ margin-top: auto;
+ margin-bottom: auto;
+  margin-left: 40rpx;
+}
+.checkboxLab1{
+   border-top:1px solid white;
+  border-bottom:1px solid #ececec;
+ display: flex;
+ flex-direction:row;
+  width: 99%;
+  height: 90rpx;
+  background-color: white;
+  margin-top: auto;
+ margin-bottom: auto;
+  line-height: 90rpx;
+  margin-left: 40rpx;
+}
+.checkboxGroup{
+   display: flex;
+ flex-direction:column;
+  background-color: white;
+}
+.checkbox{
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 43%;
+}
+.checkbox1{
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 50%;
+    margin-left: 0rpx;
+}
+.moneyView{
+  height: 100%;
+  width: 310rpx;
+  display: flex;
+  flex-direction: row-reverse;
+  text-align: right;
+  margin-right: 10rpx;
+  margin-left: 50rpx;
+}
+.money{
+  margin-left: 10rpx;
+  text-align: right;
+  font-size: 16px;
+  margin-top:auto;
+  margin-bottom: auto;
+  color: #ff6600;
+
+}
+.moneyYuan{
+  margin: 0rpx;
+  margin-top:auto;
+  margin-bottom: auto;
+  margin-left: 150rpx;
+  font-size: 16px;
+  text-decoration:line-through;
+  color: #0cc4b1;
+}
+.btmBtn{
+  margin-top: 0rpx;
+}
+.toChoShop{
+  margin-top: 50rpx;
+  width: 650rpx;
+  height: 80rpx;
+  border-radius: 250rpx;
+  background-color: #0cc4b1;
+  text-align: center;
+  line-height: 80rpx;
+  color: white;
 }

@@ -1,4 +1,10 @@
 // pages/Profile/profile.js
+
+var app = getApp();
+var util = require('../../utils/util.js');
+var api = require('../../config/api.js');
+var model = require('../../utils/model.js');
+
 Page({
 
   /**
@@ -11,22 +17,48 @@ Page({
     array: ['设计师','高级设计师','设计总监'], //级别种类
     choice:'设计师', //默认级别
     select:false,   //标志修改按钮是否可用
-    service:[{id:0,value:'洗吹'},{id:1,value:'洗剪吹'},{id:2,value:'染发'},{id:3,value:'烫发'},{id:4,value:'护理'}], //服务总类别
-    service_choice:[],  //提供的服务类别
-    choose:[]  ,//服务项目是否选中
-    price:['15','35','200','300','200'],   //价格
+    // service:[{id:0,value:'洗吹'},{id:1,value:'洗剪吹'},{id:2,value:'染发'},{id:3,value:'烫发'},{id:4,value:'护理'}], //服务总类别
+    // service_choice:[],  //提供的服务类别
+    // choose:[]  ,//服务项目是否选中
+    // price:['15','35','200','300','200'],   //价格
     year: null,
     mobile: null,
-    info: null
+    info: null,
+
+    item: '',
+    item2: '',
+    item3: '',
+    item4: '',
+    itemOne: '',
+    serviceDisplay:'',
+    otherDisplay: "",
+    cutHair: "",
+    ranfa: "display:none",
+    tangfa: "display:none",
+    diantangfa: "display:none",
+    huli: "display:none",
+    barberId: '1',
+    allMoney: '',
+    money: '',
+    clickServer: [],
+    clickMoney: null,
+    barberinfoList: '',
+    barberinfoListInfo: [],
+    serviceKeyMap: {},
+    serviceGroupList: [],
+    serviceGroupKeyMap: {},
+    serviceItemIdSet: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */ 
   onLoad: function (options) {
-    for (var i in this.data.service) {
-      this.data.choose[i] = false;
-    }
+    console.log(options)
+    // for (var i in this.data.service) {
+    //   this.data.choose[i] = false;
+    // }
+    this.getServiceList();
   },
 
  changeFlag: function(){
@@ -106,24 +138,163 @@ Page({
    }
   },
 
-  checkboxChange: function (e) {
-    console.log(e);
-    this.data.service_choice=[];
-    //当前选中的下标
-    var checkIndex = e.detail.value;
-    for(var i in checkIndex){
-        this.data.service_choice.push(this.data.service[i]);
-        this.data.choose[i]=true;
-    }
-    //打印当前所选中的数据
-    console.log(this.data.service_choice);
+  // checkboxChange: function (e) {
+  //   console.log(e);
+  //   this.data.service_choice=[];
+  //   //当前选中的下标
+  //   var checkIndex = e.detail.value;
+  //   for(var i in checkIndex){
+  //       this.data.service_choice.push(this.data.service[i]);
+  //       this.data.choose[i]=true;
+  //   }
+  //   //打印当前所选中的数据
+  //   console.log(this.data.service_choice);
+  // },
+
+  // changePriceValue:function(e){
+  //   console.log("----------------------------------------");
+  //   console.log(e);
+  //   this.data.price[e.target.id]=e.detail.value;
+  //   console.log(this.data.price);
+  // }
+
+  getServiceList: function () {
+    console.log('Getbarberinfo ' + api.Getbarberinfo);
+    //wx.showNavigationBarLoading();
+    var that = this;
+    util.weshowRequest(
+      api.Getbarberinfo,
+      {
+        "barberId": "1"
+      },
+      'POST').then(res => {
+        // success
+        console.log(res.data)
+        for (var i = 0; i < res.data.bizContent.barberinfo.barberServiceList.length; i++) {
+          var serviceGroup = res.data.bizContent.barberinfo.barberServiceList[i];
+          this.data.serviceGroupList.push(serviceGroup);
+          for (var j = 0; j < serviceGroup.barberServiceServiceList.length; j++) {
+            var serviceItem = serviceGroup.barberServiceServiceList[j];
+            this.data.serviceKeyMap[serviceItem.id] = serviceItem;
+            this.data.serviceGroupKeyMap[serviceItem.id] = serviceGroup;
+            if (!this.data.serviceItemIdSet.includes(serviceItem.id)) {
+              this.data.serviceItemIdSet.push(serviceItem.id);
+            }
+          }
+        }
+        that.setData({
+          barberinfoList: res.data.bizContent.barberinfo,
+          itemOne: res.data.bizContent.barberinfo.barberServiceList[0].barberServiceServiceList,
+          item: res.data.bizContent.barberinfo.barberServiceList[1].barberServiceServiceList,
+          item2: res.data.bizContent.barberinfo.barberServiceList[2].barberServiceServiceList,
+          item3: res.data.bizContent.barberinfo.barberServiceList[3].barberServiceServiceList,
+          item4: res.data.bizContent.barberinfo.barberServiceList[4].barberServiceServiceList
+        })
+      }).catch((err) => {
+        console.log('getShopList err' + err);
+        // fail
+        // that.stopRefreshing();
+
+        wx.showToast({
+          // title: '正在获取数据…',
+          // icon: 'loading',
+          // duration: 3000,
+          // mask: true
+        });
+      });
   },
 
-  changePriceValue:function(e){
-    console.log("----------------------------------------");
-    console.log(e);
-    this.data.price[e.target.id]=e.detail.value;
-    console.log(this.data.price);
-  }
+  serviceList: function () {
+    var that = this;
+    that.setData({
+      serviceDisplay: "",
+      otherStyle: "color:grey;background-color:white;",
+      serverStyle: "color:white;background-color:#0cc4b1;",
+      otherDisplay: "display:none"
+    })
+  },
+
+  otherList: function () {
+    var that = this;
+    that.setData({
+      // serviceDisplay: "display:none;",
+      serverStyle: "color:grey;background-color:white;",
+      otherStyle: "color:white;background-color:#0cc4b1;",
+      otherDisplay: "",
+    })
+  },
+
+  cuthair: function () {
+    var that = this;
+    if (this.data.cutHair == "display:none") {
+      that.setData({
+        cutHair: ""
+      })
+    } else {
+      that.setData({
+        cutHair: "display:none"
+      })
+    }
+  },
+
+  ranfa: function () {
+    var that = this;
+    if (this.data.ranfa == "display:none") {
+      that.setData({
+        ranfa: ""
+      })
+    } else {
+      that.setData({
+        ranfa: "display:none"
+      })
+    }
+  },
+
+  tangfa: function () {
+    var that = this;
+    if (this.data.tangfa == "display:none") {
+      that.setData({
+        tangfa: ""
+      })
+    } else {
+      that.setData({
+        tangfa: "display:none"
+      })
+    }
+  },
+
+  diantangfa: function () {
+    var that = this;
+    if (this.data.diantangfa == "display:none") {
+      that.setData({
+        diantangfa: ""
+      })
+    } else {
+      that.setData({
+        diantangfa: "display:none"
+      })
+    }
+  },
+
+  huli: function () {
+    var that = this;
+    if (this.data.huli == "display:none") {
+      that.setData({
+        huli: ""
+      })
+    } else {
+      that.setData({
+        huli: "display:none"
+      })
+    }
+  },
+
+  checkboxChange: function (e) {
+    var that = this;
+    that.setData({
+      clickServer: e.detail.value,
+    })
+    console.log("chooseServer:" + e.detail.value);
+  },
 
 })

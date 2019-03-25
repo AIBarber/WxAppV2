@@ -1,2 +1,34 @@
 <!--pages/Shop/OpenstoreDetail/storeDetail.wxml-->
+ <view class='view1'>
+   <image class="image" src='{{shopList.headImage}}' mode='scaleToFill' />
+      <view class="view2" >
+         <text class='text'>名称：{{shopList.name}}</text>
+         <text class='text'>面积：{{shopList.acreage}}平方米</text> 
+         <text class='text'>营业：{{shopList.businessTime}}</text> 
+      </view>
+    </view>
+    <text style='margin-left:10px;font-size:15px'>店铺地址：{{shopList.address}}</text>
+
+
+<view class='view3'>
+  <view class='view4' bindtap='goToIncome'>
+    <text class='text2' decode='true'>&nbsp;&nbsp;当前收益：￥{{shopList.income}}</text>
+    <image src="../../../icon/Customer/youjiantou.png" class="icon"  mode="aspectFill"/>
+  </view>
+  <view class='view4' bindtap='goTohistoryBarber'>
+    <text class='text2' decode='true'>&nbsp;&nbsp;历史发型师数：{{shopList.historyBarberNum}}人</text>
+     <image src="../../../icon/Customer/youjiantou.png" class="icon"  mode="aspectFill"/>
+  </view>
+  <view class='view4' bindtap='goTohistoryCustomer'>
+    <text class='text2' decode='true'>&nbsp;&nbsp;历史顾客数：{{shopList.historyCustomerNum}}人</text>
+     <image src="../../../icon/Customer/youjiantou.png" class="icon"  mode="aspectFill"/>
+  </view>
+  <view class='view4' bindtap='goTohistoryOrder'>
+    <text class='text2' decode='true'>&nbsp;&nbsp;历史订单数：{{shopList.historyOrderNum}}单</text>
+     <image src="../../../icon/Customer/youjiantou.png" class="icon"  mode="aspectFill"/>
+  </view>
+</view>
+
+<!-- <button bindtap='upLoadPhoto' class='button'>上传照片</button>
+<button bindtap='confirmChange' class='button'>提交修改</button> -->
 
