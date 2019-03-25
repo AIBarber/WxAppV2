@@ -133,8 +133,8 @@ Page({
     util.weshowRequest(
       api.StoreList,
       {
-        "longitude": "143.45",
-        "latitude": "123.32",
+        "longitude": app.globalData.longitude,
+        "latitude": app.globalData.latitude,
         "orderType": "1",
         "category": "1",
         'size': 10,

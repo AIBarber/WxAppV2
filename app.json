@@ -1,11 +1,13 @@
 {
   "pages": [
-   
+    "pages/Shop/ShopList/new",
     "pages/Barber/new/new",
     "pages/Profile/profile",
     "pages/Shop/ShopList/List",
     "pages/Subcribe/Subscribe_action/ServerItem",
+    "pages/Subcribe/Subscribe_action/FinishInfo",
     "pages/Customer/myCustomers/personal",
+    
     "pages/Barber/BarberHome/personal",
     
     "pages/Customer/myCustomers/customers",
@@ -37,9 +39,9 @@
     "pages/Customer/myOrders/orders",
 
     "pages/Subcribe/Subscribe_action/barberList",
-    "pages/Subcribe/Subscribe_action/FinishInfo",
+    
     "pages/Customer/myBarber/myBarber",
-    "pages/Shop/ShopList/new",
+    
     "pages/Barber/detail/technicain_detail",
     "pages/Barber/order/order",
     "pages/Barber/start/start",

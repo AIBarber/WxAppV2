@@ -161,6 +161,7 @@ Page({
       list: that.data.skillData,
     })
   },
+  
   // 地址选择
   bindAddrPickerChange: function (e) {
     this.setData({

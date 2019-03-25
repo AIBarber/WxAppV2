@@ -272,7 +272,6 @@ calculate:function () {
         serviceGroupListNew.push(serviceGroupList[t]);
       }
     }  
-   debugger
 
     wx.navigateTo({
       url: 'chooseShop?serviceGroupList=' + JSON.stringify(serviceGroupListNew) + "&barberId=" + that.data.barberId + "&allMoney=" + totalMoney+"&barberName="+that.data.barberName,

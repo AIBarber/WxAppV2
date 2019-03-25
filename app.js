@@ -261,7 +261,15 @@ App({
       })
     }
   },
-
+  getLocation: function(){
+    var that = this;
+    wx.getLocation({
+      success: function (res) {
+        that.globalData.latitude = res.latitude;
+        that.globalData.longitude = res.longitude;
+      }
+    });
+  },
   // 全局变量
   globalData: {
     userInfo: null,

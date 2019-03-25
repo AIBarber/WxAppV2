@@ -262,7 +262,6 @@ Page({
   },
   radioChange2: function(e) {
     var that = this;
-    debugger
     if (that.data.checked == false) {
       that.setData({
         adjustTime: 1,
@@ -301,11 +300,11 @@ Page({
     }
   },
   toServerInfo: function() {
-    debugger
     //添加一个订单
     this.insertOrder();
   },
   insertOrder: function(){
+    debugger
     var that = this;
     var bizContent = {
       "barberId": app.globalData.userid,
@@ -321,21 +320,17 @@ Page({
       "amount": that.data.allMoney,
       "barberServiceList": that.data.serviceGroupList
     };
-
+    var orderId = '';
     util.weshowRequest(
       api.OrderInsert,
       bizContent,
       'POST').then(res => {
-        if (res.data.bizContent.status == 0){
-            //TODO 测试
-          wx.navigateTo({
-            url: 'FinishInfo?orderId=10'
-          });
-
+        if (res.data.bizContent.orderInfo){
           //成功 请求获取微信支付参数
+          orderId = res.data.bizContent.orderInfo.orderId;
           var payBizContent = {
-            "orderId": res.data.orderId,
-            "amount": res.data.amount,
+            "orderId": orderId,
+            "amount": res.data.bizContent.orderInfo.amount,
             "payType": "1",
             "openId": "12sd12sdqwq2"
           };
@@ -357,7 +352,7 @@ Page({
                   })
                   console.log("支付成功");
                   wx.navigateTo({
-                    url: 'FinishInfo?barberId=' + this.data.barberId + "&serviceGroupList=" + this.data.serviceGroupList + "&noLimitTime=" + this.data.noLimitTime + "&adjustTime=" + this.data.adjustTime + "&noLimitStore=" + this.data.noLimitStore + "&adjustStore=" + this.data.adjustStore + "&postion=" + this.data.postion2 + "&storeId=" + this.data.storeId + "&allMoney=" + this.data.allMoney + "&barberName=" + this.data.barberName + "&storeAddress=" + this.data.shopAddress
+                    url: 'FinishInfo?orderId=orderId'
                   });
                 },
                 fail(res) {
@@ -467,10 +462,10 @@ Page({
     console.log('getStoreList ' + api.StoreList);
     var that = this;
     var bizContent = {
-      'start': "0",
-      'limit': "3",
+      'longitude': app.globalData.longitude,
+      'latitude': app.globalData.latitude,
       // 'category': "1",
-      // 'orderType': "1"
+      'orderType': "1"
     }
     // util.weshowRequest(api.StoreList, bizContent ,'POST');
     // console.log("调用weshow");
