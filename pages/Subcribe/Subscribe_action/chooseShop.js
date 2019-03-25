@@ -304,7 +304,6 @@ Page({
     this.insertOrder();
   },
   insertOrder: function(){
-    debugger
     var that = this;
     var bizContent = {
       "barberId": app.globalData.userid,

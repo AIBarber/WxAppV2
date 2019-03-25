@@ -285,8 +285,8 @@ App({
     userLevel: 0,
     sessionKey: '',
     appid: 'wxe17d544601c53b2a',
-    latitude: 39.9181370976,
-    longitude: 116.3002283764,
+    latitude: 39.93,
+    longitude: 116.45,
     ShareTitle: 'ShareTitle',
   }
 })

@@ -62,7 +62,7 @@
   <view class="ar_cont">
     <view>
       <image src="../../../icon/time.png"></image>
-      <text class="ar_cont_price">{{shopItem.time}}</text>
+      <text class="ar_cont_price">{{shopItem.businessTime}}</text>
     </view>
     <view class="ar_line" style="height:2rpx;margin-top:3px;"></view>
     <view>

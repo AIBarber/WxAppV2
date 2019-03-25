@@ -71,7 +71,7 @@ Page({
   // 跳转至详情页
   navigateDetail: function (e) {
     wx.navigateTo({
-      url: '../detail/detail?artype=' + e.currentTarget.dataset.arid
+      url: '../detail/detail?storeId=' + e.currentTarget.dataset.aid
     })
   },
   // 加载更多
