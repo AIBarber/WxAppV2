@@ -1,1 +1,73 @@
 /* pages/Shop/OpenstoreDetail/storeDetail.wxss */
+.view1{
+  display:flex;
+  flex-direction:row;
+  margin-top: 10px;
+  /* background:white; */
+}
+.image{
+  width:90px;
+  height:70px;
+  margin-left:6px;
+  margin-top: 3px;
+  margin-bottom:6px;
+  border-right: 15rpx solid lightgrey;
+  border-top: 15rpx solid lightgrey;
+  border-left: 15rpx solid lightgrey;
+  border-bottom: 15rpx solid lightgrey;
+}
+.view2{
+  display:flex;
+  flex-direction:column;
+  margin-left:15px;
+  margin-right:15px;
+  margin-top: 3px;
+  font-size:15px;
+}
+.text{
+  margin-top:5px;
+  font-size:15px;
+}
+.view3{
+  display:flex;
+  flex-direction:column;
+  margin-left: 10px;
+  margin-right:10px;
+  margin-top: 10px;
+  font-size:15px;
+}
+.view4{
+  display:flex;
+  flex-direction:row;
+  border-right: 1rpx solid darkgray;
+  border-top: 1rpx solid darkgray;
+  border-left: 1rpx solid darkgray;
+  border-bottom: 1rpx solid darkgray;
+  padding: 18rpx 0rpx 10rpx 5rpx;
+}
+.icon{
+  width: 15px;
+  height: 15px;
+  margin-left: 24%;
+  padding: 15rpx 0rpx 15rpx 0rpx;
+}
+.text2{
+  font-size:15px;
+  width: 70%;
+}
+.button{
+  width: 150px;
+  height: 40px;
+  margin-top: 10px;
+  border-radius: 10rpx;
+  color: black;
+  font-size: 15px;
+  border: 1px solid rgb(63, 197, 164);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}button::after {
+  border-radius: 40rpx;
+}

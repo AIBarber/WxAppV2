@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    flag: false,  //共享店铺列表是否为空
+    flag: '',  //共享店铺列表是否为空
     shopList: [],
     check: [],
     id: 1
@@ -57,14 +57,14 @@ Page({
         });
         that.setData({
           shopList: (wx.getStorageSync('shopList') || []),
-          flag: false
+         // flag: false
         });
       });
   },
 
   changeShareStatus: function (e) {
     wx.showNavigationBarLoading();
-    console.log(e)
+   // console.log(e)
     var that = this;
     var index;
     var id = e.target.id;  //当前店铺的id
@@ -81,8 +81,8 @@ Page({
         "share": Math.abs(that.data.shopList[index].share - 1)
       },
       'POST').then(res => {
-        console.log('getShareStatus ' + api.ShareStatus);
-        console.log(res.data);
+       // console.log('getShareStatus ' + api.ShareStatus);
+        //console.log(res.data);
         // success
         that.stopRefreshing();
         //that.waitUpdate();
@@ -98,14 +98,14 @@ Page({
         });
       });
     that.getDataList();
-    console.log(that.data.shopList[index].share);
+   // console.log(that.data.shopList[index].share);
   },
 
-  /*返回前一页*/
-  backToprevPage: function () {
-    wx.navigateBack({
-    })
-  },
+  // /*返回前一页*/
+  // backToprevPage: function () {
+  //   wx.navigateBack({
+  //   })
+  // },
 
   // 申请共享店主
   applyShop: function () {

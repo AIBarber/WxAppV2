@@ -55,9 +55,10 @@ Page({
     var that = this;
 
     var index = e.currentTarget.id;
-    console.log("toServerItem::barberId:::" + that.data.barberList[index - 1].barberId);
+    console.log(e)
+    // console.log("toServerItem::barberId:::" + that.data.barberList[index - 1].barberId);
     that.setData({
-      barberId: that.data.barberList[index - 1].barberId
+      barberId: index
     });
     //从这里调用了 获得barberInfo的方法
     this.getBarberInfo();
@@ -137,7 +138,7 @@ Page({
   },
 
   getBarberList: function () {
-    // console.log('getStoreList ' + api.StoreList);
+    console.log('getStoreList ' + api.BarberList);
     //wx.showNavigationBarLoading();
     var that = this;
     var bizContent = {

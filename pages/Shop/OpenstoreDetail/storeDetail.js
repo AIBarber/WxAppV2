@@ -10,7 +10,8 @@ Page({
    */
   data: {
     shopid:'',
-    shopList: []
+    shopList: '',
+    photo: ''
   },
 
   /**
@@ -38,7 +39,7 @@ Page({
         console.log(res.data);
         // success
         that.setData({
-          shopList: res.data.bizContent.list,
+          shopList: res.data.bizContent.store,
         });
         that.stopRefreshing();
         //that.waitUpdate();
@@ -53,6 +54,64 @@ Page({
           mask: true
         });
       });
+  },
+
+  goToIncome:function(){
+
+  },
+
+  goTohistoryBarber:function(){
+
+  },
+
+  goTohistoryCustomer:function(){
+
+  },
+
+  goTohistoryOrder:function(){
+
+  },
+
+  upLoadPhoto:function(){
+    var that = this;
+    wx.uploadFile({
+      url: api.GetFaceId,
+      filePath: that.data.src,
+      name: 'face_image',
+      formData: {
+        'appid': app.globalData.appid,
+        'openid': app.globalData.userid,
+        'timestamp': util.getCurrentSecond()
+      },
+      success: function (res) {
+        console.log('*******************888888888*************************')
+        console.log(res)
+        var data = JSON.parse(res.data)
+        console.log(data)
+        if (data != null && data.error_code == 0) {
+          that.setData({
+            faceid: data.result.user_list[0].user_id
+          })
+          //app.globalData.userid = data.data.openid
+          app.globalData.faceid = data.result.user_list[0].user_id
+          console.log('********************************************')
+          console.log(app.globalData.faceid)
+          that.stopRefreshing();
+        }
+        else {
+          wx.showModal({
+            title: '提示',
+            content: '未识别出人脸，请确保人像清晰完整。点击重新进行拍摄！',
+          })
+        }
+      },
+      fail: function (res) {
+      }
+    })
+  },
+
+  confirmChange:function(){
+
   },
 
   stopRefreshing: function () {

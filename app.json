@@ -1,10 +1,13 @@
 {
   "pages": [
+   
+    "pages/Barber/new/new",
+    "pages/Profile/profile",
     "pages/Shop/ShopList/List",
     "pages/Subcribe/Subscribe_action/ServerItem",
     "pages/Customer/myCustomers/personal",
     "pages/Barber/BarberHome/personal",
-    "pages/Profile/profile",
+    
     "pages/Customer/myCustomers/customers",
     "pages/Login/IDConfirm/IDConfirm",
     "pages/Customer/myHistoryCost/cost",
@@ -14,16 +17,12 @@
 
     "pages/Barber/BarberHome/pictureShow",
     
-   
-   
-    
-    
-    "pages/Barber/new/new",
     "pages/Customer/myCustomers/my",
     "pages/Customer/myCustomers/introduce",
     "pages/Barber/seat/seat",
     "pages/PersonalHome/PersonalHome",
     "pages/Shop/Openshare/share",
+    "pages/Shop/OpenstoreDetail/storeDetail",
     "pages/Shop/Apply/applyShop",
     
     "pages/Shop/ServiceShop/serviceShop",
@@ -32,10 +31,7 @@
     "pages/Subcribe/Subscribe_action/chooseShop",
     
     "pages/Barber/firstpage/firstpage",
-   
-   
-    
-    
+
     "pages/Customer/myCoupon/coupon",
     "pages/Customer/myCoupon/drawcash",
     "pages/Customer/myOrders/orders",
@@ -52,8 +48,7 @@
     "pages/Customer/myCustomers/toBarberSuccess",
     "pages/Customer/myCustomers/jumpToBarber",
     "pages/Subcribe/Subscribe_action/confirmPay",
-    "pages/Shop/addShop/addshop",
-    "pages/Shop/OpenstoreDetail/storeDetail"
+    "pages/Shop/addShop/addshop"
   ],
   "permission": {
     "scope.userLocation": {
