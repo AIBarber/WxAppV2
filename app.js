@@ -280,7 +280,7 @@ App({
     shareOpenid: '0',
     shareInviterCode: '0',
     selectedBarberId: '',
-    userid: null,
+    userid: 'ozANd5R2-s45Fio7CCiZa7Lvj4v8',
     faceid: null,
     userLevel: 0,
     sessionKey: '',

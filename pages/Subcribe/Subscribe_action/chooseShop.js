@@ -306,7 +306,7 @@ Page({
   insertOrder: function(){
     var that = this;
     var bizContent = {
-      "barberId": app.globalData.userid,
+      "barberId": that.data.barberId,
       "customerId": that.data.customerId,
       "orderRelaton": {
         "noLimitTime": that.data.noLimitTime,
@@ -329,9 +329,10 @@ Page({
           orderId = res.data.bizContent.orderInfo.orderId;
           var payBizContent = {
             "orderId": orderId,
-            "amount": res.data.bizContent.orderInfo.amount,
+            // "amount": res.data.bizContent.orderInfo.amount,
+            "amount": '1',
             "payType": "1",
-            "openId": "12sd12sdqwq2"
+            "openId": app.globalData.userid
           };
 
           util.weshowRequest(
