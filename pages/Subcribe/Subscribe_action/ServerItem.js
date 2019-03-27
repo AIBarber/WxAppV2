@@ -5,7 +5,6 @@ var api = require('../../../config/api.js');
 var model = require('../../../utils/model.js');
 
 Page({
-
   /**
    * 页面的初始数据
    */

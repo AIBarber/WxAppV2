@@ -1,5 +1,6 @@
 {
   "pages": [
+   
     "pages/Shop/ShopList/new",
     "pages/Barber/new/new",
     "pages/Profile/profile",

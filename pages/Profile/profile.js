@@ -111,7 +111,7 @@ Page({
         info: value
       })
     }
-    console.log(this.data)
+    console.log(this.data.info)
   },
 
   changeHead:function(){

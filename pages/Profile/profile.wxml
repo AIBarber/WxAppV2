@@ -5,42 +5,11 @@
 <!-- </view> -->
 
 <!-- 头像区域 -->
-  <!-- <view class='photo' bindtap='changeHead'>
+  <view class='photo' bindtap='changeHead'>
     <image class='image' src='{{photo}}' mode='scaleToFill'>
     </image>
-  </view> -->
+  </view> 
 
-<!--<view class='column'>
- <view class='row'>
- <text style='width:40%'>我的级别：</text>
-  <view class='choice' >
-  <view bindtap='bindShowMsg' style='width:100%'><text>{{choice}}</text></view>
-   <view class="select_box" wx:if="{{select}}">
-  <view wx:for="{{array}}" wx:key="unique">
-    <view class="select_one" bindtap="mySelect" data-name="{{item}}">{{item}}</view>
-  </view>
-</view>
- </view>
- <image src='../../icon/arrow.png' class='icon'></image>
-  </view>
- 
- <view class='row'>
- <text style='width:40%'>我的工作年限：</text>
- <textarea class='table' bindinput='getValue' value='{{info[1]}}' disabled='{{!flag}}' id='1'></textarea>
- </view>
-
- <view class='row'>
- <text style='width:40%'>我的电话：</text>
- <textarea class='table' bindinput='getValue' value='{{info[2]}}' disabled='{{!flag}}'  id='2'> </textarea>
- </view>
-
- <view class='row'>
- <text style='width:40%'>我的简介：</text>
- <textarea class='intro' bindinput='getValue' value='{{info[3]}}' disabled='{{!flag}}' id='3'></textarea>
- </view>
-
-</view>-->
-   
    <!-- <view class='row'>
    <text>\n\n\n我的服务项目：</text>
   <checkbox-group bindchange="checkboxChange" >
@@ -124,3 +93,36 @@
      </checkbox-group>
         
    </view>
+
+
+ <view class='column'>
+   <view class='row'>
+ <text style='width:40%'>我的级别：</text>
+  <view class='choice' >
+  <view bindtap='bindShowMsg' style='width:100%'><text>{{choice}}</text>
+  <image src='../../icon/arrow.png' class='icon' ></image>
+  </view>
+   <view class="select_box" wx:if="{{select}}">
+  <view wx:for="{{array}}" wx:key="unique">
+    <view class="select_one" bindtap="mySelect" data-name="{{item}}">{{item}}</view>
+  </view>
+</view>
+ </view>
+  </view>
+ 
+ <view class='row'>
+ <text style='width:40%'>我的工作年限：</text>
+ <textarea class='table' bindinput='getValue' value='{{year}}' disabled='{{!flag}}' id='1'></textarea>
+ </view>
+
+ <view class='row'>
+ <text style='width:40%'>我的电话：</text>
+ <textarea class='table' bindinput='getValue' value='{{mobile}}' disabled='{{!flag}}'  id='2'> </textarea>
+ </view>
+
+ <view class='row'>
+ <text style='width:40%'>我的简介：</text>
+ <textarea class='intro' bindinput='getValue' value='{{info}}' disabled='{{!flag}}' id='3'></textarea>
+ </view>
+
+ </view>
