@@ -25,27 +25,26 @@
 <view style=' width:100%;height:8px; border: 1px solid rgb(236, 229, 229);background:rgb(236, 229, 229)'>
 </view>
 
-<view>
-<navigator url='../OpenstoreDetail/storeDetail?shopid={{id}}'>
-   <view style='display:flex;flex-direction:row;background:white' data-id='{{id}}'>
-   <image style="width:90px;height:80px;margin-left:6px;margin-top:12px;margin-bottom:12px;" src='{{path}}' mode='scaleToFill' />
+<view style='height:104px;width:100%;'> 
+ <navigator url='../OpenstoreDetail/storeDetail?shopid={{id}}'>
+   <view style='display:flex;flex-direction:row;background:white' data-id='{{id}}' bindtap="tab">
+   <image style="width:90px;height:80px;margin-left:6px;margin-top:12px;margin-bottom:12px;" src='{{path}}' mode='aspectFill' />
       <view style="display:flex;flex-direction:column;margin-left:10px;font-size:15px" >
-         <text decode='true' style='margin-top:24px;font-size:17px'>{{name}} &nbsp;&nbsp;&nbsp;&nbsp; </text>
+         <text decode='true' style='margin-top:14px;font-size:17px'>{{name}} &nbsp;&nbsp;&nbsp;&nbsp; </text>
          <text style='margin-top:6px;color:#ccc'>当前店铺人数：{{count}}</text> 
           <text decode='true' style='margin-top:6px;color:#ccc'>{{address}}</text> 
       </view>
     </view>
  </navigator>
- </view>
+</view>
 
 <view style='width:100%;height:1px;background-color:rgb(236, 229, 229)'></view>
 
-  <view style='display:flex;flex-direction:row;background:white;font-size:15px'>
-    <text style='margin-top:10px;color:grey;margin-left:20px;margin-bottom:10px;' wx:if='{{checked}}'>状态：共享开启</text>
-     <text style='margin-top:10px;color:grey;margin-left:20px;margin-bottom:10px;' wx:if='{{!checked}}'>状态：暂停共享</text>
-    <switch style='margin-left:50%;margin-top:4px;' checked="{{checked}}" color="rgb(132, 218, 210)" bindchange="changeShareStatus" id='{{id}}' hover-stop-propagation='true'/>
+  <view style='display:flex;flex-direction:row;background:white;font-size:15px;height:45px;width:100%;'>
+    <text style='margin-top:10px;color:grey;margin-left:20px;margin-bottom:10px;width:65%' wx:if='{{checked}}'>状态：共享开启</text>
+     <text style='margin-top:10px;color:grey;margin-left:20px;margin-bottom:10px;width:65%' wx:elif='{{!checked}}'>状态：暂停共享</text>
+    <switch style='margin-left:10%;margin-top:4px;' checked="{{checked}}" color="rgb(132, 218, 210)" bindchange="changeShareStatus" id='{{id}}' type='switch'/>
   </view>
-
 </template>
 
 

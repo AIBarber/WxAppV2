@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderId: 10,
+    orderId: '',
     orderInfo: '',
     storeId: null,
     orderTime: null
@@ -33,20 +33,24 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
-    this.setData({oderId: options.id});
+    this.setData({orderId: options.id});
     this.getOrderDetail();
   },
 
   acceptOrder: function (e) {
-    this.confirmOrder(1);
     var that = this;
-    wx.navigateTo({
-      url: '../start/start?orderid=' + that.data.orderId + '&storeid=' + that.data.storeId
-    })
+    if(that.data.storeId != null && that.data.orderTime != null){
+      that.confirmOrder(1);
+      wx.navigateTo({
+        url: '../start/start?orderid=' + that.data.orderId + '&storeid=' + that.data.storeId + '&lifaData=' + that.data.orderInfo
+      })
+    }
   },
 
   rejectOrder: function (e) {
     this.confirmOrder(0);
+    //重置前一页数据
+    getCurrentPages()[getCurrentPages().length - 2].onLoad()
     wx.navigateBack()
   },
 
@@ -54,6 +58,7 @@ Page({
     console.log('getOrderDetail ' + api.BarberOrderDetail);
     //wx.showNavigationBarLoading();
     var that = this;
+    console.log('this.data.orderId：' + that.data.orderId)
     var bizContent = {
       "orderId": that.data.orderId
     }
@@ -81,11 +86,11 @@ Page({
     var bizContent = {
       "orderId": that.data.orderId,
       "type": type,
+      "remark": "test",
       "orderRelation": {
         "positions": "1",
         "storeIds": that.data.orderId
       },
-      "remark": "test"
     }
     util.weshowRequest(
       api.BarberOrderConfirm,

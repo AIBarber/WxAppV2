@@ -101,41 +101,41 @@ Page({
       });
   },
 
-  getBarberInfo: function () {
-    console.log("进入getBarberInfo");
-    //wx.showNavigationBarLoading();
-    var that = this;
-    var bizContent = {
-      "barberId": that.data.barberId
-    }
-    console.log(bizContent);
-    util.weshowRequest(
-      api.Getbarberinfo,
-      bizContent,
-      'POST').then(res => {
+  // getBarberInfo: function () {
+  //   console.log("进入getBarberInfo");
+  //   //wx.showNavigationBarLoading();
+  //   var that = this;
+  //   var bizContent = {
+  //     "barberId": that.data.barberId
+  //   }
+  //   console.log(bizContent);
+  //   util.weshowRequest(
+  //     api.Getbarberinfo,
+  //     bizContent,
+  //     'POST').then(res => {
 
-        that.setData({
-          barberName: res.data.bizContent.barberinfo.name
+  //       that.setData({
+  //         barberName: res.data.bizContent.barberinfo.name
 
-        })
+  //       })
 
-        console.log("request-barberName:" + this.data.barberName);
-        this.toServer();
-        // util.stopRefreshing;
-        // util.waitUpdate;
-      }).catch((err) => {
-        console.log('barberlist err :' + err);
-        // fail
-        util.stopRefreshing;
-        // wx.showToast({
-        //   title: '正在获取数据…',
-        //   icon: 'loading',
-        //   duration: 3000,
-        //   mask: true
-        // });
-      });
+  //       console.log("request-barberName:" + this.data.barberName);
+  //       this.toServer();
+  //       // util.stopRefreshing;
+  //       // util.waitUpdate;
+  //     }).catch((err) => {
+  //       console.log('barberlist err :' + err);
+  //       // fail
+  //       util.stopRefreshing;
+  //       // wx.showToast({
+  //       //   title: '正在获取数据…',
+  //       //   icon: 'loading',
+  //       //   duration: 3000,
+  //       //   mask: true
+  //       // });
+  //     });
 
-  },
+  // },
 
   getBarberList: function () {
     console.log('getStoreList ' + api.BarberList);

@@ -11,7 +11,7 @@ Page({
   data: {
     flag: '',  //共享店铺列表是否为空
     shopList: [],
-    check: [],
+    // check: [],
     id: 1
   },
 
@@ -21,9 +21,9 @@ Page({
   onLoad: function (options) {
     this.getDataList();
     //  this.getShareStatus();
-    for (var i = 0; i < this.data.shopList.length; i++) {
-      this.data.check[i] = false;
-    }
+    // for (var i = 0; i < this.data.shopList.length; i++) {
+    //   this.data.check[i] = false;
+    // }
   },
 
   getDataList: function () {
@@ -68,12 +68,13 @@ Page({
     var that = this;
     var index;
     var id = e.target.id;  //当前店铺的id
+    console.log('at present: id=' + id);
     for (var i = 0; i < that.data.shopList.length; i++) {
       if (that.data.shopList[i].storeId == id) {
         index = i;
       }
     }
-    console.log(that.data.shopList[index].share);
+    console.log('at present: share=' + that.data.shopList[index].share);
     util.weshowRequest(
       api.ShareStatus,
       {
@@ -81,9 +82,9 @@ Page({
         "share": Math.abs(that.data.shopList[index].share - 1)
       },
       'POST').then(res => {
-       // console.log('getShareStatus ' + api.ShareStatus);
         //console.log(res.data);
         // success
+        getCurrentPages()[getCurrentPages().length - 1].onLoad()
         that.stopRefreshing();
         //that.waitUpdate();
       }).catch((err) => {
@@ -97,15 +98,12 @@ Page({
           mask: true
         });
       });
-    that.getDataList();
-   // console.log(that.data.shopList[index].share);
+   // that.onlad();
   },
 
-  // /*返回前一页*/
-  // backToprevPage: function () {
-  //   wx.navigateBack({
-  //   })
-  // },
+  tab: function(e) {
+    console.log(e);
+  },
 
   // 申请共享店主
   applyShop: function () {

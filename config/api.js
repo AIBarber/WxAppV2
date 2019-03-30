@@ -76,7 +76,7 @@ module.exports = {
   CustomerDiscountList: ApiRootUrl + 'customer/discountlist',
   CustomerAttribute: ApiRootUrl + 'customer/attribute',
   IDUpload: ApiRootUrl + 'barber/idupload',
-  StartService: ApiRootUrl + 'order/start',
+  // StartService: ApiRootUrl + 'order/start',
   EndService: ApiRootUrl + 'order/finish',
   CurrentOrder: ApiRootUrl + 'customer/currentorder',
   Getmycustomerlist: ApiRootUrl + 'customer/getmycustomerlist',

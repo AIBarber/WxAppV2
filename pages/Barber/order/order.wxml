@@ -34,7 +34,7 @@
 </view>
 
 <view class="a"><text>备注信息</text></view>
-<textarea class="c">{{orderInfo.remard}}</textarea>
+<textarea class="c">{{orderInfo.remark}}</textarea>
 <view class="a"><text>预约价格</text>
 <text class="s">￥{{orderInfo.amount}}元</text>
 </view>

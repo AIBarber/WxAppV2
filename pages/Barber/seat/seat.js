@@ -10,7 +10,7 @@ Page({
     // seatList: [{ 'id': 1, 'haircutImg': { 'url': '../../../icon/default_pic.png', 'createTime': '当前' } }, { 'id': 2, 'haircutImg': { 'url': '../../../icon/default_pic.png', 'createTime': '当前' } }],
     seatList: [],
     seatNum: null,
-    storeId: null
+    storeId: 1,
   },
 
   /**
@@ -18,9 +18,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
-    this.setData({
-      storeId:options.storeid
-    })
+    // this.setData({
+    //   storeId:options.storeid
+    // })
   },
  
   getValue:function(e){

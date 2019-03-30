@@ -2,6 +2,7 @@
 var app = getApp()
 var fileData = require('../../../utils/data.js')
 var util = require('../../../utils/util')
+var api = require('../../../config/api.js');
 Page({
 
   /**
@@ -12,7 +13,8 @@ Page({
     lifaData: fileData.getlifaData(),
     winWidth: 0,
     winHeight: 0,
-    storeid: null
+    storeid: '',
+    orderId: ''
   },
 
   /**
@@ -23,8 +25,10 @@ Page({
     var that = this
     that.setData({
       lifa: that.data.lifaData,
-      storeid: options.storeid
+      storeid: options.storeid,
+      orderId: options.orderid
     });
+    console.log(that.data.lifaData)
 
     wx.getSystemInfo({
 
@@ -80,10 +84,30 @@ Page({
   onReachBottom: function () {
 
   },
-  navigatea: function (e) {
+  startHairCut: function (e) {
     wx.navigateTo({
       url: '../seat/seat?storeid='+this.data.storeid,
     })
+  },
+
+  endHairCut: function(e) {
+    console.log('EndService: ' + api.EndService);
+    //wx.showNavigationBarLoading();
+    var that = this;
+    console.log('this.data.orderId：' + that.data.orderId)
+    var bizContent = {
+      "orderId": that.data.orderId
+    }
+    util.weshowRequest(
+      api.EndService,
+      bizContent,
+      'POST').then(res => {
+        console.log(res)
+      }).catch((err) => {
+        console.log('EndService err :' + err);
+        // fail
+        util.stopRefreshing;
+      });
   },
 
   /**
