@@ -14,10 +14,10 @@
  <view class='radioView'>
  <radio-group class="radio-group"  bindchange="radioChange">
   <label class="radio">
-    <text>不限时间</text><radio class="rad" value="0"/>
+    <text>不限时间</text><radio checked class="rad" value="1"/>
   </label>
    <label class="radio">
-    <text>选择时间</text><radio class="rad" value="1" />
+    <text>选择时间</text><radio  class="rad" value="0" />
   </label>
   </radio-group>
  <checkbox-group class="radio-group"  bindchange="radioChange2">
@@ -27,40 +27,40 @@
   </checkbox-group>
  </view>
 
- <view class="chooseTime">
-   <view class="{{(flag1==1||flag4==4||flag7==7)?'timeTable':'normal'}}" style='height:30%;font-size:28rpx; line-height:93rpx; '>上午(12:00)之前</view>
-   <view class="{{(flag2==2||flag5==5||flag8==8)?'timeTable':'normal'}}" style='height:30%;font-size:28rpx; line-height:70rpx;display:flex; flex-direction:column;'><text style='margin-top:-10rpx;'>下午</text><text style='margin-top:-25rpx;'>(12:00-18:00)</text></view>
-   <view class="{{(flag3==3||flag6==6||flag9==9)?'timeTable':'normal'}}"style='height:30%;font-size:28rpx; line-height:93rpx;'>晚上(18:00)之后</view>
-    <button wx:if="{{status1==0}}"  disabled='true' class="noOrder" id='1' >今天上午</button>
-   <button wx:elif="{{status1==1}}" class="{{flag1==1?'timeTable':'canOrder'}}" id="1" bindtap='choiceTime'>今天上午</button>
-    <button wx:if="{{status2==0}}"   disabled='true' class="noOrder" id="2">今天下午</button>
-   <button wx:elif="{{status2==1}}" class="{{flag2==2?'timeTable':'canOrder'}}" id="2" bindtap='choiceTime'>今天下午</button>
-    <button wx:if="{{status3==0}}"   disabled='true' class="noOrder" id="3">今天晚上</button>
-   <button wx:elif="{{status3==1}}" class="{{flag3==3?'timeTable':'canOrder'}}" id="3" bindtap='choiceTime'>今天晚上</button>
-    <button wx:if="{{status4==0}}"   disabled='true' class="noOrder" id="4">明天上午</button>
-   <button wx:elif="{{status4==1}}" class="{{flag4==4?'timeTable':'canOrder'}}" id="4" bindtap='choiceTime'>明天上午</button>
+ <view class="chooseTime" >
+   <view class="{{(flag1==1||flag4==4||flag7==7)?'timeTable':'normal'}}" style='height:30%;width:33.3%;font-size:28rpx; line-height:93rpx; '>上午(12:00)之前</view>
+   <view class="{{(flag2==2||flag5==5||flag8==8)?'timeTable':'normal'}}" style='height:30%;width:33.3%;font-size:28rpx; line-height:70rpx;display:flex; flex-direction:column;'><text style='margin-top:-10rpx;'>下午</text><text style='margin-top:-25rpx;'>(12:00-18:00)</text></view>
+   <view class="{{(flag3==3||flag6==6||flag9==9)?'timeTable':'normal'}}"style='height:30%;width:33.3%;font-size:28rpx; line-height:93rpx;'>晚上(18:00)之后</view>
+    <button wx:if="{{status1==0}}"  disabled='{{dis}}' class="noOrder" id='1' >今天上午</button>
+   <button wx:elif="{{status1==1}}" disabled='{{dis}}' class="{{flag1==1?'timeTable':'canOrder'}}" id="1" bindtap='choiceTime'>今天上午</button>
+    <button wx:if="{{status2==0}}"   disabled='{{dis}}' class="noOrder" id="2">今天下午</button>
+   <button wx:elif="{{status2==1}}" disabled='{{dis}}' class="{{flag2==2?'timeTable':'canOrder'}}" id="2" bindtap='choiceTime'>今天下午</button>
+    <button wx:if="{{status3==0}}"   disabled='{{dis}}' class="noOrder" id="3">今天晚上</button>
+   <button wx:elif="{{status3==1}}" disabled='{{dis}}' class="{{flag3==3?'timeTable':'canOrder'}}" id="3" bindtap='choiceTime'>今天晚上</button>
+    <button wx:if="{{status4==0}}"   disabled='{{dis}}' class="noOrder" id="4">明天上午</button>
+   <button wx:elif="{{status4==1}}" disabled='{{dis}}' class="{{flag4==4?'timeTable':'canOrder'}}" id="4" bindtap='choiceTime'>明天上午</button>
    
-    <button wx:if="{{status5==0}}"   disabled='true' class="noOrder" id="5">明天下午</button>
-   <button wx:elif="{{status5==1}}" class="{{flag5==5?'timeTable':'canOrder'}}" id="5" bindtap='choiceTime'>明天下午</button>
-    <button wx:if="{{status6==0}}"   disabled='true' class="noOrder" id="6">明天晚上</button>
-   <button wx:elif="{{status6==1}}" class="{{flag6==6?'timeTable':'canOrder'}}" id="6" bindtap='choiceTime'>明天晚上</button>
+    <button wx:if="{{status5==0}}"   disabled='{{dis}}' class="noOrder" id="5">明天下午</button>
+   <button wx:elif="{{status5==1}}"  disabled='{{dis}}' class="{{flag5==5?'timeTable':'canOrder'}}" id="5" bindtap='choiceTime'>明天下午</button>
+    <button wx:if="{{status6==0}}"   disabled='{{dis}}' class="noOrder" id="6">明天晚上</button>
+   <button wx:elif="{{status6==1}}" disabled='{{dis}}' class="{{flag6==6?'timeTable':'canOrder'}}" id="6" bindtap='choiceTime'>明天晚上</button>
 
-    <button wx:if="{{status7==0}}"   disabled='true' class="noOrder" id="7">后天上午</button>
-   <button wx:elif="{{status7==1}}" class="{{flag7==7?'timeTable':'canOrder'}}" id="7" bindtap='choiceTime'>后天上午</button>
-    <button wx:if="{{status8==0}}"   disabled='true' class="noOrder" id="8">后天下午</button>
-   <button wx:elif="{{status8==1}}" class="{{flag8==8?'timeTable':'canOrder'}}" id="8" bindtap='choiceTime'>后天下午</button>
-    <button wx:if="{{status9==0}}"   disabled='true' class="noOrder" id="9">后天晚上</button>
-   <button wx:elif="{{status9==1}}" class="{{flag9==9?'timeTable':'canOrder'}}" id="9" bindtap='choiceTime'>后天晚上</button>
+    <button wx:if="{{status7==0}}"   disabled='{{dis}}' class="noOrder" id="7">后天上午</button>
+   <button wx:elif="{{status7==1}}" disabled='{{dis}}' class="{{flag7==7?'timeTable':'canOrder'}}" id="7" bindtap='choiceTime'>后天上午</button>
+    <button wx:if="{{status8==0}}"   disabled='{{dis}}' class="noOrder" id="8">后天下午</button>
+   <button wx:elif="{{status8==1}}" disabled='{{dis}}' class="{{flag8==8?'timeTable':'canOrder'}}" id="8" bindtap='choiceTime'>后天下午</button>
+    <button wx:if="{{status9==0}}"   disabled='{{dis}}' class="noOrder" id="9">后天晚上</button>
+   <button wx:elif="{{status9==1}}" disabled='{{dis}}' class="{{flag9==9?'timeTable':'canOrder'}}" id="9" bindtap='choiceTime'>后天晚上</button>
 
  </view>
 
   <view class='radioView2'>
  <radio-group class='radio-group'  bindchange="radioChange3" data-id='noLimitTime'>
   <label class="radio">
-    <text>不限地址</text><radio class="rad" value="0" />
+    <text>不限地址</text><radio class="rad" checked value="1" />
   </label>
    <label class="radio">
-    <text>选择地址</text><radio class="rad" value="1"/>
+    <text>选择地址</text><radio class="rad" value="0"/>
   </label>
   </radio-group>
  <checkbox-group class="radio-group"  bindchange="radioChange4">
@@ -79,8 +79,8 @@
     <radio-group class="checkboxGroup" bindchange="chooseStore">
   <block wx:for="{{shopList}}" wx:key="{{shopList}}" wx:for-item="shop">
 
-  <template is="shoplist" data="{{storeId:shop.storeId,headImage:shop.headImage,name:shop.name,address:shop.address,distance:shop.distance,checked:shop.checked}}"/>
-    <!-- <template is="shoplist_order" data="{{storeId:shop.storeId,headImage:shop.headImage,name:shop.name,address:shop.address,distance:shop.distance,checked:shop.checked}}"/> -->
+  <template is="shoplist" data="{{storeId:shop.storeId,headImage:shop.headImage,name:shop.name,address:shop.address,distance:shop.distance,checked:shop.checked,disAddress:disAddress,defaultShopCheck:defaultShopCheck}}"/>
+    <!-- <template is="shoplist_order" data="{{storeId:shop.storeId,headImage:shop.headImage,name:shop.name,address:shop.address,distance:shop.distance,checked:shop.checked,}}"/> -->
  
     </block>
      </radio-group>

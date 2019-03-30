@@ -20,8 +20,8 @@ Page({
   data: {
     // nav 初始化
     // cas picker
-    casArray: ['只看自营店', '只看社区店'],
-    casArray1: ['智能排序', '离我最近', '人气最高', '面积最大'],
+    typeArray: [{ name: '查看所有 ', value: '' }, { name: '只看在线 ', value: '1' }, { name:'只看男发型师',value:'2'}],
+    orderTypeArray: [{ name: '离我最近', value: '1' }, { name: '人气最高', value: '2' }, { name: '按级别排序', value: '3' }, { name: '年限排序', value: '4' }],
     //banner_url: fileData.getBannerData(),
     indicatorDots: true,
     barberDetails: [],
@@ -47,7 +47,9 @@ Page({
     selectedStyle: "color:grey;background-color:white;",
     normalStyle: "color:white;background-color:#0cc4b1;",
     myLatitude:null,
-    myLongitude:null
+    myLongitude:null,
+    orderType:'',
+    type:''
 
   },
 
@@ -142,9 +144,10 @@ Page({
     //wx.showNavigationBarLoading();
     var that = this;
     var bizContent = {
-      "longitude": "116.45",
-      "latitude": "39.93",
-      "orderType": "1"
+      "longitude": app.globalData.longitude,
+      "latitude": app.globalData.latitude,
+      "orderType": this.data.orderType,
+      "type": this.data.type
     }
     util.weshowRequest(
       api.BarberList,
@@ -217,13 +220,21 @@ Page({
 
   },
 
-  bindCasPickerChange: function (e) {
+  bindOrderTypePickerChange: function (e) {
+    console.log('Category picker发送选择改变，携带值为', e.detail.value)
+    debugger
+    this.setData({
+      orderType: this.data.orderTypeArray[e.detail.value].value
+    });
+    this.getBarberList();
+  },
+  bindTypePickerChange: function (e) {
     console.log('Category picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      casIndex: e.detail.value
-    })
+      type: this.data.typeArray[e.detail.value].value
+    });
+    this.getBarberList();
   },
-  
   bookTap: function () {
     // console.log('getStoreList ' + api.StoreList);
     //wx.showNavigationBarLoading();
@@ -267,22 +278,6 @@ Page({
     var that = this
     this.getBarberList();
     this.getBarberOrderList();
-    
-    var myLatitude = app.globalData.userid ;
-    var myLongitude=app.globalData.myLongitude;
-   
-    console.log(app.globalData.userid + "--" + this.myLongitude);
-    wx.getSystemInfo({
-
-      success: function (res) {
-        that.setData({
-          winWidth: res.windowWidth,
-          winHeight: res.windowHeight
-        });
-      }
-
-    });
-
   },
 
   // getBarberList: function () {
@@ -351,7 +346,7 @@ Page({
 
     var that = this;
     that.setData({ currentTab: e.detail.current });
-
+    this.changeTabStyle();
   },
 
   /**
@@ -367,6 +362,9 @@ Page({
         currentTab: e.target.id
       })
     }
+    this.changeTabStyle();
+  },
+  changeTabStyle: function () {
     if (this.data.currentTab == 0) {
       this.setData({
         selectedStyle: "color:grey;background-color:white;",
@@ -380,7 +378,6 @@ Page({
       })
     }
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

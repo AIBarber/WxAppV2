@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderId: '',
+    orderId: null,
     orderInfo: '',
     storeId: null,
     orderTime: null
@@ -33,7 +33,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
-    this.setData({orderId: options.id});
+    this.setData({
+      orderId: options.id
+    });
     this.getOrderDetail();
   },
 

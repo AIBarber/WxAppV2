@@ -26,12 +26,12 @@
 <view class="ar_picker" style="background:white">
   <view class="ar_picker_wrap">
     <view class="sort-list">
-      <picker class="picker1" bindchange="bindCasPickerChange" value="{{casIndex1}}" range="{{casArray1}}">
+      <picker class="picker1" bindchange="bindOrderTypeChange" range-key='name' value="{{casIndex1}}" range="{{casArray1}}">
         <view class="sort" style='border-right:0px;' bindtap="changeBoxBtn" data-num="2"> 智能排序
           <image style="width:25rpx;height:20rpx;" mode='widthFix' src='../../../icon/arrow_down.png'></image>
         </view>
       </picker>
-      <picker class="picker2" bindchange="bindCasPickerChange" value="{{casIndex}}" range="{{casArray}}">
+      <picker class="picker2" bindchange="bindCategoryChange" range-key='name' value="{{casIndex}}" range="{{casArray}}">
         <view class="sort" bindtap="changeBoxBtn" style='border-right:0px;'  data-num="3"> 筛选
           <image style="width:25rpx;height:20rpx;" mode='widthFix' src='../../../icon/arrow_down.png'></image>
         </view>

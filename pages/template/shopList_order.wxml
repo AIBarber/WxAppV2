@@ -29,7 +29,7 @@
    <view>{{address}}</view>
  </view>
   <view class='shopDis'><text style='color:#0cc4b1;font-size:30rpx;'>距离:{{distance}}km</text>
-  <radio style='margin-top:30rpx;margin-left:109rpx;' value="{{storeId}}"  id="{{storeId}}"></radio>
+  <radio style='margin-top:30rpx;margin-left:109rpx;' checked='{{defaultShopCheck}}' disabled='{{disAddress}}' value="{{storeId}}"  id="{{storeId}}"></radio>
   </view>
       </label>
 </template>

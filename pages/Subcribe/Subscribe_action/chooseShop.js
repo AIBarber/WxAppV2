@@ -14,9 +14,9 @@ Page({
     currentTab: '0',
     checked: false,
     // postion:null,
-    postion: [1, 3, 5, 6, 9],
+    postion: [1,2, 3,4, 5, 6,7,8, 9],
     clickRadio: '',
-    noLimitTime: '',
+    noLimitTime: '0',
     adjustTime: 0,
     noLimitStore: '',
     adjustStore: 0,
@@ -57,7 +57,10 @@ Page({
     clickState7: 0,
     clickState8: 0,
     clickState9: 0,
-    shopList: ""
+    shopList: "",
+    dis:true,
+    disAddress: true,
+    defaultShopCheck: false
   },
   getPostion: function() {
     // console.log('getStoreList ' + api.StoreList);
@@ -73,8 +76,10 @@ Page({
       'POST').then(res => {
       var resJson = JSON.stringify(res.data.bizContent);
       console.log('resJson:: ' + resJson);
+      var noPosotionNum = resJson.positions;
+        var canPosition = this.data.postion.filter(el => !noPosotionNum.includes(el))
       that.setData({
-        postion: resJson.positions
+        postion: canPosition
       });
       console.log("this.postion::" + that.data.postion);
       // console.log(that.data);
@@ -258,6 +263,16 @@ Page({
     that.setData({
       noLimitTime: e.detail.value
     })
+    if (e.detail.value == '1'){
+      //不限时间将禁用选择时间功能
+      that.setData({
+        dis: true
+      })
+    }else{
+      that.setData({
+        dis: false
+      })
+    }
     console.log("chooseShop:" + that.data.noLimitTime + ",t:" + that.data.checked);
   },
   radioChange2: function(e) {
@@ -267,13 +282,11 @@ Page({
         adjustTime: 1,
         checked: true
       })
-      console.log("chooseShop:" + that.data.adjustTime + ",t:" + that.data.checked);
     } else {
       that.setData({
         checked: false,
         adjustTime: 0
       })
-      console.log("chooseShop:" + that.data.adjustTime + ",f:" + that.data.checked);
     }
   },
   radioChange3: function(e) {
@@ -281,6 +294,20 @@ Page({
     that.setData({
       noLimitStore: e.detail.value
     })
+    if (e.detail.value == '1') {
+      //不限时间将禁用选择时间功能
+      that.setData({
+        disAddress: true
+      });
+      that.setData({
+        defaultShopCheck: false
+      })
+    } else {
+      that.setData({
+        disAddress: false
+      })
+    }
+
     console.log("chooseShop:" + that.data.noLimitStore);
   },
   radioChange4: function(e) {
@@ -380,16 +407,7 @@ Page({
     that.setData({
       storeId: e.detail.value,
       checked: true,
-
     })
-    console.log("storeid::" + that.data.storeId);
-    var storeIdbyInt = parseInt(that.data.storeId)
-    var shopAddress = this.data.shopList[storeIdbyInt - 1].address;
-    console.log("shopaddress" + shopAddress);
-    that.setData({
-      shopAddress: shopAddress
-    })
-    console.log("chooseStore:" + that.data.storeId)
   },
 
   /**

@@ -50,5 +50,10 @@ Page( {
     wx.navigateTo({
       url:'../book/book'
     })
+  },
+  navigate2BarberDetail: function(e){
+    // wx.navigateTo({
+    //   url: '../book/book'
+    // })
   }
 })

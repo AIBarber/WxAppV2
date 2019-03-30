@@ -14,8 +14,8 @@ Page({
   data: {
     // nav 初始化
     // cas picker
-    casArray: ['只看自营店', '只看社区店'],
-    casArray1: ['智能排序', '离我最近', '人气最高', '面积最大'],
+    casArray: [{ name: '全部 ', value: '' },{ name: '加盟店 ', value: '1' }, { name:'旗舰店 ',value:'2'}],
+    casArray1: [{ name: '离我最近', value: '1' }, { name: '人气最高',value: '2'}, {name:'面积最大',value:'3'}],
     shoplist: [],
     selectArray: [{
       "id": "10",
@@ -50,13 +50,23 @@ Page({
     navSectionItems: fileData.getIndexNavSectionData(),
     curNavId: 1,
     curIndex: 0,
-    skillData: fileData.getSkilledData()
+    skillData: fileData.getSkilledData(),
+    orderType:'',
+    category:''
   },
-  bindCasPickerChange: function (e) {
+  bindOrderTypeChange: function (e) {
+    console.log('orderType picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      orderType: this.data.casArray1[e.detail.value].value
+    });
+    this.getshopInfo();
+  },
+  bindCategoryChange: function (e) {
     console.log('Category picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      casIndex: e.detail.value
-    })
+      category: this.data.casArray[e.detail.value].value
+    });
+    this.getshopInfo();
   },
   /**
    * 生命周期函数--监听页面加载
@@ -135,10 +145,9 @@ Page({
       {
         "longitude": app.globalData.longitude,
         "latitude": app.globalData.latitude,
-        "orderType": "1",
-        "category": "1",
+        "orderType": this.data.orderType,
+        "category": this.data.category,
         'size': 10,
-        //'barberid': app.globalData.userid
       },
       'POST').then(res => {
         //if (res.data) {}

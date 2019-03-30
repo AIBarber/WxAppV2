@@ -12,7 +12,7 @@
     }
   };
   var getBarberStatus = function(barberStatus) {
-    switch (barberLevel) {
+    switch (barberStatus) {
       case 0:
         return '休息中';
       case 1:
@@ -76,7 +76,7 @@
     </view>
     <view class="ar_line"></view>
     <block wx:for="{{barberList}}" wx:for-item="barberItem">
-      <view class="summary">
+      <view class="summary" bindtap='navigate2BarberDetail' data-barberId='{{barberItem.id}}'>
         <!-- <view class="avatar-container"> -->
         <image src="{{barberItem.headImageUrl ? barberItem.headImageUrl : '/icon/default-avatar.png'}}" class="avatar" />
         <!-- </view> -->
