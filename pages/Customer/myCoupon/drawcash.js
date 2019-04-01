@@ -27,7 +27,7 @@ Page({
     //  this.money=money;
     var that = this;
     var bizContent={
-      'customerId': 2,
+      'customerId': app.globalData.customerId,
       amount:money
     }
     util.weshowRequest(
@@ -39,20 +39,12 @@ Page({
         });
         console.log("money:"+money);
         console.log("status:::" + that.data.status);
+        wx.showToast({
+          title: '成功',
+        });
         this.getCustomerAccountInfo();
-        // this.makeCouponLists(res);
-        // that.stopRefreshing();
-        //that.waitUpdate();
       }).catch((err) => {
         console.log('getDataList err' + err);
-        // fail
-        // that.stopRefreshing();
-        // wx.showToast({
-        //   title: '正在获取数据…',
-        //   icon: 'loading',
-        //   duration: 3000,
-        //   mask: true
-        // });
       });
   },
   getCustomerAccountInfo: function () {
@@ -60,7 +52,7 @@ Page({
     util.weshowRequest(
       api.GetInCome,
       {
-        'customerId': 2
+        'customerId': app.globalData.customerId
       },
       'POST').then(res => {
         that.setData({

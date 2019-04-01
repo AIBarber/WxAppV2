@@ -1,10 +1,25 @@
+<wxs module="m1">
+  var getBarberLevel = function(barberLevel) {
+    switch (barberLevel) {
+      case 1:
+        return '设计师';
+      case 2:
+        return '高级设计师 ';
+      case 3:
+        return '设计总监';
+      default:
+        return '';
+    }
+  };
+  module.exports.getBarberLevel = getBarberLevel;
+  </wxs>
 <template name="myBarberList">
 <view class="list">
-   <image class="img" src="{{item.headUrl}}"></image>
+   <image class="img" src="{{item.headImageUrl}}"></image>
    <view class="content">
     <text class="barberName">{{item.name}}</text>
-    <text class="text">级别：{{item.level}} | 年限：{{item.years}}</text>
-    <text class="text">发型：{{item.name}}</text>
+    <text class="text">级别：{{m1.getBarberLevel(item.level)}} | 年限：{{item.years}}年</text>
+    <text class="text">发型师：{{item.name}}</text>
     <text class="text">理发时间：{{item.hairCutTime}}</text>
    </view>
 </view>

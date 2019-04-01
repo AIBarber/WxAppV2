@@ -80,6 +80,7 @@ module.exports = {
   EndService: ApiRootUrl + 'order/finish',
   CurrentOrder: ApiRootUrl + 'customer/currentorder',
   Getmycustomerlist: ApiRootUrl + 'customer/getmycustomerlist',
+  Getbarberid: ApiRootUrl + 'customer/getbarberid',
   MyOpenStore: ApiRootUrl + 'store/mystore',
   ShareStatus: ApiRootUrl + 'store/share',
   OpenStoreAdd: ApiRootUrl + 'store/add',

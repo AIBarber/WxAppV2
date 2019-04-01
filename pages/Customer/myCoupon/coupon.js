@@ -42,7 +42,7 @@ Page({
     util.weshowRequest(
       api.GetInCome,
       {
-        'customerId': 2
+        'customerId': app.globalData.customerId
       },
       'POST').then(res => {
         that.setData({

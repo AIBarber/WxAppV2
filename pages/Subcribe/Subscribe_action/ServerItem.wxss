@@ -102,6 +102,8 @@ color:grey;
   text-align: center;
   border-top-left-radius: 100rpx;
   border-bottom-left-radius: 100rpx;
+   border-top-right-radius: 100rpx;
+  border-bottom-right-radius: 100rpx;
   border:1px solid #0cc4b1;
   height: 72rpx;
   line-height: 68rpx;

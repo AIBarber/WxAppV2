@@ -3,20 +3,19 @@ var util = require('../../../utils/util.js');
 var api = require('../../../config/api.js');
 var wxpay = require('../../../utils/wxpay.js');
 var app = getApp();
-Page({
+Page({});
 
   /**
    * 页面的初始数据
    */
-  data: {
-    customerinfo:'',
-    headPhoto:''
-  },
-  onLoad: function (options) {
-    this.loadPersonalInfo();
-  },
-  loadPersonalInfo: function (){
-    var that = this;
+  // data: {
+  //   customerinfo:'',
+  //   headPhoto:''
+  // },
+  // onLoad: function (options) {
+  //   this.loadPersonalInfo();
+  // },
+function loadPersonalInfo(that){
     util.weshowRequest(
       api.Getcustomerinfo, {
         "customerId": "1"
@@ -28,30 +27,30 @@ Page({
           headPhoto: res.data.bizContent.customerinfo.customerFaceInfo
         });
       }).catch((err) => { });
-  },
-  goToMyShareStore:function () {
+  };
+function goToMyShareStore() {
     wx.navigateTo({
       url: '/pages/Shop/Openshare/share',
     })
-  },
+  };
 
-goToMyBarber :function () {
+function goToMyBarber() {
   wx.navigateTo({
-    url: '../myBarber/myBarber',
+    url: '/pages/Customer/myBarber/myBarber',
   })
-},
-goToHistoryCost:function () {
+};
+function goToHistoryCost() {
   wx.navigateTo({
-    url: '../myHistoryCost/cost',
+    url: '/pages/Customer/myHistoryCost/cost',
   })
-},
-goToCoupon: function () {
+};
+function goToCoupon() {
   wx.navigateTo({
-    url: '../myCoupon/coupon',
+    url: '/pages/Customer/myCoupon/coupon',
   })
-},
+};
 
-changeToBarber : function () {
+function changeToBarber () {
   if (app.globalData.userType != 1) {
     wx.navigateTo({
       url: '../FaceIdentity/Identity',
@@ -61,21 +60,81 @@ changeToBarber : function () {
       url: '../BarBer/personal',
     })
   }
-},
-goToConsumption: function () {
+};
+function goToConsumption() {
     wx.navigateTo({
       url: '/pages/Customer/myHistoryCost/cost',
     })
-},
-uploadHairPhoto : function () {
+};
+function goSetting() {
+  wx.navigateTo({
+    url: '/pages/Customer/myCustomers/my',
+  })
+};
+function uploadHairPhoto() {
   var that = this;
   wx.navigateTo({
-    url: '../camaraIdentity/camaraIdentity?photoName=personnal',
+    url: '/pages/Customer/camaraIdentity/camaraIdentity?photoName=personnal',
   })
-},
-  jumpToBarber:  function () {
+};
+function jumpToBarber () {
     wx.navigateTo({
-      url: '../myCustomers/jumpToBarber',
+      url: '/pages/Customer/myCustomers/jumpToBarber',
     })
+  };
+
+
+function onShow() {
+  this.getHeadPhoto();
+};
+function getHeadPhoto(object) {
+  // console.log("进入onShow")
+  var that = object;
+  if (wx.getStorageSync("personnal") == null) {
+
+  } else {
+    that.setData({
+      myHairSrc: wx.getStorageSync("personnal")
+    })
+    var bizContent = { 'customerId': 1 }
+    var photoPaths = '';
+    photoPaths = wx.getStorageSync("personnal");
+    util.wxUploadFile(photoPaths, bizContent).then(res => {
+      var face = res.data.bizContent;
+      var a = JSON.parse(res.data);
+      that.setData({
+        headPhoto: a.bizContent.faceinfo
+      })
+
+    }).catch((err) => {
+      console.log('HeadPhoto err :' + err);
+      // fail
+      util.stopRefreshing;
+      // wx.showToast({
+      //   title: '正在获取数据…',
+      //   icon: 'loading',
+      //   duration: 3000,
+      //   mask: true
+      // });
+    });
+
+
   }
-})
+  wx.removeStorageSync("personnal");
+};
+
+//  });
+module.exports = {
+  loadPersonalInfo,
+  jumpToBarber,
+  getHeadPhoto,
+  goToMyShareStore,
+  goToMyBarber,
+  goToCoupon,
+  goToConsumption,
+  goSetting,
+  changeToBarber,
+  uploadHairPhoto,
+  // takePhoto,
+  goToHistoryCost
+}

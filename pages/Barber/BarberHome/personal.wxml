@@ -46,7 +46,8 @@
   module.exports.getBarberStatus = getBarberStatus;
 </wxs>
 
-<import src='../../template/chooseTime.wxml'/>
+<import src='/pages/template/chooseTime.wxml'/>
+
 <!-- 个人信息 -->
 <view wx:if="{{barberInfo}}">
         <!-- <block wx:for="{{person[curIndex]}}" wx:key="item.id"> -->
@@ -127,7 +128,7 @@
 <view class="listview">
 	<view class="item">
 		<image class="hd" src="/icon/qiehuanguke.png"/>
-		<navigator class="bd" url="/pages/Customer/myCustomers/personal" bindtap='toCustomer' open-type="navigate" hover-class="none">切换用户</navigator>
+		<view class="bd"  bindtap='toCustomer' open-type="navigate" hover-class="none">切换用户</view>
 		<view class="ft"></view>
 	</view>
 </view>

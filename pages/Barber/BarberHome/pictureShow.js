@@ -121,6 +121,12 @@ Page({
         wx.saveImageToPhotosAlbum({
           filePath: res.tempFilePath,
           success: function (res) {
+            //保存成功
+            wx.showToast({
+              title: '保存成功',
+              icon: 'success',
+              duration: 2000
+            })
             console.log(res)
           },
           fail: function (res) {

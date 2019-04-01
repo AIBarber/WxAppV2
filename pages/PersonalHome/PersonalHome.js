@@ -1,5 +1,5 @@
-// var util = require('../../utils/util.js');
-// var api = require('../../config/api.js');
+var util = require('../../utils/util.js');
+var api = require('../../config/api.js');
 // var model = require('../../utils/model.js');
 
 var CustomerHome = require('../Customer/myCustomers/personal.js');
@@ -19,7 +19,7 @@ Page({
     // LoginMain
     // faceid: app.globalData.faceid,
     faceid:123123,
-    userType: 1,
+    userType: app.globalData.userType,
     // userInfo: app.globalData.userInfo,
     // accountInfo: app.globalData.accountInfo,
     // hasUserInfo: app.globalData.hasUserInfo,
@@ -27,7 +27,6 @@ Page({
 
     // CustomerHome
     customerFaceInfo: '',
-    headPhoto: '',
     // reservation: null,
     attribute: null,
     myHairSrc: null,
@@ -39,49 +38,27 @@ Page({
     barberID: null,
     timeToReserve: [],
     barberInfo:'',
-    chooseTime: 0
+    chooseTime: 0,
+    customerinfo: '',
+    headPhoto: '',
+    barberInfo: "",
+    location_address: ""
   },
 
   onLoad: function (options) {
-    console.log('onLoad...');
-    console.log('onLoad... global');
-    console.log("customerHome:"+CustomerHome);
-    //      if(options.userType!=null){
-    // this.setData({
-    //   // userInfo: app.globalData.userInfo,
-    //   // faceid: 123123,
-    //   userType:options.userType
-    // })
-    //      }
     var that = this;
+    console.log(app.globalData.userType);
     if (this.data.faceid == null) {
-      // util.login().then(res => {
-      //   console.log('home login success');
-      //   console.log(res);
-      //   LoginMain.onLogin(that, res);
-      // }).catch((err) => {
-      //   // fail
-      //   console.log('home login fail');
-      //   console.log(err);
-      //   LoginMain.onLogin(that, null);
-      //   that = null;
-      // });
+     
     }
-
     //CustomerHome
     else if (that.data.userType == 2) {
-      CustomerHome.getPersonalData(that);
-    
-      // CustomerHome.getAttribute(this);
-      // CustomerHome.getCurService(this);
+      CustomerHome.loadPersonalInfo(that);
     }
 
     //BarberHome
     else {
       BarberHome.getBarberInfo(that);
-      // BarberHome.getDataList_reservations(this);
-      // BarberHome.getDataList_orders(this);
-      // BarberHome.getDataList_time(this)
     }
   },
 
@@ -110,9 +87,10 @@ Page({
   
     CustomerHome.uploadHairPhoto();
   },
-  toCustomer:function(){
-    var that=this;
-    BarberHome.toCustomer(that);
+  
+  goSetting: function () {
+    var that = this;
+    CustomerHome.goSetting(that);
   },
   backToprevPage:function(){
     CustomerHome.backToprevPage();
@@ -188,5 +166,46 @@ Page({
   stopRefreshing: function () {
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();
+  },
+  toBarber: function () {
+    //切换用户为客户
+    var that = this;
+    util.weshowRequest(
+      api.Getbarberid, {
+        "customerId": app.globalData.customerId
+      },
+      'POST').then(res => {
+        // success
+        var status = res.data.bizContent.status;
+        if (status == '1') {
+          //已注册
+          that.setData({
+            barberID: res.data.bizContent.barberId
+          });
+          app.globalData.barberId = that.data.barberID;
+          app.globalData.userType = 1;
+          //跳转到理发师页面
+          that.setData({
+            userType: app.globalData.userType
+          });
+          this.onLoad();
+        } else {
+          //未注册,跳转到认证页面
+          wx.navigateTo({
+            url: '/pages/Login/IDConfirm/IDConfirm'
+          });
+        }
+
+      }).catch((err) => {
+        console.log('barberInfo err :' + err);
+      });
+  },
+  toCustomer:function () {
+    var that = this;
+    app.globalData.userType = 2;
+    that.setData({
+      userType: 2
+    });
+    this.onLoad();
   }
 })

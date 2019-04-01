@@ -281,6 +281,7 @@ App({
     shareInviterCode: '0',
     selectedBarberId: '',
     userid: 'ozANd5R2-s45Fio7CCiZa7Lvj4v8',
+    customerId:'1',
     faceid: null,
     userLevel: 0,
     sessionKey: '',
@@ -288,5 +289,6 @@ App({
     latitude: 39.93,
     longitude: 116.45,
     ShareTitle: 'ShareTitle',
+    barberId:''
   }
 })
