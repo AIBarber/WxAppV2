@@ -11,7 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    photo:'../../icon/headPhoto.png',
+    photo:'',
     flag:false , //标志个人资料是否可以修改
     content:'修改',  //按钮字样
     array: ['设计师','高级设计师','设计总监'], //级别种类
@@ -188,7 +188,8 @@ Page({
           item: res.data.bizContent.barberinfo.barberServiceList[1].barberServiceServiceList,
           item2: res.data.bizContent.barberinfo.barberServiceList[2].barberServiceServiceList,
           item3: res.data.bizContent.barberinfo.barberServiceList[3].barberServiceServiceList,
-          item4: res.data.bizContent.barberinfo.barberServiceList[4].barberServiceServiceList
+          item4: res.data.bizContent.barberinfo.barberServiceList[4].barberServiceServiceList,
+          photo: res.data.bizContent.barberinfo.headImageUrl
         })
       }).catch((err) => {
         console.log('getShopList err' + err);

@@ -95,12 +95,6 @@ Page({
     getCurrentPages()[getCurrentPages().length - 1].onLoad()
   },
   
-  /*返回前一页*/
-  backToprevPage: function () {
-    wx.navigateBack({
-    })
-  },
-
   stopRefreshing: function () {
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();

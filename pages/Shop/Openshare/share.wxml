@@ -2,9 +2,9 @@
 <import src='../../template/shopList.wxml'/><!--导入模板-->
 
 <view wx:if='{{flag}}'>
-        <label  wx:for="{{shopList}}" wx:key="id">
+        <view  wx:for="{{shopList}}" wx:key="id">
             <template is="share_shop" data="{{id:item.storeId,name:item.name,path:item.headImage,count:item.faceNum,address:item.address,checked:item.share}}"/>
-        </label>   
+        </view>   
 </view>
 
 <view wx:if='{{!flag}}' style=' display:flex;flex-direction:column;align-items:center'>

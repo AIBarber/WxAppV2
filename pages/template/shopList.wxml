@@ -27,7 +27,7 @@
 
 <view style='height:104px;width:100%;'> 
  <navigator url='../OpenstoreDetail/storeDetail?shopid={{id}}'>
-   <view style='display:flex;flex-direction:row;background:white' data-id='{{id}}' bindtap="tab">
+   <view style='display:flex;flex-direction:row;background:white' data-id='{{id}}'>
    <image style="width:90px;height:80px;margin-left:6px;margin-top:12px;margin-bottom:12px;" src='{{path}}' mode='aspectFill' />
       <view style="display:flex;flex-direction:column;margin-left:10px;font-size:15px" >
          <text decode='true' style='margin-top:14px;font-size:17px'>{{name}} &nbsp;&nbsp;&nbsp;&nbsp; </text>

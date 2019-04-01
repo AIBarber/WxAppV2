@@ -6,7 +6,7 @@
 
 <!-- 头像区域 -->
   <view class='photo' bindtap='changeHead'>
-    <image class='image' src='{{photo}}' mode='scaleToFill'>
+    <image class='image' src='{{photo}}' mode='aspectFill'>
     </image>
   </view> 
 

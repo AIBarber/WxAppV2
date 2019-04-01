@@ -101,10 +101,6 @@ Page({
    // that.onlad();
   },
 
-  tab: function(e) {
-    console.log(e);
-  },
-
   // 申请共享店主
   applyShop: function () {
     wx.navigateTo({
