@@ -339,7 +339,29 @@ font-size:12px;
 }
 
 .chooseTime{
-   width: 100%;
-   height: 500rpx;
+  display: flex;
+ flex-wrap:wrap;
+  width: 93%;
+  /* height: 340rpx; */
+margin-top: 10rpx;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  height:160px;
+}
+.order_0{
+ width: 33.3%;
+  height: 23.3%;
+  /* border: 0.5px solid #0cc4b1; */
+  line-height: 70rpx;
+  opacity: 0.2;
+  margin:0rpx;
+}
 
+.order_1{
+     width: 33.3%;
+  height: 23.3%;
+  background-color: #0cc4b1;
+  line-height: 70rpx;
+   margin:0rpx;
 }

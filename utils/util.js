@@ -613,7 +613,7 @@ function redirect(url) {
 function showErrorToast(msg) {
   wx.showToast({
     title: msg,
-    image: '/static/images/icon_error.png'
+    image: '/icon/button_delete.png'
   })
 }
 

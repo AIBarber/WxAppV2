@@ -41,108 +41,126 @@
         return '';
     }
   };
-  
+
   module.exports.getBarberLevel = getBarberLevel;
   module.exports.getBarberStatus = getBarberStatus;
 </wxs>
 
-<import src='/pages/template/chooseTime.wxml'/>
 
 <!-- 个人信息 -->
 <view wx:if="{{barberInfo}}">
-        <!-- <block wx:for="{{person[curIndex]}}" wx:key="item.id"> -->
-<view class="summary">
-	<!-- <view class="avatar-container"> -->
-		<image src="{{barberInfo.headImageUrl}}" class="avatar" />
-	<!-- </view> -->
-  <view class ="nick">
-		<view class="nickname">{{barberInfo.name}}</view>
-    <view class="nickname1" >{{m1.getBarberLevel(barberInfo.level)}}|<text class="nickname1">{{barberInfo.years}}年</text></view>
+  <!-- <block wx:for="{{person[curIndex]}}" wx:key="item.id"> -->
+  <view class="summary">
+    <!-- <view class="avatar-container"> -->
+    <image src="{{barberInfo.headImageUrl}}" class="avatar" />
+    <!-- </view> -->
+    <view class="nick">
+      <view class="nickname">{{barberInfo.name}}</view>
+      <view class="nickname1">{{m1.getBarberLevel(barberInfo.level)}}|
+        <text class="nickname1">{{barberInfo.years}}年</text>
+      </view>
     </view>
-</view>
-<!-- </block> -->
+  </view>
+  <!-- </block> -->
 </view>
 
 <!-- 账户 -->
 <view wx:if="{{barberInfo}}">
-        <!-- <block wx:for="{{person[curIndex]}}" wx:key="item.id"> -->
-<view class="account">
-	<navigator class="item" url="../Customer/myCoupon/coupon" open-type="navigate" hover-class="none">
-	<!--view class="item"-->
-		<view class="value balance">{{barberInfo.totalIncome}}</view>
-		<view class="caption">我的收入</view>
-	<!--/view-->
-  </navigator>
-	<navigator class="item" url="../Customer/myOrders/orders" open-type="navigate" hover-class="none">
-	<!--view class="item"-->
-		<view class="value coupon">{{barberInfo.orderNum}}</view>
-		<view class="caption">我的订单</view>
-	<!--/view-->
-  </navigator>
-	<navigator class="item" url="../Customer/myCustomers/customers" open-type="navigate" hover-class="none">
-	<!--view class="item"-->
-		<view class="value credit">{{barberInfo.customerNum}}</view>
-		<view class="caption">我的顾客</view>
-	<!--/view-->
-  </navigator>
-</view>
-<!-- </block> -->
+  <!-- <block wx:for="{{person[curIndex]}}" wx:key="item.id"> -->
+  <view class="account">
+    <navigator class="item" url="../Customer/myCoupon/coupon" open-type="navigate" hover-class="none">
+      <!--view class="item"-->
+      <view class="value balance">{{barberInfo.totalIncome}}</view>
+      <view class="caption">我的收入</view>
+      <!--/view-->
+    </navigator>
+    <navigator class="item" url="../Customer/myOrders/orders" open-type="navigate" hover-class="none">
+      <!--view class="item"-->
+      <view class="value coupon">{{barberInfo.orderNum}}</view>
+      <view class="caption">我的订单</view>
+      <!--/view-->
+    </navigator>
+    <navigator class="item" url="../Customer/myCustomers/customers" open-type="navigate" hover-class="none">
+      <!--view class="item"-->
+      <view class="value credit">{{barberInfo.customerNum}}</view>
+      <view class="caption">我的顾客</view>
+      <!--/view-->
+    </navigator>
+  </view>
+  <!-- </block> -->
 </view>
 <!-- 列表 -->
 
 <view class="listview">
-	<view class="item">
-		<image class="hd" src="/icon/shijian.png" />
-		<view class="bd" bindtap='showTime' hover-class="none">预约时段管理</view>
+  <view class="item">
+    <image class="hd" src="/icon/shijian.png" />
+    <view class="bd" bindtap='showTime' hover-class="none">预约时段管理</view>
 
-		<view class="ft"></view>
-	</view>
+    <view class="ft"></view>
+  </view>
 </view>
-    <view style="{{chooseTime==1?'':'display:none'}}" class="chooseTime">
-   <template is="chooseTime"/>
-   </view>
-<view class="listview">
-	<view class="item">
-		<image class="hd" src="/icon/zuopin.png" />
-		<navigator class="bd" url="/pages/Barber/BarberHome/myProducts" open-type="navigate" hover-class="none">我的作品</navigator>
-		<view class="ft"></view>
-	</view>
-</view>
-
-<view class="listview">
-	<view class="item">
-		<image class="hd" src="/icon/gongxiangdianpu.png"/>
-		<navigator class="bd" url="/pages/Shop/Openshare/share" open-type="navigate" hover-class="none">我的共享店铺</navigator>
-		<view class="ft"></view>
-	</view>
-</view>
-
-<view class="listview">
-	<view class="item">
-		<image class="hd" src="/icon/fuwudianpu.png" />
-		<navigator class="bd" url="/pages/Shop/ServiceShop/serviceShop" open-type="navigate" hover-class="none">我的服务店铺</navigator>
-		<view class="ft"></view>
-	</view>
-</view>
-
-<view class="listview">
-	<view class="item">
-		<image class="hd" src="/icon/qiehuanguke.png"/>
-		<view class="bd"  bindtap='toCustomer' open-type="navigate" hover-class="none">切换用户</view>
-		<view class="ft"></view>
-	</view>
-</view>
-
-<view class="listview">
-	<view class="item">
-		<image class="hd" src="/icon/shezhi.png" />
-		<navigator class="bd" url="/pages/Customer/myCustomers/my" open-type="navigate" hover-class="none">设置</navigator>
-		<view class="ft"></view>
-	</view>
- </view>
-  <view class="franchisee-title">
-      <view class="franchisee-location" data-compid="franchisee_list10" bindtap="tapFranchiseeLocation"><label class="ico-moon icon-location"></label> {{ data.location_address || '定位中...' }}</view>
+<view style="{{chooseTime==1?'':'display:none'}}" class="chooseTime">
+    <view class="{{(flag1==1||flag4==4||flag7==7)?'timeTable':'normal'}}" style='height:30%;width:33.3%;font-size:28rpx; line-height:93rpx; '>上午(12:00)之前</view>
+    <view class="{{(flag2==2||flag5==5||flag8==8)?'timeTable':'normal'}}" style='height:30%;width:33.3%;font-size:28rpx; line-height:70rpx;display:flex; flex-direction:column;'>
+      <text style='margin-top:-10rpx;'>下午</text>
+      <text style='margin-top:-25rpx;'>(12:00-18:00)</text>
     </view>
+    <view class="{{(flag3==3||flag6==6||flag9==9)?'timeTable':'normal'}}" style='height:30%;width:33.3%;font-size:28rpx; line-height:93rpx;'>晚上(18:00)之后</view>
+    <button class="order_{{status1}}" id="1" bindtap='choiceTime'>今天上午</button>
+    <button class="order_{{status2}}" id="2" bindtap='choiceTime'>今天下午</button>
+    <button class="order_{{status3}}" id="3" bindtap='choiceTime'>今天晚上</button>
+    <button class="order_{{status4}}" id="4" bindtap='choiceTime'>明天上午</button>
+    <button class="order_{{status5}}" id="5" bindtap='choiceTime'>明天下午</button>
+    <button class="order_{{status6}}" id="6" bindtap='choiceTime'>明天晚上</button>
+    <button class="order_{{status7}}" id="7" bindtap='choiceTime'>后天上午</button>
+    <button class="order_{{status8}}" id="8" bindtap='choiceTime'>后天下午</button>
+    <button class="order_{{status9}}" id="9" bindtap='choiceTime'>后天晚上</button>
+
+
+</view>
+<view class="listview">
+  <view class="item">
+    <image class="hd" src="/icon/zuopin.png" />
+    <navigator class="bd" url="/pages/Barber/BarberHome/myProducts" open-type="navigate" hover-class="none">我的作品</navigator>
+    <view class="ft"></view>
+  </view>
+</view>
+
+<view class="listview">
+  <view class="item">
+    <image class="hd" src="/icon/gongxiangdianpu.png" />
+    <navigator class="bd" url="/pages/Shop/Openshare/share" open-type="navigate" hover-class="none">我的共享店铺</navigator>
+    <view class="ft"></view>
+  </view>
+</view>
+
+<view class="listview">
+  <view class="item">
+    <image class="hd" src="/icon/fuwudianpu.png" />
+    <navigator class="bd" url="/pages/Shop/ServiceShop/serviceShop" open-type="navigate" hover-class="none">我的服务店铺</navigator>
+    <view class="ft"></view>
+  </view>
+</view>
+
+<view class="listview">
+  <view class="item">
+    <image class="hd" src="/icon/qiehuanguke.png" />
+    <view class="bd" bindtap='toCustomer' open-type="navigate" hover-class="none">切换用户</view>
+    <view class="ft"></view>
+  </view>
+</view>
+
+<view class="listview">
+  <view class="item">
+    <image class="hd" src="/icon/shezhi.png" />
+    <navigator class="bd" url="/pages/Customer/myCustomers/my" open-type="navigate" hover-class="none">设置</navigator>
+    <view class="ft"></view>
+  </view>
+</view>
+<view class="franchisee-title">
+  <view class="franchisee-location" data-compid="franchisee_list10" bindtap="tapFranchiseeLocation">
+    <label class="ico-moon icon-location"></label> {{ data.location_address || '定位中...' }}</view>
+</view>
 
 <!-- 管理员 
 <view class="listview" wx:if="{{user.isAdmin}}">

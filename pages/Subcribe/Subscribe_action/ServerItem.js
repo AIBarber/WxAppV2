@@ -271,7 +271,10 @@ calculate:function () {
         serviceGroupListNew.push(serviceGroupList[t]);
       }
     }  
-
+    if (serviceGroupListNew.length == 0){
+      util.showErrorToast('至少选择一项');
+      return;
+    }
     wx.navigateTo({
       url: 'chooseShop?serviceGroupList=' + JSON.stringify(serviceGroupListNew) + "&barberId=" + that.data.barberId + "&allMoney=" + totalMoney+"&barberName="+that.data.barberName,
     })

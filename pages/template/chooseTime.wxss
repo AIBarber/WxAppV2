@@ -2,7 +2,7 @@
   display: flex;
  flex-wrap:wrap;
   width: 93%;
-  height: 340rpx;
+  /* height: 340rpx; */
 margin-top: 10rpx;
   background-color: white;
   margin-left: auto;

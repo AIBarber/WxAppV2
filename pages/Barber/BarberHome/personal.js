@@ -20,6 +20,12 @@ function getBarberInfo(that) {
         that.setData({
           barberInfo: res.data.bizContent.barberinfo
         });
+        var positionsRes =res.data.bizContent.barberinfo.positions
+        for (var i = 0; i < positionsRes.length;i++){
+          that.setData({
+            ['status' + positionsRes[i]]: 1
+          });
+        }
       }).catch((err) => {
         console.log('barberInfo err :' + err);
       });
@@ -40,7 +46,6 @@ function showTime(object) {
   }
 
 };
-
 module.exports = {
   getBarberInfo,
   showTime
