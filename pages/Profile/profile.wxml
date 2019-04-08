@@ -4,30 +4,11 @@
   <button class='button_change' bindtap='changeFlag'> {{content}} </button>
 <!-- </view> -->
 
-<!-- 头像区域 -->
-  <view class='photo' bindtap='changeHead'>
-    <image class='image' src='{{photo}}' mode='aspectFill'>
-    </image>
-  </view> 
-
-   <!-- <view class='row'>
-   <text>\n\n\n我的服务项目：</text>
-  <checkbox-group bindchange="checkboxChange" >
-  <view class='column'>
-       <label  wx:for="{{service}}">
-       <view class='row'>
-           <checkbox value='{{item.id}}' style='width:40%' disabled='{{!flag}}' checked='{{choose[item.id]}}'>{{item.value}}</checkbox>
-           <input class='service' value='{{price[item.id]}}' bindinput='changePriceValue' disabled='{{!flag}}' id='{{item.id}}'></input>元
-       </view>
-       </label>   
-  </view>
-   </checkbox-group>
-   </view> -->
-
    <view class="serviceList" style='{{serviceDisplay}}'>
       <view class="explain"><text>我的服务项目</text></view>
 
-     <checkbox-group class="checkboxGroup" bindchange="checkboxChange" >
+     <checkbox-group class="checkboxGroup" bindchange='checkboxChange'>
+
       <view class="ranfa" class="checkboxLab1" bindtap='cuthair'>
       剪发
       </view>
@@ -38,6 +19,14 @@
         <view class="money" >￥{{item.onlinePrice}}</view>
       <view  class="moneyYuan"> ￥{{item.storePrice}}</view>
        </view>
+      </label>
+      <label  class="checkboxLab" style='{{cutHair}}' wx:if="{{flag}}" id='剪发'>
+         <text class='input' bindtap="modalinput">点击添加</text>  
+        <modal hidden="{{hiddenmodalput}}" title="请输入服务项目信息" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" id='1'>  
+        <input type='text'placeholder="项目名称"  bindinput='getName'  auto-focus/>  
+        <input type='text'placeholder="线上价格"  bindinput='getOPrice'  auto-focus/>  
+        <input type='text'placeholder="线下价格"  bindinput='getSPrice'  auto-focus/>  
+        </modal>
       </label>
  
        
@@ -51,8 +40,16 @@
            <view class="money" >￥{{item.onlinePrice}}</view>
       <view  class="moneyYuan"> ￥{{item.storePrice}}</view>
        </view>
-
       </label>
+     <label  class="checkboxLab" style='{{ranfa}}'  wx:if="{{flag}}" id='染发'>
+          <text class='input' bindtap="modalinput">点击添加</text>  
+        <modal hidden="{{hiddenmodalput}}" title="请输入服务项目信息" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" id='2'>  
+        <input type='text'placeholder="项目名称"  bindinput='getName'  auto-focus/>  
+        <input type='text'placeholder="线上价格"  bindinput='getOPrice'  auto-focus/>  
+        <input type='text'placeholder="线下价格"  bindinput='getSPrice'  auto-focus/>  
+        </modal>
+      </label>
+
        <view class="ranfa" class="checkboxLab1" bindtap='tangfa' >
       烫发
       </view>
@@ -63,9 +60,18 @@
       <view class="moneyView">
          <view class="money">￥{{item.onlinePrice}}</view>
       <view class="moneyYuan"> ￥{{item.storePrice}}</view>
-    
       </view>
       </label>
+       <label  class="checkboxLab" style='{{tangfa}}'  wx:if="{{flag}}" id='烫发'>
+        <text class='input' bindtap="modalinput">点击添加</text>  
+        <modal hidden="{{hiddenmodalput}}" title="请输入服务项目信息" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" id='3'>  
+        <input type='text'placeholder="项目名称"  bindinput='getName'  auto-focus/>  
+        <input type='text'placeholder="线上价格"  bindinput='getOPrice'  auto-focus/>  
+        <input type='text'placeholder="线下价格"  bindinput='getSPrice'  auto-focus/>  
+        </modal>
+      </label>
+
+
          <view class="ranfa" class="checkboxLab1" bindtap='diantangfa' >
       护理
       </view>
@@ -76,10 +82,19 @@
        <view class="moneyView">
          <view class="money">￥{{item.onlinePrice}}</view>
       <view class="moneyYuan"> ￥{{item.storePrice}}</view>
-     
       </view>
       </label>
-             <view class="ranfa" class="checkboxLab1" bindtap='huli' >
+       <label  class="checkboxLab" style='{{diantangfa}}' wx:if="{{flag}}" id='护理'>
+         <text class='input' bindtap="modalinput">点击添加</text>  
+        <modal hidden="{{hiddenmodalput}}" title="请输入服务项目信息" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" id='4'>  
+        <input type='text'placeholder="项目名称"  bindinput='getName'  auto-focus/>  
+        <input type='text'placeholder="线上价格"  bindinput='getOPrice'  auto-focus/>  
+        <input type='text'placeholder="线下价格"  bindinput='getSPrice'  auto-focus/>  
+        </modal>
+      </label>
+
+
+     <view class="ranfa" class="checkboxLab1" bindtap='huli' >
       洗吹
       </view>
       <label class="checkboxLab" style='{{huli}}' wx:for="{{item4}}"  wx:key="{{item4}}">
@@ -88,19 +103,33 @@
       </checkbox> 
       <view class="moneyYuan"> ￥{{item.storePrice}}</view>
        <view class="money">￥{{item.onlinePrice}}</view>
-      
+      </label>
+     <label  class="checkboxLab" style='{{huli}}' wx:if="{{flag}}" id='洗吹'>
+        <text class='input' bindtap="modalinput">点击添加</text>  
+        <modal hidden="{{hiddenmodalput}}" title="请输入服务项目信息" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" id='5'>  
+        <input type='text'placeholder="项目名称"  bindinput='getName'  auto-focus/>  
+        <input type='text'placeholder="线上价格"  bindinput='getOPrice'  auto-focus/>  
+        <input type='text'placeholder="线下价格"  bindinput='getSPrice'  auto-focus/>  
+        </modal>
       </label>
      </checkbox-group>
         
    </view>
 
 
+<!-- 头像区域 -->
+  <view class='photo' bindtap='changeHead'>
+    <image class='image' src='{{photo}}' mode='aspectFill'>
+    </image>
+  </view> 
+
+  
  <view class='column'>
    <view class='row'>
- <text style='width:40%'>我的级别：</text>
+  <text style='width:40%'>我的级别：</text>
   <view class='choice' >
-  <view bindtap='bindShowMsg' style='width:100%'><text>{{choice}}</text>
-  <image src='../../icon/arrow.png' class='icon' ></image>
+  <view bindtap='bindShowMsg'><text>{{choice}}</text>
+  <image src='../../icon/arrow.png' class='icon'></image>
   </view>
    <view class="select_box" wx:if="{{select}}">
   <view wx:for="{{array}}" wx:key="unique">

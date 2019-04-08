@@ -72,6 +72,7 @@ module.exports = {
   BarberRegister: ApiRootUrl + 'barber/register',
   BarberBlance: ApiRootUrl + 'barber/getbalance',
   BarberCashdraw: ApiRootUrl + 'barber/cashdraw',
+  BarberUpdate: ApiRootUrl + 'barber/barberupdate',
   CustomerSubscribeList: ApiRootUrl + 'customer/subscribelist',
   CustomerDiscountList: ApiRootUrl + 'customer/discountlist',
   CustomerAttribute: ApiRootUrl + 'customer/attribute',

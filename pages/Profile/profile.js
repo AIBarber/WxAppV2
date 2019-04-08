@@ -11,20 +11,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    photo:'',
     flag:false , //标志个人资料是否可以修改
-    content:'修改',  //按钮字样
-    array: ['设计师','高级设计师','设计总监'], //级别种类
-    choice:'设计师', //默认级别
     select:false,   //标志修改按钮是否可用
-    // service:[{id:0,value:'洗吹'},{id:1,value:'洗剪吹'},{id:2,value:'染发'},{id:3,value:'烫发'},{id:4,value:'护理'}], //服务总类别
-    // service_choice:[],  //提供的服务类别
-    // choose:[]  ,//服务项目是否选中
-    // price:['15','35','200','300','200'],   //价格
-    year: null,
-    mobile: null,
-    info: null,
-
+    content: '修改',  //按钮字样
+    array: ['设计师', '高级设计师', '设计总监'], //级别种类
+    choice: '', //当前级别
+    level: '',
+    photo: '',
+    year: '',
+    mobile: '',
+    info: '',
+    barberServiceList: [], //增加的服务项目列表
+    hiddenmodalput: true,
+        //可以通过hidden是否掩藏弹出框的属性，来指定那个弹出框  
+    name: '',
+    priceO: '',
+    priceS: '',
+ 
+//  与服务项目相关参数
     item: '',
     item2: '',
     item3: '',
@@ -50,14 +54,77 @@ Page({
     serviceItemIdSet: []
   },
 
+    //点击hiddenmodalput弹出框  
+    modalinput: function () {
+      this.setData({
+        hiddenmodalput: false
+      })
+      console.log(this.data.hiddenmodalput)
+    },
+    //取消按钮  
+    cancel: function (e) {
+      this.setData({
+        hiddenmodalput: true
+      })
+      console.log(this.data.hiddenmodalput)
+    },
+    //确认  
+    confirm: function (e) {
+      this.setData({
+        hiddenmodalput: true
+      })
+      var id = e.currentTarget.id;
+      console.log(id)
+      var service = {
+        "service": this.data.name,
+        "onlinePrice": this.data.priceO,
+        "storePrice": this.data.priceS
+      };
+      var type;
+      switch(id){
+        case '1':
+          type ='haircut'
+          break;
+        case '2':
+          type = 'hairdye'
+          break;
+        case '3':
+          type = 'perm'
+          break;
+        case '4':
+          type = 'haircare'
+          break;
+        case '5':
+          type = 'shampoo'
+          break;
+      }
+      console.log(type)
+      console.log(service)
+      this.addService(type,service);
+    },
+    
+    getName:function(e){
+      //console.log(e);
+      this.setData({
+        name:e.detail.value
+      })
+    },
+    getOPrice:function(e){
+      this.setData({
+        priceO: e.detail.value
+      })
+    },
+    getSPrice:function(e){
+      this.setData({
+        priceS: e.detail.value
+      })
+    },
+
   /**
    * 生命周期函数--监听页面加载
    */ 
   onLoad: function (options) {
     console.log(options)
-    // for (var i in this.data.service) {
-    //   this.data.choose[i] = false;
-    // }
     this.getServiceList();
   },
 
@@ -73,6 +140,7 @@ Page({
       flag: false,
       content:'修改'
     })
+    that.onLoad();
    }
  },
 
@@ -86,32 +154,44 @@ Page({
   },
 
   mySelect:function(e) {
+   // console.log(this.data.level);
     var name = e.currentTarget.dataset.name
     this.setData({
       choice: name,
       select: false
     })
+    for( var i=0; i<this.data.array.length;i++){
+      if(name == this.data.array[i]){
+        this.setData({
+          level: i+1
+        })
+      }
+    }
+   // console.log(this.data.level);
   },
 
   // 获取当前输入框的值
   getValue: function (e) {
-   // console.log(e);
-    var index = e.target.id;
-    var value = e.detail.value;
-    if (index == 1) {
-      this.setData({
-        year: value
-      })
-    } else if (index == 2) {
-      this.setData({
-        mobile: value
-      })
-    } else {
-      this.setData({
-        info: value
-      })
+    //console.log(e);
+    var id = e.currentTarget.id;
+    switch(id){
+      case '1':
+        this.setData({
+          year: e.detail.value
+        })
+        //console.log(this.data.year)
+        break;
+      case '2':
+        this.setData({
+          mobile: e.detail.value
+        })
+        break;
+      case '3':
+        this.setData({
+          info: e.detail.value
+        })
+        break;
     }
-    console.log(this.data.info)
   },
 
   changeHead:function(){
@@ -138,26 +218,6 @@ Page({
    }
   },
 
-  // checkboxChange: function (e) {
-  //   console.log(e);
-  //   this.data.service_choice=[];
-  //   //当前选中的下标
-  //   var checkIndex = e.detail.value;
-  //   for(var i in checkIndex){
-  //       this.data.service_choice.push(this.data.service[i]);
-  //       this.data.choose[i]=true;
-  //   }
-  //   //打印当前所选中的数据
-  //   console.log(this.data.service_choice);
-  // },
-
-  // changePriceValue:function(e){
-  //   console.log("----------------------------------------");
-  //   console.log(e);
-  //   this.data.price[e.target.id]=e.detail.value;
-  //   console.log(this.data.price);
-  // }
-
   getServiceList: function () {
     console.log('Getbarberinfo ' + api.Getbarberinfo);
     //wx.showNavigationBarLoading();
@@ -165,31 +225,37 @@ Page({
     util.weshowRequest(
       api.Getbarberinfo,
       {
-        "barberId": "1"
+        "barberId": that.data.barberId
       },
       'POST').then(res => {
         // success
         console.log(res.data)
-        for (var i = 0; i < res.data.bizContent.barberinfo.barberServiceList.length; i++) {
-          var serviceGroup = res.data.bizContent.barberinfo.barberServiceList[i];
-          this.data.serviceGroupList.push(serviceGroup);
-          for (var j = 0; j < serviceGroup.barberServiceServiceList.length; j++) {
-            var serviceItem = serviceGroup.barberServiceServiceList[j];
-            this.data.serviceKeyMap[serviceItem.id] = serviceItem;
-            this.data.serviceGroupKeyMap[serviceItem.id] = serviceGroup;
-            if (!this.data.serviceItemIdSet.includes(serviceItem.id)) {
-              this.data.serviceItemIdSet.push(serviceItem.id);
-            }
-          }
-        }
+        // for (var i = 0; i < res.data.bizContent.barberinfo.barberServiceList.length; i++) {
+        //   var serviceGroup = res.data.bizContent.barberinfo.barberServiceList[i];
+        //   this.data.serviceGroupList.push(serviceGroup);
+        //   for (var j = 0; j < serviceGroup.barberServiceServiceList.length; j++) {
+        //     var serviceItem = serviceGroup.barberServiceServiceList[j];
+        //     this.data.serviceKeyMap[serviceItem.id] = serviceItem;
+        //     this.data.serviceGroupKeyMap[serviceItem.id] = serviceGroup;
+        //     if (!this.data.serviceItemIdSet.includes(serviceItem.id)) {
+        //       this.data.serviceItemIdSet.push(serviceItem.id);
+        //     }
+        //   }
+        // }
+        var t = res.data.bizContent.barberinfo;
         that.setData({
-          barberinfoList: res.data.bizContent.barberinfo,
-          itemOne: res.data.bizContent.barberinfo.barberServiceList[0].barberServiceServiceList,
-          item: res.data.bizContent.barberinfo.barberServiceList[1].barberServiceServiceList,
-          item2: res.data.bizContent.barberinfo.barberServiceList[2].barberServiceServiceList,
-          item3: res.data.bizContent.barberinfo.barberServiceList[3].barberServiceServiceList,
-          item4: res.data.bizContent.barberinfo.barberServiceList[4].barberServiceServiceList,
-          photo: res.data.bizContent.barberinfo.headImageUrl
+          barberinfoList: t,
+          itemOne: t.barberServiceList[0].barberServiceServiceList,
+          item: t.barberServiceList[1].barberServiceServiceList,
+          item2: t.barberServiceList[2].barberServiceServiceList,
+          item3: t.barberServiceList[3].barberServiceServiceList,
+          item4: t.barberServiceList[4].barberServiceServiceList,
+          photo: t.headImageUrl,
+          mobile: t.mobile,
+          year: t.years,
+          choice: that.data.array[t.level-1],
+          level: t.level,
+          info: t.introduction
         })
       }).catch((err) => {
         console.log('getShopList err' + err);
@@ -288,6 +354,39 @@ Page({
         huli: "display:none"
       })
     }
+  },
+
+
+  addService:function(type,service){
+    //console.log(e)
+    console.log('Getbarberinfo ' + api.BarberUpdate);
+    console.log('type:' + type + '***service:' + service)
+    //wx.showNavigationBarLoading();
+    var that = this;
+    util.weshowRequest(
+      api.BarberUpdate,
+      {
+        "barberId": that.data.barberId,
+        "mobile": that.data.mobile,
+        "level": that.data.level,
+        "years": that.data.year,
+        "introduction": that.data.info,
+        "barberServiceList": [
+          {
+            "barberId": that.data.barberId,
+            "service": type,
+            "barberServiceServiceList": [service]
+          },
+        ]
+      },
+      'POST').then(res => {
+        // success
+        console.log(res)
+      }).catch((err) => {
+        console.log('BarberUpdate err' + err);
+        // fail
+        // that.stopRefreshing();
+      });
   },
 
   checkboxChange: function (e) {
