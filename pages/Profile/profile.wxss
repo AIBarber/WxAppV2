@@ -22,10 +22,8 @@
 }
 
 .photo{
-  width: 70%;
-  height: 22%;
-  /* margin-left: 10%;
-  margin-right: 15%; */
+  width: 50%;
+  height: 20%;
   align-self: center;
   margin-top: 5%;
   border-right: 1rpx solid lightgrey;
@@ -70,16 +68,16 @@
 }
 
 .select_box {
-    background-color: #eee;
+    background-color: #ccc;
     padding-top: 0rpx;
     padding-left: 10rpx;
-    width: 40%;
+    width: 41%;
     position: absolute;
     top: 35rpx;
-    margin-left: -10rpx;
+    margin-left: -13rpx;
     z-index: 2;
     overflow: hidden;
-    animation: myfirst 0.5s;
+    animation: myfirst 0.2s;
 }
  
 @keyframes myfirst {
@@ -95,7 +93,8 @@
 .select_one {
     height: 60rpx;
     line-height: 60rpx;
-    border-bottom: 1px solid #ccc;
+    border: 1rpx solid white;
+    z-index: 3;
 }
 
   /* 下拉图标 */

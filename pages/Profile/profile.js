@@ -27,6 +27,8 @@ Page({
     name: '',
     priceO: '',
     priceS: '',
+    type: null,
+    service: null,
  
 //  与服务项目相关参数
     item: '',
@@ -68,39 +70,48 @@ Page({
       })
       console.log(this.data.hiddenmodalput)
     },
-    //确认  
+    //确认按钮  
     confirm: function (e) {
-      this.setData({
-        hiddenmodalput: true
-      })
       var id = e.currentTarget.id;
       console.log(id)
-      var service = {
-        "service": this.data.name,
-        "onlinePrice": this.data.priceO,
-        "storePrice": this.data.priceS
-      };
-      var type;
+      this.setData({
+        hiddenmodalput: true,
+        service: {
+          "service": this.data.name,
+          "onlinePrice": this.data.priceO,
+          "storePrice": this.data.priceS
+          }
+      })
       switch(id){
         case '1':
-          type ='haircut'
+        this.setData({
+          type: 'haircut'
+        })
           break;
         case '2':
-          type = 'hairdye'
+          this.setData({
+            type: 'hairdye'
+          })
           break;
         case '3':
-          type = 'perm'
+          this.setData({
+            type: 'perm'
+          })
           break;
         case '4':
-          type = 'haircare'
+          this.setData({
+            type: 'haircare'
+          })
           break;
         case '5':
-          type = 'shampoo'
+          this.setData({
+            type: 'shampoo'
+          })
           break;
       }
-      console.log(type)
-      console.log(service)
-      this.addService(type,service);
+      // console.log(type)
+       //console.log(service)
+      this.addService(this.data.type,this.data.service);
     },
     
     getName:function(e){
@@ -124,23 +135,24 @@ Page({
    * 生命周期函数--监听页面加载
    */ 
   onLoad: function (options) {
-    console.log(options)
+   // console.log(options)
     this.getServiceList();
   },
 
  changeFlag: function(){
    var that=this;
    if(that.data.flag==false){
-     that.setData({
-       flag: true,
-       content: '提交'
-     })
+      that.setData({
+        flag: true,
+        content: '提交'
+      })
    }else{
-    that.setData({
-      flag: false,
-      content:'修改'
-    })
-    that.onLoad();
+      that.setData({
+        flag: false,
+        content:'修改'
+      })
+      that.updateInfo();
+      that.onLoad();
    }
  },
 
@@ -153,6 +165,7 @@ Page({
     }
   },
 
+   // 选择下拉框中的一项
   mySelect:function(e) {
    // console.log(this.data.level);
     var name = e.currentTarget.dataset.name
@@ -259,9 +272,6 @@ Page({
         })
       }).catch((err) => {
         console.log('getShopList err' + err);
-        // fail
-        // that.stopRefreshing();
-
         wx.showToast({
           // title: '正在获取数据…',
           // icon: 'loading',
@@ -359,18 +369,15 @@ Page({
 
   addService:function(type,service){
     //console.log(e)
-    console.log('Getbarberinfo ' + api.BarberUpdate);
-    console.log('type:' + type + '***service:' + service)
-    //wx.showNavigationBarLoading();
     var that = this;
-    util.weshowRequest(
-      api.BarberUpdate,
-      {
+   // console.log('Getbarberinfo ' + api.BarberUpdate);
+    //wx.showNavigationBarLoading();
+    var bizContent = {
         "barberId": that.data.barberId,
-        "mobile": that.data.mobile,
-        "level": that.data.level,
-        "years": that.data.year,
-        "introduction": that.data.info,
+        // "mobile": that.data.mobile,
+        // "level": that.data.level,
+        // "years": that.data.year,
+        // "introduction": that.data.info,
         "barberServiceList": [
           {
             "barberId": that.data.barberId,
@@ -378,15 +385,48 @@ Page({
             "barberServiceServiceList": [service]
           },
         ]
-      },
+      }
+   // console.log(bizContent)
+    util.weshowRequest(
+      api.BarberUpdate,
+      bizContent,
       'POST').then(res => {
         // success
-        console.log(res)
+     //   console.log(res)
       }).catch((err) => {
         console.log('BarberUpdate err' + err);
         // fail
         // that.stopRefreshing();
       });
+  },
+
+  updateInfo:function(){
+    console.log('BarberUpdate ' + api.BarberUpdate);
+    wx.showNavigationBarLoading();
+    var that = this;
+    console.log('filePath: ' + that.data.photo)
+    wx.uploadFile({
+      url: api.BarberUpdate,
+      filePath: that.data.photo,
+      name: 'barberImageFile',
+      formData: {
+        "barberId": that.data.barberId,
+        "mobile": that.data.mobile,
+        "level": that.data.level,
+        "years": that.data.year,
+        "introduction": that.data.info
+      },
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function (res) {
+        // wx.showModal({
+        //   title: '提示',
+        //   content: '上传失败，请重试！',
+        // })
+        console.log('BarberUpdate err' + res)
+      }
+    })
   },
 
   checkboxChange: function (e) {

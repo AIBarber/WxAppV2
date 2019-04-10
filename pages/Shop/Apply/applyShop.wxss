@@ -32,11 +32,12 @@
 }
 .table{
   width: 50%;
-  height: 70rpx;
+  height: 55rpx;
   margin-left: 1%;
   margin-top: -3px;
   border: 1px solid rgb(219, 211, 211);
-  padding: 0 10rpx;
+  padding-top: 12rpx;
+  padding-left: 10rpx;
   font-size: 15px;
   text-align: left;
 }

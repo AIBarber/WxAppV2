@@ -24,7 +24,7 @@
  </view>
  <view class='row'>
  <text style='width:35%'>营业时间：</text>
- <textarea class='table' bindinput='getValue' value='{{opentime}}' id='4' placeholder='如：周一到周日09：00—21：00'></textarea>
+ <textarea class='table'  style='font-size:14px; height: 68rpx;' bindinput='getValue' value='{{opentime}}' id='4' placeholder='如：周一到周日09：00—21：00'></textarea>
  </view>
 </view>
 
