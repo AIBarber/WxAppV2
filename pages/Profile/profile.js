@@ -18,6 +18,7 @@ Page({
     choice: '', //当前级别
     level: '',
     photo: '',
+    newPhoto: '',
     year: '',
     mobile: '',
     info: '',
@@ -218,7 +219,8 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
         this.setData({
-          photo: tempFilePaths[0]
+          photo: tempFilePaths[0],
+          newPhoto: tempFilePaths[0]
         })
       },
       fail: (res) => {
@@ -264,6 +266,7 @@ Page({
           item3: t.barberServiceList[3].barberServiceServiceList,
           item4: t.barberServiceList[4].barberServiceServiceList,
           photo: t.headImageUrl,
+          newPhoto: t.headImageUrl,
           mobile: t.mobile,
           year: t.years,
           choice: that.data.array[t.level-1],
@@ -368,24 +371,30 @@ Page({
 
 
   addService:function(type,service){
-    //console.log(e)
     var that = this;
-   // console.log('Getbarberinfo ' + api.BarberUpdate);
+    console.log('Getbarberinfo ' + api.BarberUpdate);
     //wx.showNavigationBarLoading();
-    var bizContent = {
+    if(type != null){
+      var bizContent = {
+          "barberId": that.data.barberId,
+          "introduction": that.data.info,
+          "barberServiceList": [
+            {
+              "barberId": that.data.barberId,
+              "service": type,
+              "barberServiceServiceList": [service]
+            },
+          ]
+        }
+    }else{
+      var bizContent = {
         "barberId": that.data.barberId,
-        // "mobile": that.data.mobile,
-        // "level": that.data.level,
-        // "years": that.data.year,
-        // "introduction": that.data.info,
-        "barberServiceList": [
-          {
-            "barberId": that.data.barberId,
-            "service": type,
-            "barberServiceServiceList": [service]
-          },
-        ]
+        "mobile": that.data.mobile,
+        "level": that.data.level,
+        "years": that.data.year,
+        "introduction": that.data.info
       }
+    }
    // console.log(bizContent)
     util.weshowRequest(
       api.BarberUpdate,
@@ -404,29 +413,30 @@ Page({
     console.log('BarberUpdate ' + api.BarberUpdate);
     wx.showNavigationBarLoading();
     var that = this;
-    console.log('filePath: ' + that.data.photo)
-    wx.uploadFile({
-      url: api.BarberUpdate,
-      filePath: that.data.photo,
-      name: 'barberImageFile',
-      formData: {
-        "barberId": that.data.barberId,
-        "mobile": that.data.mobile,
-        "level": that.data.level,
-        "years": that.data.year,
-        "introduction": that.data.info
-      },
-      success: function (res) {
-        console.log(res)
-      },
-      fail: function (res) {
-        // wx.showModal({
-        //   title: '提示',
-        //   content: '上传失败，请重试！',
-        // })
-        console.log('BarberUpdate err' + res)
-      }
-    })
+    console.log('filePath: ' + that.data.newphoto)
+    if(that.data.photo != that.data.newPhoto){
+        wx.uploadFile({
+          url: api.BarberUpdate,
+          filePath: that.data.newphoto,
+          name: 'barberImageFile',
+          formData: {
+            "barberId": that.data.barberId,
+            "introduction": that.data.info
+          },
+          success: function (res) {
+            console.log(res)
+          },
+          fail: function (res) {
+            // wx.showModal({
+            //   title: '提示',
+            //   content: '上传失败，请重试！',
+            // })
+            console.log('BarberUpdate err' + res)
+          }
+      })
+    }else{
+      that.addService(null,null);
+    }
   },
 
   checkboxChange: function (e) {

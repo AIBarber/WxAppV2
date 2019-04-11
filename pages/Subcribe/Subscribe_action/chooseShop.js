@@ -351,6 +351,7 @@ Page({
       api.OrderInsert,
       bizContent,
       'POST').then(res => {
+        console.log('orderInsert:' + res.data.bizContent.orderInfo)
         if (res.data.bizContent.orderInfo){
           //成功 请求获取微信支付参数
           orderId = res.data.bizContent.orderInfo.orderId;
@@ -367,12 +368,21 @@ Page({
             payBizContent,
             'POST').then(res => {
               var resData = res.data.bizContent;
+              console.log('GetWxPay: ' + res.data.bizContent)
               wx.requestPayment({
-                timeStamp: resData.timeStamp,
-                nonceStr: resData.nonceStr,
-                package: resData.package,
-                signType: 'MD5',
-                paySign: resData.paySign,
+                // timeStamp: resData.timeStamp,
+                // nonceStr: resData.nonceStr,
+                // package: resData.package,
+                // signType: 'MD5',
+                // paySign: resData.paySign,
+
+                "nonceStr": resData.nonceStr,
+                "package": resData.package,
+                "timeStamp": resData.timeStamp,
+                "paySign": resData.paySign,
+                "appid": app.globalData.userid,
+                "signType": 'MD5',
+               // "codeurl": resData.codeurl,
                 success(res) {
                   wx.showToast({
                     title: '支付成功',
@@ -383,9 +393,9 @@ Page({
                   });
                 },
                 fail(res) {
-                  wx.showToast({
-                    title: res,
-                  })
+                  // wx.showToast({
+                  //   title: res,
+                  // })
                   console.log("支付失败" + res);
                 }
               })

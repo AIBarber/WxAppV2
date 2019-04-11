@@ -107,59 +107,59 @@ App({
         console.log(res0);
         if (res0.code) {
           //登录远程服务器
-          // wx.request({
-          //   url: api.GetWxSession,
-          //   data: {
-          //     "bizContent": { 'code': res0.code },
-          //     'code': res0.code,
-          //     'appid': that.globalData.appid
-          //   },
-          //   method: 'POST',
-          //   header: {
-          //     'Content-Type': 'application/json',
-          //     'X-WxApp-ID': that.globalData.appid,
-          //     'X-WxOpenid': res0.code,
-          //     //'X-Weshow-Token': wx.getStorageSync('token')
-          //     'X-Weshow-Token': res0.code
-          //   },
-          //   success: function (res1) {
-          //     console.log('wx.request ' + api.GetWxSession);
-          //     console.log(res1);
-          //     that.globalData.userid = res1.data.bizContent.openid;
-          //     that.globalData.sessionKey = res1.data.bizContent.sessionKey;
-          //     console.log(that.globalData.userid);
-          //     wx.setStorageSync('userid', res1.data.bizContent.openid);
-          //     wx.setStorageSync('session_key', res1.data.bizContent.sessionKey);
-          //     that.getUserInfoIfAuthed();
-          //     that.webAddInviterInfo();
-          //     //that.addUserInfo();//will be null
-          //     /*wx.getUserInfo({
-          //       withCredentials: true,
-          //       success: function (res2) {
-          //         that.globalData.userInfo = res2.userInfo;
-          //         //var nickCode = encodeURIComponent(res2.userInfo.nickName);
-          //         //that.globalData.userInfo.nickName = nickCode;
-          //         that.globalData.hasUserInfo = true;
-          //         wx.setStorageSync('userInfo', res2.userInfo);
+          wx.request({
+            url: api.GetWxSession,
+            data: {
+              "bizContent": { 'code': res0.code },
+              'code': res0.code,
+              'appid': that.globalData.appid
+            },
+            method: 'POST',
+            header: {
+              'Content-Type': 'application/json',
+              'X-WxApp-ID': that.globalData.appid,
+              'X-WxOpenid': res0.code,
+              //'X-Weshow-Token': wx.getStorageSync('token')
+              'X-Weshow-Token': res0.code
+            },
+            success: function (res1) {
+              console.log('wx.request ' + api.GetWxSession);
+              console.log(res1);
+              that.globalData.userid = res1.data.bizContent.openid;
+              that.globalData.sessionKey = res1.data.bizContent.sessionKey;
+              console.log(that.globalData.userid);
+              wx.setStorageSync('userid', res1.data.bizContent.openid);
+              wx.setStorageSync('session_key', res1.data.bizContent.sessionKey);
+              that.getUserInfoIfAuthed();
+              that.webAddInviterInfo();
+              //that.addUserInfo();//will be null
+              /*wx.getUserInfo({
+                withCredentials: true,
+                success: function (res2) {
+                  that.globalData.userInfo = res2.userInfo;
+                  //var nickCode = encodeURIComponent(res2.userInfo.nickName);
+                  //that.globalData.userInfo.nickName = nickCode;
+                  that.globalData.hasUserInfo = true;
+                  wx.setStorageSync('userInfo', res2.userInfo);
 
-          //         //that.addUserInfo();
+                  //that.addUserInfo();
 
-          //         // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-          //         // 所以此处加入 callback 以防止这种情况
-          //         if (that.userInfoReadyCallback) {
-          //           that.userInfoReadyCallback(res2.userInfo)
-          //         }
-          //       },
-          //       fail: function (err) {
-          //         console.log('log in err');
-          //         console.log(err);
-          //         if (that.userInfoReadyCallback) {
-          //           that.userInfoReadyCallback(null)
-          //         }
-          //       }
-          //     });*/
-          //   }
-          // });
+                  // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+                  // 所以此处加入 callback 以防止这种情况
+                  if (that.userInfoReadyCallback) {
+                    that.userInfoReadyCallback(res2.userInfo)
+                  }
+                },
+                fail: function (err) {
+                  console.log('log in err');
+                  console.log(err);
+                  if (that.userInfoReadyCallback) {
+                    that.userInfoReadyCallback(null)
+                  }
+                }
+              });*/
+            }
+          });
          }
        }
     });

@@ -23,8 +23,8 @@
       <checkbox class="checkbox" value='{{item.id}}' id='{{item.id}}'>{{item.service}}
       </checkbox> 
       <view class="moneyView">
-        <view class="money" >${{item.onlinePrice}}</view>
-      <view  class="moneyYuan"> ${{item.storePrice}}</view>
+        <view class="money" >￥{{item.onlinePrice}}</view>
+      <view  class="moneyYuan"> ￥{{item.storePrice}}</view>
      
        </view>
       </label>
@@ -37,8 +37,8 @@
       <checkbox class="checkbox" value='{{item.id}}' id='{{item.id}}'>{{item.service}}
       </checkbox> 
         <view class="moneyView">
-           <view class="money" >${{item.onlinePrice}}</view>
-      <view  class="moneyYuan"> ${{item.storePrice}}</view>
+           <view class="money" >￥{{item.onlinePrice}}</view>
+      <view  class="moneyYuan"> ￥{{item.storePrice}}</view>
     
        </view>
       </label>
@@ -50,8 +50,8 @@
        {{item.service}}
       </checkbox> 
       <view class="moneyView">
-         <view class="money">${{item.onlinePrice}}</view>
-      <view class="moneyYuan"> ${{item.storePrice}}</view>
+         <view class="money">￥{{item.onlinePrice}}</view>
+      <view class="moneyYuan"> ￥{{item.storePrice}}</view>
     
       </view>
       </label>
@@ -63,8 +63,8 @@
        {{item.service}}
       </checkbox> 
        <view class="moneyView">
-         <view class="money">${{item.onlinePrice}}</view>
-      <view class="moneyYuan"> ${{item.storePrice}}</view>
+         <view class="money">￥{{item.onlinePrice}}</view>
+      <view class="moneyYuan"> ￥{{item.storePrice}}</view>
      
       </view>
       </label>
@@ -75,8 +75,8 @@
       <checkbox class="checkbox" value='{{item.id}}' >
        {{item.service}}
       </checkbox> 
-      <view class="moneyYuan"> ${{item.storePrice}}</view>
-       <view class="money">${{item.onlinePrice}}</view>
+      <view class="moneyYuan"> ￥{{item.storePrice}}</view>
+       <view class="money">￥{{item.onlinePrice}}</view>
       
       </label>
      </checkbox-group>
