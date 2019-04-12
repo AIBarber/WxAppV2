@@ -13,8 +13,8 @@
       剪发
       </view>
       <label class="checkboxLab" style='{{cutHair}}' wx:for="{{itemOne}}" wx:key="{{item}}" >
-      <checkbox class="checkbox" value='{{item.id}}' id='{{item.id}}'>{{item.service}}
-      </checkbox> 
+      <text class="checkbox" id='{{index}}' bindlongpress='deleteService' data-id='0'>{{item.service}}
+      </text> 
       <view class="moneyView">
         <view class="money" >￥{{item.onlinePrice}}</view>
       <view  class="moneyYuan"> ￥{{item.storePrice}}</view>
@@ -34,8 +34,8 @@
       染发
       </view>
       <label class="checkboxLab" style='{{ranfa}}' wx:for="{{item}}" wx:key="{{item}}" >
-      <checkbox class="checkbox" value='{{item.id}}' id='{{item.id}}'>{{item.service}}
-      </checkbox> 
+      <text class="checkbox" value='{{item.id}}' id='{{item.id}}'>{{item.service}}
+      </text> 
         <view class="moneyView">
            <view class="money" >￥{{item.onlinePrice}}</view>
       <view  class="moneyYuan"> ￥{{item.storePrice}}</view>
@@ -54,9 +54,9 @@
       烫发
       </view>
       <label class="checkboxLab" style='{{tangfa}}' wx:for="{{item2}}"  wx:key="{{item2}}">
-      <checkbox class="checkbox" value='{{item.id}}' >
+      <text class="checkbox" value='{{item.id}}' >
        {{item.service}}
-      </checkbox> 
+      </text> 
       <view class="moneyView">
          <view class="money">￥{{item.onlinePrice}}</view>
       <view class="moneyYuan"> ￥{{item.storePrice}}</view>
@@ -76,9 +76,9 @@
       护理
       </view>
       <label class="checkboxLab" style='{{diantangfa}}' wx:for="{{item3}}" wx:key="{{item3}}">
-      <checkbox class="checkbox" value='{{item.id}}' >
+      <text class="checkbox" value='{{item.id}}' >
        {{item.service}}
-      </checkbox> 
+      </text> 
        <view class="moneyView">
          <view class="money">￥{{item.onlinePrice}}</view>
       <view class="moneyYuan"> ￥{{item.storePrice}}</view>
@@ -98,9 +98,9 @@
       洗吹
       </view>
       <label class="checkboxLab" style='{{huli}}' wx:for="{{item4}}"  wx:key="{{item4}}">
-      <checkbox class="checkbox" value='{{item.id}}' >
+      <text class="checkbox" value='{{item.id}}' >
        {{item.service}}
-      </checkbox> 
+      </text> 
       <view class="moneyYuan"> ￥{{item.storePrice}}</view>
        <view class="money">￥{{item.onlinePrice}}</view>
       </label>

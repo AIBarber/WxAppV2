@@ -18,7 +18,7 @@ Page({
     choice: '', //当前级别
     level: '',
     photo: '',
-    newPhoto: '',
+    photoBase64: null,
     year: '',
     mobile: '',
     info: '',
@@ -110,9 +110,7 @@ Page({
           })
           break;
       }
-      // console.log(type)
-       //console.log(service)
-      this.addService(this.data.type,this.data.service);
+      this.addService(this.data.type,this.data.service,id-1);
     },
     
     getName:function(e){
@@ -152,8 +150,8 @@ Page({
         flag: false,
         content:'修改'
       })
-      that.updateInfo();
-      that.onLoad();
+      that.addService(null,null,null);
+      //getCurrentPages()[getCurrentPages().length - 1].onLoad();
    }
  },
 
@@ -193,7 +191,7 @@ Page({
         this.setData({
           year: e.detail.value
         })
-        //console.log(this.data.year)
+       // console.log(this.data.year)
         break;
       case '2':
         this.setData({
@@ -219,9 +217,19 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
         this.setData({
-          photo: tempFilePaths[0],
-          newPhoto: tempFilePaths[0]
+          photo: tempFilePaths[0]
         })
+
+        wx.getFileSystemManager().readFile({
+          filePath: tempFilePaths[0], //选择图片返回的相对路径
+          encoding: 'base64', //编码格式
+          success: res => { //成功的回调
+            console.log('data:image/png;base64,' + res.data)
+            this.setData({
+              photoBase64: 'data:image/png;base64,' + res.data
+            })
+          }
+        });
       },
       fail: (res) => {
         wx.showModal({
@@ -245,34 +253,41 @@ Page({
       'POST').then(res => {
         // success
         console.log(res.data)
-        // for (var i = 0; i < res.data.bizContent.barberinfo.barberServiceList.length; i++) {
-        //   var serviceGroup = res.data.bizContent.barberinfo.barberServiceList[i];
-        //   this.data.serviceGroupList.push(serviceGroup);
-        //   for (var j = 0; j < serviceGroup.barberServiceServiceList.length; j++) {
-        //     var serviceItem = serviceGroup.barberServiceServiceList[j];
-        //     this.data.serviceKeyMap[serviceItem.id] = serviceItem;
-        //     this.data.serviceGroupKeyMap[serviceItem.id] = serviceGroup;
-        //     if (!this.data.serviceItemIdSet.includes(serviceItem.id)) {
-        //       this.data.serviceItemIdSet.push(serviceItem.id);
-        //     }
-        //   }
-        // }
         var t = res.data.bizContent.barberinfo;
         that.setData({
           barberinfoList: t,
-          itemOne: t.barberServiceList[0].barberServiceServiceList,
-          item: t.barberServiceList[1].barberServiceServiceList,
-          item2: t.barberServiceList[2].barberServiceServiceList,
-          item3: t.barberServiceList[3].barberServiceServiceList,
-          item4: t.barberServiceList[4].barberServiceServiceList,
           photo: t.headImageUrl,
-          newPhoto: t.headImageUrl,
           mobile: t.mobile,
           year: t.years,
           choice: that.data.array[t.level-1],
           level: t.level,
           info: t.introduction
         })
+        if (t.barberServiceList[0]) {
+          that.setData({
+            itemOne: t.barberServiceList[0].barberServiceServiceList
+          })
+        }
+        if (t.barberServiceList[1]){
+          that.setData({
+            item: t.barberServiceList[1].barberServiceServiceList
+          })
+        }
+        if (t.barberServiceList[2]) {
+          that.setData({
+            item2: t.barberServiceList[2].barberServiceServiceList
+          })
+        }
+        if (t.barberServiceList[3]) {
+          that.setData({
+            item3: t.barberServiceList[3].barberServiceServiceList
+          })
+        }
+        if (t.barberServiceList[4]) {
+          that.setData({
+            item4: t.barberServiceList[4].barberServiceServiceList
+          })
+        }
       }).catch((err) => {
         console.log('getShopList err' + err);
         wx.showToast({
@@ -369,39 +384,49 @@ Page({
     }
   },
 
-
-  addService:function(type,service){
+  addService:function(type,service,id){
     var that = this;
     console.log('Getbarberinfo ' + api.BarberUpdate);
     //wx.showNavigationBarLoading();
+    var bizContent;
     if(type != null){
-      var bizContent = {
-          "barberId": that.data.barberId,
-          "introduction": that.data.info,
-          "barberServiceList": [
-            {
-              "barberId": that.data.barberId,
-              "service": type,
-              "barberServiceServiceList": [service]
-            },
-          ]
+      var t = that.data.barberinfoList.barberServiceList
+      console.log(t[id].barberServiceServiceList)
+      t[id].barberServiceServiceList.push(service)
+      console.log(t[id].barberServiceServiceList)
+       bizContent = {
+          barberId: that.data.barberId,
+          introduction: that.data.info,
+          barberServiceList: t
         }
     }else{
-      var bizContent = {
-        "barberId": that.data.barberId,
-        "mobile": that.data.mobile,
-        "level": that.data.level,
-        "years": that.data.year,
-        "introduction": that.data.info
-      }
+        if (that.data.photoBase64 != null){
+          bizContent = {
+            barberId: that.data.barberId,
+            mobile: that.data.mobile,
+            level: that.data.level,
+            years: that.data.year,
+            introduction: that.data.info,
+            barberImageFile: that.data.photoBase64
+          }
+        }else{
+          bizContent = {
+            barberId: that.data.barberId,
+            mobile: that.data.mobile,
+            level: that.data.level,
+            years: that.data.year,
+            introduction: that.data.info
+          }
+        }
     }
-   // console.log(bizContent)
+   console.log(bizContent)
     util.weshowRequest(
       api.BarberUpdate,
       bizContent,
       'POST').then(res => {
         // success
-     //   console.log(res)
+       console.log(res)
+        getCurrentPages()[getCurrentPages().length - 1].onLoad();
       }).catch((err) => {
         console.log('BarberUpdate err' + err);
         // fail
@@ -409,34 +434,41 @@ Page({
       });
   },
 
-  updateInfo:function(){
-    console.log('BarberUpdate ' + api.BarberUpdate);
-    wx.showNavigationBarLoading();
+  deleteService:function(e){
+    //console.log(e);
     var that = this;
-    console.log('filePath: ' + that.data.newphoto)
-    if(that.data.photo != that.data.newPhoto){
-        wx.uploadFile({
-          url: api.BarberUpdate,
-          filePath: that.data.newphoto,
-          name: 'barberImageFile',
-          formData: {
-            "barberId": that.data.barberId,
-            "introduction": that.data.info
-          },
-          success: function (res) {
-            console.log(res)
-          },
-          fail: function (res) {
-            // wx.showModal({
-            //   title: '提示',
-            //   content: '上传失败，请重试！',
-            // })
-            console.log('BarberUpdate err' + res)
+    var id = e.currentTarget.id;     //标记某一类别下的具体的服务项目 
+    var index = e.currentTarget.dataset.id   //标记服务项目类别
+    var t = that.data.barberinfoList.barberServiceList
+    console.log(t[index].barberServiceServiceList)
+    t[index].barberServiceServiceList.pop(t[index].barberServiceServiceList[id])
+    console.log(t[index].barberServiceServiceList)
+    wx.showModal({
+      title: '提示',
+      content: '确定删除该服务项目？',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          var bizContent={
+            barberId: that.data.barberId,
+            introduction: that.data.info,
+            barberServiceList: t
           }
-      })
-    }else{
-      that.addService(null,null);
-    }
+          util.weshowRequest(
+            api.BarberUpdate,
+            bizContent,
+            'POST').then(res => {
+              // success
+              console.log(res)
+              getCurrentPages()[getCurrentPages().length - 1].onLoad();
+            }).catch((err) => {
+              console.log('BarberUpdate err' + err);
+              // fail
+              // that.stopRefreshing();
+            });
+        }
+      }
+    })
   },
 
   checkboxChange: function (e) {

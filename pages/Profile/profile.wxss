@@ -131,32 +131,6 @@
   z-index: 1;
   text-align: left;
 }
-
-checkbox .wx-checkbox-input{
-   border-radius: 50%;/* 圆角 */
-   width: 40rpx; /* 背景的宽 */
-   height: 40rpx; /* 背景的高 */
-   background: #ccc;
-}
-/* 选中后的背景样式 */
-checkbox .wx-checkbox-input.wx-checkbox-input-checked{
-   border: none;
-   background: #ccc;
-}
-/* 选中后的对勾样式*/
-checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
-   border-radius: 50%;/* 圆角 */
-   width: 40rpx;/* 选中后对勾大小*/
-   height: 40rpx;/* 选中后对勾大小 */
-   line-height: 40rpx;
-   text-align: center;
-   font-size:30rpx; 
-   color:black; /* 对勾颜色 白色 */
-   background: transparent;
-   transform:translate(-50%, -50%) scale(1);
-   -webkit-transform:translate(-50%, -50%) scale(1);
-}
-
 .service{
   width: 35%;
   height: 60rpx;
@@ -198,7 +172,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
   /* background-color: white; */
  margin-top: auto;
  margin-bottom: auto;
-  margin-left: 40rpx;
+  margin-left: 70rpx;
 }
 .checkboxLab1{
    border-top:1px solid white;
@@ -236,7 +210,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
   flex-direction: row-reverse;
   text-align: right;
   margin-right: 10rpx;
-  margin-left: 50rpx;
+  margin-left: 30rpx;
 }
 .money{
   margin-left: 10rpx;

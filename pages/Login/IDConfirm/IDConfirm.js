@@ -40,7 +40,7 @@ Page({
           success: res => { //成功的回调
             console.log('data:image/png;base64,' + res.data)
             that.setData({
-              srcFaceBase64: res.data
+              srcFaceBase64: 'data:image/png;base64,' + res.data
             })
           }
         });
