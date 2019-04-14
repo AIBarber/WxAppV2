@@ -13,6 +13,7 @@ Page({
     address: null,
     openTime: '周一到周日09：00—21：00',
     size: null,
+    sizeDisplay: null,
     status: null
   },
 
@@ -83,7 +84,7 @@ Page({
         openTime: value
       })
     }
-    console.log(this.data)
+   // console.log(this.data)
   },
 
   applySubmit: function () {

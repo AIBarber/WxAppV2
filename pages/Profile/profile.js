@@ -437,46 +437,48 @@ Page({
   deleteService:function(e){
     //console.log(e);
     var that = this;
-    var id = e.currentTarget.id;     //标记某一类别下的具体的服务项目 
-    var index = e.currentTarget.dataset.id   //标记服务项目类别
-    var t = that.data.barberinfoList.barberServiceList
-    console.log(t[index].barberServiceServiceList)
-    t[index].barberServiceServiceList.pop(t[index].barberServiceServiceList[id])
-    console.log(t[index].barberServiceServiceList)
-    wx.showModal({
-      title: '提示',
-      content: '确定删除该服务项目？',
-      success: function (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-          var bizContent={
-            barberId: that.data.barberId,
-            introduction: that.data.info,
-            barberServiceList: t
+    if(that.data.flag){
+      var id = e.currentTarget.id;     //标记某一类别下的具体的服务项目 
+      var index = e.currentTarget.dataset.id   //标记服务项目类别
+      var t = that.data.barberinfoList.barberServiceList
+      console.log(t[index].barberServiceServiceList)
+      t[index].barberServiceServiceList.pop(t[index].barberServiceServiceList[id])
+      console.log(t[index].barberServiceServiceList)
+      wx.showModal({
+        title: '提示',
+        content: '确定删除该服务项目？',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+            var bizContent={
+              barberId: that.data.barberId,
+              introduction: that.data.info,
+              barberServiceList: t
+            }
+            util.weshowRequest(
+              api.BarberUpdate,
+              bizContent,
+              'POST').then(res => {
+                // success
+                console.log(res)
+                getCurrentPages()[getCurrentPages().length - 1].onLoad();
+              }).catch((err) => {
+                console.log('BarberUpdate err' + err);
+                // fail
+                // that.stopRefreshing();
+              });
           }
-          util.weshowRequest(
-            api.BarberUpdate,
-            bizContent,
-            'POST').then(res => {
-              // success
-              console.log(res)
-              getCurrentPages()[getCurrentPages().length - 1].onLoad();
-            }).catch((err) => {
-              console.log('BarberUpdate err' + err);
-              // fail
-              // that.stopRefreshing();
-            });
         }
-      }
-    })
+      })
+    }
   },
 
-  checkboxChange: function (e) {
-    var that = this;
-    that.setData({
-      clickServer: e.detail.value,
-    })
-    console.log("chooseServer:" + e.detail.value);
-  },
+  // checkboxChange: function (e) {
+  //   var that = this;
+  //   that.setData({
+  //     clickServer: e.detail.value,
+  //   })
+  //   console.log("chooseServer:" + e.detail.value);
+  // },
 
 })

@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
@@ -44,6 +44,12 @@
 					"pathName": "pages/end_Cus/end_Cus",
 					"query": "id=orderid",
 					"scene": "1012"
+				},
+				{
+					"id": -1,
+					"name": "test",
+					"pathName": "pages/Shop/Apply/applyShop",
+					"scene": null
 				}
 			]
 		}

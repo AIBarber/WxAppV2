@@ -2,19 +2,24 @@
 <view class="orderView">
 <view class="orderText">
 <text class="text1">订单编号：<text class="text2">{{item.orderId}}</text></text>
-<text class="text1" decode="{{true}}" style='margin-left:56rpx;'>发型：<text class="text2">{{}}</text></text>
-<text class="text1">消费金额：<text class="text2">{{item.amount}}</text></text>
+<view style='display:flex;flex-direction:row;' >
+  <text class='text1'>服务:  </text>
+  <block wx:for="{{item.barberServiceList}}" wx:key='id'>
+   <text class="text1 text2" decode="true">&nbsp;&nbsp;&nbsp;{{item.service}}</text>
+  </block>
+</view>
+<text class="text1">消费金额：<text class="text2">￥{{item.amount}}</text></text>
 <text class="text1">消费时间：<text class="text2">{{item.createdTime}}</text></text>
-<text class="text1">理发用时：<text class="text2">{{}}</text></text>
+<text class="text1">理发用时：<text class="text2">{{item.useTime}}分钟</text></text>
 </view>
 <view class="line"></view>
 <view class="orderImg">
 <view class='hairImg'>
- <image class="img" src='{{item.beginImgId}}'></image>
+ <image class="img" src='{{item.customer.headurl}}'></image>
   <text class="text3">理发前</text>
 </view>
 <view class='hairImg'>
- <image class="img" src='{{item.endImgId}}'></image>
+ <image class="img" src='{{item.customer.headurl}}'></image>
   <text class="text3">理发后</text>
 </view>
 </view>

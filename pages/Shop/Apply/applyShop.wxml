@@ -11,20 +11,20 @@
 
 <view class='column'>
 <view class='row'>
- <text style='width:35%'>店铺名称：</text>
+ <text style='width:28%'>店铺名称：</text>
  <textarea class='table' bindinput='getValue' value='{{name}}' id='1'></textarea>
  </view>
  <view class='row'>
- <text style='width:35%'>店内面积：</text>
- <textarea class='table' bindinput='getValue' value='{{size}}' id='2'> </textarea>
+ <text style='width:28%'>店内面积：</text>
+ <textarea class='table' bindinput='getValue' value='{{size}}'  id='2' placeholder='单位默认为平方米，如：100'> </textarea>
  </view>
  <view class='row'>
- <text style='width:35%'>店铺地址：</text>
+ <text style='width:28%'>店铺地址：</text>
  <textarea class='table' bindinput='getValue' value='{{address}}' id='3'></textarea>
  </view>
  <view class='row'>
- <text style='width:35%'>营业时间：</text>
- <textarea class='table'  style='font-size:14px; height: 68rpx;' bindinput='getValue' value='{{opentime}}' id='4' placeholder='如：周一到周日09：00—21：00'></textarea>
+ <text style='width:28%'>营业时间：</text>
+ <textarea class='table'  style='font-size:14px;' bindinput='getValue' value='{{opentime}}' id='4' placeholder='如：周一到周日09：00—21：00'></textarea>
  </view>
 </view>
 

@@ -27,7 +27,7 @@ Page({
   // 获取数据列表
   getDataList_cost: function () {
     console.log('getDataList ' + api.Getcustomerorderlist);
-    console.log(this.data.id);
+   // console.log(this.data.id);
     // wx.showNavigationBarLoading();
     var that = this;
     var bizContent = {   

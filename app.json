@@ -1,14 +1,12 @@
 {
   "pages": [
-
     "pages/Shop/ShopList/new",
     "pages/Barber/new/new",
-    "pages/Profile/profile",
     "pages/Shop/ShopList/List",
     "pages/Subcribe/Subscribe_action/ServerItem",
     "pages/Subcribe/Subscribe_action/FinishInfo",
     "pages/Customer/myCustomers/personal",
-    
+  
     "pages/Barber/BarberHome/personal",
     
     "pages/Customer/myCustomers/customers",
@@ -27,7 +25,7 @@
     "pages/Shop/Openshare/share",
     "pages/Shop/OpenstoreDetail/storeDetail",
     "pages/Shop/Apply/applyShop",
-    
+    "pages/Profile/profile",
     "pages/Shop/ServiceShop/serviceShop",
     "pages/Shop/detail/detail",
     "pages/Barber/Show/barber_detail",
