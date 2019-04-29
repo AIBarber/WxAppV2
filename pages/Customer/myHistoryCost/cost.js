@@ -32,7 +32,7 @@ Page({
     var that = this;
     var bizContent = {   
       "statusStr": "1,2,3",
-      'customerId': "1"
+      'customerId': app.globalData.customerId
       }
     util.weshowRequest(
       api.Getcustomerorderlist,

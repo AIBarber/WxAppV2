@@ -57,7 +57,7 @@ Page({
     util.weshowRequest(
       api.BindbarbeRandstore,
       {
-        "barberId": 1,
+        "barberId": app.globalData.barberId,
         "storeId": e.target.id
       },
       'POST').then(res => {

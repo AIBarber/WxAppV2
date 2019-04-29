@@ -67,7 +67,7 @@
         <!--book-->
         <view class="section_book">
           <view>
-            <text>1656米</text>
+            <text>{{item.distance}}米</text>
           </view>
         </view>
       </view>

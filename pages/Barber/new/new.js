@@ -76,10 +76,11 @@ Page({
 
   getBarberOrderList: function () {
     console.log('getBarberOrderList ' + api.BarberOrderList);
+   // console.log(app.globalData.barberId)
     //wx.showNavigationBarLoading();
     var that = this;
     var bizContent = {
-      "barberId": "1",
+      "barberId": app.globalData.barberId,
       "statusStr": "2,3,4"
     }
     util.weshowRequest(

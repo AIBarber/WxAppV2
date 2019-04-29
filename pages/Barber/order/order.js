@@ -43,6 +43,7 @@ Page({
     var that = this;
     if(that.data.storeId != null && that.data.orderTime != null){
       that.confirmOrder(1);
+      getCurrentPages()[getCurrentPages().length - 2].onLoad()
       wx.navigateTo({
         url: '../start/start?orderid=' + that.data.orderId + '&storeid=' + that.data.storeId + '&lifaData=' + that.data.orderInfo
       })

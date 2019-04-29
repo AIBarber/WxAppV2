@@ -18,7 +18,7 @@ Page({});
 function loadPersonalInfo(that){
     util.weshowRequest(
       api.Getcustomerinfo, {
-        "customerId": "1"
+        "customerId": app.globalData.customerId
       },
       'POST').then(res => {
         //success
@@ -96,9 +96,10 @@ function getHeadPhoto(object) {
     that.setData({
       myHairSrc: wx.getStorageSync("personnal")
     })
-    var bizContent = { 'customerId': 1 }
+    var bizContent = { 'customerId': app.globalData.customerId }
     var photoPaths = '';
     photoPaths = wx.getStorageSync("personnal");
+   // console.log(wx.getStorageSync("personnal"))
     util.wxUploadFile(photoPaths, bizContent).then(res => {
       var face = res.data.bizContent;
       var a = JSON.parse(res.data);

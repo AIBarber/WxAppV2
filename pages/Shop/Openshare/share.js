@@ -12,7 +12,7 @@ Page({
     flag: '',  //共享店铺列表是否为空
     shopList: [],
     // check: [],
-    id: 1
+    id: app.globalData.customerId
   },
 
   /**
@@ -107,7 +107,7 @@ Page({
       url: '../Apply/applyShop'
     })
   },
-
+  
   stopRefreshing: function () {
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();

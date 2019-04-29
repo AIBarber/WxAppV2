@@ -84,33 +84,33 @@ Page({
           }
       })
       switch(id){
-        case '1':
+        case '0':
         this.setData({
           type: 'haircut'
         })
           break;
-        case '2':
+        case '1':
           this.setData({
             type: 'hairdye'
           })
           break;
-        case '3':
+        case '2':
           this.setData({
             type: 'perm'
           })
           break;
-        case '4':
+        case '3':
           this.setData({
             type: 'haircare'
           })
           break;
-        case '5':
+        case '4':
           this.setData({
             type: 'shampoo'
           })
           break;
       }
-      this.addService(this.data.type,this.data.service,id-1);
+      this.addService(this.data.type,this.data.service,id);
     },
     
     getName:function(e){
@@ -386,14 +386,22 @@ Page({
 
   addService:function(type,service,id){
     var that = this;
-    console.log('Getbarberinfo ' + api.BarberUpdate);
+    console.log('BarberUpdate ' + api.BarberUpdate);
     //wx.showNavigationBarLoading();
     var bizContent;
     if(type != null){
       var t = that.data.barberinfoList.barberServiceList
-      console.log(t[id].barberServiceServiceList)
-      t[id].barberServiceServiceList.push(service)
-      console.log(t[id].barberServiceServiceList)
+     
+      if (!t[id]){
+        t.push({
+         "barberId": that.data.barberId,
+          "service": type,
+          "barberServiceServiceList":[]})
+     }
+      // console.log(t[id].barberServiceServiceList)
+       t[id].barberServiceServiceList.push(service)
+     //  console.log(t[id].barberServiceServiceList)
+     
        bizContent = {
           barberId: that.data.barberId,
           introduction: that.data.info,
@@ -419,7 +427,7 @@ Page({
           }
         }
     }
-   console.log(bizContent)
+  // console.log(bizContent)
     util.weshowRequest(
       api.BarberUpdate,
       bizContent,

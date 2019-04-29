@@ -14,7 +14,8 @@ Page({
     openTime: '周一到周日09：00—21：00',
     size: null,
     sizeDisplay: null,
-    status: null
+    status: null,
+    photoBase64 : null
   },
 
   /**
@@ -46,7 +47,17 @@ Page({
         that.setData({
           photo: tempFilePaths[0]
         })
-        console.log(that.data.photo);
+       // console.log(that.data.photo);
+        wx.getFileSystemManager().readFile({
+          filePath: tempFilePaths[0], //选择图片返回的相对路径
+          encoding: 'base64', //编码格式
+          success: res => { //成功的回调
+          //  console.log('data:image/png;base64,' + res.data)
+            that.setData({
+              photoBase64: 'data:image/png;base64,' + res.data
+            })
+          }
+        });
       },
       fail: (res) => {
         wx.showModal({
@@ -58,13 +69,9 @@ Page({
    },
 
   /*返回前一页*/
-  backToprevPage: function () {
-    wx.navigateBack({
-    })
-  },
 
   getValue: function (e) {
-    console.log(e);
+   // console.log(e);
     var index = e.target.id;
     var value = e.detail.value;
     if (index == 1) {
@@ -88,55 +95,47 @@ Page({
   },
 
   applySubmit: function () {
-    console.log('getDataList ' + api.OpenStoreAdd);
+    console.log('OpenStoreAdd ' + api.OpenStoreAdd);
     wx.showNavigationBarLoading();
     var that = this;
-    console.log(that.data.photo);
-
-    var commonParams = {
-      "openId": app.globalData.userid,
-      // "timestamp": getCurrentSecond(),
-      "timestamp": "2019-03-2",
-      "appid": app.globalData.appid,
-      "nonce": "123",
-      "algorithm": "1",
-      "token": "12313",
-      "version": "2.0"
-    };
     var bizContent = {
-      "customerId": app.globalData.userid,
+      "customerId": app.globalData.customerId,
       "name": that.data.name,
-      "mobile": "13833338888",
+      "mobile": "1111111111",
       "category": 1,
       "seatNum": 6,
       "businessTime": that.data.openTime,
       "address": that.data.address,
-      "acreage": that.data.size
+      "acreage": that.data.size,
+      "storeImgFile": that.data.photoBase64
     }
-    var bizContentName = { "bizContent": bizContent };
-    var body = util.mergeJson(commonParams, bizContentName);
-    // util.weshowRequest(
-      wx.uploadFile({
-        url: api.OpenStoreAdd,
-        filePath: that.data.photo,
-        name: 'faceImgFile',
-        formData: { body: JSON.stringify(body) },
-      success: function (res) {
-        console.log(res)
-        var data = JSON.parse(res.data);
-        console.log(data)
-        // if (data.data.result == 'success') {
-         
-        // }
-        that.stopRefreshing();
-      },
-      fail: function (res) {
-        wx.showModal({
-          title: '提示',
-          content: '上传失败，请重试！',
-        })
-      }
-    })
+    if (that.data.photoBase64 != null && that.data.name != null && that.data.size != null && that.data.address != null && that.data.openTime != null){
+        util.weshowRequest(
+          api.OpenStoreAdd,
+          bizContent,
+          'POST').then(res => {
+            // success
+            console.log(res.data)
+          getCurrentPages()[getCurrentPages().length - 2].onLoad();
+          wx.navigateBack({
+          })
+          }).catch((err) => {
+            console.log('OpenStoreAdd err:');
+            console.log(err);
+            // fail
+            // that.stopRefreshing();
+          });
+       }else if(that.data.photoBase64 == null){
+          wx.showModal({
+              title: '提示',
+              content: '未添加图片，请重试！',
+            })
+       }else{
+          wx.showModal({
+            title: '提示',
+            content: '店铺信息填写不完整，请重试！',
+          })
+       }
   },
 
   stopRefreshing: function () {

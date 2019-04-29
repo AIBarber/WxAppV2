@@ -22,7 +22,7 @@
       </label>
       <label  class="checkboxLab" style='{{cutHair}}' wx:if="{{flag}}" id='剪发'>
          <text class='input' bindtap="modalinput">点击添加</text>  
-        <modal hidden="{{hiddenmodalput}}" title="请输入服务项目信息" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" id='1'>  
+        <modal hidden="{{hiddenmodalput}}" title="请输入服务项目信息" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" id='0'>  
         <input type='text'placeholder="项目名称"  bindinput='getName'  auto-focus/>  
         <input type='text'placeholder="线上价格"  bindinput='getOPrice'  auto-focus/>  
         <input type='text'placeholder="线下价格"  bindinput='getSPrice'  auto-focus/>  
@@ -43,7 +43,7 @@
       </label>
      <label  class="checkboxLab" style='{{ranfa}}'  wx:if="{{flag}}" id='染发'>
           <text class='input' bindtap="modalinput">点击添加</text>  
-        <modal hidden="{{hiddenmodalput}}" title="请输入服务项目信息" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" id='2'>  
+        <modal hidden="{{hiddenmodalput}}" title="请输入服务项目信息" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" id='1'>  
         <input type='text'placeholder="项目名称"  bindinput='getName'  auto-focus/>  
         <input type='text'placeholder="线上价格"  bindinput='getOPrice'  auto-focus/>  
         <input type='text'placeholder="线下价格"  bindinput='getSPrice'  auto-focus/>  
@@ -64,7 +64,7 @@
       </label>
        <label  class="checkboxLab" style='{{tangfa}}'  wx:if="{{flag}}" id='烫发'>
         <text class='input' bindtap="modalinput">点击添加</text>  
-        <modal hidden="{{hiddenmodalput}}" title="请输入服务项目信息" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" id='3'>  
+        <modal hidden="{{hiddenmodalput}}" title="请输入服务项目信息" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" id='2'>  
         <input type='text'placeholder="项目名称"  bindinput='getName'  auto-focus/>  
         <input type='text'placeholder="线上价格"  bindinput='getOPrice'  auto-focus/>  
         <input type='text'placeholder="线下价格"  bindinput='getSPrice'  auto-focus/>  
@@ -76,7 +76,7 @@
       护理
       </view>
       <label class="checkboxLab" style='{{diantangfa}}' wx:for="{{item3}}" wx:key="{{item3}}">
-     <text class="checkbox" id='{{index}}' bindlongpress='deleteService' data-id='4'>
+       <text class="checkbox" id='{{index}}' bindlongpress='deleteService' data-id='3'>
        {{item.service}}
       </text> 
        <view class="moneyView">
@@ -86,7 +86,7 @@
       </label>
        <label  class="checkboxLab" style='{{diantangfa}}' wx:if="{{flag}}" id='护理'>
          <text class='input' bindtap="modalinput">点击添加</text>  
-        <modal hidden="{{hiddenmodalput}}" title="请输入服务项目信息" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" id='4'>  
+        <modal hidden="{{hiddenmodalput}}" title="请输入服务项目信息" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" id='3'>  
         <input type='text'placeholder="项目名称"  bindinput='getName'  auto-focus/>  
         <input type='text'placeholder="线上价格"  bindinput='getOPrice'  auto-focus/>  
         <input type='text'placeholder="线下价格"  bindinput='getSPrice'  auto-focus/>  
@@ -98,7 +98,7 @@
       洗吹
       </view>
       <label class="checkboxLab" style='{{huli}}' wx:for="{{item4}}"  wx:key="{{item4}}">
-      <text class="checkbox" id='{{index}}' bindlongpress='deleteService' data-id='5'>
+      <text class="checkbox" id='{{index}}' bindlongpress='deleteService' data-id='4'>
        {{item.service}}
       </text> 
       <view class="moneyYuan"> ￥{{item.storePrice}}</view>
@@ -106,7 +106,7 @@
       </label>
      <label  class="checkboxLab" style='{{huli}}' wx:if="{{flag}}" id='洗吹'>
         <text class='input' bindtap="modalinput">点击添加</text>  
-        <modal hidden="{{hiddenmodalput}}" title="请输入服务项目信息" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" id='5'>  
+        <modal hidden="{{hiddenmodalput}}" title="请输入服务项目信息" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" id='4'>  
         <input type='text'placeholder="项目名称"  bindinput='getName'  auto-focus/>  
         <input type='text'placeholder="线上价格"  bindinput='getOPrice'  auto-focus/>  
         <input type='text'placeholder="线下价格"  bindinput='getSPrice'  auto-focus/>  

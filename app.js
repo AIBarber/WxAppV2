@@ -289,6 +289,6 @@ App({
     latitude: 39.93,
     longitude: 116.45,
     ShareTitle: 'ShareTitle',
-    barberId:''
+    barberId:'1'
   }
 })

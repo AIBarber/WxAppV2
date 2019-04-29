@@ -43,10 +43,12 @@ Page({
           title: '成功',
         });
         this.getCustomerAccountInfo();
+        getCurrentPages()[getCurrentPages().length - 2].onLoad()
       }).catch((err) => {
         console.log('getDataList err' + err);
       });
   },
+
   getCustomerAccountInfo: function () {
     var that = this;
     util.weshowRequest(
@@ -76,12 +78,13 @@ Page({
         // });
       });
   },
+
   drawCashAll:function(){
     var that=this;
     that.setData({
       money:that.data.amount
     })
-    that.getApply(that.data.amount);
+    //that.getApply(that.data.amount);
   }, 
     /**
    * 生命周期函数--监听页面加载

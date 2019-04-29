@@ -55,17 +55,18 @@ Page({
    */
   onPullDownRefresh: function () {
   },
+
   loadImages:function () {
     var that = this;
     util.weshowRequest(
       api.BarberOrderList,
       {
-        "barberId": "1",
+        "barberId": app.globalData.barberId,
         "statusStr": "1,2,3"
       },
       'POST').then(res => {
         var orderInfo = res.data.bizContent.order;
-
+        //console.log(res.data.bizContent)
         // success
         that.setData({
           note: orderInfo
@@ -92,13 +93,16 @@ Page({
   navToPicshow: function (e){
     var index = e.currentTarget.dataset.index
     var orderInfo = this.data.note;
+    console.log(orderInfo)
     var imageList = [];
-    imageList.push(encodeURIComponent(orderInfo[index].endImg.url));
-    imageList.push(encodeURIComponent(orderInfo[index].beginImg.url));
-    var imgList = JSON.stringify(imageList);
-    console.log(imgList);
-    wx.navigateTo({
-      url: 'pictureShow?imageList=' + imgList
-    })
+    if (orderInfo[index].endImg){
+        imageList.push(encodeURIComponent(orderInfo[index].endImg.url));
+        imageList.push(encodeURIComponent(orderInfo[index].beginImg.url));
+        var imgList = JSON.stringify(imageList);
+        console.log(imgList);
+        wx.navigateTo({
+          url: 'pictureShow?imageList=' + imgList
+        })
+    }
   }
 })

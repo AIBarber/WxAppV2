@@ -18,7 +18,7 @@
       <image class="item-ava" src="{{item.barber.headImageUrl}}"></image>    
       <text class="name-title">{{item.barber.name}}{{idx}}</text>
       <view class="heart_">
-        <image class="heart" src="../../image/heart.png"></image>
+        <image class="heart" src="../../../icon/zuopin.png"></image>
         <text>{{item.endImg.fileSize}}</text>
       </view>
     </view>

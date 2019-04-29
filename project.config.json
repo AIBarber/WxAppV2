@@ -46,9 +46,10 @@
 					"scene": "1012"
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "test",
 					"pathName": "pages/Shop/Apply/applyShop",
+					"query": "",
 					"scene": null
 				}
 			]
