@@ -17,7 +17,7 @@
 >
       <view wx:if="{{orderList}}">
          <block wx:for="{{orderList}}" wx:key="item.id">
-      <view class="summary" bindtap="navigate" id="{{item.orderId}}">
+      <view class="summary" bindtap="navigate" id="{{item.orderId}}" data='{{item.status}}'>
 		<image src="{{item.customer.headurl}}" class="avatar"/>
   <view class ="nick">
    <view class="nickname">预约人：<text class="nickname">{{item.customer.name}}

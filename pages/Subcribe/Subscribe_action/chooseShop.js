@@ -62,16 +62,17 @@ Page({
     disAddress: true,
     defaultShopCheck: false
   },
+
   getPostion: function() {
     // console.log('getStoreList ' + api.StoreList);
     //wx.showNavigationBarLoading();
     var that = this;
     var bizContent = {
-      "barberId": "1"
+      "barberId": that.data.barberId
     }
     util.weshowRequest(
       api.BarberSubscribeManage, {
-        barberId: "1"
+        barberId: that.data.barberId
       },
       'POST').then(res => {
       var resJson = JSON.stringify(res.data.bizContent);
@@ -97,6 +98,7 @@ Page({
       // });
     });
   },
+
   choiceTime: function(e) {
     var page = this;
     var pos = page.data.postion;
@@ -253,11 +255,13 @@ Page({
     console.log("postion2=" + page.data.postion2);
     // page.setData({ flag: id });
   },
+
   returnToServer: function() {
     wx.navigateTo({
       url: 'ServerItem',
     })
   },
+
   radioChange: function(e) {
     var that = this;
     that.setData({
@@ -275,6 +279,7 @@ Page({
     }
     console.log("chooseShop:" + that.data.noLimitTime + ",t:" + that.data.checked);
   },
+
   radioChange2: function(e) {
     var that = this;
     if (that.data.checked == false) {
@@ -289,6 +294,7 @@ Page({
       })
     }
   },
+
   radioChange3: function(e) {
     var that = this;
     that.setData({
@@ -310,6 +316,7 @@ Page({
 
     console.log("chooseShop:" + that.data.noLimitStore);
   },
+
   radioChange4: function(e) {
     var that = this;
     if (that.data.checked == false) {
@@ -326,10 +333,12 @@ Page({
       console.log("chooseShop:" + that.data.adjustStore + ",f:" + that.data.checked);
     }
   },
+
   toServerInfo: function() {
     //添加一个订单
     this.insertOrder();
   },
+
   insertOrder: function(){
     var that = this;
     var bizContent = {
@@ -370,12 +379,6 @@ Page({
               var resData = res.data.bizContent;
               console.log('GetWxPay: ' + res.data.bizContent)
               wx.requestPayment({
-                // timeStamp: resData.timeStamp,
-                // nonceStr: resData.nonceStr,
-                // package: resData.package,
-                // signType: 'MD5',
-                // paySign: resData.paySign,
-
                 "nonceStr": resData.nonceStr,
                 "package": resData.package,
                 "timeStamp": resData.timeStamp,
@@ -412,6 +415,7 @@ Page({
       });
     
   },
+
   chooseStore: function(e) {
     var that = this;
     that.setData({
@@ -486,6 +490,7 @@ Page({
     }
 
   },
+
   getStoreList: function() {
     console.log('getStoreList ' + api.StoreList);
     var that = this;

@@ -19,12 +19,14 @@ Page({
      })
     console.log(this.data.photoName + "--" + this.data.photoSrc);
   },
+
   yesToIndex: function () {
     wx.setStorageSync(this.data.photoName, this.data.photoSrc);
     wx.navigateBack({
       delta: 2
     })
   },
+
   returnPhoto: function () {
     wx.navigateBack({
       delta: 1

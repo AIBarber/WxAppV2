@@ -4,13 +4,14 @@
 <template data="{{...myDialog}}" is="dialog" />-->
 
 <!-- <view class="container"> -->
-  <block wx:if="{{userType != 1 && faceid != null}}">
+  <block wx:if="{{userType == 2}}">
     <include src="../Customer/myCustomers/personal.wxml"/>
  </block>
-  <block wx:elif="{{faceid == null}}">
+  <!-- <block wx:elif="{{customerId == null}}">
     <include src="./LoginMain.wxml"/>
-  </block>
+  </block> -->
   <block wx:else>
     <include src="../Barber/BarberHome/personal.wxml"/>
   </block>
+
 <!-- </view> -->

@@ -19,8 +19,8 @@ Page({
     // LoginMain
     // faceid: app.globalData.faceid,
     faceid: 123123,
-    userType: app.globalData.userType,
-    // userInfo: app.globalData.userInfo,
+    userType: null,
+    userInfo: null,
     // accountInfo: app.globalData.accountInfo,
     // hasUserInfo: app.globalData.hasUserInfo,
     // canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -35,7 +35,8 @@ Page({
     reservations: [],
     orders: [],
     barberDetails: [],
-    barberID: null,
+    barberID: app.globalData.barberId,
+    customerId: app.globalData.customerId,
     timeToReserve: [],
     barberInfo: '',
     chooseTime: 0,
@@ -57,15 +58,16 @@ Page({
 
   onLoad: function(options) {
     var that = this;
-    console.log(app.globalData.userType);
-    if (this.data.faceid == null) {
-
-    }
+    that.setData({
+      userInfo:app.globalData.userInfo,
+      userType:app.globalData.userType
+    })
+    console.log(that.data.userType);
+   // console.log(app.globalData.userType);
     //CustomerHome
-    else if (that.data.userType == 2) {
+    if (that.data.userType == 2) {
       CustomerHome.loadPersonalInfo(that);
     }
-
     //BarberHome
     else {
       BarberHome.getBarberInfo(that);
@@ -174,6 +176,7 @@ Page({
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();
   },
+
   toBarber: function() {
     //切换用户为客户
     var that = this;
@@ -183,6 +186,7 @@ Page({
       },
       'POST').then(res => {
       // success
+      console.log(res)
       var status = res.data.bizContent.status;
       if (status == '1') {
         //已注册
@@ -199,7 +203,7 @@ Page({
       } else {
         //未注册,跳转到认证页面
         wx.navigateTo({
-          url: '/pages/Login/IDConfirm/IDConfirm'
+          url: '/pages/Customer/myCustomers/jumpToBarber'
         });
       }
 

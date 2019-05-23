@@ -20,6 +20,7 @@ Page({
    */
   onLoad: function (options) {
     this.getDataList();
+    // console.log(this.data.id)
     //  this.getShareStatus();
     // for (var i = 0; i < this.data.shopList.length; i++) {
     //   this.data.check[i] = false;
@@ -39,10 +40,13 @@ Page({
       'POST').then(res => {
         console.log(res.data);
         // success
-        that.setData({
-          shopList: res.data.bizContent.list,
-          flag: true
-        });
+        if (res.data.bizContent.list.length != 0){
+          that.setData({
+            shopList: res.data.bizContent.list,
+            flag: true
+          });
+        }
+       
         that.stopRefreshing();
         //that.waitUpdate();
       }).catch((err) => {
@@ -57,7 +61,7 @@ Page({
         });
         that.setData({
           shopList: (wx.getStorageSync('shopList') || []),
-         // flag: false
+          flag: false
         });
       });
   },

@@ -1,4 +1,4 @@
-/* pages/Main/Main.wxss */
+/* pages/Main/Main.wxss
 
 .container {
   width: 100%;
@@ -54,4 +54,4 @@
   font-size: 17px;
   background-color: rgb(243, 234, 234);
   border-radius: 10px;
-}
+} */

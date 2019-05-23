@@ -32,7 +32,21 @@ Page({
         this.setData({
           src: res.tempImagePath
         })
-        // wx.setStorageSync(this.data.photoSrc, res.tempImagePath);
+        console.log(this.data.photoName)
+        console.log(res.tempImagePath)
+        
+        var basetempImagePath ;
+        wx.getFileSystemManager().readFile({
+          filePath: res.tempImagePath, //选择图片返回的相对路径
+          encoding: 'base64', //编码格式
+          success: res => { //成功的回调
+            basetempImagePath = 'data:image/png;base64,' + res.data;
+            wx.setStorageSync(this.data.photoName + 'base64', basetempImagePath);
+          }
+        });
+
+        wx.setStorageSync(this.data.photoName, res.tempImagePath);
+       
         // console.log(wx.getStorageSync("photoSrc"))
         // this.getFaceId();
         wx.navigateTo({

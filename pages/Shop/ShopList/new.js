@@ -54,6 +54,7 @@ Page({
     orderType:'',
     category:''
   },
+
   bindOrderTypeChange: function (e) {
     console.log('orderType picker发送选择改变，携带值为', e.detail.value)
     this.setData({
@@ -61,6 +62,7 @@ Page({
     });
     this.getshopInfo();
   },
+
   bindCategoryChange: function (e) {
     console.log('Category picker发送选择改变，携带值为', e.detail.value)
     this.setData({
@@ -73,17 +75,21 @@ Page({
    */
   onLoad: function () {
     var that = this
-    that.setData({
-      list: that.data.skillData
-    });
-    this.getshopInfo();
+   // if (that.data.userInfo){
+      that.setData({
+        list: that.data.skillData
+      });
+      this.getshopInfo();
+   // }
   },
+
   // 跳转至详情页
   navigateDetail: function (e) {
     wx.navigateTo({
       url: '../detail/detail?storeId=' + e.currentTarget.dataset.aid
     })
   },
+
   // 加载更多
   loadMore: function (e) {
     console.log('加载更多')
@@ -136,6 +142,7 @@ Page({
   onReachBottom: function () {
 
   },
+
   getshopInfo: function () {
     console.log('getshopInfo ' + api.StoreList);
     //wx.showNavigationBarLoading();
@@ -172,5 +179,6 @@ Page({
         });
         //that.setData({ barberDetails: (wx.getStorageSync('barberDetails') || []) });
       });
-  }
+  },
 })
+

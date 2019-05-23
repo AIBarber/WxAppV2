@@ -163,6 +163,8 @@
 .inputText{
   height:110rpx;
   border-bottom: 1px solid #0cc4b1;
+  font-size: 16px;
+  padding-left: 10rpx;
 }
 .getCode{
   font-size: 33rpx;
@@ -170,9 +172,10 @@
   padding-top:0px;
   padding-bottom: 0px;
   width: 230rpx;
- border-radius: 40rpx;
- margin-top: -95rpx;
- margin-right: 20rpx;
+  border-radius: 40rpx;
+  margin-top: -95rpx;
+  margin-right: 20rpx;
+  z-index: 2;
 }
 .submit{
   margin-top: 720rpx;

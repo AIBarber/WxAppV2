@@ -1,21 +1,15 @@
 'use strict';
-
 var app = getApp();
 var api = require('../config/api.js');
-
 function formatTime(date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
   var day = date.getDate()
-
   var hour = date.getHours()
   var minute = date.getMinutes()
   var second = date.getSeconds()
-
-
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
-
 function formatNumber(n) {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -32,31 +26,24 @@ function replacePhone(arr, isreplace) {
     }
     newAddr[i] = arr[i].name + ' ' + arr[i].phone + '\n' + arr[i].province + arr[i].city + arr[i].addr
   }
-
   return newAddr
 }
 module.exports = {
   formatTime: formatTime,
   replacePhone: replacePhone
 }
-
-
 function getCurrentTime() {
   return (new Date()).getTime();
 }
-
 function getCurrentSecond() {
   return Math.floor((new Date()).getTime() / 1000);
 }
-
 function getSecurityTimestamp() {
   return parseInt((new Date()).getTime() / 1000);
 }
-
 function getNonce() {
   return Math.round(Math.random() * 100000);
 }
-
 /* 随机数 */
 function getRandomString() {
   var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
@@ -67,7 +54,6 @@ function getRandomString() {
   }
   return pwd;
 }
-
 function getHourMin(time) {
   var cur = new Date();
   var curTime = cur.getTime() / 1000;
@@ -79,7 +65,7 @@ function getHourMin(time) {
   var min = date.getMinutes();
   if (min < 10) {
     min = '0' + min;
-  } 
+  }
   if (cur.getDate() != date.getDate()) {
     if (cur.getDate() - date.getDate() < 7) {
       return (cur.getDate() - date.getDate()) + '天前' + ' ' + hour + ':' + min;
@@ -88,34 +74,27 @@ function getHourMin(time) {
   }
   return hour + ':' + min;
 }
-
 function getFullDateTime(time) {
   var date = new Date(time * 1000)
   var year = date.getFullYear()
   var month = date.getMonth() + 1
   var day = date.getDate()
-
   var hour = date.getHours()
   var minute = date.getMinutes()
   var second = date.getSeconds()
-
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
-
 function formatTime(time) {
   var date = new Date(time * 1000);
   var hour = date.getHours()
   var minute = date.getMinutes()
   var second = date.getSeconds()
-
   return [hour, minute].map(formatNumber).join(':')
 }
-
 function formatNumber(n) {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
-
 function getCurHour() {
   var date = new Date();
   var cur = date.getTime() / 1000;
@@ -153,7 +132,6 @@ function getCurHour() {
   var strTime = hour + ':' + min;
   return strTime;*/
 }
-
 function getCurTime(start_time) {
   var date = new Date();
   console.log(start_time);
@@ -170,7 +148,6 @@ function getCurTime(start_time) {
   console.log(stime);
   return stime;
 }
-
 /**
  * 根据时间格式化显示
  * @param time
@@ -181,7 +158,6 @@ function formatDateTime(time) {
   var date = new Date(time * 1000);
   var out = "";
   var curTime = cur.getTime() / 1000;
-
   if (isNaN(time)) {
     return time;
   }
@@ -202,7 +178,6 @@ function formatDateTime(time) {
   }
   return out;
 }
-
 function jsonToUrl(param) {
   let params = {}, data = [];
   let arr = Object.keys(param).sort();
@@ -217,7 +192,6 @@ function jsonToUrl(param) {
   data = data.join('&');
   return data.toString();
 }
-
 function mergeJson(j1, j2) {
   var result = {};
   for (var attr in j1) {
@@ -228,8 +202,6 @@ function mergeJson(j1, j2) {
   }
   return result;
 }
-
-
 /**
  *  封装Server Request
  */
@@ -248,7 +220,6 @@ function weshowRequest(url, data = {}, method = "GET") {
   //data = mergeJson(commonParams, data);
   var bizContentName = { "bizContent": data };
   data = mergeJson(commonParams, bizContentName);
-
   if (api.NETWORK_DEBUG) {
     console.log(url);
   }
@@ -276,12 +247,9 @@ function weshowRequest(url, data = {}, method = "GET") {
         }
         //wx.hideLoading();
         resolve(res);
-
         /*if (res.statusCode == 200) {
-
           if (res.data.errno == 401) {
             //需要登录后才可以操作
-
             let code = null;
             return login().then((res) => {
               code = res.code;
@@ -293,7 +261,6 @@ function weshowRequest(url, data = {}, method = "GET") {
                   //存储用户信息
                   wx.setStorageSync('userInfo', res.data.userInfo);
                   wx.setStorageSync('token', res.data.token);
-
                   resolve(res);
                 } else {
                   reject(res);
@@ -310,7 +277,6 @@ function weshowRequest(url, data = {}, method = "GET") {
         } else {
           reject(res.errMsg);
         }*/
-
       },
       fail: function (err) {
         //wx.hideLoading();
@@ -320,7 +286,6 @@ function weshowRequest(url, data = {}, method = "GET") {
     })
   });
 }
-
 /**
  * 检查微信会话是否过期
  */
@@ -336,7 +301,6 @@ function checkSession() {
     })
   });
 }
-
 /**
  * 调用微信登录
  */
@@ -389,7 +353,6 @@ function login() {
               }).catch (err2 => {
                 reject(err2);
               });
-
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -411,15 +374,14 @@ function login() {
     });*/
   });
 }
-
 function parseLogin(res0) {
   console.log('parseLogin');
   // 发送 res.code 到后台换取 openId, sessionKey, unionId
   if (res0.code) {
     return new Promise(function (resolve, reject) {
       weshowRequest(api.GetWxSession,
-      {
-        'code': res0.code
+        {
+          'code': res0.code
         }, 'POST').then(res => {
           console.log(res);
           app.globalData.userid = res.data.data.openid;
@@ -429,13 +391,12 @@ function parseLogin(res0) {
           getUserLevel();
           resolve(res);
         }).catch((err) => {
-        // fail
+          // fail
           reject(res);
         });
     });
   }
 }
-
 function getGroupId(ticket, sessionKey) {
   console.log('getGroupId');
   console.log(ticket);
@@ -474,7 +435,6 @@ function getGroupId(ticket, sessionKey) {
     })
   });
 }
-
 function decryptShare(data, iv) {
   console.log('decryptShare');
   console.log(app.globalData.sessionKey);
@@ -496,7 +456,6 @@ function decryptShare(data, iv) {
       // fail
     });
 }
-
 function addUserInfo() {
   console.log('addUserInfo');
   console.log(app.globalData.userInfo);
@@ -527,7 +486,6 @@ function addUserInfo() {
       });
   });
 }
-
 function getUserLevel() {
   console.log('getUserLevel');
   weshowRequest(
@@ -537,13 +495,12 @@ function getUserLevel() {
     },
     'GET',
   ).then(res => {
-      console.log('getUserLevel res');
-      console.log(res);
-      app.globalData.userLevel = res.data;
-      wx.setStorageSync('userLevel', res.data);
+    console.log('getUserLevel res');
+    console.log(res);
+    app.globalData.userLevel = res.data;
+    wx.setStorageSync('userLevel', res.data);
   });
 }
-
 function loadUserInfo() {
   console.log('loadUserInfo');
     /*if (app.globalData.userInfo) {
@@ -581,7 +538,6 @@ function loadUserInfo() {
     })
   }
 }
-
 function getUserInfo() {
   return new Promise(function (resolve, reject) {
     wx.getUserInfo({
@@ -595,7 +551,6 @@ function getUserInfo() {
     })
   });
 }
-
 function redirect(url) {
   //判断页面是否需要登录
   if (false) {
@@ -609,20 +564,17 @@ function redirect(url) {
     });
   }
 }
-
 function showErrorToast(msg) {
   wx.showToast({
     title: msg,
     image: '/icon/button_delete.png'
   })
 }
-
 function filterEmojiName(name) {
   // 过滤emoji
   //return name.replace(/\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g, "*");
   return name;
 }
-
 //获取手机型号函数begin
 function getPhoneType() {
   var info = wx.getSystemInfoSync();
@@ -635,7 +587,6 @@ function getPhoneType() {
   console.log(isIphone);
   return isIphone;
 }
-
 function hasButtonClicked() {
   if (app.globalData.buttonClicked) {
     return true;
@@ -646,7 +597,6 @@ function hasButtonClicked() {
   }, 600);
   return false;
 }
-
 function goHome(fromhome) {
   app.globalData.homeShowHistory = true;
   if (fromhome == 1) {
@@ -658,7 +608,6 @@ function goHome(fromhome) {
     jumpTo('../home/home');
   }
 }
-
 function jumpTo(url) {
   if (hasButtonClicked()) {
     return;
@@ -667,7 +616,6 @@ function jumpTo(url) {
     url: url
   })
 }
-
 function clearAndJumpTo(url) {
   if (hasButtonClicked()) {
     return;
@@ -676,13 +624,11 @@ function clearAndJumpTo(url) {
     url: url
   })
 }
-
 function updateTitle(msg) {
   wx.setNavigationBarTitle({
     title: msg + '的答题专场'
   })
 }
-
 function showDialog(msg) {
   wx.showModal({
     title: '',
@@ -694,7 +640,6 @@ function showDialog(msg) {
     }
   });
 }
-
 function showTitleDialog(title, msg) {
   wx.showModal({
     title: title,
@@ -711,7 +656,6 @@ function wxUploadFile(photoPaths, bizContent = {}) {
   // var success = 0;
   // var fail = 0;
   var that = this;
-
   var commonParams = {
     "openId": app.globalData.userid,
     // "timestamp": getCurrentSecond(),
@@ -725,7 +669,6 @@ function wxUploadFile(photoPaths, bizContent = {}) {
   // var bizContent = {
   //   'customerId': 1
   // }
-
   var bizContentName = { "bizContent": bizContent };
   var body = mergeJson(commonParams, bizContentName);
   return new Promise(function (resolve, reject) {
@@ -741,7 +684,6 @@ function wxUploadFile(photoPaths, bizContent = {}) {
         console.log("打印Resp：：" + res.data);
         resolve(res);
       },
-
       fail: (err) => {
         // fail++;//图片上传失败，图片上传失败的变量+1
         console.log("fail")
@@ -765,7 +707,7 @@ module.exports = {
   formatDateTime,
   mergeJson,
   weshowRequest,
- 
+
   redirect,
   showErrorToast,
   checkSession,

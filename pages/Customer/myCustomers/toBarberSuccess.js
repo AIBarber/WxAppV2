@@ -7,26 +7,26 @@ Page({
   data: {
     userType:''
   },
+
   returnCusIndex:function(){
     wx.switchTab({
       url: 'personal'
     })
   },
-  toBarber: function () {
 
+  toBarber: function () {
     var that = this;
-    that.setData({
-      userType: 1
-    })
-    wx.navigateTo({
-      url: '../../PersonalHome/PersonalHome?userType='+that.data.userType,
+    wx.switchTab({
+      url: '/pages/PersonalHome/PersonalHome?userType='+that.data.userType,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+        userType: options.userType
+      })
   },
 
   /**

@@ -23,44 +23,60 @@ function loadPersonalInfo(that){
       'POST').then(res => {
         //success
         that.setData({
-          customerinfo: res.data.bizContent.customerinfo,
-          headPhoto: res.data.bizContent.customerinfo.customerFaceInfo
+          customerinfo: res.data.bizContent.customerinfo
         });
+        if (res.data.bizContent.customerinfo.customerFaceInfo){
+          that.setData({
+            headPhoto: res.data.bizContent.customerinfo.customerFaceInfo
+          });
+        }
       }).catch((err) => { });
   };
+
 function goToMyShareStore() {
+  if (app.globalData.customerId != null) {
     wx.navigateTo({
       url: '/pages/Shop/Openshare/share',
     })
+  }
   };
 
 function goToMyBarber() {
-  wx.navigateTo({
-    url: '/pages/Customer/myBarber/myBarber',
-  })
+    if(app.globalData.customerId != null){
+      wx.navigateTo({
+        url: '/pages/Customer/myBarber/myBarber',
+      })
+    }
 };
+
 function goToHistoryCost() {
+  if (app.globalData.customerId != null) {
   wx.navigateTo({
     url: '/pages/Customer/myHistoryCost/cost',
   })
+  }
 };
+
 function goToCoupon() {
-  wx.navigateTo({
-    url: '/pages/Customer/myCoupon/coupon',
-  })
+  if (app.globalData.customerId != null) {
+    wx.navigateTo({
+      url: '/pages/Customer/myCoupon/coupon',
+    })
+  }
 };
 
 function changeToBarber () {
   if (app.globalData.userType != 1) {
     wx.navigateTo({
-      url: '../FaceIdentity/Identity',
+      url: './cameraIdentity',
     })
   } else {
     wx.navigateTo({
-      url: '../BarBer/personal',
+      url: '../../BarBer/personal',
     })
   }
 };
+
 function goToConsumption() {
     wx.navigateTo({
       url: '/pages/Customer/myHistoryCost/cost',

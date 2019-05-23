@@ -11,34 +11,12 @@ App({
     console.log('App onLaunch')
     this.updateShareInfo(options);
 
-    this.wxLogin();
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
-
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            }
-          })
-        }
-      }
-    })
-  },
+    // this.wxLogin();
+    this.getUserInfoIfAuthed();
+    this.globalData.customerId = wx.getStorageSync('customerId')
+    this.globalData.barberId = wx.getStorageSync('barberId')
+    console.log(this.globalData.customerId)
+   },
 
   //设置tabbar
   /*editTabBar: function () {
@@ -107,59 +85,59 @@ App({
         console.log(res0);
         if (res0.code) {
           //登录远程服务器
-          wx.request({
-            url: api.GetWxSession,
-            data: {
-              "bizContent": { 'code': res0.code },
-              'code': res0.code,
-              'appid': that.globalData.appid
-            },
-            method: 'POST',
-            header: {
-              'Content-Type': 'application/json',
-              'X-WxApp-ID': that.globalData.appid,
-              'X-WxOpenid': res0.code,
-              //'X-Weshow-Token': wx.getStorageSync('token')
-              'X-Weshow-Token': res0.code
-            },
-            success: function (res1) {
-              console.log('wx.request ' + api.GetWxSession);
-              console.log(res1);
-              that.globalData.userid = res1.data.bizContent.openid;
-              that.globalData.sessionKey = res1.data.bizContent.sessionKey;
-              console.log(that.globalData.userid);
-              wx.setStorageSync('userid', res1.data.bizContent.openid);
-              wx.setStorageSync('session_key', res1.data.bizContent.sessionKey);
-              that.getUserInfoIfAuthed();
-              that.webAddInviterInfo();
-              //that.addUserInfo();//will be null
-              /*wx.getUserInfo({
-                withCredentials: true,
-                success: function (res2) {
-                  that.globalData.userInfo = res2.userInfo;
-                  //var nickCode = encodeURIComponent(res2.userInfo.nickName);
-                  //that.globalData.userInfo.nickName = nickCode;
-                  that.globalData.hasUserInfo = true;
-                  wx.setStorageSync('userInfo', res2.userInfo);
+          // wx.request({
+          //   url: api.GetWxSession,
+          //   data: {
+          //     "bizContent": { 'code': res0.code },
+          //     'code': res0.code,
+          //     'appid': that.globalData.appid
+          //   },
+          //   method: 'POST',
+          //   header: {
+          //     'Content-Type': 'application/json',
+          //     'X-WxApp-ID': that.globalData.appid,
+          //     'X-WxOpenid': res0.code,
+          //     //'X-Weshow-Token': wx.getStorageSync('token')
+          //     'X-Weshow-Token': res0.code
+          //   },
+          //   success: function (res1) {
+          //     console.log('wx.request ' + api.GetWxSession);
+          //     console.log(res1);
+          //     that.globalData.userid = res1.data.bizContent.openid;
+          //     that.globalData.sessionKey = res1.data.bizContent.sessionKey;
+          //    // console.log(that.globalData.userid);
+          //     wx.setStorageSync('userid', res1.data.bizContent.openid);
+          //     wx.setStorageSync('session_key', res1.data.bizContent.sessionKey);
+               that.getUserInfoIfAuthed();
+          //     that.webAddInviterInfo();
+          //     //that.addUserInfo();//will be null
+          //     /*wx.getUserInfo({
+          //       withCredentials: true,
+          //       success: function (res2) {
+          //         that.globalData.userInfo = res2.userInfo;
+          //         //var nickCode = encodeURIComponent(res2.userInfo.nickName);
+          //         //that.globalData.userInfo.nickName = nickCode;
+          //         that.globalData.hasUserInfo = true;
+          //         wx.setStorageSync('userInfo', res2.userInfo);
 
-                  //that.addUserInfo();
+          //         //that.addUserInfo();
 
-                  // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-                  // 所以此处加入 callback 以防止这种情况
-                  if (that.userInfoReadyCallback) {
-                    that.userInfoReadyCallback(res2.userInfo)
-                  }
-                },
-                fail: function (err) {
-                  console.log('log in err');
-                  console.log(err);
-                  if (that.userInfoReadyCallback) {
-                    that.userInfoReadyCallback(null)
-                  }
-                }
-              });*/
-            }
-          });
+          //         // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+          //         // 所以此处加入 callback 以防止这种情况
+          //         if (that.userInfoReadyCallback) {
+          //           that.userInfoReadyCallback(res2.userInfo)
+          //         }
+          //       },
+          //       fail: function (err) {
+          //         console.log('log in err');
+          //         console.log(err);
+          //         if (that.userInfoReadyCallback) {
+          //           that.userInfoReadyCallback(null)
+          //         }
+          //       }
+          //     });*/
+          //   }
+          // });
          }
        }
     });
@@ -174,22 +152,17 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框  
           wx.getUserInfo({
             success: res1 => {
-              // 可以将 res 发送给后台解码出 unionId  
-              that.globalData.userInfo = res1.userInfo;
-              that.globalData.hasUserInfo = true;
-              wx.setStorageSync('userInfo', res1.userInfo);
-              that.addUserInfo();
-
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回  
-              // 所以此处加入 callback 以防止这种情况  
-              if (that.userInfoReadyCallback) {
-                that.userInfoReadyCallback(res1)
-              }
+             // console.log("用户信息:");
+              //console.log(res1)
+             that.globalData.userInfo = res1.userInfo;
+             that.globalData.userType = 2;
+              wx.setStorageSync('userInfo', res1.userInfo)
+              wx.setStorageSync('userType', 2)
             }
           })
         }
       }
-    });
+    });    
   },
 
   addUserInfo: function () {
@@ -239,28 +212,29 @@ App({
         //}
       },
       fail: function (err) {
+        console.log(err)
       }
     });
   },
 
-  getUserInfoEvent: function (cb) {
-    var that = this
-    if (this.globalData.userInfo) {
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    } else {
-      //调用登录接口
-      wx.login({
-        success: function () {
-          wx.getUserInfo({
-            success: function (res) {
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
-            }
-          })
-        }
-      })
-    }
-  },
+  // getUserInfoEvent: function (cb) {
+  //   var that = this
+  //   if (this.globalData.userInfo) {
+  //     typeof cb == "function" && cb(this.globalData.userInfo)
+  //   } else {
+  //     //调用登录接口
+  //     wx.login({
+  //       success: function () {
+  //         wx.getUserInfo({
+  //           success: function (res) {
+  //             that.globalData.userInfo = res.userInfo
+  //             typeof cb == "function" && cb(that.globalData.userInfo)
+  //           }
+  //         })
+  //       }
+  //     })
+  //   }
+  // },
   getLocation: function(){
     var that = this;
     wx.getLocation({
@@ -273,7 +247,7 @@ App({
   // 全局变量
   globalData: {
     userInfo: null,
-    userType: 2,
+    userType: null,
     hasUserInfo: false,
     accountInfo: '',
     inviter_id: null,
@@ -281,7 +255,7 @@ App({
     shareInviterCode: '0',
     selectedBarberId: '',
     userid: 'ozANd5R2-s45Fio7CCiZa7Lvj4v8',
-    customerId:'1',
+    customerId: null,
     faceid: null,
     userLevel: 0,
     sessionKey: '',
@@ -289,6 +263,6 @@ App({
     latitude: 39.93,
     longitude: 116.45,
     ShareTitle: 'ShareTitle',
-    barberId:'1'
+    barberId: null 
   }
 })
