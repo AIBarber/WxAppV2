@@ -28,39 +28,16 @@ Page({
   },
  
   formSubmit:function(e){
-    var that=this;
-    // that.setData({
-    //   telNumber: e.detail.value.telNumber,
-    //   verificationCode:e.detail.value.verificationCode,
-    //   idCard: e.detail.value.idCard
-    // });
-   // var photoPaths=[this.data.headPhotoBgC, this.data.idCardFront, this.data.idCardBehind];
     var that = this;
-    //把图片格式转换成base64
-    // for (var i = 0; i < photoPaths.length; i++) {
-    //   wx.getFileSystemManager().readFile({
-    //     filePath: photoPaths[i], //选择图片返回的相对路径
-    //     encoding: 'base64', //编码格式
-    //     success: res => { //成功的回调
-    //     console.log(i)
-    //       //console.log('data:image/png;base64,' + photoPaths[i])
-    //       // this.setData({
-    //       //   photoBase64: 'data:image/png;base64,' + res.data
-    //       // })
-    //       photoPaths[i] = 'data:image/png;base64,' + res.data;
-    //     }
-    //   });
-    // }
-  //  console.log(photoPaths)
-    var commonParams = {
-      "openId": app.globalData.userid,
-      "timestamp": util.getCurrentSecond(),
-      "appid": app.globalData.appid,
-      "nonce": "123",
-      "algorithm": "1",
-      "token": "12313",
-      "version": "2.0"
-    };
+    // var commonParams = {
+    //   "openId": app.globalData.userid,
+    //   "timestamp": util.getCurrentSecond(),
+    //   "appid": app.globalData.appid,
+    //   "nonce": "123",
+    //   "algorithm": "1",
+    //   "token": "12313",
+    //   "version": "2.0"
+    // };
     var bizContent = {
       'customerId': app.globalData.customerId,
       'mobile':that.data.telNumber,
@@ -74,8 +51,8 @@ Page({
       // "backIdCardImageFile": that.data.idCardBehind
     }
 
-    var bizContentName = { "bizContent": bizContent };
-    var body = util.mergeJson(commonParams, bizContentName);
+    //var bizContentName = { "bizContent": bizContent };
+    //var body = util.mergeJson(commonParams, bizContentName);
 
     console.log(bizContent);
     console.log('BarberRegister: ' + api.BarberRegister)
@@ -85,8 +62,14 @@ Page({
         'POST').then(res => {
           // success
           console.log(res)
+          var t = 2;
+          if(res.data.bizContent.status == 1){
+            t = 1;
+            wx.setStorageSync('userType', 1)
+            app.globalData.userType = 1;
+          }
           wx.navigateTo({
-            url: 'toBarberSuccess?userType=1',
+            url: 'toBarberSuccess?userType=' + t,
           })
           
         }).catch((err) => {

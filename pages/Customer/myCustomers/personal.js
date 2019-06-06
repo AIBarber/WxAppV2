@@ -103,10 +103,11 @@ function jumpToBarber () {
 function onShow() {
   this.getHeadPhoto();
 };
+
 function getHeadPhoto(object) {
   // console.log("进入onShow")
   var that = object;
-  if (wx.getStorageSync("personnal") == null) {
+  if (!wx.getStorageSync("personnal")) {
 
   } else {
     that.setData({
@@ -115,7 +116,7 @@ function getHeadPhoto(object) {
     var bizContent = { 'customerId': app.globalData.customerId }
     var photoPaths = '';
     photoPaths = wx.getStorageSync("personnal");
-   // console.log(wx.getStorageSync("personnal"))
+   console.log(wx.getStorageSync("personnal"))
     util.wxUploadFile(photoPaths, bizContent).then(res => {
       var face = res.data.bizContent;
       var a = JSON.parse(res.data);

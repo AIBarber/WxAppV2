@@ -18,7 +18,7 @@ Page({
   data: {
     // LoginMain
     // faceid: app.globalData.faceid,
-    faceid: 123123,
+    faceid: null,
     userType: null,
     userInfo: null,
     // accountInfo: app.globalData.accountInfo,
@@ -178,7 +178,7 @@ Page({
   },
 
   toBarber: function() {
-    //切换用户为客户
+    //切换用户为理发师
     var that = this;
     util.weshowRequest(
       api.Getbarberid, {

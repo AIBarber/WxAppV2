@@ -9,22 +9,31 @@ Page({
     
   // }
 })
+
 function getBarberInfo(that) {
+ // console.log(app.globalData.userInfo)
+    that.setData({
+      userInfo : app.globalData.userInfo
+    })
+    console.log(that.data.userInfo)
     util.weshowRequest(
-      api.GetbarberHome, {
+      api.Getbarberinfo, {
         "barberId": app.globalData.barberId
       },
       'POST').then(res => {
         console.log('barberInfo:: ');
+        console.log(res)
         // success
-        that.setData({
-          barberInfo: res.data.bizContent.barberinfo
-        });
-        var positionsRes =res.data.bizContent.barberinfo.positions
-        for (var i = 0; i < positionsRes.length;i++){
+        if(res.data.bizContent.barberinfo){
           that.setData({
-            ['status' + positionsRes[i]]: 1
+            barberInfo: res.data.bizContent.barberinfo
           });
+          var positionsRes = res.data.bizContent.barberinfo.positions
+          for (var i = 0; i < positionsRes.length; i++) {
+            that.setData({
+              ['status' + positionsRes[i]]: 1
+            });
+          }
         }
       }).catch((err) => {
         console.log('barberInfo err :' + err);

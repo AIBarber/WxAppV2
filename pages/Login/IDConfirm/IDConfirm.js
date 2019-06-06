@@ -90,6 +90,7 @@ Page({
       idNum: e.detail.value
     })
   },
+  
   gainAuthCodeAction: function() {
     let that = this;
 

@@ -51,7 +51,7 @@ module.exports = {
   StoreBarberDetail: ApiRootUrl + 'barber/detailbyid',
   Getcustomerinfo: ApiRootUrl +'customer/getcustomerinfo',
   Getbarberinfo: ApiRootUrl + 'barber/getbarberinfo',
-  GetbarberHome: ApiRootUrl + 'barber/getbarberhome',
+  // GetbarberHome: ApiRootUrl + 'barber/getbarberhome',
   GetorderInsert: ApiRootUrl + 'order/insert',
   GetBarberList: ApiRootUrl + 'barber/list',
   BarberList: ApiRootUrl + 'barber/list',

@@ -52,11 +52,11 @@
   <!-- <block wx:for="{{person[curIndex]}}" wx:key="item.id"> -->
   <view class="summary">
     <!-- <view class="avatar-container"> -->
-    <image src="{{barberInfo.headImageUrl}}" class="avatar" />
+    <image src="{{barberInfo.registerfaceurl}}" class="avatar" />
     <!-- </view> -->
     <view class="nick">
-      <view class="nickname">{{barberInfo.name}}</view>
-      <view class="nickname1">{{m1.getBarberLevel(barberInfo.level)}}|
+      <view class="nickname">{{userInfo.nickName}}</view>
+      <view class="nickname1">m1.getBarberLevel({{barberInfo.level}})|
         <text class="nickname1">{{barberInfo.years}}年</text>
       </view>
     </view>
